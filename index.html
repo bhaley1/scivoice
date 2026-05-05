@@ -231,7 +231,7 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
   <p class="hero-tagline" id="heroTagline">Public health microbiology tools for everyone — in your language.</p>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-num" id="statTools">11</div>
+      <div class="stat-num" id="statTools">3</div>
       <div class="stat-label" id="statToolsLabel">Tools</div>
     </div>
     <div class="stat-divider"></div>
@@ -321,6 +321,7 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
       <a href="https://github.com/bhaley1/scivoice/issues" target="_blank" id="footerFeedback">Feedback</a>
       <a href="https://bhaley1.github.io/manuscript-summarizer---beta/" target="_blank">SciSummarize</a>
       <a href="https://bhaley1.github.io/envirocollect/" target="_blank">EnviroCollect</a>
+      <a href="https://bhaley1.github.io/mediaprep/" target="_blank">MediaPrep</a>
     </div>
   </div>
 </footer>
@@ -398,6 +399,28 @@ const TOOLS_LIVE = [
       uk:'Завантажте комплексний багатомовний шаблон збору польових даних для відбору проб води, осадів та ґрунту.',
     }
   },
+  {
+    id:'mediaprep',
+    icon:'🧫',iconBg:'icon-green',
+    url:'https://bhaley1.github.io/mediaprep/',
+    tags:['culture media','lab prep','ingredients'],
+    names:{en:'MediaPrep'},
+    descs:{
+      en:'Select any standard culture medium (LB, TSA, MacConkey, Blood Agar, Selenite Broth, and 25 more), enter the volume needed, and get exact ingredient weights with step-by-step preparation instructions — in your language.',
+      fr:'Sélectionnez un milieu de culture standard, entrez le volume nécessaire et obtenez les poids exacts des ingrédients avec des instructions pas à pas.',
+      es:'Seleccione cualquier medio de cultivo estándar, ingrese el volumen necesario y obtenga los pesos exactos de ingredientes con instrucciones paso a paso.',
+      pt:'Selecione qualquer meio de cultura padrão, insira o volume necessário e obtenha os pesos exatos dos ingredientes com instruções passo a passo.',
+      it:'Seleziona qualsiasi terreno di coltura standard, inserisci il volume necessario e ottieni i pesi esatti degli ingredienti con istruzioni passo dopo passo.',
+      ar:'اختر أي وسيط زرع قياسي، أدخل الحجم المطلوب واحصل على أوزان دقيقة للمكونات مع تعليمات خطوة بخطوة.',
+      zh:'选择任意标准培养基，输入所需体积，获得精确成分重量和分步配制说明。',
+      sw:'Chagua kati ya utamaduni yoyote ya kawaida, weka kiasi kinachohitajika na upate uzito sahihi wa viungo na maelekezo hatua kwa hatua.',
+      am:'ማንኛውም የተለመደ ሚዲያ ይምረጡ፣ የሚፈለጉ መጠን ያስገቡ እና ትክክለኛ የግብዓት ክብደቶች ከሂደቶቹ ጋር ያግኙ።',
+      hi:'कोई भी मानक संस्कृति माध्यम चुनें, आवश्यक मात्रा दर्ज करें और सटीक सामग्री वजन तथा चरण-दर-चरण निर्देश प्राप्त करें।',
+      bn:'যেকোনো মানক কালচার মিডিয়া বেছে নিন, প্রয়োজনীয় পরিমাণ লিখুন এবং সঠিক উপাদানের ওজন ও ধাপে ধাপে নির্দেশাবলী পান।',
+      id:'Pilih medium kultur standar apa pun, masukkan volume yang dibutuhkan, dan dapatkan berat bahan yang tepat dengan petunjuk langkah demi langkah.',
+      uk:'Виберіть будь-яке стандартне живильне середовище, введіть потрібний об\'єм і отримайте точні ваги інгредієнтів з покроковими інструкціями.',
+    }
+  },
 ];
 
 const TOOLS_SOON = [
@@ -407,9 +430,6 @@ const TOOLS_SOON = [
   {icon:'🌾',iconBg:'icon-gold',tags:['food animal','produce','irrigation'],
    names:{en:'AgroCollect'},
    descs:{en:'Field data collection template for agricultural samples — food animal fecal and nasal swabs, produce surface washes, irrigation water, and food processing environment swabs. HACCP-compatible.'}},
-  {icon:'🧫',iconBg:'icon-green',tags:['culture media','lab prep'],
-   names:{en:'MediaPrep'},
-   descs:{en:'Multilingual culture media preparation calculator. Select any standard medium (LB, TSA, MacConkey, Blood Agar, Selenite Broth and more), enter volume needed, and get exact ingredient weights with step-by-step preparation instructions.'}},
   {icon:'💊',iconBg:'icon-purple',tags:['AMR','antibiotics','CLSI','EUCAST'],
    names:{en:'AntibiogramBuilder'},
    descs:{en:'Enter disk diffusion zone measurements or MIC values and get automatic susceptibility interpretation (S/I/R) using CLSI or EUCAST breakpoints. Generates a downloadable antibiogram table in your language.'}},
