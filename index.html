@@ -19,7 +19,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -63,22 +62,28 @@ header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;posit
 }
 .hero-eyebrow{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.5rem;position:relative;display:flex;align-items:center;justify-content:center;gap:12px;}
 .hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--rule);}
+
+/* ── Rotating hero text ── */
+.hero-rotate-wrapper{position:relative;margin-bottom:1.25rem;max-width:800px;margin-left:auto;margin-right:auto;}
 .hero h1{
   font-family:'Lora',serif;
   font-size:clamp(2.5rem,5vw,4rem);
   font-weight:600;line-height:1.1;
   letter-spacing:-0.03em;
-  margin-bottom:1.25rem;
-  max-width:800px;margin-left:auto;margin-right:auto;
   position:relative;
 }
 .hero h1 em{font-style:italic;color:var(--accent);}
+.hero-tagline-wrap{position:relative;height:2.8em;overflow:hidden;max-width:560px;margin:0 auto 2.5rem;}
 .hero-tagline{
+  position:absolute;left:0;right:0;
   font-size:18px;color:var(--ink-2);
-  max-width:560px;margin:0 auto 2.5rem;
   font-weight:300;line-height:1.7;
-  position:relative;
+  text-align:center;
+  opacity:0;transition:opacity 0.6s ease;
+  pointer-events:none;
 }
+.hero-tagline.active{opacity:1;pointer-events:auto;}
+
 .hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;position:relative;margin-bottom:3rem;}
 .stat{text-align:center;}
 .stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:600;color:var(--ink);line-height:1;}
@@ -143,7 +148,6 @@ header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;posit
 .tool-badge{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;white-space:nowrap;}
 .badge-live{background:var(--green-light);color:var(--green);}
 .badge-soon{background:var(--paper-2);color:var(--ink-3);}
-.badge-new{background:#fff3e0;color:#8b5e00;}
 .tool-name{font-size:16px;font-weight:600;color:var(--ink);line-height:1.2;}
 .tool-desc{font-size:13px;color:var(--ink-3);line-height:1.6;flex:1;}
 .tool-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
@@ -151,7 +155,6 @@ header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;posit
 .tool-arrow{font-size:16px;color:var(--ink-3);margin-top:auto;align-self:flex-end;transition:transform 0.15s;}
 .tool-card:hover:not(.coming-soon) .tool-arrow{transform:translateX(3px);}
 
-/* Icon backgrounds */
 .icon-blue{background:var(--accent-light);}
 .icon-green{background:var(--green-light);}
 .icon-red{background:var(--red-light);}
@@ -160,7 +163,7 @@ header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;posit
 .icon-teal{background:var(--teal-light);}
 .icon-ink{background:var(--paper-3);}
 
-/* ── About section ── */
+/* ── About ── */
 .about-card{
   border:1px solid var(--rule);border-radius:var(--radius-xl);
   background:white;padding:2rem;
@@ -227,11 +230,13 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow" id="heroEyebrow">Public Health Microbiology Platform</div>
-  <h1 id="heroTitle">Science for <em>everyone</em>,<br>in every language.</h1>
-  <p class="hero-tagline" id="heroTagline">Public health microbiology tools for everyone — in your language.</p>
+  <div class="hero-rotate-wrapper">
+    <h1 id="heroTitle">Science for <em>everyone</em>,<br>in every language.</h1>
+  </div>
+  <div class="hero-tagline-wrap" id="taglineWrap"></div>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-num" id="statTools">3</div>
+      <div class="stat-num" id="statTools">4</div>
       <div class="stat-label" id="statToolsLabel">Tools</div>
     </div>
     <div class="stat-divider"></div>
@@ -262,29 +267,23 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
 
 <!-- MAIN CONTENT -->
 <div id="mainContent">
-
   <div class="selected-bar">
     <div class="lang-name" id="selectedLangName">English <span>Selected</span></div>
     <button class="btn-change" id="btnChange" onclick="changeLang()">Change language</button>
   </div>
 
-  <!-- Tools -->
   <div id="tools" class="section-heading">
     <h2 id="toolsHeading">Tools</h2>
     <p id="toolsSubheading">Free, open, offline-capable. No account required.</p>
   </div>
-
-  <!-- LIVE TOOLS -->
   <div class="tool-grid" id="liveToolsGrid"></div>
 
-  <!-- COMING SOON -->
   <div class="section-heading">
     <h2 id="comingSoonHeading">Coming Soon</h2>
     <p id="comingSoonSubheading">Under development. All tools will be free and multilingual.</p>
   </div>
   <div class="tool-grid" id="soonToolsGrid"></div>
 
-  <!-- ABOUT -->
   <div id="about" class="about-card">
     <div class="about-avatar">BH</div>
     <div>
@@ -293,22 +292,18 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
       <p class="about-bio" id="aboutBio">Bradd Haley is a research microbiologist specializing in foodborne pathogens, comparative genomics, and machine learning applications in public health microbiology. SciVoice grew from a belief that language should never be a barrier to scientific knowledge or the tools needed to protect public health. All tools on this platform are free, open source, and designed to work in low-resource settings worldwide.</p>
       <div class="about-links">
         <a class="about-link" href="https://scholar.google.com/citations?user=SH15wIwAAAAJ&hl=en" target="_blank">
-          <span class="about-link-icon">🎓</span>
-          <span id="linkScholar">Google Scholar</span>
+          <span class="about-link-icon">🎓</span><span id="linkScholar">Google Scholar</span>
         </a>
         <a class="about-link" href="https://www.linkedin.com/in/bradd-j-haley-phd-ms-33ba2661/" target="_blank">
-          <span class="about-link-icon">💼</span>
-          <span id="linkLinkedIn">LinkedIn</span>
+          <span class="about-link-icon">💼</span><span id="linkLinkedIn">LinkedIn</span>
         </a>
         <a class="about-link" href="https://github.com/bhaley1" target="_blank">
-          <span class="about-link-icon">💻</span>
-          <span id="linkGitHub">GitHub</span>
+          <span class="about-link-icon">💻</span><span id="linkGitHub">GitHub</span>
         </a>
       </div>
     </div>
   </div>
-
-</div><!-- /mainContent -->
+</div>
 
 <footer>
   <div class="footer-inner">
@@ -322,12 +317,13 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
       <a href="https://bhaley1.github.io/manuscript-summarizer---beta/" target="_blank">SciSummarize</a>
       <a href="https://bhaley1.github.io/envirocollect/" target="_blank">EnviroCollect</a>
       <a href="https://bhaley1.github.io/mediaprep/" target="_blank">MediaPrep</a>
+      <a href="./microglossary/" target="_blank">MicroGlossary</a>
     </div>
   </div>
 </footer>
 
 <script>
-// ── Languages ─────────────────────────────────────────────────────────────
+// ── Languages ──────────────────────────────────────────────────────────────
 const LANGS = [
   {code:'en',native:'English',english:'English',dir:'ltr'},
   {code:'fr',native:'Français',english:'French',dir:'ltr'},
@@ -353,16 +349,41 @@ const LANGS = [
   {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr'},
 ];
 
-// ── Tools ─────────────────────────────────────────────────────────────────
+// ── Rotating taglines (one per language) ──────────────────────────────────
+const TAGLINES = {
+  en:'Public health microbiology tools for everyone — in your language.',
+  fr:'Outils de microbiologie en santé publique pour tous — dans votre langue.',
+  es:'Herramientas de microbiología en salud pública para todos — en su idioma.',
+  pt:'Ferramentas de microbiologia em saúde pública para todos — na sua língua.',
+  it:'Strumenti di microbiologia per la salute pubblica per tutti — nella tua lingua.',
+  ar:'أدوات علم الأحياء الدقيقة للصحة العامة للجميع — بلغتك.',
+  zh:'面向所有人的公共卫生微生物学工具——使用您的语言。',
+  sw:'Zana za microbiologia ya afya ya umma kwa kila mtu — kwa lugha yako.',
+  am:'ሁሉም ሰው ሊጠቀምበት የሚችል የህዝብ ጤና ማይክሮባዮሎጂ መሳሪያዎች — በቋንቋዎ።',
+  hi:'सभी के लिए सार्वजनिक स्वास्थ्य माइक्रोबायोलॉजी उपकरण — आपकी भाषा में।',
+  bn:'সবার জন্য সর্বজনীন স্বাস্থ্য মাইক্রোবায়োলজি সরঞ্জাম — আপনার ভাষায়।',
+  id:'Alat mikrobiologi kesehatan masyarakat untuk semua orang — dalam bahasa Anda.',
+  uk:'Інструменти мікробіології громадського здоров\'я для всіх — вашою мовою.',
+  ha:'Kayan aikin ilimin ƙwayoyin cuta na lafiyar jama\'a ga kowa — a cikin harshenku.',
+  yo:'Awọn irinṣẹ microbiology ilera gbogbogbo fun gbogbo eniyan — ni ede rẹ.',
+  ln:'Misala ya microbiologie ya santé ya bato nyonso — na monoko na yo.',
+  mg:'Fitaovana mikrobiolojia fahasalamana ho an\'ny rehetra — amin\'ny fitenenana.',
+  ne:'सबैका लागि सार्वजनिक स्वास्थ्य माइक्रोबायोलोजी उपकरणहरू — तपाईंको भाषामा।',
+  tl:'Mga kagamitan sa microbiology ng pampublikong kalusugan para sa lahat — sa iyong wika.',
+  rw:'Ibikoresho bya microbiologie y\'ubuzima rusange kuri bose — mu rurimi rwawe.',
+  rn:'Ibikoresho bya microbiologie y\'amagara rusange kuri bose — mu rurimi rwawe.',
+  ny:'Zida za microbiology ya zauza la anthu onse — m\'chilankhulo chanu.',
+};
+
+// ── Tools (Live) ───────────────────────────────────────────────────────────
 const TOOLS_LIVE = [
   {
-    id:'scisummarize',
-    icon:'🔬',iconBg:'icon-blue',
+    id:'scisummarize',icon:'🔬',iconBg:'icon-blue',
     url:'https://bhaley1.github.io/manuscript-summarizer---beta/',
     tags:['manuscripts','translation','summaries'],
-    names:{en:'SciSummarize',fr:'SciSummarize',es:'SciSummarize',pt:'SciSummarize',it:'SciSummarize',ar:'SciSummarize',zh:'SciSummarize',sw:'SciSummarize',am:'SciSummarize',hi:'SciSummarize',bn:'SciSummarize',id:'SciSummarize',uk:'SciSummarize'},
+    names:{en:'SciSummarize'},
     descs:{
-      en:'Upload any English scientific manuscript and receive an accurate abstract translation, summary, and 10 key findings in your language — with precise scientific terminology.',
+      en:'Upload any English scientific manuscript and receive an accurate abstract translation, summary, and 3 key findings in your language — with precise scientific terminology.',
       fr:'Téléchargez un manuscrit scientifique et recevez un résumé précis et les points clés dans votre langue.',
       es:'Cargue un manuscrito científico y reciba un resumen preciso y los hallazgos clave en su idioma.',
       pt:'Carregue um manuscrito científico e receba um resumo preciso e os pontos-chave na sua língua.',
@@ -378,8 +399,7 @@ const TOOLS_LIVE = [
     }
   },
   {
-    id:'envirocollect',
-    icon:'💧',iconBg:'icon-green',
+    id:'envirocollect',icon:'💧',iconBg:'icon-green',
     url:'https://bhaley1.github.io/envirocollect/',
     tags:['water','sediment','biofilm','field sampling'],
     names:{en:'EnviroCollect'},
@@ -400,13 +420,12 @@ const TOOLS_LIVE = [
     }
   },
   {
-    id:'mediaprep',
-    icon:'🧫',iconBg:'icon-green',
+    id:'mediaprep',icon:'🧫',iconBg:'icon-green',
     url:'https://bhaley1.github.io/mediaprep/',
     tags:['culture media','lab prep','ingredients'],
     names:{en:'MediaPrep'},
     descs:{
-      en:'Select any standard culture medium (LB, TSA, MacConkey, Blood Agar, Selenite Broth, and 25 more), enter the volume needed, and get exact ingredient weights with step-by-step preparation instructions — in your language.',
+      en:'Select any standard culture medium (LB, TSA, MacConkey, Blood Agar, and 25 more), enter the volume needed, and get exact ingredient weights with step-by-step preparation instructions — in your language.',
       fr:'Sélectionnez un milieu de culture standard, entrez le volume nécessaire et obtenez les poids exacts des ingrédients avec des instructions pas à pas.',
       es:'Seleccione cualquier medio de cultivo estándar, ingrese el volumen necesario y obtenga los pesos exactos de ingredientes con instrucciones paso a paso.',
       pt:'Selecione qualquer meio de cultura padrão, insira o volume necessário e obtenha os pesos exatos dos ingredientes com instruções passo a passo.',
@@ -421,8 +440,30 @@ const TOOLS_LIVE = [
       uk:'Виберіть будь-яке стандартне живильне середовище, введіть потрібний об\'єм і отримайте точні ваги інгредієнтів з покроковими інструкціями.',
     }
   },
+  {
+    id:'microglossary',icon:'📚',iconBg:'icon-gold',
+    url:'./microglossary/',
+    tags:['terminology','glossary','definitions'],
+    names:{en:'MicroGlossary'},
+    descs:{
+      en:'Searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across all 22 languages.',
+      fr:'Dictionnaire multilingue de terminologie en microbiologie et santé publique. Couvre l\'AMR, la génomique, l\'épidémiologie dans 22 langues.',
+      es:'Diccionario multilingüe de terminología de microbiología y salud pública. Cubre AMR, genómica, epidemiología en 22 idiomas.',
+      pt:'Dicionário multilíngue de terminologia em microbiologia e saúde pública. Cobre AMR, genómica, epidemiologia em 22 línguas.',
+      it:'Dizionario multilingue di terminologia in microbiologia e salute pubblica. Copre AMR, genomica, epidemiologia in 22 lingue.',
+      ar:'قاموس متعدد اللغات لمصطلحات علم الأحياء الدقيقة والصحة العامة. يغطي مقاومة مضادات الميكروبات والجينوميكس وعلم الأوبئة.',
+      zh:'可搜索的多语言微生物学和公共卫生术语词典。涵盖22种语言的AMR、基因组学、流行病学。',
+      sw:'Kamusi ya istilahi ya microbiologia na afya ya umma inayoweza kutafutwa katika lugha 22.',
+      am:'በ22 ቋንቋዎች ሊፈለግ የሚችል ባለ ብዙ ቋንቋ የማይክሮባዮሎጂ እና የህዝብ ጤና ቃላት መዝገበ-ቃላት።',
+      hi:'22 भाषाओं में खोज योग्य बहुभाषी माइक्रोबायोलॉजी और सार्वजनिक स्वास्थ्य शब्दावली शब्दकोश।',
+      bn:'22টি ভাষায় অনুসন্ধানযোগ্য বহুভাষিক মাইক্রোবায়োলজি এবং জনস্বাস্থ্য পরিভাষা অভিধান।',
+      id:'Kamus terminologi mikrobiologi dan kesehatan masyarakat multibahasa yang dapat dicari dalam 22 bahasa.',
+      uk:'Багатомовний словник термінології мікробіології та громадського здоров\'я з пошуком у 22 мовах.',
+    }
+  },
 ];
 
+// ── Tools (Coming Soon) ────────────────────────────────────────────────────
 const TOOLS_SOON = [
   {icon:'🩸',iconBg:'icon-red',tags:['clinical','blood','fecal','swabs'],
    names:{en:'ClinicalCollect'},
@@ -442,9 +483,6 @@ const TOOLS_SOON = [
   {icon:'📊',iconBg:'icon-blue',tags:['AMR surveillance','resistance rates'],
    names:{en:'AMRTracker'},
    descs:{en:'Enter isolate data and antibiotic susceptibility results to generate a local AMR surveillance summary report — percentage resistance by drug class, organism, and sample source. Downloadable in your language.'}},
-  {icon:'📚',iconBg:'icon-gold',tags:['terminology','glossary','definitions'],
-   names:{en:'MicroGlossary'},
-   descs:{en:'A searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across all 22 languages. Downloadable as a reference card.'}},
   {icon:'📋',iconBg:'icon-red',tags:['biosafety','SOP','WHO'],
    names:{en:'BiosafetySOP'},
    descs:{en:'Generate a customizable biosafety standard operating procedure for any sample type and biosafety level — in your language. Based on WHO Laboratory Biosafety Manual guidelines. Covers PPE, decontamination, spill response, and waste disposal.'}},
@@ -452,29 +490,50 @@ const TOOLS_SOON = [
 
 // ── UI translations ────────────────────────────────────────────────────────
 const UI = {
-  en:{eyebrow:'Public Health Microbiology Platform',tagline:'Public health microbiology tools for everyone — in your language.',statsTools:'Tools',statsLangs:'Languages',statsFree:'Free',statsAccount:'Account needed',change:'Change language',toolsHeading:'Tools',toolsSub:'Free, open, offline-capable. No account required.',soonHeading:'Coming Soon',soonSub:'Under development. All tools will be free and multilingual.',aboutTitle:'Research Microbiologist · Public Health · Genomics · Machine Learning',aboutBio:'Bradd Haley is a research microbiologist specializing in foodborne pathogens, comparative genomics, and machine learning applications in public health microbiology. SciVoice grew from a belief that language should never be a barrier to scientific knowledge or the tools needed to protect public health. All tools on this platform are free, open source, and designed to work in low-resource settings worldwide.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Tools',navAbout:'About',footerTagline:'Public health microbiology tools for everyone — in your language.',footerGitHub:'GitHub',footerFeedback:'Feedback',live:'Live',soon:'Coming Soon'},
-  fr:{eyebrow:'Plateforme de Microbiologie en Santé Publique',tagline:'Outils de microbiologie en santé publique pour tous — dans votre langue.',statsTools:'Outils',statsLangs:'Langues',statsFree:'Gratuit',statsAccount:'Compte requis',change:'Changer de langue',toolsHeading:'Outils',toolsSub:'Gratuits, ouverts, utilisables hors ligne. Sans compte requis.',soonHeading:'Bientôt disponibles',soonSub:'En développement. Tous les outils seront gratuits et multilingues.',aboutTitle:'Microbiologiste chercheur · Santé publique · Génomique · Apprentissage automatique',aboutBio:'Bradd Haley est un microbiologiste chercheur spécialisé dans les agents pathogènes d\'origine alimentaire, la génomique comparative et les applications d\'apprentissage automatique en microbiologie de la santé publique. SciVoice est né de la conviction que la langue ne devrait jamais être un obstacle à la connaissance scientifique ou aux outils nécessaires pour protéger la santé publique.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Outils',navAbout:'À propos',footerTagline:'Outils de microbiologie en santé publique pour tous — dans votre langue.',footerGitHub:'GitHub',footerFeedback:'Commentaires',live:'Disponible',soon:'Bientôt'},
-  es:{eyebrow:'Plataforma de Microbiología en Salud Pública',tagline:'Herramientas de microbiología en salud pública para todos — en su idioma.',statsTools:'Herramientas',statsLangs:'Idiomas',statsFree:'Gratis',statsAccount:'Cuenta requerida',change:'Cambiar idioma',toolsHeading:'Herramientas',toolsSub:'Gratis, abiertas, sin conexión. Sin cuenta requerida.',soonHeading:'Próximamente',soonSub:'En desarrollo. Todas las herramientas serán gratuitas y multilingües.',aboutTitle:'Microbiólogo investigador · Salud pública · Genómica · Aprendizaje automático',aboutBio:'Bradd Haley es microbiólogo investigador especializado en patógenos de origen alimentario, genómica comparativa y aplicaciones de aprendizaje automático en microbiología de salud pública. SciVoice nació de la creencia de que el idioma nunca debe ser una barrera para el conocimiento científico.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Herramientas',navAbout:'Acerca de',footerTagline:'Herramientas de microbiología para todos — en su idioma.',footerGitHub:'GitHub',footerFeedback:'Comentarios',live:'Disponible',soon:'Próximamente'},
-  pt:{eyebrow:'Plataforma de Microbiologia em Saúde Pública',tagline:'Ferramentas de microbiologia em saúde pública para todos — na sua língua.',statsTools:'Ferramentas',statsLangs:'Idiomas',statsFree:'Gratuito',statsAccount:'Conta necessária',change:'Mudar idioma',toolsHeading:'Ferramentas',toolsSub:'Gratuitas, abertas, offline. Sem conta necessária.',soonHeading:'Em breve',soonSub:'Em desenvolvimento. Todas as ferramentas serão gratuitas e multilingues.',aboutTitle:'Microbiologista investigador · Saúde pública · Genómica · Aprendizagem automática',aboutBio:'Bradd Haley é microbiologista investigador especializado em agentes patogénicos de origem alimentar, genómica comparativa e aplicações de aprendizagem automática em microbiologia de saúde pública. SciVoice nasceu da convicção de que a língua nunca deve ser uma barreira ao conhecimento científico.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Ferramentas',navAbout:'Sobre',footerTagline:'Ferramentas de microbiologia para todos — na sua língua.',footerGitHub:'GitHub',footerFeedback:'Feedback',live:'Disponível',soon:'Em breve'},
-  ar:{eyebrow:'منصة علم الأحياء الدقيقة للصحة العامة',tagline:'أدوات علم الأحياء الدقيقة للصحة العامة للجميع — بلغتك.',statsTools:'الأدوات',statsLangs:'اللغات',statsFree:'مجاني',statsAccount:'حساب مطلوب',change:'تغيير اللغة',toolsHeading:'الأدوات',toolsSub:'مجانية، مفتوحة، تعمل بدون إنترنت. لا حساب مطلوب.',soonHeading:'قريباً',soonSub:'قيد التطوير. ستكون جميع الأدوات مجانية ومتعددة اللغات.',aboutTitle:'باحث في علم الأحياء الدقيقة · الصحة العامة · الجينوميكس · التعلم الآلي',aboutBio:'براد هيلي باحث في علم الأحياء الدقيقة متخصص في مسببات الأمراض المنقولة عبر الغذاء والجينوميكس المقارن وتطبيقات التعلم الآلي. نشأت SciVoice من الاعتقاد بأن اللغة يجب ألا تكون عائقاً أمام المعرفة العلمية.',scholar:'جوجل سكولار',linkedin:'لينكد إن',github:'جيتهاب',navTools:'الأدوات',navAbout:'حول',footerTagline:'أدوات علم الأحياء الدقيقة للجميع — بلغتك.',footerGitHub:'جيتهاب',footerFeedback:'ملاحظات',live:'متاح',soon:'قريباً'},
-  zh:{eyebrow:'公共卫生微生物学平台',tagline:'面向所有人的公共卫生微生物学工具——使用您的语言。',statsTools:'工具',statsLangs:'语言',statsFree:'免费',statsAccount:'无需账户',change:'更换语言',toolsHeading:'工具',toolsSub:'免费、开放、可离线使用。无需账户。',soonHeading:'即将推出',soonSub:'开发中。所有工具将免费且支持多语言。',aboutTitle:'研究微生物学家 · 公共卫生 · 基因组学 · 机器学习',aboutBio:'Bradd Haley是一位研究微生物学家，专注于食源性病原体、比较基因组学和机器学习在公共卫生微生物学中的应用。SciVoice源于这样一种信念：语言不应成为获取科学知识的障碍。',scholar:'谷歌学术',linkedin:'领英',github:'GitHub',navTools:'工具',navAbout:'关于',footerTagline:'面向所有人的公共卫生微生物学工具——使用您的语言。',footerGitHub:'GitHub',footerFeedback:'反馈',live:'可用',soon:'即将推出'},
-  sw:{eyebrow:'Jukwaa la Microbiologia ya Afya ya Umma',tagline:'Zana za microbiologia ya afya ya umma kwa kila mtu — kwa lugha yako.',statsTools:'Zana',statsLangs:'Lugha',statsFree:'Bila Malipo',statsAccount:'Akaunti inahitajika',change:'Badilisha lugha',toolsHeading:'Zana',toolsSub:'Bila malipo, wazi, zinafanya kazi nje ya mtandao. Hakuna akaunti inayohitajika.',soonHeading:'Zinakuja Hivi Karibuni',soonSub:'Zinaendelezwa. Zana zote zitakuwa bure na za lugha nyingi.',aboutTitle:'Mtaalam wa Microbiologia · Afya ya Umma · Genomics · Ujifunzaji wa Mashine',aboutBio:'Bradd Haley ni mtaalam wa microbiologia anayebobea katika vimelea vya magonjwa vya chakula, genomics ya kulinganisha, na ujifunzaji wa mashine katika microbiologia ya afya ya umma. SciVoice ilianzishwa kwa imani kwamba lugha haipaswi kuwa kizuizi cha maarifa ya kisayansi.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Zana',navAbout:'Kuhusu',footerTagline:'Zana za microbiologia kwa kila mtu — kwa lugha yako.',footerGitHub:'GitHub',footerFeedback:'Maoni',live:'Inapatikana',soon:'Inakuja'},
+  en:{eyebrow:'Public Health Microbiology Platform',statsTools:'Tools',statsLangs:'Languages',statsFree:'Free',statsAccount:'Account needed',change:'Change language',toolsHeading:'Tools',toolsSub:'Free, open, offline-capable. No account required.',soonHeading:'Coming Soon',soonSub:'Under development. All tools will be free and multilingual.',aboutTitle:'Research Microbiologist · Public Health · Genomics · Machine Learning',aboutBio:'Bradd Haley is a research microbiologist specializing in foodborne pathogens, comparative genomics, and machine learning applications in public health microbiology. SciVoice grew from a belief that language should never be a barrier to scientific knowledge or the tools needed to protect public health. All tools on this platform are free, open source, and designed to work in low-resource settings worldwide.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Tools',navAbout:'About',footerTagline:'Public health microbiology tools for everyone — in your language.',footerGitHub:'GitHub',footerFeedback:'Feedback',live:'Available',soon:'Coming Soon'},
+  fr:{eyebrow:'Plateforme de Microbiologie en Santé Publique',statsTools:'Outils',statsLangs:'Langues',statsFree:'Gratuit',statsAccount:'Compte requis',change:'Changer de langue',toolsHeading:'Outils',toolsSub:'Gratuits, ouverts, utilisables hors ligne. Sans compte requis.',soonHeading:'Bientôt disponibles',soonSub:'En développement. Tous les outils seront gratuits et multilingues.',aboutTitle:'Microbiologiste chercheur · Santé publique · Génomique · Apprentissage automatique',aboutBio:'Bradd Haley est un microbiologiste chercheur spécialisé dans les agents pathogènes d\'origine alimentaire, la génomique comparative et les applications d\'apprentissage automatique en microbiologie de la santé publique.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Outils',navAbout:'À propos',footerTagline:'Outils de microbiologie en santé publique pour tous — dans votre langue.',footerGitHub:'GitHub',footerFeedback:'Commentaires',live:'Disponible',soon:'Bientôt'},
+  es:{eyebrow:'Plataforma de Microbiología en Salud Pública',statsTools:'Herramientas',statsLangs:'Idiomas',statsFree:'Gratis',statsAccount:'Cuenta requerida',change:'Cambiar idioma',toolsHeading:'Herramientas',toolsSub:'Gratis, abiertas, sin conexión. Sin cuenta requerida.',soonHeading:'Próximamente',soonSub:'En desarrollo. Todas las herramientas serán gratuitas y multilingües.',aboutTitle:'Microbiólogo investigador · Salud pública · Genómica · Aprendizaje automático',aboutBio:'Bradd Haley es microbiólogo investigador especializado en patógenos de origen alimentario, genómica comparativa y aprendizaje automático en microbiología de salud pública.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Herramientas',navAbout:'Acerca de',footerTagline:'Herramientas de microbiología para todos — en su idioma.',footerGitHub:'GitHub',footerFeedback:'Comentarios',live:'Disponible',soon:'Próximamente'},
+  pt:{eyebrow:'Plataforma de Microbiologia em Saúde Pública',statsTools:'Ferramentas',statsLangs:'Idiomas',statsFree:'Gratuito',statsAccount:'Conta necessária',change:'Mudar idioma',toolsHeading:'Ferramentas',toolsSub:'Gratuitas, abertas, offline. Sem conta necessária.',soonHeading:'Em breve',soonSub:'Em desenvolvimento. Todas as ferramentas serão gratuitas e multilingues.',aboutTitle:'Microbiologista investigador · Saúde pública · Genómica · Aprendizagem automática',aboutBio:'Bradd Haley é microbiologista investigador especializado em agentes patogénicos de origem alimentar e aprendizagem automática em microbiologia de saúde pública.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Ferramentas',navAbout:'Sobre',footerTagline:'Ferramentas de microbiologia para todos — na sua língua.',footerGitHub:'GitHub',footerFeedback:'Feedback',live:'Disponível',soon:'Em breve'},
+  ar:{eyebrow:'منصة علم الأحياء الدقيقة للصحة العامة',statsTools:'الأدوات',statsLangs:'اللغات',statsFree:'مجاني',statsAccount:'حساب مطلوب',change:'تغيير اللغة',toolsHeading:'الأدوات',toolsSub:'مجانية، مفتوحة، تعمل بدون إنترنت.',soonHeading:'قريباً',soonSub:'قيد التطوير. ستكون جميع الأدوات مجانية ومتعددة اللغات.',aboutTitle:'باحث في علم الأحياء الدقيقة · الصحة العامة · الجينوميكس',aboutBio:'براد هيلي باحث في علم الأحياء الدقيقة متخصص في مسببات الأمراض المنقولة عبر الغذاء والجينوميكس المقارن وتطبيقات التعلم الآلي.',scholar:'جوجل سكولار',linkedin:'لينكد إن',github:'جيتهاب',navTools:'الأدوات',navAbout:'حول',footerTagline:'أدوات علم الأحياء الدقيقة للجميع — بلغتك.',footerGitHub:'جيتهاب',footerFeedback:'ملاحظات',live:'متاح',soon:'قريباً'},
+  zh:{eyebrow:'公共卫生微生物学平台',statsTools:'工具',statsLangs:'语言',statsFree:'免费',statsAccount:'无需账户',change:'更换语言',toolsHeading:'工具',toolsSub:'免费、开放、可离线使用。无需账户。',soonHeading:'即将推出',soonSub:'开发中。所有工具将免费且支持多语言。',aboutTitle:'研究微生物学家 · 公共卫生 · 基因组学',aboutBio:'Bradd Haley是一位研究微生物学家，专注于食源性病原体、比较基因组学和机器学习在公共卫生微生物学中的应用。',scholar:'谷歌学术',linkedin:'领英',github:'GitHub',navTools:'工具',navAbout:'关于',footerTagline:'面向所有人的公共卫生微生物学工具——使用您的语言。',footerGitHub:'GitHub',footerFeedback:'反馈',live:'可用',soon:'即将推出'},
+  sw:{eyebrow:'Jukwaa la Microbiologia ya Afya ya Umma',statsTools:'Zana',statsLangs:'Lugha',statsFree:'Bila Malipo',statsAccount:'Akaunti inahitajika',change:'Badilisha lugha',toolsHeading:'Zana',toolsSub:'Bila malipo, wazi, zinafanya kazi nje ya mtandao.',soonHeading:'Zinakuja Hivi Karibuni',soonSub:'Zinaendelezwa. Zana zote zitakuwa bure na za lugha nyingi.',aboutTitle:'Mtaalam wa Microbiologia · Afya ya Umma',aboutBio:'Bradd Haley ni mtaalam wa microbiologia anayebobea katika vimelea vya magonjwa vya chakula na genomics.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Zana',navAbout:'Kuhusu',footerTagline:'Zana za microbiologia kwa kila mtu — kwa lugha yako.',footerGitHub:'GitHub',footerFeedback:'Maoni',live:'Inapatikana',soon:'Inakuja'},
 };
 
-// Fallback remaining languages to English
+// Fallback remaining languages to English with minor tweaks
 ['it','am','hi','bn','id','uk','ha','yo','ln','mg','ne','tl','rw','rn','ny'].forEach(c=>{UI[c]={...UI.en};});
-UI.it.eyebrow='Piattaforma di Microbiologia per la Salute Pubblica';
-UI.it.tagline='Strumenti di microbiologia per la salute pubblica per tutti — nella tua lingua.';
-UI.it.change='Cambia lingua'; UI.it.navTools='Strumenti'; UI.it.navAbout='Chi siamo';
-UI.it.toolsHeading='Strumenti'; UI.it.soonHeading='Prossimamente'; UI.it.live='Disponibile'; UI.it.soon='Prossimamente';
-UI.uk.eyebrow='Платформа мікробіології охорони здоров\'я';
-UI.uk.tagline='Інструменти мікробіології охорони здоров\'я для всіх — вашою мовою.';
-UI.uk.change='Змінити мову'; UI.uk.navTools='Інструменти'; UI.uk.navAbout='Про нас';
-UI.uk.toolsHeading='Інструменти'; UI.uk.soonHeading='Незабаром'; UI.uk.live='Доступно'; UI.uk.soon='Незабаром';
-UI.hi.eyebrow='सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान मंच';
-UI.hi.tagline='सभी के लिए सार्वजनिक स्वास्थ्य माइक्रोबायोलॉजी उपकरण — आपकी भाषा में।';
-UI.hi.change='भाषा बदलें'; UI.hi.navTools='उपकरण'; UI.hi.toolsHeading='उपकरण'; UI.hi.soonHeading='जल्द आ रहा है'; UI.hi.live='उपलब्ध'; UI.hi.soon='जल्द आ रहा है';
-UI.ar.eyebrow='منصة علم الأحياء الدقيقة للصحة العامة';
+UI.it.eyebrow='Piattaforma di Microbiologia per la Salute Pubblica'; UI.it.change='Cambia lingua'; UI.it.live='Disponibile'; UI.it.soon='Prossimamente'; UI.it.soonHeading='Prossimamente';
+UI.uk.eyebrow='Платформа мікробіології охорони здоров\'я'; UI.uk.change='Змінити мову'; UI.uk.live='Доступно'; UI.uk.soon='Незабаром'; UI.uk.soonHeading='Незабаром';
+UI.hi.eyebrow='सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान मंच'; UI.hi.change='भाषा बदलें'; UI.hi.live='उपलब्ध'; UI.hi.soon='जल्द आ रहा है'; UI.hi.soonHeading='जल्द आ रहा है';
+
+// ── Rotating tagline ───────────────────────────────────────────────────────
+let rotateIndex = 0;
+let rotateTimer = null;
+
+function buildTaglines() {
+  const wrap = document.getElementById('taglineWrap');
+  wrap.innerHTML = '';
+  LANGS.forEach((l, i) => {
+    const el = document.createElement('p');
+    el.className = 'hero-tagline' + (i === 0 ? ' active' : '');
+    el.id = 'tl-' + l.code;
+    el.textContent = TAGLINES[l.code] || TAGLINES.en;
+    // RTL support for Arabic
+    if (l.dir === 'rtl') el.style.direction = 'rtl';
+    wrap.appendChild(el);
+  });
+}
+
+function rotateLang() {
+  const current = document.querySelector('.hero-tagline.active');
+  if (current) current.classList.remove('active');
+  rotateIndex = (rotateIndex + 1) % LANGS.length;
+  const next = document.getElementById('tl-' + LANGS[rotateIndex].code);
+  if (next) next.classList.add('active');
+}
+
+function startRotation() {
+  rotateTimer = setInterval(rotateLang, 5000);
+}
 
 // ── State ──────────────────────────────────────────────────────────────────
 let selectedLang = null;
@@ -504,14 +563,11 @@ function selectLang(code) {
   document.documentElement.lang = code;
   document.documentElement.dir = lang.dir;
 
-  // Apply UI strings
   setText('heroEyebrow', u.eyebrow);
-  setText('heroTagline', u.tagline);
   setText('statToolsLabel', u.statsTools);
   setText('statLangsLabel', u.statsLangs);
   setText('statFreeLabel', u.statsFree);
   setText('statAccountLabel', u.statsAccount);
-  setText('selectedLangName', lang.native);
   document.getElementById('selectedLangName').innerHTML = `${lang.native} <span>${lang.english}</span>`;
   setText('btnChange', u.change);
   setText('toolsHeading', u.toolsHeading);
@@ -546,7 +602,6 @@ function changeLang() {
 function setText(id, text) { const el = document.getElementById(id); if (el && text) el.textContent = text; }
 
 function buildToolGrids(code, u) {
-  // Live tools
   const liveGrid = document.getElementById('liveToolsGrid');
   liveGrid.innerHTML = '';
   TOOLS_LIVE.forEach(tool => {
@@ -555,11 +610,11 @@ function buildToolGrids(code, u) {
     const card = document.createElement('a');
     card.className = 'tool-card';
     card.href = tool.url;
-    card.target = '_blank';
+    if (tool.id !== 'microglossary') card.target = '_blank';
     card.innerHTML = `
       <div class="tool-card-top">
         <div class="tool-icon ${tool.iconBg}">${tool.icon}</div>
-        <span class="tool-badge badge-live">${u.live || 'Live'}</span>
+        <span class="tool-badge badge-live">${u.live || 'Available'}</span>
       </div>
       <div class="tool-name">${name}</div>
       <div class="tool-desc">${desc}</div>
@@ -568,7 +623,6 @@ function buildToolGrids(code, u) {
     liveGrid.appendChild(card);
   });
 
-  // Coming soon tools
   const soonGrid = document.getElementById('soonToolsGrid');
   soonGrid.innerHTML = '';
   TOOLS_SOON.forEach(tool => {
@@ -589,7 +643,8 @@ function buildToolGrids(code, u) {
 }
 
 buildPicker();
+buildTaglines();
+startRotation();
 </script>
-
 </body>
 </html>

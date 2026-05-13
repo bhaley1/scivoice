@@ -3,19 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SciVoice — Public Health Microbiology Tools for Everyone</title>
-<meta name="description" content="Free multilingual public health microbiology tools for scientists, clinicians, and field workers worldwide. Available in 22 languages.">
-<meta name="keywords" content="public health microbiology, multilingual science tools, LMIC microbiology, free lab tools, AMR, environmental sampling, clinical microbiology">
-<meta name="author" content="Bradd Haley">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://bhaley1.github.io/scivoice/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://bhaley1.github.io/scivoice/">
-<meta property="og:title" content="SciVoice — Public Health Microbiology Tools for Everyone">
-<meta property="og:description" content="Free multilingual public health microbiology tools in 22 languages. For scientists, clinicians, and field workers worldwide.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SciVoice","url":"https://bhaley1.github.io/scivoice/","description":"Free multilingual public health microbiology tools for everyone.","author":{"@type":"Person","name":"Bradd Haley","url":"https://github.com/bhaley1"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V3KSK1G4Y"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1V3KSK1G4Y');</script>
+<title>MicroGlossary — Multilingual Microbiology Dictionary</title>
+<meta name="description" content="Searchable microbiology and public health terminology dictionary in 22 languages. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -24,307 +13,147 @@
 :root{
   --ink:#1a1814;--ink-2:#4a4640;--ink-3:#8a8480;
   --paper:#faf8f4;--paper-2:#f2efe8;--paper-3:#e8e4db;
-  --rule:rgba(26,24,20,0.10);--rule-2:rgba(26,24,20,0.06);
-  --accent:#1a4d8f;--accent-light:#e8eff8;
-  --green:#1a6b3c;--green-light:#e8f5ee;
-  --red:#8b1a1a;--red-light:#fdf0f0;
-  --gold:#8b5e00;--gold-light:#fdf3e0;
-  --purple:#5c2d7c;--purple-light:#f3eaf8;
-  --teal:#005c5c;--teal-light:#e0fafa;
-  --radius:4px;--radius-lg:10px;--radius-xl:16px;
+  --rule:rgba(26,24,20,0.12);--rule-2:rgba(26,24,20,0.06);
+  --radius:4px;--radius-lg:8px;
+  --accent:#1a4d8f;
+  --highlight:#fff3cd;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.7;min-height:100vh;}
 
-/* ── Header ── */
-header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;position:sticky;top:0;z-index:300;box-shadow:0 1px 12px rgba(0,0,0,0.04);}
-.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
-.logo{font-family:'Lora',serif;font-size:20px;font-weight:600;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;}
-.logo-mark{width:32px;height:32px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;}
-.logo-text span{color:var(--accent);}
-.header-nav{display:flex;align-items:center;gap:1.5rem;}
-.header-nav a{font-size:13px;color:var(--ink-3);text-decoration:none;transition:color 0.15s;}
-.header-nav a:hover{color:var(--ink);}
-.header-lang-display{font-size:12px;color:var(--ink-3);letter-spacing:0.04em;border-left:1px solid var(--rule);padding-left:1rem;margin-left:0.5rem;}
+header{border-bottom:1px solid var(--rule);padding:0 2rem;background:var(--paper);position:sticky;top:0;z-index:200;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.logo{font-family:'Lora',serif;font-size:18px;font-weight:600;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;}
+.logo span{color:#7c2d3e;}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.lang-display{font-size:13px;color:var(--ink-3);letter-spacing:0.04em;}
 
-/* ── Hero ── */
-.hero{
-  padding:5rem 2rem 4rem;
-  background:linear-gradient(160deg,#f8f4ef 0%,#f0eff8 40%,#eef4f8 100%);
-  border-bottom:1px solid var(--rule);
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 20% 50%,rgba(26,77,143,0.05) 0%,transparent 60%),
-             radial-gradient(ellipse at 80% 50%,rgba(26,107,60,0.05) 0%,transparent 60%);
-}
-.hero-eyebrow{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.5rem;position:relative;display:flex;align-items:center;justify-content:center;gap:12px;}
-.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--rule);}
+.hero{padding:4rem 2rem 3rem;background:var(--paper-2);border-bottom:1px solid var(--rule);text-align:center;}
+.hero-icon{font-size:48px;margin-bottom:1rem;}
+.hero h1{font-family:'Lora',serif;font-size:clamp(2rem,5vw,3rem);font-weight:600;line-height:1.15;letter-spacing:-0.025em;margin-bottom:1rem;}
+.hero-sub{font-size:15px;color:var(--ink-2);max-width:600px;margin:0 auto;font-weight:300;line-height:1.8;}
 
-/* ── Rotating hero text ── */
-.hero-rotate-wrapper{position:relative;margin-bottom:1.25rem;max-width:800px;margin-left:auto;margin-right:auto;}
-.hero h1{
-  font-family:'Lora',serif;
-  font-size:clamp(2.5rem,5vw,4rem);
-  font-weight:600;line-height:1.1;
-  letter-spacing:-0.03em;
-  position:relative;
-}
-.hero h1 em{font-style:italic;color:var(--accent);}
-.hero-tagline-wrap{position:relative;height:2.8em;overflow:hidden;max-width:560px;margin:0 auto 2.5rem;}
-.hero-tagline{
-  position:absolute;left:0;right:0;
-  font-size:18px;color:var(--ink-2);
-  font-weight:300;line-height:1.7;
-  text-align:center;
-  opacity:0;transition:opacity 0.6s ease;
-  pointer-events:none;
-}
-.hero-tagline.active{opacity:1;pointer-events:auto;}
-
-.hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;position:relative;margin-bottom:3rem;}
-.stat{text-align:center;}
-.stat-num{font-family:'Lora',serif;font-size:2rem;font-weight:600;color:var(--ink);line-height:1;}
-.stat-label{font-size:12px;color:var(--ink-3);letter-spacing:0.04em;text-transform:uppercase;margin-top:4px;}
-.stat-divider{width:1px;background:var(--rule);align-self:stretch;}
-
-/* ── Language picker ── */
-.lang-section{padding:2.5rem 2rem;background:white;border-bottom:1px solid var(--rule);}
-.lang-inner{max-width:1000px;margin:0 auto;}
-.lang-prompt{text-align:center;font-size:12px;color:var(--ink-3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;}
-.lang-grid-picker{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.lang-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:8px 16px;border-radius:99px;
-  border:1.5px solid var(--rule);
-  background:var(--paper);color:var(--ink-2);
-  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;
-  cursor:pointer;transition:all 0.15s;white-space:nowrap;
-}
-.lang-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.lang-picker-section{padding:2rem 2rem;background:var(--paper);border-bottom:1px solid var(--rule);}
+.lang-picker-inner{max-width:1000px;margin:0 auto;}
+.lang-picker-prompt{text-align:center;font-size:13px;color:var(--ink-3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;}
+.lang-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:99px;border:1.5px solid var(--rule);background:white;color:var(--ink-2);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+.lang-btn:hover{border-color:var(--ink-3);color:var(--ink);background:var(--paper-2);}
 .lang-btn.selected{background:var(--ink);color:white;border-color:var(--ink);}
-.lang-dot-sm{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:0.5;flex-shrink:0;}
 
-/* ── Main content ── */
-#mainContent{display:none;max-width:1200px;margin:0 auto;padding:3rem 2rem 6rem;}
-#mainContent.visible{display:block;animation:fadeUp 0.3s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.main-content{display:none;max-width:1400px;margin:0 auto;padding:2rem;}
+.main-content.visible{display:block;animation:fadeUp 0.3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-.selected-bar{
-  display:flex;align-items:center;justify-content:space-between;
+.controls{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
+.search-box{flex:1;min-width:280px;position:relative;}
+.search-input{width:100%;padding:12px 16px 12px 44px;border:1px solid var(--rule);border-radius:var(--radius-lg);background:white;color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color 0.15s;}
+.search-input:focus{outline:none;border-color:var(--ink-3);}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--ink-3);pointer-events:none;}
+
+.btn-change{padding:10px 20px;border:1px solid var(--rule);border-radius:var(--radius-lg);background:white;color:var(--ink-2);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+.btn-change:hover{border-color:var(--ink-3);color:var(--ink);}
+
+.btn-download{padding:10px 20px;border:1px solid var(--ink);border-radius:var(--radius-lg);background:var(--ink);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:opacity 0.15s;}
+.btn-download:hover{opacity:0.85;}
+
+.results-count{font-size:13px;color:var(--ink-3);margin-bottom:1.5rem;}
+
+.category-section{margin-bottom:3rem;}
+.category-header{font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--paper-3);}
+.term-list{display:grid;gap:1rem;}
+.term-card{background:white;border:1px solid var(--rule);border-radius:var(--radius-lg);padding:1.25rem;transition:box-shadow 0.15s;}
+.term-card:hover{box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.term-card.highlight{background:var(--highlight);border-color:#f0c040;}
+.term-name{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:0.5rem;display:flex;align-items:center;gap:8px;}
+.term-name-text{flex:1;}
+.audio-btn{background:none;border:none;cursor:pointer;font-size:18px;padding:4px;opacity:0.6;transition:opacity 0.15s;}
+.audio-btn:hover{opacity:1;}
+.audio-btn.playing{opacity:1;animation:pulse 1s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+.term-def{font-size:14px;color:var(--ink-2);line-height:1.7;}
+.highlight-text{background:var(--highlight);font-weight:500;padding:1px 2px;border-radius:2px;}
+
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--ink-3);}
+.empty-state-icon{font-size:48px;margin-bottom:1rem;opacity:0.5;}
+
+footer{border-top:1px solid var(--rule);padding:2rem;text-align:center;font-size:13px;color:var(--ink-3);margin-top:4rem;}
+footer a{color:var(--accent);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+
+@media(max-width:768px){
+  .controls{flex-direction:column;}
+  .search-box{min-width:100%;}
+  header{padding:0 1rem;}
+  .hero{padding:3rem 1rem 2rem;}
+  .main-content{padding:1.5rem 1rem;}
+}
+
+.home-btn{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  width:48px;height:48px;border-radius:50%;
   background:var(--ink);color:white;
-  border-radius:var(--radius-lg);padding:12px 20px;
-  margin-bottom:2.5rem;
-}
-.selected-bar .lang-name{font-size:15px;font-weight:500;}
-.selected-bar .lang-name span{opacity:0.6;font-size:13px;margin-left:8px;}
-.btn-change{font-size:12px;color:rgba(255,255,255,0.75);background:none;border:1px solid rgba(255,255,255,0.3);border-radius:var(--radius);padding:4px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;}
-.btn-change:hover{color:white;border-color:rgba(255,255,255,0.7);}
-
-/* ── Section heading ── */
-.section-heading{margin-bottom:1.5rem;}
-.section-heading h2{font-family:'Lora',serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
-.section-heading p{font-size:14px;color:var(--ink-3);}
-
-/* ── Tool grid ── */
-.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-bottom:3rem;}
-.tool-card{
-  border:1px solid var(--rule);border-radius:var(--radius-xl);
-  background:white;padding:1.5rem;
-  transition:all 0.2s;position:relative;
-  text-decoration:none;color:inherit;
-  display:flex;flex-direction:column;gap:10px;
-}
-.tool-card:hover:not(.coming-soon){
-  border-color:rgba(26,24,20,0.2);
-  box-shadow:0 4px 20px rgba(0,0,0,0.08);
-  transform:translateY(-2px);
-}
-.tool-card.coming-soon{opacity:0.65;cursor:default;}
-.tool-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
-.tool-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.tool-badge{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;white-space:nowrap;}
-.badge-live{background:var(--green-light);color:var(--green);}
-.badge-soon{background:var(--paper-2);color:var(--ink-3);}
-.tool-name{font-size:16px;font-weight:600;color:var(--ink);line-height:1.2;}
-.tool-desc{font-size:13px;color:var(--ink-3);line-height:1.6;flex:1;}
-.tool-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
-.tool-tag{font-size:11px;color:var(--ink-3);background:var(--paper-2);padding:2px 8px;border-radius:99px;}
-.tool-arrow{font-size:16px;color:var(--ink-3);margin-top:auto;align-self:flex-end;transition:transform 0.15s;}
-.tool-card:hover:not(.coming-soon) .tool-arrow{transform:translateX(3px);}
-
-.icon-blue{background:var(--accent-light);}
-.icon-green{background:var(--green-light);}
-.icon-red{background:var(--red-light);}
-.icon-gold{background:var(--gold-light);}
-.icon-purple{background:var(--purple-light);}
-.icon-teal{background:var(--teal-light);}
-.icon-ink{background:var(--paper-3);}
-
-/* ── About ── */
-.about-card{
-  border:1px solid var(--rule);border-radius:var(--radius-xl);
-  background:white;padding:2rem;
-  display:grid;grid-template-columns:auto 1fr;gap:2rem;
-  align-items:start;margin-bottom:3rem;
-}
-.about-avatar{
-  width:80px;height:80px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent) 0%,var(--green) 100%);
   display:flex;align-items:center;justify-content:center;
-  font-family:'Lora',serif;font-size:28px;font-weight:600;color:white;
-  flex-shrink:0;
+  font-size:20px;text-decoration:none;
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
+  transition:all 0.2s;z-index:999;
 }
-.about-name{font-family:'Lora',serif;font-size:1.25rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
-.about-title{font-size:13px;color:var(--ink-3);margin-bottom:1rem;}
-.about-bio{font-size:14px;color:var(--ink-2);line-height:1.8;margin-bottom:1.25rem;}
-.about-links{display:flex;gap:10px;flex-wrap:wrap;}
-.about-link{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:13px;font-weight:500;
-  padding:7px 16px;border-radius:99px;
-  border:1.5px solid var(--rule);
-  color:var(--ink-2);text-decoration:none;
-  transition:all 0.15s;
-}
-.about-link:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
-.about-link-icon{font-size:15px;}
-
-/* ── Footer ── */
-footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-.footer-logo{font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--ink);}
-.footer-logo span{color:var(--accent);}
-.footer-tagline{font-size:12px;color:var(--ink-3);margin-top:3px;}
-.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
-.footer-links a{font-size:12px;color:var(--ink-3);text-decoration:none;}
-.footer-links a:hover{color:var(--ink);}
-
-@media(max-width:700px){
-  .hero h1{font-size:2.2rem;}
-  .hero-stats{gap:1.25rem;}
-  .about-card{grid-template-columns:1fr;}
-  .footer-inner{flex-direction:column;text-align:center;}
-  .stat-divider{display:none;}
-}
+.home-btn:hover{background:var(--accent);transform:scale(1.08);}
+.home-btn title{display:none;}
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="#">
-      <div class="logo-mark">🔬</div>
-      <div class="logo-text">Sci<span>Voice</span></div>
-    </a>
-    <div class="header-nav">
-      <a href="#tools" id="navTools">Tools</a>
-      <a href="#about" id="navAbout">About</a>
-      <span class="header-lang-display" id="headerLang"></span>
+    <a href="https://bhaley1.github.io/scivoice/" class="logo">Sci<span>Voice</span></a>
+    <div class="header-right">
+      <span class="lang-display" id="headerLang">Select a language</span>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow" id="heroEyebrow">Public Health Microbiology Platform</div>
-  <div class="hero-rotate-wrapper">
-    <h1 id="heroTitle">Science for <em>everyone</em>,<br>in every language.</h1>
-  </div>
-  <div class="hero-tagline-wrap" id="taglineWrap"></div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num" id="statTools">4</div>
-      <div class="stat-label" id="statToolsLabel">Tools</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat">
-      <div class="stat-num">22</div>
-      <div class="stat-label" id="statLangsLabel">Languages</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-label" id="statFreeLabel">Free</div>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat">
-      <div class="stat-num">0</div>
-      <div class="stat-label" id="statAccountLabel">Account needed</div>
-    </div>
-  </div>
-</section>
+<div class="hero">
+  <div class="hero-icon">📚</div>
+  <h1>MicroGlossary</h1>
+  <p class="hero-sub">A searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across 22 languages.</p>
+</div>
 
-<!-- LANGUAGE PICKER -->
-<section class="lang-section">
-  <div class="lang-inner">
-    <div class="lang-prompt" id="langPrompt">SELECT YOUR LANGUAGE · CHOISISSEZ VOTRE LANGUE · SELECCIONE SU IDIOMA · اختر لغتك · 选择语言</div>
-    <div class="lang-grid-picker" id="langGridPicker"></div>
+<div class="lang-picker-section" id="langPicker">
+  <div class="lang-picker-inner">
+    <div class="lang-picker-prompt">SELECT YOUR LANGUAGE</div>
+    <div class="lang-grid" id="langGrid"></div>
   </div>
-</section>
+</div>
 
-<!-- MAIN CONTENT -->
-<div id="mainContent">
-  <div class="selected-bar">
-    <div class="lang-name" id="selectedLangName">English <span>Selected</span></div>
-    <button class="btn-change" id="btnChange" onclick="changeLang()">Change language</button>
+<div class="main-content" id="mainContent">
+  <div class="controls">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search terms or definitions...">
+    </div>
+    <button class="btn-change" id="btnChange">Change language</button>
+    <button class="btn-download" id="btnDownload">📥 Download PDF</button>
   </div>
 
-  <div id="tools" class="section-heading">
-    <h2 id="toolsHeading">Tools</h2>
-    <p id="toolsSubheading">Free, open, offline-capable. No account required.</p>
-  </div>
-  <div class="tool-grid" id="liveToolsGrid"></div>
+  <div class="results-count" id="resultsCount"></div>
 
-  <div class="section-heading">
-    <h2 id="comingSoonHeading">Coming Soon</h2>
-    <p id="comingSoonSubheading">Under development. All tools will be free and multilingual.</p>
-  </div>
-  <div class="tool-grid" id="soonToolsGrid"></div>
+  <div id="glossaryContent"></div>
 
-  <div id="about" class="about-card">
-    <div class="about-avatar">BH</div>
-    <div>
-      <div class="about-name" id="aboutName">Bradd Haley, Ph.D.</div>
-      <div class="about-title" id="aboutTitle">Research Microbiologist · Public Health · Genomics · Machine Learning</div>
-      <p class="about-bio" id="aboutBio">Bradd Haley is a research microbiologist specializing in foodborne pathogens, comparative genomics, and machine learning applications in public health microbiology. SciVoice grew from a belief that language should never be a barrier to scientific knowledge or the tools needed to protect public health. All tools on this platform are free, open source, and designed to work in low-resource settings worldwide.</p>
-      <div class="about-links">
-        <a class="about-link" href="https://scholar.google.com/citations?user=SH15wIwAAAAJ&hl=en" target="_blank">
-          <span class="about-link-icon">🎓</span><span id="linkScholar">Google Scholar</span>
-        </a>
-        <a class="about-link" href="https://www.linkedin.com/in/bradd-j-haley-phd-ms-33ba2661/" target="_blank">
-          <span class="about-link-icon">💼</span><span id="linkLinkedIn">LinkedIn</span>
-        </a>
-        <a class="about-link" href="https://github.com/bhaley1" target="_blank">
-          <span class="about-link-icon">💻</span><span id="linkGitHub">GitHub</span>
-        </a>
-      </div>
-    </div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <div class="empty-state-icon">🔍</div>
+    <p>No terms found matching your search.</p>
   </div>
 </div>
 
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Sci<span>Voice</span></div>
-      <div class="footer-tagline" id="footerTagline">Public health microbiology tools for everyone — in your language.</div>
-    </div>
-    <div class="footer-links">
-      <a href="https://github.com/bhaley1/scivoice" target="_blank" id="footerGitHub">GitHub</a>
-      <a href="https://github.com/bhaley1/scivoice/issues" target="_blank" id="footerFeedback">Feedback</a>
-      <a href="https://bhaley1.github.io/manuscript-summarizer---beta/" target="_blank">SciSummarize</a>
-      <a href="https://bhaley1.github.io/envirocollect/" target="_blank">EnviroCollect</a>
-      <a href="https://bhaley1.github.io/mediaprep/" target="_blank">MediaPrep</a>
-      <a href="./microglossary/" target="_blank">MicroGlossary</a>
-    </div>
-  </div>
+  <p>MicroGlossary is part of <a href="https://bhaley1.github.io/scivoice/" target="_blank">SciVoice</a> — multilingual public health microbiology tools.
+  Built by <a href="https://github.com/bhaley1" target="_blank">Bradd Haley, Ph.D.</a> · 
+  <a href="https://github.com/bhaley1/scivoice" target="_blank">GitHub</a></p>
 </footer>
 
 <script>
-// ── Languages ──────────────────────────────────────────────────────────────
-const LANGS = [
+const LANGUAGES = [
   {code:'en',native:'English',english:'English',dir:'ltr'},
   {code:'fr',native:'Français',english:'French',dir:'ltr'},
   {code:'es',native:'Español',english:'Spanish',dir:'ltr'},
@@ -346,305 +175,247 @@ const LANGS = [
   {code:'tl',native:'Tagalog',english:'Tagalog',dir:'ltr'},
   {code:'rw',native:'Kinyarwanda',english:'Kinyarwanda',dir:'ltr'},
   {code:'rn',native:'Ikirundi',english:'Kirundi',dir:'ltr'},
-  {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr'},
+  {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr'}
 ];
 
-// ── Rotating taglines (one per language) ──────────────────────────────────
-const TAGLINES = {
-  en:'Public health microbiology tools for everyone — in your language.',
-  fr:'Outils de microbiologie en santé publique pour tous — dans votre langue.',
-  es:'Herramientas de microbiología en salud pública para todos — en su idioma.',
-  pt:'Ferramentas de microbiologia em saúde pública para todos — na sua língua.',
-  it:'Strumenti di microbiologia per la salute pubblica per tutti — nella tua lingua.',
-  ar:'أدوات علم الأحياء الدقيقة للصحة العامة للجميع — بلغتك.',
-  zh:'面向所有人的公共卫生微生物学工具——使用您的语言。',
-  sw:'Zana za microbiologia ya afya ya umma kwa kila mtu — kwa lugha yako.',
-  am:'ሁሉም ሰው ሊጠቀምበት የሚችል የህዝብ ጤና ማይክሮባዮሎጂ መሳሪያዎች — በቋንቋዎ።',
-  hi:'सभी के लिए सार्वजनिक स्वास्थ्य माइक्रोबायोलॉजी उपकरण — आपकी भाषा में।',
-  bn:'সবার জন্য সর্বজনীন স্বাস্থ্য মাইক্রোবায়োলজি সরঞ্জাম — আপনার ভাষায়।',
-  id:'Alat mikrobiologi kesehatan masyarakat untuk semua orang — dalam bahasa Anda.',
-  uk:'Інструменти мікробіології громадського здоров\'я для всіх — вашою мовою.',
-  ha:'Kayan aikin ilimin ƙwayoyin cuta na lafiyar jama\'a ga kowa — a cikin harshenku.',
-  yo:'Awọn irinṣẹ microbiology ilera gbogbogbo fun gbogbo eniyan — ni ede rẹ.',
-  ln:'Misala ya microbiologie ya santé ya bato nyonso — na monoko na yo.',
-  mg:'Fitaovana mikrobiolojia fahasalamana ho an\'ny rehetra — amin\'ny fitenenana.',
-  ne:'सबैका लागि सार्वजनिक स्वास्थ्य माइक्रोबायोलोजी उपकरणहरू — तपाईंको भाषामा।',
-  tl:'Mga kagamitan sa microbiology ng pampublikong kalusugan para sa lahat — sa iyong wika.',
-  rw:'Ibikoresho bya microbiologie y\'ubuzima rusange kuri bose — mu rurimi rwawe.',
-  rn:'Ibikoresho bya microbiologie y\'amagara rusange kuri bose — mu rurimi rwawe.',
-  ny:'Zida za microbiology ya zauza la anthu onse — m\'chilankhulo chanu.',
-};
-
-// ── Tools (Live) ───────────────────────────────────────────────────────────
-const TOOLS_LIVE = [
-  {
-    id:'scisummarize',icon:'🔬',iconBg:'icon-blue',
-    url:'https://bhaley1.github.io/manuscript-summarizer---beta/',
-    tags:['manuscripts','translation','summaries'],
-    names:{en:'SciSummarize'},
-    descs:{
-      en:'Upload any English scientific manuscript and receive an accurate abstract translation, summary, and 3 key findings in your language — with precise scientific terminology.',
-      fr:'Téléchargez un manuscrit scientifique et recevez un résumé précis et les points clés dans votre langue.',
-      es:'Cargue un manuscrito científico y reciba un resumen preciso y los hallazgos clave en su idioma.',
-      pt:'Carregue um manuscrito científico e receba um resumo preciso e os pontos-chave na sua língua.',
-      it:'Carica un manoscritto scientifico e ricevi un riassunto accurato e i punti chiave nella tua lingua.',
-      ar:'قم بتحميل مخطوطة علمية واحصل على ترجمة دقيقة للملخص والنتائج الرئيسية بلغتك.',
-      zh:'上传科学手稿，获得准确的摘要翻译和关键发现——使用精确的科学术语。',
-      sw:'Pakia maandishi ya kisayansi na upokee muhtasari sahihi na matokeo muhimu kwa lugha yako.',
-      am:'ሳይንሳዊ ጽሑፍ ሰቅለው ትክክለኛ ማጠቃለያ እና ዋና ግኝቶች በቋንቋዎ ያግኙ።',
-      hi:'कोई भी वैज्ञानिक पांडुलिपि अपलोड करें और अपनी भाषा में सटीक सारांश और मुख्य निष्कर्ष प्राप्त करें।',
-      bn:'যেকোনো বৈজ্ঞানিক পাণ্ডুলিপি আপলোড করুন এবং আপনার ভাষায় সঠিক সারসংক্ষেপ পান।',
-      id:'Unggah manuskrip ilmiah dan terima ringkasan akurat serta temuan utama dalam bahasa Anda.',
-      uk:'Завантажте науковий рукопис і отримайте точний підсумок та ключові висновки вашою мовою.',
-    }
-  },
-  {
-    id:'envirocollect',icon:'💧',iconBg:'icon-green',
-    url:'https://bhaley1.github.io/envirocollect/',
-    tags:['water','sediment','biofilm','field sampling'],
-    names:{en:'EnviroCollect'},
-    descs:{
-      en:'Download a comprehensive multilingual field data collection template for water, sediment, biofilm, and soil sampling — with 45 fields covering GPS, environmental conditions, collection method, and downstream genomic analysis.',
-      fr:'Téléchargez un modèle de collecte de données de terrain multilingue complet pour l\'eau, les sédiments et le sol.',
-      es:'Descargue una plantilla completa de recolección de datos de campo para agua, sedimentos y suelo.',
-      pt:'Descarregue um modelo completo de coleta de dados de campo para água, sedimentos e solo.',
-      it:'Scarica un modello completo di raccolta dati sul campo per acqua, sedimenti e suolo.',
-      ar:'قم بتنزيل نموذج شامل لجمع بيانات الميدان للمياه والرواسب والتربة.',
-      zh:'下载全面的多语言野外数据采集模板，用于水体、沉积物和土壤采样。',
-      sw:'Pakua kiolezo cha ukusanyaji wa data ya shambani kwa maji, mashapo na udongo.',
-      am:'ለውሃ፣ ደለል እና አፈር ስብስብ ሁሉን አቀፍ የሜዳ ዳታ ስብስብ ቅጽ ያወርዱ።',
-      hi:'जल, तलछट और मिट्टी के नमूने के लिए व्यापक बहुभाषी फ़ील्ड डेटा संग्रह टेम्पलेट डाउनलोड करें।',
-      bn:'জল, পলি এবং মাটি নমুনার জন্য ব্যাপক বহুভাষিক ফিল্ড ডেটা সংগ্রহ টেমপ্লেট ডাউনলোড করুন।',
-      id:'Unduh template pengumpulan data lapangan multilingual untuk pengambilan sampel air, sedimen, dan tanah.',
-      uk:'Завантажте комплексний багатомовний шаблон збору польових даних для відбору проб води, осадів та ґрунту.',
-    }
-  },
-  {
-    id:'mediaprep',icon:'🧫',iconBg:'icon-green',
-    url:'https://bhaley1.github.io/mediaprep/',
-    tags:['culture media','lab prep','ingredients'],
-    names:{en:'MediaPrep'},
-    descs:{
-      en:'Select any standard culture medium (LB, TSA, MacConkey, Blood Agar, and 25 more), enter the volume needed, and get exact ingredient weights with step-by-step preparation instructions — in your language.',
-      fr:'Sélectionnez un milieu de culture standard, entrez le volume nécessaire et obtenez les poids exacts des ingrédients avec des instructions pas à pas.',
-      es:'Seleccione cualquier medio de cultivo estándar, ingrese el volumen necesario y obtenga los pesos exactos de ingredientes con instrucciones paso a paso.',
-      pt:'Selecione qualquer meio de cultura padrão, insira o volume necessário e obtenha os pesos exatos dos ingredientes com instruções passo a passo.',
-      it:'Seleziona qualsiasi terreno di coltura standard, inserisci il volume necessario e ottieni i pesi esatti degli ingredienti con istruzioni passo dopo passo.',
-      ar:'اختر أي وسيط زرع قياسي، أدخل الحجم المطلوب واحصل على أوزان دقيقة للمكونات مع تعليمات خطوة بخطوة.',
-      zh:'选择任意标准培养基，输入所需体积，获得精确成分重量和分步配制说明。',
-      sw:'Chagua kati ya utamaduni yoyote ya kawaida, weka kiasi kinachohitajika na upate uzito sahihi wa viungo na maelekezo hatua kwa hatua.',
-      am:'ማንኛውም የተለመደ ሚዲያ ይምረጡ፣ የሚፈለጉ መጠን ያስገቡ እና ትክክለኛ የግብዓት ክብደቶች ከሂደቶቹ ጋር ያግኙ።',
-      hi:'कोई भी मानक संस्कृति माध्यम चुनें, आवश्यक मात्रा दर्ज करें और सटीक सामग्री वजन तथा चरण-दर-चरण निर्देश प्राप्त करें।',
-      bn:'যেকোনো মানক কালচার মিডিয়া বেছে নিন, প্রয়োজনীয় পরিমাণ লিখুন এবং সঠিক উপাদানের ওজন ও ধাপে ধাপে নির্দেশাবলী পান।',
-      id:'Pilih medium kultur standar apa pun, masukkan volume yang dibutuhkan, dan dapatkan berat bahan yang tepat dengan petunjuk langkah demi langkah.',
-      uk:'Виберіть будь-яке стандартне живильне середовище, введіть потрібний об\'єм і отримайте точні ваги інгредієнтів з покроковими інструкціями.',
-    }
-  },
-  {
-    id:'microglossary',icon:'📚',iconBg:'icon-gold',
-    url:'./microglossary/',
-    tags:['terminology','glossary','definitions'],
-    names:{en:'MicroGlossary'},
-    descs:{
-      en:'Searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across all 22 languages.',
-      fr:'Dictionnaire multilingue de terminologie en microbiologie et santé publique. Couvre l\'AMR, la génomique, l\'épidémiologie dans 22 langues.',
-      es:'Diccionario multilingüe de terminología de microbiología y salud pública. Cubre AMR, genómica, epidemiología en 22 idiomas.',
-      pt:'Dicionário multilíngue de terminologia em microbiologia e saúde pública. Cobre AMR, genómica, epidemiologia em 22 línguas.',
-      it:'Dizionario multilingue di terminologia in microbiologia e salute pubblica. Copre AMR, genomica, epidemiologia in 22 lingue.',
-      ar:'قاموس متعدد اللغات لمصطلحات علم الأحياء الدقيقة والصحة العامة. يغطي مقاومة مضادات الميكروبات والجينوميكس وعلم الأوبئة.',
-      zh:'可搜索的多语言微生物学和公共卫生术语词典。涵盖22种语言的AMR、基因组学、流行病学。',
-      sw:'Kamusi ya istilahi ya microbiologia na afya ya umma inayoweza kutafutwa katika lugha 22.',
-      am:'በ22 ቋንቋዎች ሊፈለግ የሚችል ባለ ብዙ ቋንቋ የማይክሮባዮሎጂ እና የህዝብ ጤና ቃላት መዝገበ-ቃላት።',
-      hi:'22 भाषाओं में खोज योग्य बहुभाषी माइक्रोबायोलॉजी और सार्वजनिक स्वास्थ्य शब्दावली शब्दकोश।',
-      bn:'22টি ভাষায় অনুসন্ধানযোগ্য বহুভাষিক মাইক্রোবায়োলজি এবং জনস্বাস্থ্য পরিভাষা অভিধান।',
-      id:'Kamus terminologi mikrobiologi dan kesehatan masyarakat multibahasa yang dapat dicari dalam 22 bahasa.',
-      uk:'Багатомовний словник термінології мікробіології та громадського здоров\'я з пошуком у 22 мовах.',
-    }
-  },
-];
-
-// ── Tools (Coming Soon) ────────────────────────────────────────────────────
-const TOOLS_SOON = [
-  {icon:'🩸',iconBg:'icon-red',tags:['clinical','blood','fecal','swabs'],
-   names:{en:'ClinicalCollect'},
-   descs:{en:'Multilingual sample collection template for clinical specimens — blood, fecal, urine, saliva, wound swabs, respiratory, CSF, and tissue biopsies. Includes patient metadata, clinical presentation, antibiotic history, and chain of custody fields.'}},
-  {icon:'🌾',iconBg:'icon-gold',tags:['food animal','produce','irrigation'],
-   names:{en:'AgroCollect'},
-   descs:{en:'Field data collection template for agricultural samples — food animal fecal and nasal swabs, produce surface washes, irrigation water, and food processing environment swabs. HACCP-compatible.'}},
-  {icon:'💊',iconBg:'icon-purple',tags:['AMR','antibiotics','CLSI','EUCAST'],
-   names:{en:'AntibiogramBuilder'},
-   descs:{en:'Enter disk diffusion zone measurements or MIC values and get automatic susceptibility interpretation (S/I/R) using CLSI or EUCAST breakpoints. Generates a downloadable antibiogram table in your language.'}},
-  {icon:'🦠',iconBg:'icon-ink',tags:['pathogen ID','gram stain','biochemical'],
-   names:{en:'PathogenIDGuide'},
-   descs:{en:'A multilingual decision tree for presumptive pathogen identification based on colony morphology, Gram stain, and simple biochemical tests. Outputs a ranked differential diagnosis with next steps — for labs without automated ID systems.'}},
-  {icon:'🧪',iconBg:'icon-teal',tags:['PCR','qPCR','master mix'],
-   names:{en:'PCRCalc'},
-   descs:{en:'Multilingual PCR and qPCR master mix calculator. Enter number of reactions, primer concentrations, and polymerase — get a complete master mix preparation table with volumes and step-by-step instructions.'}},
-  {icon:'📊',iconBg:'icon-blue',tags:['AMR surveillance','resistance rates'],
-   names:{en:'AMRTracker'},
-   descs:{en:'Enter isolate data and antibiotic susceptibility results to generate a local AMR surveillance summary report — percentage resistance by drug class, organism, and sample source. Downloadable in your language.'}},
-  {icon:'📋',iconBg:'icon-red',tags:['biosafety','SOP','WHO'],
-   names:{en:'BiosafetySOP'},
-   descs:{en:'Generate a customizable biosafety standard operating procedure for any sample type and biosafety level — in your language. Based on WHO Laboratory Biosafety Manual guidelines. Covers PPE, decontamination, spill response, and waste disposal.'}},
-];
-
-// ── UI translations ────────────────────────────────────────────────────────
-const UI = {
-  en:{eyebrow:'Public Health Microbiology Platform',statsTools:'Tools',statsLangs:'Languages',statsFree:'Free',statsAccount:'Account needed',change:'Change language',toolsHeading:'Tools',toolsSub:'Free, open, offline-capable. No account required.',soonHeading:'Coming Soon',soonSub:'Under development. All tools will be free and multilingual.',aboutTitle:'Research Microbiologist · Public Health · Genomics · Machine Learning',aboutBio:'Bradd Haley is a research microbiologist specializing in foodborne pathogens, comparative genomics, and machine learning applications in public health microbiology. SciVoice grew from a belief that language should never be a barrier to scientific knowledge or the tools needed to protect public health. All tools on this platform are free, open source, and designed to work in low-resource settings worldwide.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Tools',navAbout:'About',footerTagline:'Public health microbiology tools for everyone — in your language.',footerGitHub:'GitHub',footerFeedback:'Feedback',live:'Available',soon:'Coming Soon'},
-  fr:{eyebrow:'Plateforme de Microbiologie en Santé Publique',statsTools:'Outils',statsLangs:'Langues',statsFree:'Gratuit',statsAccount:'Compte requis',change:'Changer de langue',toolsHeading:'Outils',toolsSub:'Gratuits, ouverts, utilisables hors ligne. Sans compte requis.',soonHeading:'Bientôt disponibles',soonSub:'En développement. Tous les outils seront gratuits et multilingues.',aboutTitle:'Microbiologiste chercheur · Santé publique · Génomique · Apprentissage automatique',aboutBio:'Bradd Haley est un microbiologiste chercheur spécialisé dans les agents pathogènes d\'origine alimentaire, la génomique comparative et les applications d\'apprentissage automatique en microbiologie de la santé publique.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Outils',navAbout:'À propos',footerTagline:'Outils de microbiologie en santé publique pour tous — dans votre langue.',footerGitHub:'GitHub',footerFeedback:'Commentaires',live:'Disponible',soon:'Bientôt'},
-  es:{eyebrow:'Plataforma de Microbiología en Salud Pública',statsTools:'Herramientas',statsLangs:'Idiomas',statsFree:'Gratis',statsAccount:'Cuenta requerida',change:'Cambiar idioma',toolsHeading:'Herramientas',toolsSub:'Gratis, abiertas, sin conexión. Sin cuenta requerida.',soonHeading:'Próximamente',soonSub:'En desarrollo. Todas las herramientas serán gratuitas y multilingües.',aboutTitle:'Microbiólogo investigador · Salud pública · Genómica · Aprendizaje automático',aboutBio:'Bradd Haley es microbiólogo investigador especializado en patógenos de origen alimentario, genómica comparativa y aprendizaje automático en microbiología de salud pública.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Herramientas',navAbout:'Acerca de',footerTagline:'Herramientas de microbiología para todos — en su idioma.',footerGitHub:'GitHub',footerFeedback:'Comentarios',live:'Disponible',soon:'Próximamente'},
-  pt:{eyebrow:'Plataforma de Microbiologia em Saúde Pública',statsTools:'Ferramentas',statsLangs:'Idiomas',statsFree:'Gratuito',statsAccount:'Conta necessária',change:'Mudar idioma',toolsHeading:'Ferramentas',toolsSub:'Gratuitas, abertas, offline. Sem conta necessária.',soonHeading:'Em breve',soonSub:'Em desenvolvimento. Todas as ferramentas serão gratuitas e multilingues.',aboutTitle:'Microbiologista investigador · Saúde pública · Genómica · Aprendizagem automática',aboutBio:'Bradd Haley é microbiologista investigador especializado em agentes patogénicos de origem alimentar e aprendizagem automática em microbiologia de saúde pública.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Ferramentas',navAbout:'Sobre',footerTagline:'Ferramentas de microbiologia para todos — na sua língua.',footerGitHub:'GitHub',footerFeedback:'Feedback',live:'Disponível',soon:'Em breve'},
-  ar:{eyebrow:'منصة علم الأحياء الدقيقة للصحة العامة',statsTools:'الأدوات',statsLangs:'اللغات',statsFree:'مجاني',statsAccount:'حساب مطلوب',change:'تغيير اللغة',toolsHeading:'الأدوات',toolsSub:'مجانية، مفتوحة، تعمل بدون إنترنت.',soonHeading:'قريباً',soonSub:'قيد التطوير. ستكون جميع الأدوات مجانية ومتعددة اللغات.',aboutTitle:'باحث في علم الأحياء الدقيقة · الصحة العامة · الجينوميكس',aboutBio:'براد هيلي باحث في علم الأحياء الدقيقة متخصص في مسببات الأمراض المنقولة عبر الغذاء والجينوميكس المقارن وتطبيقات التعلم الآلي.',scholar:'جوجل سكولار',linkedin:'لينكد إن',github:'جيتهاب',navTools:'الأدوات',navAbout:'حول',footerTagline:'أدوات علم الأحياء الدقيقة للجميع — بلغتك.',footerGitHub:'جيتهاب',footerFeedback:'ملاحظات',live:'متاح',soon:'قريباً'},
-  zh:{eyebrow:'公共卫生微生物学平台',statsTools:'工具',statsLangs:'语言',statsFree:'免费',statsAccount:'无需账户',change:'更换语言',toolsHeading:'工具',toolsSub:'免费、开放、可离线使用。无需账户。',soonHeading:'即将推出',soonSub:'开发中。所有工具将免费且支持多语言。',aboutTitle:'研究微生物学家 · 公共卫生 · 基因组学',aboutBio:'Bradd Haley是一位研究微生物学家，专注于食源性病原体、比较基因组学和机器学习在公共卫生微生物学中的应用。',scholar:'谷歌学术',linkedin:'领英',github:'GitHub',navTools:'工具',navAbout:'关于',footerTagline:'面向所有人的公共卫生微生物学工具——使用您的语言。',footerGitHub:'GitHub',footerFeedback:'反馈',live:'可用',soon:'即将推出'},
-  sw:{eyebrow:'Jukwaa la Microbiologia ya Afya ya Umma',statsTools:'Zana',statsLangs:'Lugha',statsFree:'Bila Malipo',statsAccount:'Akaunti inahitajika',change:'Badilisha lugha',toolsHeading:'Zana',toolsSub:'Bila malipo, wazi, zinafanya kazi nje ya mtandao.',soonHeading:'Zinakuja Hivi Karibuni',soonSub:'Zinaendelezwa. Zana zote zitakuwa bure na za lugha nyingi.',aboutTitle:'Mtaalam wa Microbiologia · Afya ya Umma',aboutBio:'Bradd Haley ni mtaalam wa microbiologia anayebobea katika vimelea vya magonjwa vya chakula na genomics.',scholar:'Google Scholar',linkedin:'LinkedIn',github:'GitHub',navTools:'Zana',navAbout:'Kuhusu',footerTagline:'Zana za microbiologia kwa kila mtu — kwa lugha yako.',footerGitHub:'GitHub',footerFeedback:'Maoni',live:'Inapatikana',soon:'Inakuja'},
-};
-
-// Fallback remaining languages to English with minor tweaks
-['it','am','hi','bn','id','uk','ha','yo','ln','mg','ne','tl','rw','rn','ny'].forEach(c=>{UI[c]={...UI.en};});
-UI.it.eyebrow='Piattaforma di Microbiologia per la Salute Pubblica'; UI.it.change='Cambia lingua'; UI.it.live='Disponibile'; UI.it.soon='Prossimamente'; UI.it.soonHeading='Prossimamente';
-UI.uk.eyebrow='Платформа мікробіології охорони здоров\'я'; UI.uk.change='Змінити мову'; UI.uk.live='Доступно'; UI.uk.soon='Незабаром'; UI.uk.soonHeading='Незабаром';
-UI.hi.eyebrow='सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान मंच'; UI.hi.change='भाषा बदलें'; UI.hi.live='उपलब्ध'; UI.hi.soon='जल्द आ रहा है'; UI.hi.soonHeading='जल्द आ रहा है';
-
-// ── Rotating tagline ───────────────────────────────────────────────────────
-let rotateIndex = 0;
-let rotateTimer = null;
-
-function buildTaglines() {
-  const wrap = document.getElementById('taglineWrap');
-  wrap.innerHTML = '';
-  LANGS.forEach((l, i) => {
-    const el = document.createElement('p');
-    el.className = 'hero-tagline' + (i === 0 ? ' active' : '');
-    el.id = 'tl-' + l.code;
-    el.textContent = TAGLINES[l.code] || TAGLINES.en;
-    // RTL support for Arabic
-    if (l.dir === 'rtl') el.style.direction = 'rtl';
-    wrap.appendChild(el);
-  });
-}
-
-function rotateLang() {
-  const current = document.querySelector('.hero-tagline.active');
-  if (current) current.classList.remove('active');
-  rotateIndex = (rotateIndex + 1) % LANGS.length;
-  const next = document.getElementById('tl-' + LANGS[rotateIndex].code);
-  if (next) next.classList.add('active');
-}
-
-function startRotation() {
-  rotateTimer = setInterval(rotateLang, 5000);
-}
-
-// ── State ──────────────────────────────────────────────────────────────────
+let glossaryData = null;
 let selectedLang = null;
+let filteredData = null;
+let audioIndex = null;
+let currentAudio = null;
+let currentAudioBtn = null;
 
-// ── Build picker ───────────────────────────────────────────────────────────
-function buildPicker() {
-  const grid = document.getElementById('langGridPicker');
-  LANGS.forEach(l => {
+// Build language picker
+function buildLangPicker() {
+  const grid = document.getElementById('langGrid');
+  LANGUAGES.forEach(lang => {
     const btn = document.createElement('button');
     btn.className = 'lang-btn';
-    btn.id = 'lb-' + l.code;
-    btn.innerHTML = `<span class="lang-dot-sm"></span>${l.native}`;
-    btn.onclick = () => selectLang(l.code);
+    btn.id = `langBtn-${lang.code}`;
+    btn.innerHTML = `<span>${lang.native}</span>`;
+    btn.onclick = () => selectLanguage(lang.code);
     grid.appendChild(btn);
   });
 }
 
-function selectLang(code) {
+function selectLanguage(code) {
   selectedLang = code;
-  LANGS.forEach(l => {
-    const b = document.getElementById('lb-' + l.code);
-    if (b) b.classList.toggle('selected', l.code === code);
+  const lang = LANGUAGES.find(l => l.code === code);
+  
+  LANGUAGES.forEach(l => {
+    const btn = document.getElementById(`langBtn-${l.code}`);
+    if (btn) btn.classList.toggle('selected', l.code === code);
   });
-  const lang = LANGS.find(l => l.code === code);
-  const u = UI[code] || UI.en;
 
   document.documentElement.lang = code;
   document.documentElement.dir = lang.dir;
-
-  setText('heroEyebrow', u.eyebrow);
-  setText('statToolsLabel', u.statsTools);
-  setText('statLangsLabel', u.statsLangs);
-  setText('statFreeLabel', u.statsFree);
-  setText('statAccountLabel', u.statsAccount);
-  document.getElementById('selectedLangName').innerHTML = `${lang.native} <span>${lang.english}</span>`;
-  setText('btnChange', u.change);
-  setText('toolsHeading', u.toolsHeading);
-  setText('toolsSubheading', u.toolsSub);
-  setText('comingSoonHeading', u.soonHeading);
-  setText('comingSoonSubheading', u.soonSub);
-  setText('aboutTitle', u.aboutTitle);
-  setText('aboutBio', u.aboutBio);
-  setText('linkScholar', u.scholar);
-  setText('linkLinkedIn', u.linkedin);
-  setText('linkGitHub', u.github);
-  setText('navTools', u.navTools);
-  setText('navAbout', u.navAbout);
-  setText('footerTagline', u.footerTagline);
-  setText('footerGitHub', u.footerGitHub);
-  setText('footerFeedback', u.footerFeedback);
-  setText('headerLang', lang.native);
-
-  buildToolGrids(code, u);
-
+  document.getElementById('headerLang').textContent = lang.native;
+  
+  document.getElementById('langPicker').style.display = 'none';
   document.getElementById('mainContent').classList.add('visible');
-  document.getElementById('mainContent').scrollIntoView({behavior:'smooth', block:'start'});
+  
+  renderGlossary();
 }
 
 function changeLang() {
   document.getElementById('mainContent').classList.remove('visible');
-  document.querySelector('.lang-section').scrollIntoView({behavior:'smooth', block:'start'});
-  LANGS.forEach(l => { const b = document.getElementById('lb-'+l.code); if(b) b.classList.remove('selected'); });
-  selectedLang = null;
+  document.getElementById('langPicker').style.display = 'block';
 }
 
-function setText(id, text) { const el = document.getElementById(id); if (el && text) el.textContent = text; }
-
-function buildToolGrids(code, u) {
-  const liveGrid = document.getElementById('liveToolsGrid');
-  liveGrid.innerHTML = '';
-  TOOLS_LIVE.forEach(tool => {
-    const name = tool.names[code] || tool.names.en || '';
-    const desc = tool.descs[code] || tool.descs.en || '';
-    const card = document.createElement('a');
-    card.className = 'tool-card';
-    card.href = tool.url;
-    if (tool.id !== 'microglossary') card.target = '_blank';
-    card.innerHTML = `
-      <div class="tool-card-top">
-        <div class="tool-icon ${tool.iconBg}">${tool.icon}</div>
-        <span class="tool-badge badge-live">${u.live || 'Available'}</span>
-      </div>
-      <div class="tool-name">${name}</div>
-      <div class="tool-desc">${desc}</div>
-      <div class="tool-tags">${tool.tags.map(t=>`<span class="tool-tag">${t}</span>`).join('')}</div>
-      <div class="tool-arrow">→</div>`;
-    liveGrid.appendChild(card);
-  });
-
-  const soonGrid = document.getElementById('soonToolsGrid');
-  soonGrid.innerHTML = '';
-  TOOLS_SOON.forEach(tool => {
-    const name = tool.names[code] || tool.names.en || '';
-    const desc = tool.descs[code] || tool.descs.en || '';
-    const card = document.createElement('div');
-    card.className = 'tool-card coming-soon';
-    card.innerHTML = `
-      <div class="tool-card-top">
-        <div class="tool-icon ${tool.iconBg}">${tool.icon}</div>
-        <span class="tool-badge badge-soon">${u.soon || 'Coming Soon'}</span>
-      </div>
-      <div class="tool-name">${name}</div>
-      <div class="tool-desc">${desc}</div>
-      <div class="tool-tags">${tool.tags.map(t=>`<span class="tool-tag">${t}</span>`).join('')}</div>`;
-    soonGrid.appendChild(card);
-  });
+// Load glossary data
+async function loadGlossaryData() {
+  try {
+    const resp = await fetch('./glossary-data.json');
+    glossaryData = await resp.json();
+    console.log('Glossary data loaded:', Object.keys(glossaryData).length, 'languages');
+    
+    // Try to load audio index
+    try {
+      const audioResp = await fetch('./audio/audio-index.json');
+      if (audioResp.ok) {
+        audioIndex = await audioResp.json();
+        console.log('Audio index loaded:', Object.keys(audioIndex).length, 'languages');
+      }
+    } catch (e) {
+      console.log('Audio files not available (this is optional)');
+    }
+  } catch (e) {
+    console.error('Failed to load glossary data:', e);
+    document.getElementById('glossaryContent').innerHTML = 
+      '<div class="empty-state"><p>Error loading glossary data. Please refresh the page.</p></div>';
+  }
 }
 
-buildPicker();
-buildTaglines();
-startRotation();
+function renderGlossary(searchQuery = '') {
+  if (!glossaryData || !selectedLang) return;
+  
+  const langData = glossaryData[selectedLang];
+  if (!langData) {
+    console.error('No data for language:', selectedLang);
+    return;
+  }
+
+  const content = document.getElementById('glossaryContent');
+  const emptyState = document.getElementById('emptyState');
+  content.innerHTML = '';
+  
+  let totalTerms = 0;
+  let matchedTerms = 0;
+  const query = searchQuery.toLowerCase().trim();
+
+  langData.categories.forEach(cat => {
+    const matchingTerms = cat.terms.filter(term => {
+      totalTerms++;
+      if (!query) return true;
+      const termMatch = term.term.toLowerCase().includes(query);
+      const defMatch = term.definition.toLowerCase().includes(query);
+      return termMatch || defMatch;
+    });
+
+    if (matchingTerms.length === 0) return;
+    matchedTerms += matchingTerms.length;
+
+    const section = document.createElement('div');
+    section.className = 'category-section';
+    
+    const header = document.createElement('div');
+    header.className = 'category-header';
+    header.textContent = cat.category;
+    section.appendChild(header);
+
+    const list = document.createElement('div');
+    list.className = 'term-list';
+    
+    matchingTerms.forEach((term, idx) => {
+      const card = document.createElement('div');
+      card.className = 'term-card';
+      
+      const name = document.createElement('div');
+      name.className = 'term-name';
+      
+      const nameText = document.createElement('span');
+      nameText.className = 'term-name-text';
+      nameText.innerHTML = highlightText(term.term, query);
+      name.appendChild(nameText);
+      
+      // Add audio button if audio files are available
+      if (audioIndex && audioIndex[selectedLang]) {
+        const termId = String(idx + 1).padStart(4, '0');
+        const sanitized = sanitizeFilename(term.term);
+        const audioFile = `${sanitized}_${termId}.mp3`;
+        
+        if (audioIndex[selectedLang].includes(audioFile)) {
+          const audioBtn = document.createElement('button');
+          audioBtn.className = 'audio-btn';
+          audioBtn.innerHTML = '🔊';
+          audioBtn.title = 'Listen to pronunciation';
+          audioBtn.onclick = (e) => {
+            e.stopPropagation();
+            playAudio(`./audio/${selectedLang}/${audioFile}`, audioBtn);
+          };
+          name.appendChild(audioBtn);
+        }
+      }
+      
+      const def = document.createElement('div');
+      def.className = 'term-def';
+      def.innerHTML = highlightText(term.definition, query);
+      
+      card.appendChild(name);
+      card.appendChild(def);
+      list.appendChild(card);
+    });
+
+    section.appendChild(list);
+    content.appendChild(section);
+  });
+
+  // Update results count
+  const countEl = document.getElementById('resultsCount');
+  if (query) {
+    countEl.textContent = `Showing ${matchedTerms} of ${totalTerms} terms`;
+  } else {
+    countEl.textContent = `${totalTerms} terms across ${langData.categories.length} categories`;
+  }
+
+  // Toggle empty state
+  emptyState.style.display = matchedTerms === 0 ? 'block' : 'none';
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+  return text.replace(regex, '<span class="highlight-text">$1</span>');
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function sanitizeFilename(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .slice(0, 50);
+}
+
+function playAudio(audioPath, buttonEl) {
+  // Stop current audio if playing
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    if (currentAudioBtn) {
+      currentAudioBtn.classList.remove('playing');
+    }
+  }
+  
+  // If clicking the same button, just stop
+  if (currentAudioBtn === buttonEl && currentAudio) {
+    currentAudio = null;
+    currentAudioBtn = null;
+    return;
+  }
+  
+  // Play new audio
+  currentAudio = new Audio(audioPath);
+  currentAudioBtn = buttonEl;
+  buttonEl.classList.add('playing');
+  
+  currentAudio.play().catch(err => {
+    console.error('Audio playback failed:', err);
+    buttonEl.classList.remove('playing');
+  });
+  
+  currentAudio.onended = () => {
+    buttonEl.classList.remove('playing');
+    currentAudio = null;
+    currentAudioBtn = null;
+  };
+}
+
+function downloadPDF() {
+  alert('PDF download feature coming soon! For now, you can use your browser\'s Print > Save as PDF.');
+  // TODO: Implement PDF generation using jsPDF or similar
+}
+
+// Event listeners
+document.getElementById('btnChange').addEventListener('click', changeLang);
+document.getElementById('btnDownload').addEventListener('click', downloadPDF);
+
+let searchTimeout;
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    renderGlossary(e.target.value);
+  }, 300);
+});
+
+// Initialize
+buildLangPicker();
+loadGlossaryData();
 </script>
+
+<a href="https://bhaley1.github.io/scivoice/" class="home-btn" aria-label="Back to SciVoice home" title="Back to SciVoice">🏠</a>
 </body>
 </html>
