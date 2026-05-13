@@ -105,6 +105,29 @@ header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;posit
 .icon-purple{background:var(--purple-light);}
 .icon-teal{background:var(--teal-light);}
 .icon-ink{background:var(--paper-3);}
+
+/* OutbreakWatch Surveillance Card */
+.surveillance-section{margin:4rem 0 3rem;position:relative;}
+.surveillance-divider{height:1px;background:linear-gradient(to right,transparent,var(--rule) 20%,var(--rule) 80%,transparent);margin:0 auto 3rem;max-width:600px;}
+.surveillance-card{background:linear-gradient(135deg,#fdf4f4 0%,#fff0f0 50%,#fef8f4 100%);border:1px solid rgba(139,26,26,0.15);border-radius:var(--radius-xl);padding:2.5rem;position:relative;overflow:hidden;transition:all 0.3s ease;text-decoration:none;color:inherit;display:block;}
+.surveillance-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#d97706,var(--red));opacity:0.6;}
+.surveillance-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(139,26,26,0.12);border-color:rgba(139,26,26,0.25);}
+.surveillance-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.surveillance-title-wrap{display:flex;align-items:center;gap:12px;}
+.surveillance-icon{width:48px;height:48px;background:var(--red);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(139,26,26,0.2);}
+.surveillance-title{font-family:'Lora',serif;font-size:1.75rem;font-weight:600;color:var(--ink);letter-spacing:-0.02em;}
+.surveillance-live{display:flex;align-items:center;gap:6px;background:var(--red);color:white;padding:5px 12px;border-radius:99px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+.surveillance-live-dot{width:8px;height:8px;background:white;border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.9);}}
+.surveillance-desc{font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:1.5rem;max-width:700px;}
+.surveillance-features{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.surveillance-feature{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);}
+.surveillance-feature-icon{font-size:16px;}
+.surveillance-cta{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:white;padding:10px 24px;border-radius:99px;font-size:14px;font-weight:600;transition:all 0.2s;box-shadow:0 4px 12px rgba(139,26,26,0.25);}
+.surveillance-card:hover .surveillance-cta{background:#a02020;transform:translateX(2px);box-shadow:0 6px 16px rgba(139,26,26,0.3);}
+.surveillance-arrow{font-size:16px;transition:transform 0.2s;}
+.surveillance-card:hover .surveillance-arrow{transform:translateX(4px);}
+
 .about-card{border:1px solid var(--rule);border-radius:var(--radius-xl);background:white;padding:2rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;margin-bottom:3rem;}
 .about-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent) 0%,var(--green) 100%);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:28px;font-weight:600;color:white;flex-shrink:0;}
 .about-name{font-family:'Lora',serif;font-size:1.25rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
@@ -329,6 +352,44 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
  </div>
  <div class="tool-grid" id="soonToolsGrid"></div>
  
+ <!-- OutbreakWatch Surveillance Section -->
+ <div class="surveillance-section">
+  <div class="surveillance-divider"></div>
+  <a class="surveillance-card" href="https://bhaley1.github.io/outbreakwatch/" target="_blank">
+   <div class="surveillance-header">
+    <div class="surveillance-title-wrap">
+     <div class="surveillance-icon">🌍</div>
+     <h3 class="surveillance-title">OutbreakWatch</h3>
+    </div>
+    <div class="surveillance-live">
+     <span class="surveillance-live-dot"></span>
+     <span>LIVE</span>
+    </div>
+   </div>
+   <p class="surveillance-desc">
+    Real-time global disease surveillance hub. Direct access to WHO Disease Outbreak News, CDC, ProMED-mail, HealthMap, and 4 more authoritative networks tracking emerging infectious diseases worldwide.
+   </p>
+   <div class="surveillance-features">
+    <div class="surveillance-feature">
+     <span class="surveillance-feature-icon">🏥</span>
+     <span>WHO & CDC Official Reports</span>
+    </div>
+    <div class="surveillance-feature">
+     <span class="surveillance-feature-icon">🌎</span>
+     <span>8 Global Networks</span>
+    </div>
+    <div class="surveillance-feature">
+     <span class="surveillance-feature-icon">📊</span>
+     <span>Human, Animal & Plant Health</span>
+    </div>
+   </div>
+   <div class="surveillance-cta">
+    <span>Track Global Outbreaks</span>
+    <span class="surveillance-arrow">→</span>
+   </div>
+  </a>
+ </div>
+
 </div>
 
 <footer>
