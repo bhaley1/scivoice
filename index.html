@@ -16,6 +16,13 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SciVoice","url":"https://bhaley1.github.io/scivoice/","description":"Free multilingual public health microbiology tools for everyone.","author":{"@type":"Person","name":"Bradd Haley","url":"https://github.com/bhaley1"}}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1V3KSK1G4Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1V3KSK1G4Y');</script>
+<link rel="manifest" href="/scivoice/manifest.json">
+<meta name="theme-color" content="#1a1814">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SciVoice">
+<link rel="apple-touch-icon" href="/scivoice/icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/scivoice/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -116,6 +123,31 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
 .footer-links a{font-size:12px;color:var(--ink-3);text-decoration:none;}
 .footer-links a:hover{color:var(--ink);}
 @media(max-width:700px){.hero h1{font-size:2.2rem;}.hero-stats{gap:1.25rem;}.about-card{grid-template-columns:1fr;}.footer-inner{flex-direction:column;text-align:center;}.stat-divider{display:none;}}
+
+/* ── PWA Install Banner ── */
+.install-banner{
+  display:none;
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  background:var(--ink);color:white;
+  border-radius:var(--radius-xl);
+  padding:14px 20px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.25);
+  z-index:500;
+  align-items:center;gap:14px;
+  max-width:420px;width:calc(100% - 3rem);
+  animation:slideUp 0.3s ease;
+}
+.install-banner.visible{display:flex;}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+.install-banner-icon{font-size:28px;flex-shrink:0;}
+.install-banner-text{flex:1;}
+.install-banner-title{font-size:14px;font-weight:600;margin-bottom:2px;}
+.install-banner-sub{font-size:12px;opacity:0.7;}
+.install-banner-btns{display:flex;gap:8px;flex-shrink:0;}
+.btn-install{background:white;color:var(--ink);border:none;border-radius:var(--radius);padding:7px 14px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;}
+.btn-install:hover{background:var(--paper-2);}
+.btn-dismiss{background:none;color:rgba(255,255,255,0.6);border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1;}
+.btn-dismiss:hover{color:white;}
 </style>
 </head>
 <body>
@@ -441,6 +473,62 @@ function buildToolGrids(code, u) {
 buildPicker();
 buildTaglines();
 setInterval(rotateLang, 5000);
+</script>
+
+<div class="install-banner" id="installBanner">
+  <div class="install-banner-icon">🔬</div>
+  <div class="install-banner-text">
+    <div class="install-banner-title">Add SciVoice to your home screen</div>
+    <div class="install-banner-sub">Works offline · Free · No account needed</div>
+  </div>
+  <div class="install-banner-btns">
+    <button class="btn-install" id="btnInstall">Install</button>
+    <button class="btn-dismiss" id="btnDismiss">✕</button>
+  </div>
+</div>
+
+<script>
+// ── Service Worker ─────────────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/scivoice/sw.js')
+      .then(r => console.log('SW registered:', r.scope))
+      .catch(e => console.log('SW error:', e));
+  });
+}
+
+// ── Install Prompt ─────────────────────────────────────────────────────────
+let deferredPrompt = null;
+const banner = document.getElementById('installBanner');
+const btnInstall = document.getElementById('btnInstall');
+const btnDismiss = document.getElementById('btnDismiss');
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Only show if not dismissed before
+  if (!localStorage.getItem('pwa-dismissed')) {
+    setTimeout(() => banner.classList.add('visible'), 3000);
+  }
+});
+
+btnInstall.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  banner.classList.remove('visible');
+});
+
+btnDismiss.addEventListener('click', () => {
+  banner.classList.remove('visible');
+  localStorage.setItem('pwa-dismissed', '1');
+});
+
+window.addEventListener('appinstalled', () => {
+  banner.classList.remove('visible');
+  deferredPrompt = null;
+});
 </script>
 </body>
 </html>

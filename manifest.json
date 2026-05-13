@@ -1,0 +1,24 @@
+{
+  "name": "SciVoice — Public Health Microbiology",
+  "short_name": "SciVoice",
+  "description": "Free multilingual public health microbiology tools for everyone — in your language.",
+  "start_url": "/scivoice/",
+  "scope": "/scivoice/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#faf8f4",
+  "theme_color": "#1a1814",
+  "lang": "en",
+  "categories": ["medical", "education", "utilities"],
+  "icons": [
+    { "src": "/scivoice/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/scivoice/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/scivoice/icons/icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "MicroGlossary", "url": "/scivoice/microglossary/", "description": "Multilingual microbiology dictionary" },
+    { "name": "SciSummarize", "url": "https://bhaley1.github.io/manuscript-summarizer---beta/", "description": "Scientific manuscript summarizer" },
+    { "name": "MediaPrep", "url": "https://bhaley1.github.io/mediaprep/", "description": "Culture media calculator" },
+    { "name": "EnviroCollect", "url": "https://bhaley1.github.io/envirocollect/", "description": "Environmental sampling templates" }
+  ]
+}
