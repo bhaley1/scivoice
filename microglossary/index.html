@@ -416,6 +416,168 @@ buildLangPicker();
 loadGlossaryData();
 </script>
 
-<a href="https://bhaley1.github.io/scivoice/" class="home-btn" aria-label="Back to SciVoice home" title="Back to SciVoice">🏠</a>
+<!-- Voice Assistant for MicroGlossary -->
+<style>
+.voice-btn{position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;border-radius:50%;background:#1a1814;color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;z-index:600;box-shadow:0 4px 20px rgba(0,0,0,0.25);transition:all 0.2s;}
+.voice-btn:hover{background:#1a4d8f;transform:scale(1.06);}
+.voice-btn.listening{background:#c0392b;animation:vbpulse 1.2s ease-in-out infinite;}
+.voice-btn.speaking{background:#1a6b3c;}
+@keyframes vbpulse{0%,100%{box-shadow:0 4px 20px rgba(192,57,43,0.4);}50%{box-shadow:0 4px 32px rgba(192,57,43,0.8),0 0 0 10px rgba(192,57,43,0.15);}}
+.voice-panel{position:fixed;bottom:5.5rem;right:1.5rem;width:320px;background:white;border:1px solid rgba(26,24,20,0.10);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.14);z-index:599;display:none;flex-direction:column;overflow:hidden;}
+.voice-panel.open{display:flex;}
+.voice-panel-header{background:#1a1814;color:white;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.voice-panel-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;}
+.voice-close{background:none;border:none;color:rgba(255,255,255,0.7);font-size:18px;cursor:pointer;line-height:1;padding:2px;}
+.voice-close:hover{color:white;}
+.voice-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;max-height:300px;min-height:60px;}
+.voice-msg{padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.55;max-width:90%;}
+.voice-msg.user{background:#1a1814;color:white;align-self:flex-end;border-radius:12px 12px 4px 12px;}
+.voice-msg.assistant{background:#f2efe8;color:#1a1814;align-self:flex-start;border-radius:12px 12px 12px 4px;}
+.voice-msg.status{background:transparent;color:#8a8480;font-size:12px;font-style:italic;align-self:center;padding:4px 8px;}
+.voice-footer{padding:10px 12px;border-top:1px solid rgba(26,24,20,0.10);display:flex;align-items:center;gap:8px;}
+.voice-input{flex:1;border:1px solid rgba(26,24,20,0.10);border-radius:99px;padding:8px 14px;font-size:13px;font-family:inherit;outline:none;background:#faf8f4;}
+.voice-input:focus{border-color:#1a4d8f;}
+.voice-send{width:34px;height:34px;border-radius:50%;background:#1a1814;color:white;border:none;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.voice-send:hover{background:#1a4d8f;}
+.voice-hint{font-size:11px;color:#8a8480;text-align:center;padding:6px 12px 10px;}
+.home-btn{position:fixed;bottom:1.5rem;right:4.5rem;width:48px;height:48px;border-radius:50%;background:#1a1814;color:white;display:flex;align-items:center;justify-content:center;font-size:20px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:all 0.2s;z-index:999;}
+.home-btn:hover{background:#1a4d8f;transform:scale(1.08);}
+</style>
+
+<div class="voice-panel" id="voicePanel">
+  <div class="voice-panel-header">
+    <div class="voice-panel-title"><span>📚</span><span>MicroGlossary Voice</span></div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:11px;opacity:0.6;" id="vpLang">English</span>
+      <button class="voice-close" onclick="closeVoice()">✕</button>
+    </div>
+  </div>
+  <div class="voice-messages" id="voiceMessages">
+    <div class="voice-msg status">Ask me to define any microbiology term in your language — e.g. "What is a plasmid?"</div>
+  </div>
+  <div class="voice-footer">
+    <input class="voice-input" id="voiceInput" placeholder="Type or tap 🎤…" onkeydown="if(event.key==='Enter')sendVoiceMsg()">
+    <button class="voice-send" onclick="sendVoiceMsg()">→</button>
+  </div>
+  <div class="voice-hint">🎤 Tap mic · Ask for any glossary term</div>
+</div>
+
+<a href="https://bhaley1.github.io/scivoice/" class="home-btn" aria-label="Back to SciVoice" title="Back to SciVoice">🏠</a>
+<button class="voice-btn" id="voiceBtn" title="Voice Search">🎤</button>
+
+<script>
+const GLOSS_LANG_MAP = {
+  en:"en-US",fr:"fr-FR",es:"es-ES",pt:"pt-BR",it:"it-IT",
+  ar:"ar-SA",zh:"zh-CN",sw:"sw-KE",am:"am-ET",hi:"hi-IN",
+  bn:"bn-BD",id:"id-ID",uk:"uk-UA",ha:"ha-NG",yo:"yo-NG",
+  ln:"fr-CD",mg:"fr-MG",ne:"ne-NP",tl:"fil-PH",rw:"rw-RW",
+  rn:"fr-BI",ny:"ny-MW",
+};
+
+let gVoiceOpen=false, gRecog=null, gListening=false, gSpeaking=false;
+const gSynth = window.speechSynthesis;
+
+function getGLang(){ return GLOSS_LANG_MAP[currentLang||'en']||'en-US'; }
+
+document.getElementById('voiceBtn').addEventListener('click',function(){
+  if(!gVoiceOpen){gVoiceOpen=true;document.getElementById('voicePanel').classList.add('open');return;}
+  if(gListening){stopGListening();return;}
+  startGListening();
+});
+
+function closeVoice(){
+  gVoiceOpen=false;
+  document.getElementById('voicePanel').classList.remove('open');
+  stopGListening();stopGSpeaking();
+}
+
+function startGListening(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){addGMsg("Type your question below — speech not supported in this browser.","status");return;}
+  if(gSpeaking)stopGSpeaking();
+  gRecog=new SR();
+  gRecog.lang=getGLang();
+  gRecog.continuous=false;gRecog.interimResults=false;
+  gRecog.onstart=()=>{gListening=true;document.getElementById('voiceBtn').classList.add('listening');addGMsg("Listening…","status");};
+  gRecog.onresult=e=>{
+    const t=e.results[0][0].transcript;
+    removeGStatus();
+    document.getElementById('voiceInput').value=t;
+    sendVoiceMsg();
+  };
+  gRecog.onerror=e=>{gListening=false;document.getElementById('voiceBtn').classList.remove('listening');removeGStatus();if(e.error!=='aborted')addGMsg("Couldn’t hear that. Try again.","status");};
+  gRecog.onend=()=>{gListening=false;document.getElementById('voiceBtn').classList.remove('listening');};
+  gRecog.start();
+}
+
+function stopGListening(){if(gRecog){gRecog.abort();gRecog=null;}gListening=false;document.getElementById('voiceBtn').classList.remove('listening');}
+
+function speakG(text){
+  stopGSpeaking();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=getGLang();u.rate=0.95;
+  u.onstart=()=>{gSpeaking=true;document.getElementById('voiceBtn').classList.add('speaking');};
+  u.onend=u.onerror=()=>{gSpeaking=false;document.getElementById('voiceBtn').classList.remove('speaking');};
+  gSynth.speak(u);
+}
+
+function stopGSpeaking(){if(gSynth)gSynth.cancel();gSpeaking=false;document.getElementById('voiceBtn').classList.remove('speaking');}
+
+function addGMsg(text,role){
+  const msgs=document.getElementById('voiceMessages');
+  const d=document.createElement('div');
+  d.className='voice-msg '+role;d.textContent=text;
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;
+}
+
+function removeGStatus(){document.querySelectorAll('.voice-msg.status').forEach(el=>el.remove());}
+
+async function sendVoiceMsg(){
+  const inp=document.getElementById('voiceInput');
+  const text=inp.value.trim();
+  if(!text){startGListening();return;}
+  inp.value='';
+  removeGStatus();
+  addGMsg(text,'user');
+  const thinking=addGMsg('…','status');
+
+  // Look up in glossary data first for instant local answers
+  let glossaryContext = '';
+  if(typeof glossaryData !== 'undefined' && glossaryData.terms){
+    const q = text.toLowerCase();
+    const matches = glossaryData.terms.filter(t =>
+      t.term.toLowerCase().includes(q) || q.includes(t.term.toLowerCase())
+    ).slice(0,3);
+    if(matches.length > 0){
+      glossaryContext = 'Relevant glossary entries:\n' + matches.map(m =>
+        m.term + ': ' + (m.translations && m.translations[currentLang||'en'] ? m.translations[currentLang||'en'].definition : m.definition||'')
+      ).join('\n');
+    }
+  }
+
+  const langCode = currentLang||'en';
+  const langNames = {en:'English',fr:'French',es:'Spanish',pt:'Portuguese',it:'Italian',ar:'Arabic',zh:'Mandarin Chinese',sw:'Swahili',am:'Amharic',hi:'Hindi',bn:'Bengali',id:'Indonesian',uk:'Ukrainian',ha:'Hausa',yo:'Yoruba',ln:'Lingala',mg:'Malagasy',ne:'Nepali',tl:'Tagalog',rw:'Kinyarwanda',rn:'Kirundi',ny:'Chichewa'};
+  const langName = langNames[langCode]||'English';
+
+  const system = `You are MicroGlossary Voice, an expert microbiology and public health terminology assistant. Respond ONLY in ${langName}. Keep answers to 2-3 sentences — concise and clear for voice playback. Define terms precisely using scientific language appropriate for health professionals. ${glossaryContext ? 'Use this glossary context if relevant: ' + glossaryContext : ''}`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system,messages:[{role:'user',content:text}]})
+    });
+    const data=await res.json();
+    thinking.remove();
+    const reply=data.content&&data.content[0]?data.content[0].text:"Sorry, I couldn’t get a response.";
+    addGMsg(reply,'assistant');
+    speakG(reply);
+  }catch(e){
+    thinking.remove();
+    addGMsg("Connection error. Please check your internet.","status");
+  }
+}
+</script>
+
 </body>
 </html>
