@@ -73,16 +73,16 @@ header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;posit
   position:relative;
 }
 .hero h1 em{font-style:italic;color:var(--accent);}
-.hero-tagline-wrap{position:relative;height:2.8em;overflow:hidden;max-width:560px;margin:0 auto 2.5rem;}
+.hero-tagline-wrap{position:relative;max-width:900px;margin:0 auto 2.5rem;min-height:2em;}
 .hero-tagline{
-  position:absolute;left:0;right:0;
-  font-size:18px;color:var(--ink-2);
+  display:none;
+  font-size:17px;color:var(--ink-2);
   font-weight:300;line-height:1.7;
   text-align:center;
-  opacity:0;transition:opacity 0.6s ease;
-  pointer-events:none;
+  white-space:nowrap;
+  overflow:hidden;
 }
-.hero-tagline.active{opacity:1;pointer-events:auto;}
+.hero-tagline.active{display:block;}
 
 .hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;position:relative;margin-bottom:3rem;}
 .stat{text-align:center;}
@@ -325,29 +325,56 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
 <script>
 // ── Languages ──────────────────────────────────────────────────────────────
 const LANGS = [
-  {code:'en',native:'English',english:'English',dir:'ltr'},
-  {code:'fr',native:'Français',english:'French',dir:'ltr'},
-  {code:'es',native:'Español',english:'Spanish',dir:'ltr'},
-  {code:'pt',native:'Português',english:'Portuguese',dir:'ltr'},
-  {code:'it',native:'Italiano',english:'Italian',dir:'ltr'},
-  {code:'ar',native:'العربية',english:'Arabic',dir:'rtl'},
-  {code:'zh',native:'中文',english:'Mandarin',dir:'ltr'},
-  {code:'sw',native:'Kiswahili',english:'Swahili',dir:'ltr'},
-  {code:'am',native:'አማርኛ',english:'Amharic',dir:'ltr'},
-  {code:'hi',native:'हिन्दी',english:'Hindi',dir:'ltr'},
-  {code:'bn',native:'বাংলা',english:'Bengali',dir:'ltr'},
-  {code:'id',native:'Bahasa Indonesia',english:'Indonesian',dir:'ltr'},
-  {code:'uk',native:'Українська',english:'Ukrainian',dir:'ltr'},
-  {code:'ha',native:'Hausa',english:'Hausa',dir:'ltr'},
-  {code:'yo',native:'Yorùbá',english:'Yoruba',dir:'ltr'},
-  {code:'ln',native:'Lingála',english:'Lingala',dir:'ltr'},
-  {code:'mg',native:'Malagasy',english:'Malagasy',dir:'ltr'},
-  {code:'ne',native:'नेपाली',english:'Nepali',dir:'ltr'},
-  {code:'tl',native:'Tagalog',english:'Tagalog',dir:'ltr'},
-  {code:'rw',native:'Kinyarwanda',english:'Kinyarwanda',dir:'ltr'},
-  {code:'rn',native:'Ikirundi',english:'Kirundi',dir:'ltr'},
-  {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr'},
+  {code:'en',native:'English',english:'English',dir:'ltr',flags:['🇺🇸']},
+  {code:'fr',native:'Français',english:'French',dir:'ltr',flags:['🇫🇷']},
+  {code:'es',native:'Español',english:'Spanish',dir:'ltr',flags:['🇪🇸','🇲🇽','🇨🇴','🇦🇷','🇵🇪','🇻🇪','🇨🇱','🇪🇨']},
+  {code:'pt',native:'Português',english:'Portuguese',dir:'ltr',flags:['🇧🇷','🇵🇹','🇲🇿','🇦🇴']},
+  {code:'it',native:'Italiano',english:'Italian',dir:'ltr',flags:['🇮🇹']},
+  {code:'ar',native:'العربية',english:'Arabic',dir:'rtl',flags:['🇪🇬','🇸🇦','🇩🇿','🇸🇩','🇮🇶','🇲🇦','🇾🇪','🇸🇾']},
+  {code:'zh',native:'中文',english:'Mandarin',dir:'ltr',flags:['🇨🇳','🇹🇼','🇸🇬']},
+  {code:'sw',native:'Kiswahili',english:'Swahili',dir:'ltr',flags:['🇹🇿','🇰🇪','🇺🇬','🇨🇩','🇷🇼']},
+  {code:'am',native:'አማርኛ',english:'Amharic',dir:'ltr',flags:['🇪🇹']},
+  {code:'hi',native:'हिन्दी',english:'Hindi',dir:'ltr',flags:['🇮🇳']},
+  {code:'bn',native:'বাংলা',english:'Bengali',dir:'ltr',flags:['🇧🇩','🇮🇳']},
+  {code:'id',native:'Bahasa Indonesia',english:'Indonesian',dir:'ltr',flags:['🇮🇩']},
+  {code:'uk',native:'Українська',english:'Ukrainian',dir:'ltr',flags:['🇺🇦']},
+  {code:'ha',native:'Hausa',english:'Hausa',dir:'ltr',flags:['🇳🇬','🇳🇪','🇬🇭','🇨🇲']},
+  {code:'yo',native:'Yorùbá',english:'Yoruba',dir:'ltr',flags:['🇳🇬','🇧🇯','🇹🇬']},
+  {code:'ln',native:'Lingála',english:'Lingala',dir:'ltr',flags:['🇨🇩','🇨🇬','🇨🇫','🇦🇴']},
+  {code:'mg',native:'Malagasy',english:'Malagasy',dir:'ltr',flags:['🇲🇬']},
+  {code:'ne',native:'नेपाली',english:'Nepali',dir:'ltr',flags:['🇳🇵','🇮🇳']},
+  {code:'tl',native:'Tagalog',english:'Tagalog',dir:'ltr',flags:['🇵🇭']},
+  {code:'rw',native:'Kinyarwanda',english:'Kinyarwanda',dir:'ltr',flags:['🇷🇼','🇺🇬','🇨🇩']},
+  {code:'rn',native:'Ikirundi',english:'Kirundi',dir:'ltr',flags:['🇧🇮','🇷🇼','🇹🇿']},
+  {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr',flags:['🇲🇼','🇿🇲','🇿🇼','🇲🇿']},
 ];
+
+
+// ── Eyebrows (rotate with taglines) ───────────────────────────────────────
+const EYEBROWS = {
+  en:'Public Health Microbiology Platform',
+  fr:'Plateforme de Microbiologie en Santé Publique',
+  es:'Plataforma de Microbiología en Salud Pública',
+  pt:'Plataforma de Microbiologia em Saúde Pública',
+  it:'Piattaforma di Microbiologia per la Salute Pubblica',
+  ar:'منصة علم الأحياء الدقيقة للصحة العامة',
+  zh:'公共卫生微生物学平台',
+  sw:'Jukwaa la Microbiologia ya Afya ya Umma',
+  am:'የህዝብ ጤና ማይክሮባዮሎጂ መድረክ',
+  hi:'सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान मंच',
+  bn:'জনস্বাস্থ্য মাইক্রোবায়োলজি প্ল্যাটফর্ম',
+  id:'Platform Mikrobiologi Kesehatan Masyarakat',
+  uk:'Платформа мікробіології охорони здоров'я',
+  ha:'Dandamalin Kimiyyar Ƙwayoyin Cuta na Lafiyar Jama'a',
+  yo:'Pẹpẹ Microbiology Ilera Gbogbogbo',
+  ln:'Lisanga ya Microbiologie ya Santé ya Bato',
+  mg:'Sehatra Mikrobiolojia Fahasalamana Momba ny Vahoaka',
+  ne:'सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान मञ्च',
+  tl:'Plataporma ng Microbiology ng Pampublikong Kalusugan',
+  rw:'Urubuga rwa Microbiologie y'Ubuzima Rusange',
+  rn:'Urubuga rwa Microbiologie y'Amagara Rusange',
+  ny:'Nsanja ya Microbiology ya Zauza la Anthu',
+};
 
 // ── Rotating taglines (one per language) ──────────────────────────────────
 const TAGLINES = {
@@ -510,6 +537,7 @@ let rotateIndex = 0;
 let rotateTimer = null;
 
 function buildTaglines() {
+  // Build rotating taglines
   const wrap = document.getElementById('taglineWrap');
   wrap.innerHTML = '';
   LANGS.forEach((l, i) => {
@@ -517,18 +545,45 @@ function buildTaglines() {
     el.className = 'hero-tagline' + (i === 0 ? ' active' : '');
     el.id = 'tl-' + l.code;
     el.textContent = TAGLINES[l.code] || TAGLINES.en;
-    // RTL support for Arabic
     if (l.dir === 'rtl') el.style.direction = 'rtl';
     wrap.appendChild(el);
   });
+
+  // Build rotating eyebrows
+  const eyebrowEl = document.getElementById('heroEyebrow');
+  eyebrowEl.dataset.rotating = 'true';
 }
 
 function rotateLang() {
+  // Rotate tagline
   const current = document.querySelector('.hero-tagline.active');
   if (current) current.classList.remove('active');
   rotateIndex = (rotateIndex + 1) % LANGS.length;
   const next = document.getElementById('tl-' + LANGS[rotateIndex].code);
   if (next) next.classList.add('active');
+
+  // Rotate eyebrow text
+  const eyebrowEl = document.getElementById('heroEyebrow');
+  if (eyebrowEl && !selectedLang) {
+    const code = LANGS[rotateIndex].code;
+    eyebrowEl.textContent = EYEBROWS[code] || EYEBROWS.en;
+    eyebrowEl.style.direction = LANGS[rotateIndex].dir;
+  }
+
+  // Rotate multi-country flags in picker buttons
+  LANGS.forEach(l => {
+    if (l.flags.length > 1) {
+      const btn = document.getElementById('lb-' + l.code);
+      if (btn) {
+        const flagSpan = btn.querySelector('.btn-flag');
+        if (flagSpan) {
+          const idx = (parseInt(btn.dataset.flagIndex || '0') + 1) % l.flags.length;
+          btn.dataset.flagIndex = idx;
+          flagSpan.textContent = l.flags[idx];
+        }
+      }
+    }
+  });
 }
 
 function startRotation() {
@@ -545,7 +600,8 @@ function buildPicker() {
     const btn = document.createElement('button');
     btn.className = 'lang-btn';
     btn.id = 'lb-' + l.code;
-    btn.innerHTML = `<span class="lang-dot-sm"></span>${l.native}`;
+    btn.innerHTML = `<span class="btn-flag" style="font-size:16px;line-height:1">${l.flags[0]}</span>${l.native}`;
+    btn.dataset.flagIndex = "0";
     btn.onclick = () => selectLang(l.code);
     grid.appendChild(btn);
   });
