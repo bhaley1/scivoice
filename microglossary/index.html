@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MicroGlossary — Multilingual Microbiology Dictionary</title>
+<meta name="description" content="Searchable microbiology and public health terminology dictionary in 22 languages. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1a1814;--ink-2:#4a4640;--ink-3:#8a8480;
+  --paper:#faf8f4;--paper-2:#f2efe8;--paper-3:#e8e4db;
+  --rule:rgba(26,24,20,0.12);--rule-2:rgba(26,24,20,0.06);
+  --radius:4px;--radius-lg:8px;
+  --accent:#1a4d8f;
+  --highlight:#fff3cd;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.7;min-height:100vh;}
+
+header{border-bottom:1px solid var(--rule);padding:0 2rem;background:var(--paper);position:sticky;top:0;z-index:200;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.logo{font-family:'Lora',serif;font-size:18px;font-weight:600;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;}
+.logo span{color:#7c2d3e;}
+.header-right{display:flex;align-items:center;gap:1rem;}
+.lang-display{font-size:13px;color:var(--ink-3);letter-spacing:0.04em;}
+
+.hero{padding:4rem 2rem 3rem;background:var(--paper-2);border-bottom:1px solid var(--rule);text-align:center;}
+.hero-icon{font-size:48px;margin-bottom:1rem;}
+.hero h1{font-family:'Lora',serif;font-size:clamp(2rem,5vw,3rem);font-weight:600;line-height:1.15;letter-spacing:-0.025em;margin-bottom:1rem;}
+.hero-sub{font-size:15px;color:var(--ink-2);max-width:600px;margin:0 auto;font-weight:300;line-height:1.8;}
+
+.lang-picker-section{padding:2rem 2rem;background:var(--paper);border-bottom:1px solid var(--rule);}
+.lang-picker-inner{max-width:1000px;margin:0 auto;}
+.lang-picker-prompt{text-align:center;font-size:13px;color:var(--ink-3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;}
+.lang-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:99px;border:1.5px solid var(--rule);background:white;color:var(--ink-2);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+.lang-btn:hover{border-color:var(--ink-3);color:var(--ink);background:var(--paper-2);}
+.lang-btn.selected{background:var(--ink);color:white;border-color:var(--ink);}
+
+.main-content{display:none;max-width:1400px;margin:0 auto;padding:2rem;}
+.main-content.visible{display:block;animation:fadeUp 0.3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.controls{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
+.search-box{flex:1;min-width:280px;position:relative;}
+.search-input{width:100%;padding:12px 16px 12px 44px;border:1px solid var(--rule);border-radius:var(--radius-lg);background:white;color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color 0.15s;}
+.search-input:focus{outline:none;border-color:var(--ink-3);}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--ink-3);pointer-events:none;}
+
+.btn-change{padding:10px 20px;border:1px solid var(--rule);border-radius:var(--radius-lg);background:white;color:var(--ink-2);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+.btn-change:hover{border-color:var(--ink-3);color:var(--ink);}
+
+.btn-download{padding:10px 20px;border:1px solid var(--ink);border-radius:var(--radius-lg);background:var(--ink);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:opacity 0.15s;}
+.btn-download:hover{opacity:0.85;}
+
+.results-count{font-size:13px;color:var(--ink-3);margin-bottom:1.5rem;}
+
+.category-section{margin-bottom:3rem;}
+.category-header{font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--paper-3);}
+.term-list{display:grid;gap:1rem;}
+.term-card{background:white;border:1px solid var(--rule);border-radius:var(--radius-lg);padding:1.25rem;transition:box-shadow 0.15s;}
+.term-card:hover{box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.term-card.highlight{background:var(--highlight);border-color:#f0c040;}
+.term-name{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:0.5rem;display:flex;align-items:center;gap:8px;}
+.term-name-text{flex:1;}
+.audio-btn{background:none;border:none;cursor:pointer;font-size:18px;padding:4px;opacity:0.6;transition:opacity 0.15s;}
+.audio-btn:hover{opacity:1;}
+.audio-btn.playing{opacity:1;animation:pulse 1s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+.term-def{font-size:14px;color:var(--ink-2);line-height:1.7;}
+.highlight-text{background:var(--highlight);font-weight:500;padding:1px 2px;border-radius:2px;}
+
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--ink-3);}
+.empty-state-icon{font-size:48px;margin-bottom:1rem;opacity:0.5;}
+
+footer{border-top:1px solid var(--rule);padding:2rem;text-align:center;font-size:13px;color:var(--ink-3);margin-top:4rem;}
+footer a{color:var(--accent);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+
+@media(max-width:768px){
+  .controls{flex-direction:column;}
+  .search-box{min-width:100%;}
+  header{padding:0 1rem;}
+  .hero{padding:3rem 1rem 2rem;}
+  .main-content{padding:1.5rem 1rem;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="https://bhaley1.github.io/scivoice/" class="logo">Sci<span>Voice</span></a>
+    <div class="header-right">
+      <span class="lang-display" id="headerLang">Select a language</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-icon">📚</div>
+  <h1>MicroGlossary</h1>
+  <p class="hero-sub">A searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across 22 languages.</p>
+</div>
+
+<div class="lang-picker-section" id="langPicker">
+  <div class="lang-picker-inner">
+    <div class="lang-picker-prompt">SELECT YOUR LANGUAGE</div>
+    <div class="lang-grid" id="langGrid"></div>
+  </div>
+</div>
+
+<div class="main-content" id="mainContent">
+  <div class="controls">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search terms or definitions...">
+    </div>
+    <button class="btn-change" id="btnChange">Change language</button>
+    <button class="btn-download" id="btnDownload">📥 Download PDF</button>
+  </div>
+
+  <div class="results-count" id="resultsCount"></div>
+
+  <div id="glossaryContent"></div>
+
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <div class="empty-state-icon">🔍</div>
+    <p>No terms found matching your search.</p>
+  </div>
+</div>
+
+<footer>
+  <p>MicroGlossary is part of <a href="https://bhaley1.github.io/scivoice/" target="_blank">SciVoice</a> — multilingual public health microbiology tools.
+  Built by <a href="https://github.com/bhaley1" target="_blank">Bradd Haley, Ph.D.</a> · 
+  <a href="https://github.com/bhaley1/scivoice" target="_blank">GitHub</a></p>
+</footer>
+
+<script>
+const LANGUAGES = [
+  {code:'en',native:'English',english:'English',dir:'ltr'},
+  {code:'fr',native:'Français',english:'French',dir:'ltr'},
+  {code:'es',native:'Español',english:'Spanish',dir:'ltr'},
+  {code:'pt',native:'Português',english:'Portuguese',dir:'ltr'},
+  {code:'it',native:'Italiano',english:'Italian',dir:'ltr'},
+  {code:'ar',native:'العربية',english:'Arabic',dir:'rtl'},
+  {code:'zh',native:'中文',english:'Mandarin',dir:'ltr'},
+  {code:'sw',native:'Kiswahili',english:'Swahili',dir:'ltr'},
+  {code:'am',native:'አማርኛ',english:'Amharic',dir:'ltr'},
+  {code:'hi',native:'हिन्दी',english:'Hindi',dir:'ltr'},
+  {code:'bn',native:'বাংলা',english:'Bengali',dir:'ltr'},
+  {code:'id',native:'Bahasa Indonesia',english:'Indonesian',dir:'ltr'},
+  {code:'uk',native:'Українська',english:'Ukrainian',dir:'ltr'},
+  {code:'ha',native:'Hausa',english:'Hausa',dir:'ltr'},
+  {code:'yo',native:'Yorùbá',english:'Yoruba',dir:'ltr'},
+  {code:'ln',native:'Lingála',english:'Lingala',dir:'ltr'},
+  {code:'mg',native:'Malagasy',english:'Malagasy',dir:'ltr'},
+  {code:'ne',native:'नेपाली',english:'Nepali',dir:'ltr'},
+  {code:'tl',native:'Tagalog',english:'Tagalog',dir:'ltr'},
+  {code:'rw',native:'Kinyarwanda',english:'Kinyarwanda',dir:'ltr'},
+  {code:'rn',native:'Ikirundi',english:'Kirundi',dir:'ltr'},
+  {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr'}
+];
+
+let glossaryData = null;
+let selectedLang = null;
+let filteredData = null;
+let audioIndex = null;
+let currentAudio = null;
+let currentAudioBtn = null;
+
+// Build language picker
+function buildLangPicker() {
+  const grid = document.getElementById('langGrid');
+  LANGUAGES.forEach(lang => {
+    const btn = document.createElement('button');
+    btn.className = 'lang-btn';
+    btn.id = `langBtn-${lang.code}`;
+    btn.innerHTML = `<span>${lang.native}</span>`;
+    btn.onclick = () => selectLanguage(lang.code);
+    grid.appendChild(btn);
+  });
+}
+
+function selectLanguage(code) {
+  selectedLang = code;
+  const lang = LANGUAGES.find(l => l.code === code);
+  
+  LANGUAGES.forEach(l => {
+    const btn = document.getElementById(`langBtn-${l.code}`);
+    if (btn) btn.classList.toggle('selected', l.code === code);
+  });
+
+  document.documentElement.lang = code;
+  document.documentElement.dir = lang.dir;
+  document.getElementById('headerLang').textContent = lang.native;
+  
+  document.getElementById('langPicker').style.display = 'none';
+  document.getElementById('mainContent').classList.add('visible');
+  
+  renderGlossary();
+}
+
+function changeLang() {
+  document.getElementById('mainContent').classList.remove('visible');
+  document.getElementById('langPicker').style.display = 'block';
+}
+
+// Load glossary data
+async function loadGlossaryData() {
+  try {
+    const resp = await fetch('./glossary-data.json');
+    glossaryData = await resp.json();
+    console.log('Glossary data loaded:', Object.keys(glossaryData).length, 'languages');
+    
+    // Try to load audio index
+    try {
+      const audioResp = await fetch('./audio/audio-index.json');
+      if (audioResp.ok) {
+        audioIndex = await audioResp.json();
+        console.log('Audio index loaded:', Object.keys(audioIndex).length, 'languages');
+      }
+    } catch (e) {
+      console.log('Audio files not available (this is optional)');
+    }
+  } catch (e) {
+    console.error('Failed to load glossary data:', e);
+    document.getElementById('glossaryContent').innerHTML = 
+      '<div class="empty-state"><p>Error loading glossary data. Please refresh the page.</p></div>';
+  }
+}
+
+function renderGlossary(searchQuery = '') {
+  if (!glossaryData || !selectedLang) return;
+  
+  const langData = glossaryData[selectedLang];
+  if (!langData) {
+    console.error('No data for language:', selectedLang);
+    return;
+  }
+
+  const content = document.getElementById('glossaryContent');
+  const emptyState = document.getElementById('emptyState');
+  content.innerHTML = '';
+  
+  let totalTerms = 0;
+  let matchedTerms = 0;
+  const query = searchQuery.toLowerCase().trim();
+
+  langData.categories.forEach(cat => {
+    const matchingTerms = cat.terms.filter(term => {
+      totalTerms++;
+      if (!query) return true;
+      const termMatch = term.term.toLowerCase().includes(query);
+      const defMatch = term.definition.toLowerCase().includes(query);
+      return termMatch || defMatch;
+    });
+
+    if (matchingTerms.length === 0) return;
+    matchedTerms += matchingTerms.length;
+
+    const section = document.createElement('div');
+    section.className = 'category-section';
+    
+    const header = document.createElement('div');
+    header.className = 'category-header';
+    header.textContent = cat.category;
+    section.appendChild(header);
+
+    const list = document.createElement('div');
+    list.className = 'term-list';
+    
+    matchingTerms.forEach((term, idx) => {
+      const card = document.createElement('div');
+      card.className = 'term-card';
+      
+      const name = document.createElement('div');
+      name.className = 'term-name';
+      
+      const nameText = document.createElement('span');
+      nameText.className = 'term-name-text';
+      nameText.innerHTML = highlightText(term.term, query);
+      name.appendChild(nameText);
+      
+      // Add audio button if audio files are available
+      if (audioIndex && audioIndex[selectedLang]) {
+        const termId = String(idx + 1).padStart(4, '0');
+        const sanitized = sanitizeFilename(term.term);
+        const audioFile = `${sanitized}_${termId}.mp3`;
+        
+        if (audioIndex[selectedLang].includes(audioFile)) {
+          const audioBtn = document.createElement('button');
+          audioBtn.className = 'audio-btn';
+          audioBtn.innerHTML = '🔊';
+          audioBtn.title = 'Listen to pronunciation';
+          audioBtn.onclick = (e) => {
+            e.stopPropagation();
+            playAudio(`./audio/${selectedLang}/${audioFile}`, audioBtn);
+          };
+          name.appendChild(audioBtn);
+        }
+      }
+      
+      const def = document.createElement('div');
+      def.className = 'term-def';
+      def.innerHTML = highlightText(term.definition, query);
+      
+      card.appendChild(name);
+      card.appendChild(def);
+      list.appendChild(card);
+    });
+
+    section.appendChild(list);
+    content.appendChild(section);
+  });
+
+  // Update results count
+  const countEl = document.getElementById('resultsCount');
+  if (query) {
+    countEl.textContent = `Showing ${matchedTerms} of ${totalTerms} terms`;
+  } else {
+    countEl.textContent = `${totalTerms} terms across ${langData.categories.length} categories`;
+  }
+
+  // Toggle empty state
+  emptyState.style.display = matchedTerms === 0 ? 'block' : 'none';
+}
+
+function highlightText(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+  return text.replace(regex, '<span class="highlight-text">$1</span>');
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function sanitizeFilename(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .slice(0, 50);
+}
+
+function playAudio(audioPath, buttonEl) {
+  // Stop current audio if playing
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    if (currentAudioBtn) {
+      currentAudioBtn.classList.remove('playing');
+    }
+  }
+  
+  // If clicking the same button, just stop
+  if (currentAudioBtn === buttonEl && currentAudio) {
+    currentAudio = null;
+    currentAudioBtn = null;
+    return;
+  }
+  
+  // Play new audio
+  currentAudio = new Audio(audioPath);
+  currentAudioBtn = buttonEl;
+  buttonEl.classList.add('playing');
+  
+  currentAudio.play().catch(err => {
+    console.error('Audio playback failed:', err);
+    buttonEl.classList.remove('playing');
+  });
+  
+  currentAudio.onended = () => {
+    buttonEl.classList.remove('playing');
+    currentAudio = null;
+    currentAudioBtn = null;
+  };
+}
+
+function downloadPDF() {
+  alert('PDF download feature coming soon! For now, you can use your browser\'s Print > Save as PDF.');
+  // TODO: Implement PDF generation using jsPDF or similar
+}
+
+// Event listeners
+document.getElementById('btnChange').addEventListener('click', changeLang);
+document.getElementById('btnDownload').addEventListener('click', downloadPDF);
+
+let searchTimeout;
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    renderGlossary(e.target.value);
+  }, 300);
+});
+
+// Initialize
+buildLangPicker();
+loadGlossaryData();
+</script>
+</body>
+</html>
