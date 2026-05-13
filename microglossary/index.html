@@ -11,12 +11,12 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --ink:#1a1814;--ink-2:#4a4640;--ink-3:#8a8480;
-  --paper:#faf8f4;--paper-2:#f2efe8;--paper-3:#e8e4db;
-  --rule:rgba(26,24,20,0.12);--rule-2:rgba(26,24,20,0.06);
-  --radius:4px;--radius-lg:8px;
-  --accent:#1a4d8f;
-  --highlight:#fff3cd;
+ --ink:#1a1814;--ink-2:#4a4640;--ink-3:#8a8480;
+ --paper:#faf8f4;--paper-2:#f2efe8;--paper-3:#e8e4db;
+ --rule:rgba(26,24,20,0.12);--rule-2:rgba(26,24,20,0.06);
+ --radius:4px;--radius-lg:8px;
+ --accent:#1a4d8f;
+ --highlight:#fff3cd;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.7;min-height:100vh;}
@@ -82,21 +82,21 @@ footer a{color:var(--accent);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
 
 @media(max-width:768px){
-  .controls{flex-direction:column;}
-  .search-box{min-width:100%;}
-  header{padding:0 1rem;}
-  .hero{padding:3rem 1rem 2rem;}
-  .main-content{padding:1.5rem 1rem;}
+ .controls{flex-direction:column;}
+ .search-box{min-width:100%;}
+ header{padding:0 1rem;}
+ .hero{padding:3rem 1rem 2rem;}
+ .main-content{padding:1.5rem 1rem;}
 }
 
 .home-btn{
-  position:fixed;bottom:1.5rem;right:1.5rem;
-  width:48px;height:48px;border-radius:50%;
-  background:var(--ink);color:white;
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;text-decoration:none;
-  box-shadow:0 4px 16px rgba(0,0,0,0.2);
-  transition:all 0.2s;z-index:999;
+ position:fixed;bottom:1.5rem;right:1.5rem;
+ width:48px;height:48px;border-radius:50%;
+ background:var(--ink);color:white;
+ display:flex;align-items:center;justify-content:center;
+ font-size:20px;text-decoration:none;
+ box-shadow:0 4px 16px rgba(0,0,0,0.2);
+ transition:all 0.2s;z-index:999;
 }
 .home-btn:hover{background:var(--accent);transform:scale(1.08);}
 .home-btn title{display:none;}
@@ -105,77 +105,77 @@ footer a:hover{text-decoration:underline;}
 <body>
 
 <header>
-  <div class="header-inner">
-    <a href="https://bhaley1.github.io/scivoice/" class="logo">Sci<span>Voice</span></a>
-    <div class="header-right">
-      <span class="lang-display" id="headerLang">Select a language</span>
-    </div>
+ <div class="header-inner">
+  <a href="https://Anonymous.github.io/scivoice/" class="logo">Sci<span>Voice</span></a>
+  <div class="header-right">
+   <span class="lang-display" id="headerLang">Select a language</span>
   </div>
+ </div>
 </header>
 
 <div class="hero">
-  <div class="hero-icon">📚</div>
-  <h1>MicroGlossary</h1>
-  <p class="hero-sub">A searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across 22 languages.</p>
+ <div class="hero-icon">📚</div>
+ <h1>MicroGlossary</h1>
+ <p class="hero-sub">A searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across 22 languages.</p>
 </div>
 
 <div class="lang-picker-section" id="langPicker">
-  <div class="lang-picker-inner">
-    <div class="lang-picker-prompt">SELECT YOUR LANGUAGE</div>
-    <div class="lang-grid" id="langGrid"></div>
-  </div>
+ <div class="lang-picker-inner">
+  <div class="lang-picker-prompt">SELECT YOUR LANGUAGE</div>
+  <div class="lang-grid" id="langGrid"></div>
+ </div>
 </div>
 
 <div class="main-content" id="mainContent">
-  <div class="controls">
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" class="search-input" id="searchInput" placeholder="Search terms or definitions...">
-    </div>
-    <button class="btn-change" id="btnChange">Change language</button>
-    <button class="btn-download" id="btnDownload">📥 Download PDF</button>
+ <div class="controls">
+  <div class="search-box">
+   <span class="search-icon">🔍</span>
+   <input type="text" class="search-input" id="searchInput" placeholder="Search terms or definitions...">
   </div>
+  <button class="btn-change" id="btnChange">Change language</button>
+  <button class="btn-download" id="btnDownload">📥 Download PDF</button>
+ </div>
 
-  <div class="results-count" id="resultsCount"></div>
+ <div class="results-count" id="resultsCount"></div>
 
-  <div id="glossaryContent"></div>
+ <div id="glossaryContent"></div>
 
-  <div class="empty-state" id="emptyState" style="display:none;">
-    <div class="empty-state-icon">🔍</div>
-    <p>No terms found matching your search.</p>
-  </div>
+ <div class="empty-state" id="emptyState" style="display:none;">
+  <div class="empty-state-icon">🔍</div>
+  <p>No terms found matching your search.</p>
+ </div>
 </div>
 
 <footer>
-  <p>MicroGlossary is part of <a href="https://bhaley1.github.io/scivoice/" target="_blank">SciVoice</a> — multilingual public health microbiology tools.
-  Built by <a href="https://github.com/bhaley1" target="_blank">Bradd Haley, Ph.D.</a> · 
-  <a href="https://github.com/bhaley1/scivoice" target="_blank">GitHub</a></p>
+ <p>MicroGlossary is part of <a href="https://Anonymous.github.io/scivoice/" target="_blank">SciVoice</a> — multilingual public health microbiology tools.
+ Built by <a href="https://github.com/Anonymous" target="_blank">Anonymous, Ph.D.</a> · 
+ <a href="https://github.com/Anonymous/scivoice" target="_blank">GitHub</a></p>
 </footer>
 
 <script>
 const LANGUAGES = [
-  {code:'en',native:'English',english:'English',dir:'ltr'},
-  {code:'fr',native:'Français',english:'French',dir:'ltr'},
-  {code:'es',native:'Español',english:'Spanish',dir:'ltr'},
-  {code:'pt',native:'Português',english:'Portuguese',dir:'ltr'},
-  {code:'it',native:'Italiano',english:'Italian',dir:'ltr'},
-  {code:'ar',native:'العربية',english:'Arabic',dir:'rtl'},
-  {code:'zh',native:'中文',english:'Mandarin',dir:'ltr'},
-  {code:'sw',native:'Kiswahili',english:'Swahili',dir:'ltr'},
-  {code:'am',native:'አማርኛ',english:'Amharic',dir:'ltr'},
-  {code:'hi',native:'हिन्दी',english:'Hindi',dir:'ltr'},
-  {code:'bn',native:'বাংলা',english:'Bengali',dir:'ltr'},
-  {code:'id',native:'Bahasa Indonesia',english:'Indonesian',dir:'ltr'},
-  {code:'uk',native:'Українська',english:'Ukrainian',dir:'ltr'},
-  {code:'ha',native:'Hausa',english:'Hausa',dir:'ltr'},
-  {code:'yo',native:'Yorùbá',english:'Yoruba',dir:'ltr'},
-  {code:'ln',native:'Lingála',english:'Lingala',dir:'ltr'},
-  {code:'mg',native:'Malagasy',english:'Malagasy',dir:'ltr'},
-  {code:'ne',native:'नेपाली',english:'Nepali',dir:'ltr'},
-  {code:'tl',native:'Tagalog',english:'Tagalog',dir:'ltr'},
-  {code:'rw',native:'Kinyarwanda',english:'Kinyarwanda',dir:'ltr'},
-  {code:'rn',native:'Ikirundi',english:'Kirundi',dir:'ltr'},
-  {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr'}
+ {code:'en',native:'English',english:'English',dir:'ltr'},
+ {code:'fr',native:'Français',english:'French',dir:'ltr'},
+ {code:'es',native:'Español',english:'Spanish',dir:'ltr'},
+ {code:'pt',native:'Português',english:'Portuguese',dir:'ltr'},
+ {code:'it',native:'Italiano',english:'Italian',dir:'ltr'},
+ {code:'ar',native:'العربية',english:'Arabic',dir:'rtl'},
+ {code:'zh',native:'中文',english:'Mandarin',dir:'ltr'},
+ {code:'sw',native:'Kiswahili',english:'Swahili',dir:'ltr'},
+ {code:'am',native:'አማርኛ',english:'Amharic',dir:'ltr'},
+ {code:'hi',native:'हिन्दी',english:'Hindi',dir:'ltr'},
+ {code:'bn',native:'বাংলা',english:'Bengali',dir:'ltr'},
+ {code:'id',native:'Bahasa Indonesia',english:'Indonesian',dir:'ltr'},
+ {code:'uk',native:'Українська',english:'Ukrainian',dir:'ltr'},
+ {code:'ha',native:'Hausa',english:'Hausa',dir:'ltr'},
+ {code:'yo',native:'Yorùbá',english:'Yoruba',dir:'ltr'},
+ {code:'ln',native:'Lingála',english:'Lingala',dir:'ltr'},
+ {code:'mg',native:'Malagasy',english:'Malagasy',dir:'ltr'},
+ {code:'ne',native:'नेपाली',english:'Nepali',dir:'ltr'},
+ {code:'tl',native:'Tagalog',english:'Tagalog',dir:'ltr'},
+ {code:'rw',native:'Kinyarwanda',english:'Kinyarwanda',dir:'ltr'},
+ {code:'rn',native:'Ikirundi',english:'Kirundi',dir:'ltr'},
+ {code:'ny',native:'Chichewa',english:'Chichewa',dir:'ltr'}
 ];
 
 let glossaryData = null;
@@ -187,216 +187,216 @@ let currentAudioBtn = null;
 
 // Build language picker
 function buildLangPicker() {
-  const grid = document.getElementById('langGrid');
-  LANGUAGES.forEach(lang => {
-    const btn = document.createElement('button');
-    btn.className = 'lang-btn';
-    btn.id = `langBtn-${lang.code}`;
-    btn.innerHTML = `<span>${lang.native}</span>`;
-    btn.onclick = () => selectLanguage(lang.code);
-    grid.appendChild(btn);
-  });
+ const grid = document.getElementById('langGrid');
+ LANGUAGES.forEach(lang => {
+  const btn = document.createElement('button');
+  btn.className = 'lang-btn';
+  btn.id = `langBtn-${lang.code}`;
+  btn.innerHTML = `<span>${lang.native}</span>`;
+  btn.onclick = () => selectLanguage(lang.code);
+  grid.appendChild(btn);
+ });
 }
 
 function selectLanguage(code) {
-  selectedLang = code;
-  const lang = LANGUAGES.find(l => l.code === code);
-  
-  LANGUAGES.forEach(l => {
-    const btn = document.getElementById(`langBtn-${l.code}`);
-    if (btn) btn.classList.toggle('selected', l.code === code);
-  });
+ selectedLang = code;
+ const lang = LANGUAGES.find(l => l.code === code);
+ 
+ LANGUAGES.forEach(l => {
+  const btn = document.getElementById(`langBtn-${l.code}`);
+  if (btn) btn.classList.toggle('selected', l.code === code);
+ });
 
-  document.documentElement.lang = code;
-  document.documentElement.dir = lang.dir;
-  document.getElementById('headerLang').textContent = lang.native;
-  
-  document.getElementById('langPicker').style.display = 'none';
-  document.getElementById('mainContent').classList.add('visible');
-  
-  renderGlossary();
+ document.documentElement.lang = code;
+ document.documentElement.dir = lang.dir;
+ document.getElementById('headerLang').textContent = lang.native;
+ 
+ document.getElementById('langPicker').style.display = 'none';
+ document.getElementById('mainContent').classList.add('visible');
+ 
+ renderGlossary();
 }
 
 function changeLang() {
-  document.getElementById('mainContent').classList.remove('visible');
-  document.getElementById('langPicker').style.display = 'block';
+ document.getElementById('mainContent').classList.remove('visible');
+ document.getElementById('langPicker').style.display = 'block';
 }
 
 // Load glossary data
 async function loadGlossaryData() {
+ try {
+  const resp = await fetch('./glossary-data.json');
+  glossaryData = await resp.json();
+  console.log('Glossary data loaded:', Object.keys(glossaryData).length, 'languages');
+  
+  // Try to load audio index
   try {
-    const resp = await fetch('./glossary-data.json');
-    glossaryData = await resp.json();
-    console.log('Glossary data loaded:', Object.keys(glossaryData).length, 'languages');
-    
-    // Try to load audio index
-    try {
-      const audioResp = await fetch('./audio/audio-index.json');
-      if (audioResp.ok) {
-        audioIndex = await audioResp.json();
-        console.log('Audio index loaded:', Object.keys(audioIndex).length, 'languages');
-      }
-    } catch (e) {
-      console.log('Audio files not available (this is optional)');
-    }
+   const audioResp = await fetch('./audio/audio-index.json');
+   if (audioResp.ok) {
+    audioIndex = await audioResp.json();
+    console.log('Audio index loaded:', Object.keys(audioIndex).length, 'languages');
+   }
   } catch (e) {
-    console.error('Failed to load glossary data:', e);
-    document.getElementById('glossaryContent').innerHTML = 
-      '<div class="empty-state"><p>Error loading glossary data. Please refresh the page.</p></div>';
+   console.log('Audio files not available (this is optional)');
   }
+ } catch (e) {
+  console.error('Failed to load glossary data:', e);
+  document.getElementById('glossaryContent').innerHTML = 
+   '<div class="empty-state"><p>Error loading glossary data. Please refresh the page.</p></div>';
+ }
 }
 
 function renderGlossary(searchQuery = '') {
-  if (!glossaryData || !selectedLang) return;
-  
-  const langData = glossaryData[selectedLang];
-  if (!langData) {
-    console.error('No data for language:', selectedLang);
-    return;
-  }
+ if (!glossaryData || !selectedLang) return;
+ 
+ const langData = glossaryData[selectedLang];
+ if (!langData) {
+  console.error('No data for language:', selectedLang);
+  return;
+ }
 
-  const content = document.getElementById('glossaryContent');
-  const emptyState = document.getElementById('emptyState');
-  content.innerHTML = '';
-  
-  let totalTerms = 0;
-  let matchedTerms = 0;
-  const query = searchQuery.toLowerCase().trim();
+ const content = document.getElementById('glossaryContent');
+ const emptyState = document.getElementById('emptyState');
+ content.innerHTML = '';
+ 
+ let totalTerms = 0;
+ let matchedTerms = 0;
+ const query = searchQuery.toLowerCase().trim();
 
-  langData.categories.forEach(cat => {
-    const matchingTerms = cat.terms.filter(term => {
-      totalTerms++;
-      if (!query) return true;
-      const termMatch = term.term.toLowerCase().includes(query);
-      const defMatch = term.definition.toLowerCase().includes(query);
-      return termMatch || defMatch;
-    });
-
-    if (matchingTerms.length === 0) return;
-    matchedTerms += matchingTerms.length;
-
-    const section = document.createElement('div');
-    section.className = 'category-section';
-    
-    const header = document.createElement('div');
-    header.className = 'category-header';
-    header.textContent = cat.category;
-    section.appendChild(header);
-
-    const list = document.createElement('div');
-    list.className = 'term-list';
-    
-    matchingTerms.forEach((term, idx) => {
-      const card = document.createElement('div');
-      card.className = 'term-card';
-      
-      const name = document.createElement('div');
-      name.className = 'term-name';
-      
-      const nameText = document.createElement('span');
-      nameText.className = 'term-name-text';
-      nameText.innerHTML = highlightText(term.term, query);
-      name.appendChild(nameText);
-      
-      // Add audio button if audio files are available
-      if (audioIndex && audioIndex[selectedLang]) {
-        const termId = String(idx + 1).padStart(4, '0');
-        const sanitized = sanitizeFilename(term.term);
-        const audioFile = `${sanitized}_${termId}.mp3`;
-        
-        if (audioIndex[selectedLang].includes(audioFile)) {
-          const audioBtn = document.createElement('button');
-          audioBtn.className = 'audio-btn';
-          audioBtn.innerHTML = '🔊';
-          audioBtn.title = 'Listen to pronunciation';
-          audioBtn.onclick = (e) => {
-            e.stopPropagation();
-            playAudio(`./audio/${selectedLang}/${audioFile}`, audioBtn);
-          };
-          name.appendChild(audioBtn);
-        }
-      }
-      
-      const def = document.createElement('div');
-      def.className = 'term-def';
-      def.innerHTML = highlightText(term.definition, query);
-      
-      card.appendChild(name);
-      card.appendChild(def);
-      list.appendChild(card);
-    });
-
-    section.appendChild(list);
-    content.appendChild(section);
+ langData.categories.forEach(cat => {
+  const matchingTerms = cat.terms.filter(term => {
+   totalTerms++;
+   if (!query) return true;
+   const termMatch = term.term.toLowerCase().includes(query);
+   const defMatch = term.definition.toLowerCase().includes(query);
+   return termMatch || defMatch;
   });
 
-  // Update results count
-  const countEl = document.getElementById('resultsCount');
-  if (query) {
-    countEl.textContent = `Showing ${matchedTerms} of ${totalTerms} terms`;
-  } else {
-    countEl.textContent = `${totalTerms} terms across ${langData.categories.length} categories`;
-  }
+  if (matchingTerms.length === 0) return;
+  matchedTerms += matchingTerms.length;
 
-  // Toggle empty state
-  emptyState.style.display = matchedTerms === 0 ? 'block' : 'none';
+  const section = document.createElement('div');
+  section.className = 'category-section';
+  
+  const header = document.createElement('div');
+  header.className = 'category-header';
+  header.textContent = cat.category;
+  section.appendChild(header);
+
+  const list = document.createElement('div');
+  list.className = 'term-list';
+  
+  matchingTerms.forEach((term, idx) => {
+   const card = document.createElement('div');
+   card.className = 'term-card';
+   
+   const name = document.createElement('div');
+   name.className = 'term-name';
+   
+   const nameText = document.createElement('span');
+   nameText.className = 'term-name-text';
+   nameText.innerHTML = highlightText(term.term, query);
+   name.appendChild(nameText);
+   
+   // Add audio button if audio files are available
+   if (audioIndex && audioIndex[selectedLang]) {
+    const termId = String(idx + 1).padStart(4, '0');
+    const sanitized = sanitizeFilename(term.term);
+    const audioFile = `${sanitized}_${termId}.mp3`;
+    
+    if (audioIndex[selectedLang].includes(audioFile)) {
+     const audioBtn = document.createElement('button');
+     audioBtn.className = 'audio-btn';
+     audioBtn.innerHTML = '🔊';
+     audioBtn.title = 'Listen to pronunciation';
+     audioBtn.onclick = (e) => {
+      e.stopPropagation();
+      playAudio(`./audio/${selectedLang}/${audioFile}`, audioBtn);
+     };
+     name.appendChild(audioBtn);
+    }
+   }
+   
+   const def = document.createElement('div');
+   def.className = 'term-def';
+   def.innerHTML = highlightText(term.definition, query);
+   
+   card.appendChild(name);
+   card.appendChild(def);
+   list.appendChild(card);
+  });
+
+  section.appendChild(list);
+  content.appendChild(section);
+ });
+
+ // Update results count
+ const countEl = document.getElementById('resultsCount');
+ if (query) {
+  countEl.textContent = `Showing ${matchedTerms} of ${totalTerms} terms`;
+ } else {
+  countEl.textContent = `${totalTerms} terms across ${langData.categories.length} categories`;
+ }
+
+ // Toggle empty state
+ emptyState.style.display = matchedTerms === 0 ? 'block' : 'none';
 }
 
 function highlightText(text, query) {
-  if (!query) return text;
-  const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
-  return text.replace(regex, '<span class="highlight-text">$1</span>');
+ if (!query) return text;
+ const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+ return text.replace(regex, '<span class="highlight-text">$1</span>');
 }
 
 function escapeRegex(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+ return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function sanitizeFilename(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '_')
-    .replace(/^_+|_+$/g, '')
-    .slice(0, 50);
+ return text
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '_')
+  .replace(/^_+|_+$/g, '')
+  .slice(0, 50);
 }
 
 function playAudio(audioPath, buttonEl) {
-  // Stop current audio if playing
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-    if (currentAudioBtn) {
-      currentAudioBtn.classList.remove('playing');
-    }
+ // Stop current audio if playing
+ if (currentAudio) {
+  currentAudio.pause();
+  currentAudio.currentTime = 0;
+  if (currentAudioBtn) {
+   currentAudioBtn.classList.remove('playing');
   }
-  
-  // If clicking the same button, just stop
-  if (currentAudioBtn === buttonEl && currentAudio) {
-    currentAudio = null;
-    currentAudioBtn = null;
-    return;
-  }
-  
-  // Play new audio
-  currentAudio = new Audio(audioPath);
-  currentAudioBtn = buttonEl;
-  buttonEl.classList.add('playing');
-  
-  currentAudio.play().catch(err => {
-    console.error('Audio playback failed:', err);
-    buttonEl.classList.remove('playing');
-  });
-  
-  currentAudio.onended = () => {
-    buttonEl.classList.remove('playing');
-    currentAudio = null;
-    currentAudioBtn = null;
-  };
+ }
+ 
+ // If clicking the same button, just stop
+ if (currentAudioBtn === buttonEl && currentAudio) {
+  currentAudio = null;
+  currentAudioBtn = null;
+  return;
+ }
+ 
+ // Play new audio
+ currentAudio = new Audio(audioPath);
+ currentAudioBtn = buttonEl;
+ buttonEl.classList.add('playing');
+ 
+ currentAudio.play().catch(err => {
+  console.error('Audio playback failed:', err);
+  buttonEl.classList.remove('playing');
+ });
+ 
+ currentAudio.onended = () => {
+  buttonEl.classList.remove('playing');
+  currentAudio = null;
+  currentAudioBtn = null;
+ };
 }
 
 function downloadPDF() {
-  alert('PDF download feature coming soon! For now, you can use your browser\'s Print > Save as PDF.');
-  // TODO: Implement PDF generation using jsPDF or similar
+ alert('PDF download feature coming soon! For now, you can use your browser\'s Print > Save as PDF.');
+ // TODO: Implement PDF generation using jsPDF or similar
 }
 
 // Event listeners
@@ -405,10 +405,10 @@ document.getElementById('btnDownload').addEventListener('click', downloadPDF);
 
 let searchTimeout;
 document.getElementById('searchInput').addEventListener('input', (e) => {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => {
-    renderGlossary(e.target.value);
-  }, 300);
+ clearTimeout(searchTimeout);
+ searchTimeout = setTimeout(() => {
+  renderGlossary(e.target.value);
+ }, 300);
 });
 
 // Initialize
@@ -445,33 +445,33 @@ loadGlossaryData();
 </style>
 
 <div class="voice-panel" id="voicePanel">
-  <div class="voice-panel-header">
-    <div class="voice-panel-title"><span>📚</span><span>MicroGlossary Voice</span></div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <span style="font-size:11px;opacity:0.6;" id="vpLang">English</span>
-      <button class="voice-close" onclick="closeVoice()">✕</button>
-    </div>
+ <div class="voice-panel-header">
+  <div class="voice-panel-title"><span>📚</span><span>MicroGlossary Voice</span></div>
+  <div style="display:flex;align-items:center;gap:10px;">
+   <span style="font-size:11px;opacity:0.6;" id="vpLang">English</span>
+   <button class="voice-close" onclick="closeVoice()">✕</button>
   </div>
-  <div class="voice-messages" id="voiceMessages">
-    <div class="voice-msg status">Ask me to define any microbiology term in your language — e.g. "What is a plasmid?"</div>
-  </div>
-  <div class="voice-footer">
-    <input class="voice-input" id="voiceInput" placeholder="Type or tap 🎤…" onkeydown="if(event.key==='Enter')sendVoiceMsg()">
-    <button class="voice-send" onclick="sendVoiceMsg()">→</button>
-  </div>
-  <div class="voice-hint">🎤 Tap mic · Ask for any glossary term</div>
+ </div>
+ <div class="voice-messages" id="voiceMessages">
+  <div class="voice-msg status">Ask me to define any microbiology term in your language — e.g. "What is a plasmid?"</div>
+ </div>
+ <div class="voice-footer">
+  <input class="voice-input" id="voiceInput" placeholder="Type or tap 🎤…" onkeydown="if(event.key==='Enter')sendVoiceMsg()">
+  <button class="voice-send" onclick="sendVoiceMsg()">→</button>
+ </div>
+ <div class="voice-hint">🎤 Tap mic · Ask for any glossary term</div>
 </div>
 
-<a href="https://bhaley1.github.io/scivoice/" class="home-btn" aria-label="Back to SciVoice" title="Back to SciVoice">🏠</a>
+<a href="https://Anonymous.github.io/scivoice/" class="home-btn" aria-label="Back to SciVoice" title="Back to SciVoice">🏠</a>
 <button class="voice-btn" id="voiceBtn" title="Voice Search">🎤</button>
 
 <script>
 const GLOSS_LANG_MAP = {
-  en:"en-US",fr:"fr-FR",es:"es-ES",pt:"pt-BR",it:"it-IT",
-  ar:"ar-SA",zh:"zh-CN",sw:"sw-KE",am:"am-ET",hi:"hi-IN",
-  bn:"bn-BD",id:"id-ID",uk:"uk-UA",ha:"ha-NG",yo:"yo-NG",
-  ln:"fr-CD",mg:"fr-MG",ne:"ne-NP",tl:"fil-PH",rw:"rw-RW",
-  rn:"fr-BI",ny:"ny-MW",
+ en:"en-US",fr:"fr-FR",es:"es-ES",pt:"pt-BR",it:"it-IT",
+ ar:"ar-SA",zh:"zh-CN",sw:"sw-KE",am:"am-ET",hi:"hi-IN",
+ bn:"bn-BD",id:"id-ID",uk:"uk-UA",ha:"ha-NG",yo:"yo-NG",
+ ln:"fr-CD",mg:"fr-MG",ne:"ne-NP",tl:"fil-PH",rw:"rw-RW",
+ rn:"fr-BI",ny:"ny-MW",
 };
 
 let gVoiceOpen=false, gRecog=null, gListening=false, gSpeaking=false;
@@ -480,102 +480,102 @@ const gSynth = window.speechSynthesis;
 function getGLang(){ return GLOSS_LANG_MAP[currentLang||'en']||'en-US'; }
 
 document.getElementById('voiceBtn').addEventListener('click',function(){
-  if(!gVoiceOpen){gVoiceOpen=true;document.getElementById('voicePanel').classList.add('open');return;}
-  if(gListening){stopGListening();return;}
-  startGListening();
+ if(!gVoiceOpen){gVoiceOpen=true;document.getElementById('voicePanel').classList.add('open');return;}
+ if(gListening){stopGListening();return;}
+ startGListening();
 });
 
 function closeVoice(){
-  gVoiceOpen=false;
-  document.getElementById('voicePanel').classList.remove('open');
-  stopGListening();stopGSpeaking();
+ gVoiceOpen=false;
+ document.getElementById('voicePanel').classList.remove('open');
+ stopGListening();stopGSpeaking();
 }
 
 function startGListening(){
-  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SR){addGMsg("Type your question below — speech not supported in this browser.","status");return;}
-  if(gSpeaking)stopGSpeaking();
-  gRecog=new SR();
-  gRecog.lang=getGLang();
-  gRecog.continuous=false;gRecog.interimResults=false;
-  gRecog.onstart=()=>{gListening=true;document.getElementById('voiceBtn').classList.add('listening');addGMsg("Listening…","status");};
-  gRecog.onresult=e=>{
-    const t=e.results[0][0].transcript;
-    removeGStatus();
-    document.getElementById('voiceInput').value=t;
-    sendVoiceMsg();
-  };
-  gRecog.onerror=e=>{gListening=false;document.getElementById('voiceBtn').classList.remove('listening');removeGStatus();if(e.error!=='aborted')addGMsg("Couldn’t hear that. Try again.","status");};
-  gRecog.onend=()=>{gListening=false;document.getElementById('voiceBtn').classList.remove('listening');};
-  gRecog.start();
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){addGMsg("Type your question below — speech not supported in this browser.","status");return;}
+ if(gSpeaking)stopGSpeaking();
+ gRecog=new SR();
+ gRecog.lang=getGLang();
+ gRecog.continuous=false;gRecog.interimResults=false;
+ gRecog.onstart=()=>{gListening=true;document.getElementById('voiceBtn').classList.add('listening');addGMsg("Listening…","status");};
+ gRecog.onresult=e=>{
+  const t=e.results[0][0].transcript;
+  removeGStatus();
+  document.getElementById('voiceInput').value=t;
+  sendVoiceMsg();
+ };
+ gRecog.onerror=e=>{gListening=false;document.getElementById('voiceBtn').classList.remove('listening');removeGStatus();if(e.error!=='aborted')addGMsg("Couldn’t hear that. Try again.","status");};
+ gRecog.onend=()=>{gListening=false;document.getElementById('voiceBtn').classList.remove('listening');};
+ gRecog.start();
 }
 
 function stopGListening(){if(gRecog){gRecog.abort();gRecog=null;}gListening=false;document.getElementById('voiceBtn').classList.remove('listening');}
 
 function speakG(text){
-  stopGSpeaking();
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang=getGLang();u.rate=0.95;
-  u.onstart=()=>{gSpeaking=true;document.getElementById('voiceBtn').classList.add('speaking');};
-  u.onend=u.onerror=()=>{gSpeaking=false;document.getElementById('voiceBtn').classList.remove('speaking');};
-  gSynth.speak(u);
+ stopGSpeaking();
+ const u=new SpeechSynthesisUtterance(text);
+ u.lang=getGLang();u.rate=0.95;
+ u.onstart=()=>{gSpeaking=true;document.getElementById('voiceBtn').classList.add('speaking');};
+ u.onend=u.onerror=()=>{gSpeaking=false;document.getElementById('voiceBtn').classList.remove('speaking');};
+ gSynth.speak(u);
 }
 
 function stopGSpeaking(){if(gSynth)gSynth.cancel();gSpeaking=false;document.getElementById('voiceBtn').classList.remove('speaking');}
 
 function addGMsg(text,role){
-  const msgs=document.getElementById('voiceMessages');
-  const d=document.createElement('div');
-  d.className='voice-msg '+role;d.textContent=text;
-  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;
+ const msgs=document.getElementById('voiceMessages');
+ const d=document.createElement('div');
+ d.className='voice-msg '+role;d.textContent=text;
+ msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;
 }
 
 function removeGStatus(){document.querySelectorAll('.voice-msg.status').forEach(el=>el.remove());}
 
 async function sendVoiceMsg(){
-  const inp=document.getElementById('voiceInput');
-  const text=inp.value.trim();
-  if(!text){startGListening();return;}
-  inp.value='';
-  removeGStatus();
-  addGMsg(text,'user');
-  const thinking=addGMsg('…','status');
+ const inp=document.getElementById('voiceInput');
+ const text=inp.value.trim();
+ if(!text){startGListening();return;}
+ inp.value='';
+ removeGStatus();
+ addGMsg(text,'user');
+ const thinking=addGMsg('…','status');
 
-  // Look up in glossary data first for instant local answers
-  let glossaryContext = '';
-  if(typeof glossaryData !== 'undefined' && glossaryData.terms){
-    const q = text.toLowerCase();
-    const matches = glossaryData.terms.filter(t =>
-      t.term.toLowerCase().includes(q) || q.includes(t.term.toLowerCase())
-    ).slice(0,3);
-    if(matches.length > 0){
-      glossaryContext = 'Relevant glossary entries:\n' + matches.map(m =>
-        m.term + ': ' + (m.translations && m.translations[currentLang||'en'] ? m.translations[currentLang||'en'].definition : m.definition||'')
-      ).join('\n');
-    }
+ // Look up in glossary data first for instant local answers
+ let glossaryContext = '';
+ if(typeof glossaryData !== 'undefined' && glossaryData.terms){
+  const q = text.toLowerCase();
+  const matches = glossaryData.terms.filter(t =>
+   t.term.toLowerCase().includes(q) || q.includes(t.term.toLowerCase())
+  ).slice(0,3);
+  if(matches.length > 0){
+   glossaryContext = 'Relevant glossary entries:\n' + matches.map(m =>
+    m.term + ': ' + (m.translations && m.translations[currentLang||'en'] ? m.translations[currentLang||'en'].definition : m.definition||'')
+   ).join('\n');
   }
+ }
 
-  const langCode = currentLang||'en';
-  const langNames = {en:'English',fr:'French',es:'Spanish',pt:'Portuguese',it:'Italian',ar:'Arabic',zh:'Mandarin Chinese',sw:'Swahili',am:'Amharic',hi:'Hindi',bn:'Bengali',id:'Indonesian',uk:'Ukrainian',ha:'Hausa',yo:'Yoruba',ln:'Lingala',mg:'Malagasy',ne:'Nepali',tl:'Tagalog',rw:'Kinyarwanda',rn:'Kirundi',ny:'Chichewa'};
-  const langName = langNames[langCode]||'English';
+ const langCode = currentLang||'en';
+ const langNames = {en:'English',fr:'French',es:'Spanish',pt:'Portuguese',it:'Italian',ar:'Arabic',zh:'Mandarin Chinese',sw:'Swahili',am:'Amharic',hi:'Hindi',bn:'Bengali',id:'Indonesian',uk:'Ukrainian',ha:'Hausa',yo:'Yoruba',ln:'Lingala',mg:'Malagasy',ne:'Nepali',tl:'Tagalog',rw:'Kinyarwanda',rn:'Kirundi',ny:'Chichewa'};
+ const langName = langNames[langCode]||'English';
 
-  const system = `You are MicroGlossary Voice, an expert microbiology and public health terminology assistant. Respond ONLY in ${langName}. Keep answers to 2-3 sentences — concise and clear for voice playback. Define terms precisely using scientific language appropriate for health professionals. ${glossaryContext ? 'Use this glossary context if relevant: ' + glossaryContext : ''}`;
+ const system = `You are MicroGlossary Voice, an expert microbiology and public health terminology assistant. Respond ONLY in ${langName}. Keep answers to 2-3 sentences — concise and clear for voice playback. Define terms precisely using scientific language appropriate for health professionals. ${glossaryContext ? 'Use this glossary context if relevant: ' + glossaryContext : ''}`;
 
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system,messages:[{role:'user',content:text}]})
-    });
-    const data=await res.json();
-    thinking.remove();
-    const reply=data.content&&data.content[0]?data.content[0].text:"Sorry, I couldn’t get a response.";
-    addGMsg(reply,'assistant');
-    speakG(reply);
-  }catch(e){
-    thinking.remove();
-    addGMsg("Connection error. Please check your internet.","status");
-  }
+ try{
+  const res=await fetch('https://api.anthropic.com/v1/messages',{
+   method:'POST',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system,messages:[{role:'user',content:text}]})
+  });
+  const data=await res.json();
+  thinking.remove();
+  const reply=data.content&&data.content[0]?data.content[0].text:"Sorry, I couldn’t get a response.";
+  addGMsg(reply,'assistant');
+  speakG(reply);
+ }catch(e){
+  thinking.remove();
+  addGMsg("Connection error. Please check your internet.","status");
+ }
 }
 </script>
 
