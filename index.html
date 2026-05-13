@@ -298,26 +298,6 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
  <h1>Science for <em>everyone</em>,<br>in every language.</h1>
  <div class="hero-tagline-wrap" id="taglineWrap"></div>
 
- <!-- Install Pill -->
- <div style="text-align:center;position:relative;">
-  <button class="install-pill" id="installPill" onclick="toggleInstallDrawer()">
-   <span class="install-pill-icon">📱</span>
-   <span id="installPillLabel">Free app — no download needed</span>
-   <span class="install-pill-chevron">▼</span>
-  </button>
-  <div class="install-drawer" id="installDrawer">
-   <div class="install-drawer-title">📲 Install SciVoice</div>
-   <div class="install-step">
-    <div class="install-step-device">🍎</div>
-    <div class="install-step-text" id="installIosSteps"><strong>iPhone · Safari</strong><br>Tap Share → Add to Home Screen</div>
-   </div>
-   <div class="install-step">
-    <div class="install-step-device">🤖</div>
-    <div class="install-step-text" id="installAndroidSteps"><strong>Android · Chrome</strong><br>Tap menu → Add to Home Screen</div>
-   </div>
-   <div class="install-tagline" id="installTagline">Works offline · No account · Always free</div>
-  </div>
- </div>
  <div class="hero-stats">
   <div class="stat"><div class="stat-num">7</div><div class="stat-label" id="statToolsLabel">Tools</div></div>
   <div class="stat-divider"></div>
@@ -346,11 +326,6 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
   <p id="toolsSubheading">Free, open, offline-capable. No account required.</p>
  </div>
  <div class="tool-grid" id="liveToolsGrid"></div>
- <div class="section-heading">
-  <h2 id="comingSoonHeading">Coming Soon</h2>
-  <p id="comingSoonSubheading">Under development. All tools will be free and multilingual.</p>
- </div>
- <div class="tool-grid" id="soonToolsGrid"></div>
  
  <!-- OutbreakWatch Surveillance Section -->
  <div class="surveillance-section">
@@ -389,7 +364,36 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
    </div>
   </a>
  </div>
+ 
+ <div class="section-heading">
+  <h2 id="comingSoonHeading">Coming Soon</h2>
+  <p id="comingSoonSubheading">Under development. All tools will be free and multilingual.</p>
+ </div>
+ <div class="tool-grid" id="soonToolsGrid"></div>
+ 
+</div>
 
+<!-- Install Section at Bottom -->
+<div style="max-width:1200px;margin:0 auto;padding:0 2rem 3rem;">
+ <div style="text-align:center;position:relative;">
+  <button class="install-pill" id="installPill" onclick="toggleInstallDrawer()">
+   <span class="install-pill-icon">📱</span>
+   <span id="installPillLabel">Free app — no download needed</span>
+   <span class="install-pill-chevron">▼</span>
+  </button>
+  <div class="install-drawer" id="installDrawer">
+   <div class="install-drawer-title">📲 Install SciVoice</div>
+   <div class="install-step">
+    <div class="install-step-device">🍎</div>
+    <div class="install-step-text" id="installIosSteps"><strong>iPhone · Safari</strong><br>Tap Share → Add to Home Screen</div>
+   </div>
+   <div class="install-step">
+    <div class="install-step-device">🤖</div>
+    <div class="install-step-text" id="installAndroidSteps"><strong>Android · Chrome</strong><br>Tap menu → Add to Home Screen</div>
+   </div>
+   <div class="install-tagline" id="installTagline">Works offline · No account · Always free</div>
+  </div>
+ </div>
 </div>
 
 <footer>
