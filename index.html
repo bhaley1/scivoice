@@ -181,6 +181,78 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
 .btn-install:hover{background:var(--paper-2);}
 .btn-dismiss{background:none;color:rgba(255,255,255,0.6);border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1;}
 .btn-dismiss:hover{color:white;}
+
+/* ── Voice Assistant ── */
+.voice-btn{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--ink);color:white;
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;z-index:600;
+  box-shadow:0 4px 20px rgba(0,0,0,0.25);
+  transition:all 0.2s;
+}
+.voice-btn:hover{background:var(--accent);transform:scale(1.06);}
+.voice-btn.listening{background:#c0392b;animation:pulse 1.2s ease-in-out infinite;}
+.voice-btn.speaking{background:var(--green);}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(192,57,43,0.4);}50%{box-shadow:0 4px 32px rgba(192,57,43,0.8),0 0 0 10px rgba(192,57,43,0.15);}}
+
+.voice-panel{
+  position:fixed;bottom:5.5rem;right:1.5rem;
+  width:320px;
+  background:white;border:1px solid var(--rule);
+  border-radius:var(--radius-xl);
+  box-shadow:0 8px 40px rgba(0,0,0,0.14);
+  z-index:599;
+  display:none;flex-direction:column;
+  overflow:hidden;
+  animation:slideUp 0.25s ease;
+}
+.voice-panel.open{display:flex;}
+.voice-panel-header{
+  background:var(--ink);color:white;
+  padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.voice-panel-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;}
+.voice-panel-lang{font-size:11px;opacity:0.6;}
+.voice-close{background:none;border:none;color:rgba(255,255,255,0.7);font-size:18px;cursor:pointer;line-height:1;padding:2px;}
+.voice-close:hover{color:white;}
+.voice-messages{
+  flex:1;overflow-y:auto;
+  padding:12px;display:flex;flex-direction:column;gap:10px;
+  max-height:320px;min-height:80px;
+}
+.voice-msg{
+  padding:10px 13px;border-radius:12px;
+  font-size:13px;line-height:1.55;max-width:90%;
+}
+.voice-msg.user{background:var(--ink);color:white;align-self:flex-end;border-radius:12px 12px 4px 12px;}
+.voice-msg.assistant{background:var(--paper-2);color:var(--ink);align-self:flex-start;border-radius:12px 12px 12px 4px;}
+.voice-msg.status{background:transparent;color:var(--ink-3);font-size:12px;font-style:italic;align-self:center;padding:4px 8px;}
+.voice-footer{
+  padding:10px 12px;border-top:1px solid var(--rule);
+  display:flex;align-items:center;gap:8px;
+}
+.voice-input{
+  flex:1;border:1px solid var(--rule);border-radius:99px;
+  padding:8px 14px;font-size:13px;font-family:'DM Sans',sans-serif;
+  outline:none;background:var(--paper);
+}
+.voice-input:focus{border-color:var(--accent);}
+.voice-send{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--ink);color:white;
+  border:none;cursor:pointer;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background 0.15s;
+}
+.voice-send:hover{background:var(--accent);}
+.voice-hint{
+  font-size:11px;color:var(--ink-3);
+  text-align:center;padding:6px 12px 10px;
+}
 </style>
 </head>
 <body>
@@ -224,7 +296,7 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-num">4</div><div class="stat-label" id="statToolsLabel">Tools</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label" id="statToolsLabel">Tools</div></div>
     <div class="stat-divider"></div>
     <div class="stat"><div class="stat-num">22</div><div class="stat-label" id="statLangsLabel">Languages</div></div>
     <div class="stat-divider"></div>
@@ -369,6 +441,7 @@ const TOOLS_LIVE = [
   {id:"scisummarize",icon:"🔬",iconBg:"icon-blue",url:"https://bhaley1.github.io/manuscript-summarizer---beta/",tags:["manuscripts","translation","summaries"],names:{en:"SciSummarize"},descs:{en:"Upload any English scientific manuscript and receive an accurate abstract translation, summary, and 3 key findings in your language — with precise scientific terminology.",fr:"Téléchargez un manuscrit scientifique et recevez un résumé précis et les points clés dans votre langue.",es:"Cargue un manuscrito científico y reciba un resumen preciso y los hallazgos clave en su idioma.",pt:"Carregue um manuscrito científico e receba um resumo preciso e os pontos-chave na sua língua.",it:"Carica un manoscritto scientifico e ricevi un riassunto accurato e i punti chiave nella tua lingua.",ar:"قم بتحميل مخطوطة علمية واحصل على ترجمة دقيقة للملخص والنتائج الرئيسية بلغتك.",zh:"上传科学手稿，获得准确的摘要翻译和关键发现——使用精确的科学术语。",sw:"Pakia maandishi ya kisayansi na upokee muhtasari sahihi na matokeo muhimu kwa lugha yako.",am:"ሳይንሳዊ ጽሑፍ ሰቅለው ትክክለኛ ማጠቃለያ እና ዋና ግኝቶች በቋንቋዎ ያግኙ።",hi:"कोई भी वैज्ञानिक पांडुलिपि अपलोड करें और अपनी भाषा में सटीक सारांश और मुख्य निष्कर्ष प्राप्त करें।",bn:"যেকোনো বৈজ্ঞানিক পাণ্ডুলিপি আপলোড করুন এবং আপনার ভাষায় সঠিক সারসংক্ষেপ পান।",id:"Unggah manuskrip ilmiah dan terima ringkasan akurat serta temuan utama dalam bahasa Anda.",uk:"Завантажте науковий рукопис і отримайте точний підсумок та ключові висновки вашою мовою."}},
   {id:"envirocollect",icon:"💧",iconBg:"icon-green",url:"https://bhaley1.github.io/envirocollect/",tags:["water","sediment","biofilm","field sampling"],names:{en:"EnviroCollect"},descs:{en:"Download a comprehensive multilingual field data collection template for water, sediment, biofilm, and soil sampling — with 45 fields covering GPS, environmental conditions, collection method, and downstream genomic analysis.",fr:"Téléchargez un modèle de collecte de données de terrain multilingue complet pour l\u2019eau, les sédiments et le sol.",es:"Descargue una plantilla completa de recolección de datos de campo para agua, sedimentos y suelo.",pt:"Descarregue um modelo completo de coleta de dados de campo para água, sedimentos e solo.",it:"Scarica un modello completo di raccolta dati sul campo per acqua, sedimenti e suolo.",ar:"قم بتنزيل نموذج شامل لجمع بيانات الميدان للمياه والرواسب والتربة.",zh:"下载全面的多语言野外数据采集模板，用于水体、沉积物和土壤采样。",sw:"Pakua kiolezo cha ukusanyaji wa data ya shambani kwa maji, mashapo na udongo.",am:"ለውሃ፣ ደለል እና አፈር ስብስብ ሁሉን አቀፍ የሜዳ ዳታ ስብስብ ቅጽ ያወርዱ።",hi:"जल, तलछट और मिट्टी के नमूने के लिए व्यापक बहुभाषी फ़ील्ड डेटा संग्रह टेम्पलेट डाउनलोड करें।",bn:"জল, পলি এবং মাটি নমুনার জন্য ব্যাপক বহুভাষিক ফিল্ড ডেটা সংগ্রহ টেমপ্লেট ডাউনলোড করুন।",id:"Unduh template pengumpulan data lapangan multilingual untuk pengambilan sampel air, sedimen, dan tanah.",uk:"Завантажте комплексний багатомовний шаблон збору польових даних для відбору проб води, осадів та ґрунту."}},
   {id:"mediaprep",icon:"🧫",iconBg:"icon-green",url:"https://bhaley1.github.io/mediaprep/",tags:["culture media","lab prep","ingredients"],names:{en:"MediaPrep"},descs:{en:"Select any standard culture medium (LB, TSA, MacConkey, Blood Agar, and 25 more), enter the volume needed, and get exact ingredient weights with step-by-step preparation instructions — in your language.",fr:"Sélectionnez un milieu de culture standard, entrez le volume nécessaire et obtenez les poids exacts des ingrédients avec des instructions pas à pas.",es:"Seleccione cualquier medio de cultivo estándar, ingrese el volumen necesario y obtenga los pesos exactos de ingredientes con instrucciones paso a paso.",pt:"Selecione qualquer meio de cultura padrão, insira o volume necessário e obtenha os pesos exatos dos ingredientes com instruções passo a passo.",it:"Seleziona qualsiasi terreno di coltura standard, inserisci il volume necessario e ottieni i pesi esatti degli ingredienti con istruzioni passo dopo passo.",ar:"اختر أي وسيط زرع قياسي، أدخل الحجم المطلوب واحصل على أوزان دقيقة للمكونات مع تعليمات خطوة بخطوة.",zh:"选择任意标准培养基，输入所需体积，获得精确成分重量和分步配制说明。",sw:"Chagua kati ya utamaduni yoyote ya kawaida, weka kiasi kinachohitajika na upate uzito sahihi wa viungo na maelekezo hatua kwa hatua.",am:"ማንኛውም የተለመደ ሚዲያ ይምረጡ፣ የሚፈለጉ መጠን ያስገቡ እና ትክክለኛ የግብዓት ክብደቶች ከሂደቶቹ ጋር ያግኙ።",hi:"कोई भी मानक संस्कृति माध्यम चुनें, आवश्यक मात्रा दर्ज करें और सटीक सामग्री वजन तथा चरण-दर-चरण निर्देश प्राप्त करें।",bn:"যেকোনো মানক কালচার মিডিয়া বেছে নিন, প্রয়োজনীয় পরিমাণ লিখুন এবং সঠিক উপাদানের ওজন ও ধাপে ধাপে নির্দেশাবলী পান।",id:"Pilih medium kultur standar apa pun, masukkan volume yang dibutuhkan, dan dapatkan berat bahan yang tepat dengan petunjuk langkah demi langkah.",uk:"Виберіть будь-яке стандартне живильне середовище, введіть потрібний об\u2019єм і отримайте точні ваги інгредієнтів з покроковими інструкціями."}},
+  {id:"biosafetysop",icon:"🛡️",iconBg:"icon-red",url:"https://bhaley1.github.io/biosafetysop/",tags:["biosafety","SOP","WHO","BSL"],names:{en:"BiosafetySOP"},descs:{en:"Generate a customizable BSL-1 or BSL-2 biosafety SOP for any sample type — based on WHO Laboratory Biosafety Manual (4th ed., 2020). Covers PPE, decontamination, spill response, and waste disposal. Must be reviewed by your biosafety officer.",fr:"Générez un SOP de biosécurité BSL-1 ou BSL-2 basé sur le Manuel de biosécurité de l’OMS (4e éd., 2020).",es:"Genere un SOP de bioseguridad BSL-1 o BSL-2 basado en el Manual de Bioseguridad de la OMS (4.ª ed., 2020).",pt:"Gere um SOP de biossegurança NBS-1 ou NBS-2 baseado no Manual da OMS (4.ª ed., 2020).",ar:"أنشئ إجراء سلامة بيولوجية للمستوى 1 أو 2 بناءً على دليل منظمة الصحة العالمية.",zh:"根据WHO实验室生物安全手册（第4版，2020年）生成BSL-1或BSL-2生物安全SOP。",sw:"Tengeneza SOP ya biosafety BSL-1 au BSL-2 kulingana na Mwongozo wa WHO.",hi:"WHO प्रयोगशाला जैव सुरक्षा मैनुअल (4वां संस्करण, 2020) पर आधारित BSL-1 या BSL-2 SOP बनाएं।",id:"Buat SOP biosafety BSL-1 atau BSL-2 berdasarkan Manual WHO (edisi ke-4, 2020).",uk:"Створіть SOP з біобезпеки БРБ-1 або БРБ-2 на основі Посібника ВООЗ (4-е вид., 2020)."}},
   {id:"microglossary",icon:"📚",iconBg:"icon-gold",url:"./microglossary/",tags:["terminology","glossary","definitions"],names:{en:"MicroGlossary"},descs:{en:"Searchable multilingual microbiology and public health terminology dictionary. Covers AMR, genomics, epidemiology, clinical microbiology, and food safety across all 22 languages.",fr:"Dictionnaire multilingue de terminologie en microbiologie et santé publique dans 22 langues.",es:"Diccionario multilingüe de terminología de microbiología y salud pública en 22 idiomas.",pt:"Dicionário multilíngue de terminologia em microbiologia e saúde pública em 22 línguas.",it:"Dizionario multilingue di terminologia in microbiologia e salute pubblica in 22 lingue.",ar:"قاموس متعدد اللغات لمصطلحات علم الأحياء الدقيقة والصحة العامة في 22 لغة.",zh:"可搜索的多语言微生物学和公共卫生术语词典，涵盖22种语言。",sw:"Kamusi ya istilahi ya microbiologia na afya ya umma katika lugha 22.",am:"በ22 ቋንቋዎች ሊፈለግ የሚችል ባለ ብዙ ቋንቋ የማይክሮባዮሎጂ ቃላት መዝገበ-ቃላት።",hi:"22 भाषाओं में खोज योग्य बहुभाषी माइक्रोबायोलॉजी शब्दावली शब्दकोश।",bn:"22টি ভাষায় অনুসন্ধানযোগ্য বহুভাষিক মাইক্রোবায়োলজি পরিভাষা অভিধান।",id:"Kamus terminologi mikrobiologi multibahasa yang dapat dicari dalam 22 bahasa.",uk:"Багатомовний словник термінології мікробіології у 22 мовах."}},
 ];
 
@@ -628,5 +701,244 @@ window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
 });
 </script>
+
+<!-- Voice Assistant Panel -->
+<div class="voice-panel" id="voicePanel">
+  <div class="voice-panel-header">
+    <div class="voice-panel-title">
+      <span>🔬</span>
+      <span>SciVoice Assistant</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="voice-panel-lang" id="voicePanelLang">English</span>
+      <button class="voice-close" onclick="closeVoice()">✕</button>
+    </div>
+  </div>
+  <div class="voice-messages" id="voiceMessages">
+    <div class="voice-msg status" id="voiceWelcome">Ask me anything about microbiology, lab techniques, or public health — in your language.</div>
+  </div>
+  <div class="voice-footer">
+    <input class="voice-input" id="voiceInput" placeholder="Type or tap 🎤 to speak…" onkeydown="if(event.key==='Enter')sendVoiceMessage()">
+    <button class="voice-send" onclick="sendVoiceMessage()">→</button>
+  </div>
+  <div class="voice-hint" id="voiceHint">🎤 Tap the mic to speak</div>
+</div>
+
+<!-- Floating Mic Button -->
+<button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="SciVoice Assistant">🎤</button>
+
+
+<script>
+// ── Voice Assistant ────────────────────────────────────────────────────────
+
+const VOICE_WELCOME = {
+  en:"Ask me anything about microbiology, lab techniques, or public health — in your language.",
+  fr:"Posez-moi des questions sur la microbiologie, les techniques de laboratoire ou la santé publique.",
+  es:"Pregúntame sobre microbiología, técnicas de laboratorio o salud pública.",
+  pt:"Pergunte-me sobre microbiologia, técnicas de laboratório ou saúde pública.",
+  it:"Chiedimi qualcosa su microbiologia, tecniche di laboratorio o salute pubblica.",
+  ar:"اسألني عن علم الأحياء الدقيقة أو تقنيات المختبر أو الصحة العامة.",
+  zh:"问我任何关于微生物学、实验室技术或公共卫生的问题。",
+  sw:"Niulize chochote kuhusu microbiologia, mbinu za maabara, au afya ya umma.",
+  am:"ስለ ማይክሮባዮሎጂ፣ የላቦራቶሪ ቴክኒኮች ወይም የህዝብ ጤና ጥያቄ ይጠይቁ።",
+  hi:"सूक्ष्मजीव विज्ञान, प्रयोगशाला तकनीकों या सार्वजनिक स्वास्थ्य के बारे में कुछ भी पूछें।",
+  bn:"মাইক্রোবায়োলজি, ল্যাব কৌশল বা জনস্বাস্থ্য সম্পর্কে যেকোনো প্রশ্ন করুন।",
+  id:"Tanyakan apa saja tentang mikrobiologi, teknik laboratorium, atau kesehatan masyarakat.",
+  uk:"Запитайте мене про мікробіологію, лабораторні техніки або громадське здоров’я.",
+};
+["ha","yo","ln","mg","ne","tl","rw","rn","ny"].forEach(c=>{VOICE_WELCOME[c]=VOICE_WELCOME.en;});
+
+const VOICE_LANG_MAP = {
+  en:"en-US", fr:"fr-FR", es:"es-ES", pt:"pt-BR", it:"it-IT",
+  ar:"ar-SA", zh:"zh-CN", sw:"sw-KE", am:"am-ET", hi:"hi-IN",
+  bn:"bn-BD", id:"id-ID", uk:"uk-UA", ha:"ha-NG", yo:"yo-NG",
+  ln:"fr-CD", mg:"fr-MG", ne:"ne-NP", tl:"fil-PH", rw:"rw-RW",
+  rn:"fr-BI", ny:"ny-MW",
+};
+
+let voiceOpen = false;
+let recognition = null;
+let synth = window.speechSynthesis;
+let isListening = false;
+let isSpeaking = false;
+let voiceConversation = [];
+
+function getVoiceLang() {
+  const code = selectedLang || "en";
+  return VOICE_LANG_MAP[code] || "en-US";
+}
+
+function toggleVoice() {
+  voiceOpen = !voiceOpen;
+  document.getElementById("voicePanel").classList.toggle("open", voiceOpen);
+  if (voiceOpen) {
+    updateVoicePanel();
+    document.getElementById("voiceInput").focus();
+  } else {
+    stopListening();
+    stopSpeaking();
+  }
+}
+
+function closeVoice() {
+  voiceOpen = false;
+  document.getElementById("voicePanel").classList.remove("open");
+  stopListening();
+  stopSpeaking();
+}
+
+function updateVoicePanel() {
+  const code = selectedLang || "en";
+  const lang = LANGS.find(l => l.code === code) || LANGS[0];
+  document.getElementById("voicePanelLang").textContent = lang.native;
+  const welcome = document.getElementById("voiceWelcome");
+  if (welcome) welcome.textContent = VOICE_WELCOME[code] || VOICE_WELCOME.en;
+  const hint = document.getElementById("voiceHint");
+  const hasSpeech = "SpeechRecognition" in window || "webkitSpeechRecognition" in window;
+  hint.textContent = hasSpeech ? "🎤 Tap the mic to speak" : "⌨️ Type your question below";
+}
+
+// ── Speech Recognition ─────────────────────────────────────────────────────
+function startListening() {
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRec) { addMessage("Speech recognition not supported in this browser. Please type your question.", "status"); return; }
+  if (isSpeaking) stopSpeaking();
+
+  recognition = new SpeechRec();
+  recognition.lang = getVoiceLang();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  recognition.onstart = () => {
+    isListening = true;
+    document.getElementById("voiceBtn").classList.add("listening");
+    addMessage("Listening…", "status");
+  };
+
+  recognition.onresult = e => {
+    const transcript = e.results[0][0].transcript;
+    removeStatusMessages();
+    document.getElementById("voiceInput").value = transcript;
+    sendVoiceMessage();
+  };
+
+  recognition.onerror = e => {
+    isListening = false;
+    document.getElementById("voiceBtn").classList.remove("listening");
+    removeStatusMessages();
+    if (e.error !== "aborted") addMessage("Couldn’t hear that. Try again or type below.", "status");
+  };
+
+  recognition.onend = () => {
+    isListening = false;
+    document.getElementById("voiceBtn").classList.remove("listening");
+  };
+
+  recognition.start();
+}
+
+function stopListening() {
+  if (recognition) { recognition.abort(); recognition = null; }
+  isListening = false;
+  document.getElementById("voiceBtn").classList.remove("listening");
+}
+
+// ── Mic button behaviour ───────────────────────────────────────────────────
+document.getElementById("voiceBtn").addEventListener("click", function(e) {
+  if (!voiceOpen) { toggleVoice(); return; }
+  if (isListening) { stopListening(); return; }
+  startListening();
+});
+
+// ── Text-to-Speech ─────────────────────────────────────────────────────────
+function speak(text) {
+  if (!synth) return;
+  stopSpeaking();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = getVoiceLang();
+  utt.rate = 0.95;
+  utt.pitch = 1;
+  utt.onstart = () => {
+    isSpeaking = true;
+    document.getElementById("voiceBtn").classList.add("speaking");
+  };
+  utt.onend = utt.onerror = () => {
+    isSpeaking = false;
+    document.getElementById("voiceBtn").classList.remove("speaking");
+  };
+  synth.speak(utt);
+}
+
+function stopSpeaking() {
+  if (synth) synth.cancel();
+  isSpeaking = false;
+  document.getElementById("voiceBtn").classList.remove("speaking");
+}
+
+// ── Message helpers ────────────────────────────────────────────────────────
+function addMessage(text, role) {
+  const msgs = document.getElementById("voiceMessages");
+  const div = document.createElement("div");
+  div.className = "voice-msg " + role;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function removeStatusMessages() {
+  document.querySelectorAll(".voice-msg.status").forEach(el => {
+    if (el.id !== "voiceWelcome") el.remove();
+  });
+}
+
+// ── Send to Claude API ─────────────────────────────────────────────────────
+async function sendVoiceMessage() {
+  const input = document.getElementById("voiceInput");
+  const text = input.value.trim();
+  if (!text) { startListening(); return; }
+  input.value = "";
+
+  const code = selectedLang || "en";
+  const lang = LANGS.find(l => l.code === code) || LANGS[0];
+
+  removeStatusMessages();
+  addMessage(text, "user");
+  voiceConversation.push({role:"user", content:text});
+
+  const thinking = addMessage("…", "status");
+
+  const systemPrompt = `You are SciVoice Assistant, an expert in public health microbiology, clinical laboratory science, food safety, antimicrobial resistance, genomics, and epidemiology. You help scientists, clinicians, students, and field workers worldwide.
+
+The user is communicating in ${lang.native} (${lang.english}). Always respond in ${lang.native} regardless of what language the question was asked in. Keep responses concise — 2 to 4 sentences for voice readback. Use plain language appropriate for a public health professional. If asked about culture media preparation, give specific volumes and steps. If asked about a microbiology term, give a clear definition with context.`;
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:300,
+        system:systemPrompt,
+        messages: voiceConversation.slice(-6),
+      })
+    });
+
+    const data = await res.json();
+    thinking.remove();
+
+    const reply = data.content && data.content[0] ? data.content[0].text : "Sorry, I couldn’t get a response. Please try again.";
+    voiceConversation.push({role:"assistant", content:reply});
+
+    addMessage(reply, "assistant");
+    speak(reply);
+
+  } catch(err) {
+    thinking.remove();
+    addMessage("Connection error. Please check your internet and try again.", "status");
+  }
+}
+</script>
+
 </body>
 </html>
