@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training & Protocols | SciVoice</title>
+    <meta name="description" content="Free multilingual training modules for waterborne pathogen isolation, following WHO/CDC/FDA standards. Available in 22 languages.">
+    <meta name="keywords" content="waterborne pathogen training, WHO protocols, laboratory methods, multilingual lab training, LMIC microbiology">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #fafaf9;
+            --color-surface: #ffffff;
+            --color-primary: #1a1814;
+            --color-secondary: #78716c;
+            --color-accent: #dc2626;
+            --color-success: #16a34a;
+            --color-warning: #ea580c;
+            --color-info: #0ea5e9;
+            --color-border: #e7e5e4;
+            --color-hover: #f5f5f4;
+
+            --font-family: 'Inter', system-ui, sans-serif;
+            --border-radius: 12px;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--color-primary); }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            max-width: 720px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 4rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-subtitle {
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .course-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .course-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #b91c1c 100%);
+            color: white;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .course-title-block h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .course-title-block p {
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--color-hover);
+            border-radius: 8px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--color-secondary);
+        }
+
+        .meta-item i { color: var(--color-accent); }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .language-card {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--color-primary);
+            background: var(--color-surface);
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .language-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .language-card.unavailable {
+            opacity: 0.55;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .lang-flag { font-size: 1.4rem; }
+
+        .lang-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lang-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: block;
+        }
+
+        .lang-native {
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .lang-badge {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 99px;
+            background: var(--color-success);
+            color: white;
+            font-weight: 500;
+        }
+
+        .lang-badge.coming {
+            background: var(--color-border);
+            color: var(--color-secondary);
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--color-info);
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .info-box p {
+            font-size: 0.92rem;
+            color: var(--color-secondary);
+            margin: 0;
+        }
+
+        .modules-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .module-chip {
+            padding: 0.5rem 0.75rem;
+            background: var(--color-hover);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-secondary);
+        }
+
+        .module-chip i {
+            color: var(--color-accent);
+            font-size: 0.75rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.75rem; }
+            .hero-stats { gap: 1.5rem; }
+            .stat-num { font-size: 1.5rem; }
+            .course-card { padding: 1.5rem; }
+            .course-card-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">
+                <i class="fas fa-microscope"></i>
+                SciVoice
+            </a>
+            <a href="../" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to tools
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Training &amp; <em>Protocols</em></h1>
+        <p>Interactive, multilingual training modules following WHO, CDC, and FDA laboratory standards. Free, offline-capable, and built for public health labs everywhere.</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-num">11</span>
+                <span class="stat-label">Modules</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">22</span>
+                <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Free</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">WHO</span>
+                <span class="stat-label">Aligned</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-container">
+        <div class="course-card">
+            <div class="course-card-header">
+                <div class="course-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="course-title-block">
+                    <h3>Waterborne Pathogen Isolation</h3>
+                    <p>Standardized methods for isolation, identification, and confirmation of bacterial waterborne pathogens in public health and environmental laboratories.</p>
+                </div>
+            </div>
+
+            <div class="course-meta">
+                <span class="meta-item"><i class="fas fa-layer-group"></i> 11 interactive modules</span>
+                <span class="meta-item"><i class="fas fa-clock"></i> ~4 hours self-paced</span>
+                <span class="meta-item"><i class="fas fa-certificate"></i> WHO / CDC / FDA aligned</span>
+                <span class="meta-item"><i class="fas fa-wifi-slash"></i> Works offline</span>
+            </div>
+
+            <div class="modules-preview">
+                <div class="module-chip"><i class="fas fa-circle"></i> Course Overview</div>
+                <div class="module-chip"><i class="fas fa-circle"></i> Sample Collection</div>
+                <div class="module-chip"><i class="fas fa-circle"></i> Media Preparation</div>
+                <div class="module-chip"><i class="fas fa-circle"></i> Isolation Principles</div>
+                <div class="module-chip"><i class="fas fa-circle"></i> <em>Salmonella</em></div>
+                <div class="module-chip"><i class="fas fa-circle"></i> <em>Vibrio</em></div>
+                <div class="module-chip"><i class="fas fa-circle"></i> E. coli</div>
+                <div class="module-chip"><i class="fas fa-circle"></i> <em>Enterococcus</em></div>
+                <div class="module-chip"><i class="fas fa-circle"></i> Additional Pathogens</div>
+                <div class="module-chip"><i class="fas fa-circle"></i> Global Suppliers</div>
+                <div class="module-chip"><i class="fas fa-circle"></i> References</div>
+            </div>
+
+            <h4 style="margin: 1.5rem 0 1rem; font-size: 1rem; font-weight: 600;">
+                <i class="fas fa-globe" style="color: var(--color-accent); margin-right: 0.5rem;"></i>
+                Choose your language
+            </h4>
+
+            <div class="language-grid">
+                <a href="waterborne-pathogen-training-en.html" class="language-card">
+                    <span class="lang-flag">🇺🇸</span>
+                    <div class="lang-info">
+                        <span class="lang-name">English</span>
+                        <span class="lang-native">English</span>
+                    </div>
+                    <span class="lang-badge">Ready</span>
+                </a>
+                <a href="waterborne-pathogen-training-fr.html" class="language-card">
+                    <span class="lang-flag">🇫🇷</span>
+                    <div class="lang-info">
+                        <span class="lang-name">French</span>
+                        <span class="lang-native">Français</span>
+                    </div>
+                    <span class="lang-badge">Ready</span>
+                </a>
+                <a href="waterborne-pathogen-training-pt.html" class="language-card">
+                    <span class="lang-flag">🇧🇷</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Portuguese</span>
+                        <span class="lang-native">Português</span>
+                    </div>
+                    <span class="lang-badge">Ready</span>
+                </a>
+                <a href="waterborne-pathogen-training-it.html" class="language-card">
+                    <span class="lang-flag">🇮🇹</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Italian</span>
+                        <span class="lang-native">Italiano</span>
+                    </div>
+                    <span class="lang-badge">Ready</span>
+                </a>
+
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇪🇸</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Spanish</span>
+                        <span class="lang-native">Español</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇸🇦</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Arabic</span>
+                        <span class="lang-native">العربية</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇨🇳</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Chinese</span>
+                        <span class="lang-native">中文</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇹🇿</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Swahili</span>
+                        <span class="lang-native">Kiswahili</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇪🇹</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Amharic</span>
+                        <span class="lang-native">አማርኛ</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇮🇳</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Hindi</span>
+                        <span class="lang-native">हिन्दी</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇧🇩</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Bengali</span>
+                        <span class="lang-native">বাংলা</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇮🇩</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Indonesian</span>
+                        <span class="lang-native">Bahasa Indonesia</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇺🇦</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Ukrainian</span>
+                        <span class="lang-native">Українська</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇳🇬</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Hausa</span>
+                        <span class="lang-native">Hausa</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇳🇬</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Yoruba</span>
+                        <span class="lang-native">Yorùbá</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇨🇩</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Lingala</span>
+                        <span class="lang-native">Lingála</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇲🇬</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Malagasy</span>
+                        <span class="lang-native">Malagasy</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇳🇵</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Nepali</span>
+                        <span class="lang-native">नेपाली</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇵🇭</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Tagalog</span>
+                        <span class="lang-native">Tagalog</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇷🇼</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Kinyarwanda</span>
+                        <span class="lang-native">Kinyarwanda</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇧🇮</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Kirundi</span>
+                        <span class="lang-native">Ikirundi</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+                <span class="language-card unavailable">
+                    <span class="lang-flag">🇲🇼</span>
+                    <div class="lang-info">
+                        <span class="lang-name">Chichewa</span>
+                        <span class="lang-native">Chichewa</span>
+                    </div>
+                    <span class="lang-badge coming">Soon</span>
+                </span>
+            </div>
+
+            <div class="info-box">
+                <h4><i class="fas fa-info-circle"></i> About this course</h4>
+                <p>Every module aligns with WHO Guidelines for Drinking-Water Quality (4th edition), CDC/FDA bacteriological methods, and relevant ISO standards. Content can be saved locally, printed for field use, and works on any device with a browser — no install required.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>SciVoice · Public health microbiology tools for everyone — in your language.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="../">← Back to SciVoice</a>
+        </p>
+    </footer>
+</body>
+</html>

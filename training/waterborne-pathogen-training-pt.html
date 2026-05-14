@@ -1,0 +1,3483 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento em Isolamento de Patógenos da Água | SciVoice</title>
+    <meta name="description" content="Curso de treinamento interativo para isolamento de patógenos da água seguindo padrões da OMS">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #fafaf9;
+            --color-surface: #ffffff;
+            --color-primary: #1a1814;
+            --color-secondary: #78716c;
+            --color-accent: #dc2626;
+            --color-success: #16a34a;
+            --color-warning: #ea580c;
+            --color-info: #0ea5e9;
+            --color-border: #e7e5e4;
+            --color-hover: #f5f5f4;
+            
+            --font-family: 'Inter', system-ui, sans-serif;
+            --border-radius: 12px;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .language-selector-small {
+            position: relative;
+        }
+
+        .language-toggle {
+            padding: 0.5rem 1rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            min-width: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        .language-dropdown.show { display: block; }
+
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-option:hover { background: var(--color-hover); }
+
+        .progress-indicator {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: var(--color-accent);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 50%;
+            font-weight: 600;
+            font-style: italic;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            background: var(--color-surface);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--color-secondary);
+            font-family: var(--font-family);
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .nav-tab:hover {
+            background: var(--color-hover);
+            color: var(--color-primary);
+        }
+
+        .nav-tab.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            background: var(--color-hover);
+        }
+
+        .module-content {
+            display: none;
+            background: var(--color-surface);
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .module-content.active { display: block; }
+
+        .module-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .module-title {
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .module-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+        }
+
+        .step-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .step-header {
+            background: var(--color-hover);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .step-number {
+            background: var(--color-accent);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .step-content { padding: 2rem; }
+
+        .protocol-list {
+            list-style: none;
+            counter-reset: protocol-counter;
+        }
+
+        .protocol-list li {
+            counter-increment: protocol-counter;
+            margin-bottom: 1rem;
+            padding: 1rem 1rem 1rem 4rem;
+            background: var(--color-bg);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .protocol-list li::before {
+            content: counter(protocol-counter);
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            background: var(--color-accent);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .info-box, .warning-box, .danger-box, .success-box {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left-color: var(--color-info);
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left-color: var(--color-warning);
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border-left-color: var(--color-accent);
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left-color: var(--color-success);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--color-surface);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .data-table th {
+            background: var(--color-primary);
+            color: white;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .data-table tr:hover { background: var(--color-hover); }
+
+        .interactive-checklist {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist { list-style: none; }
+
+        .checklist li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .checklist li:hover { background: var(--color-hover); }
+
+        .checklist input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: var(--color-success);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-family);
+        }
+
+        .btn:hover {
+            background: #b91c1c;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .main-container { padding: 1rem; }
+            .nav-tabs { flex-direction: column; }
+            .nav-tab { text-align: left; padding: 0.75rem 1rem; }
+            .module-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="https://bhaley1.github.io/scivoice/" class="logo">
+                <i class="fas fa-microscope"></i>
+                Treinamento SciVoice
+            </a>
+            <div class="header-controls">
+                <div class="language-selector-small">
+                    <button class="language-toggle" onclick="toggleLanguageDropdown()">
+                        <span>🇧🇷</span>
+                        <span>Português</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option" onclick="switchLanguage('en')">🇺🇸 English</div>
+                        <div class="language-option" onclick="switchLanguage('fr')">🇨🇩 Français</div>
+                        <div class="language-option" onclick="switchLanguage('es')">🇵🇪 Español</div>
+                        <div class="language-option" onclick="switchLanguage('pt')">🇧🇷 Português</div>
+                        <div class="language-option" onclick="switchLanguage('it')">🇮🇹 Italiano</div>
+                        <div class="language-option" onclick="switchLanguage('ar')">🇮🇶 العربية</div>
+                        <div class="language-option" onclick="switchLanguage('zh')">🇨🇳 中文</div>
+                        <div class="language-option" onclick="switchLanguage('sw')">🇹🇿 Kiswahili</div>
+                        <div class="language-option" onclick="switchLanguage('am')">🇪🇹 አማርኛ</div>
+                        <div class="language-option" onclick="switchLanguage('hi')">🇮🇳 हिन्दी</div>
+                        <div class="language-option" onclick="switchLanguage('bn')">🇧🇩 বাংলা</div>
+                        <div class="language-option" onclick="switchLanguage('id')">🇮🇩 Bahasa Indonesia</div>
+                        <div class="language-option" onclick="switchLanguage('uk')">🇺🇦 Українська</div>
+                        <div class="language-option" onclick="switchLanguage('ha')">🇳🇬 Hausa</div>
+                        <div class="language-option" onclick="switchLanguage('yo')">🇳🇬 Yorùbá</div>
+                        <div class="language-option" onclick="switchLanguage('ln')">🇨🇩 Lingála</div>
+                        <div class="language-option" onclick="switchLanguage('mg')">🇲🇬 Malagasy</div>
+                        <div class="language-option" onclick="switchLanguage('ne')">🇳🇵 नेपाली</div>
+                        <div class="language-option" onclick="switchLanguage('tl')">🇵🇭 Tagalog</div>
+                        <div class="language-option" onclick="switchLanguage('rw')">🇷🇼 Kinyarwanda</div>
+                        <div class="language-option" onclick="switchLanguage('rn')">🇧🇮 Ikirundi</div>
+                        <div class="language-option" onclick="switchLanguage('ny')">🇲🇼 Chichewa</div>
+                    </div>
+                </div>
+                <button class="btn" onclick="window.print()">
+                    <i class="fas fa-print"></i>
+                    Imprimir
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="progress-indicator" id="progressIndicator">
+        <span id="progressText">1/11</span>
+    </div>
+
+    <main class="main-container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showModule('overview')">Visão Geral do Curso</button>
+            <button class="nav-tab" onclick="showModule('collection')">Coleta de Amostras</button>
+            <button class="nav-tab" onclick="showModule('media')">Preparação de Meios</button>
+            <button class="nav-tab" onclick="showModule('principles')">Princípios de Isolamento</button>
+            <button class="nav-tab" onclick="showModule('salmonella')"><i>Salmonella</i></button>
+            <button class="nav-tab" onclick="showModule('vibrio')"><i>Vibrio</i></button>
+            <button class="nav-tab" onclick="showModule('ecoli')">E. coli</button>
+            <button class="nav-tab" onclick="showModule('enterococcus')"><i>Enterococcus</i></button>
+            <button class="nav-tab" onclick="showModule('additional')">Patógenos Adicionais</button>
+            <button class="nav-tab" onclick="showModule('suppliers')">Fornecedores</button>
+            <button class="nav-tab" onclick="showModule('resources')">Referências</button>
+        </div>
+
+        <!-- Module 1: Course Overview -->
+        <div class="module-content active" id="overview">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Visão Geral do Curso
+                </div>
+                <div class="module-subtitle">Objetivos de aprendizagem, patógenos alvo e estrutura de padrões da OMS</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Objetivos de Aprendizagem
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Ao final deste curso, você será capaz de:</p>
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de Objetivos</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Implementar protocolos padronizados da OMS para isolamento de patógenos da água</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Realizar coleta, transporte e processamento adequados de amostras</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Preparar e validar meios de cultura microbiológicos</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Isolar e identificar patógenos bacterianos da água</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Aplicar medidas de controle de qualidade e garantia da qualidade</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Interpretar resultados dentro do contexto da saúde pública</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Patógenos Alvo
+                    </div>
+                </div>
+                <div class="step-content">
+                    <p>Este curso abrange os principais patógenos bacterianos da água identificados pela Organização Mundial da Saúde:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Patógeno</th>
+                                <th>Significância para Saúde Pública</th>
+                                <th>Método de Detecção</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>Salmonella</em> spp.</td>
+                                <td>Gastroenterite, febre tifóide</td>
+                                <td>Enriquecimento seletivo + isolamento</td>
+                            </tr>
+                            <tr>
+                                <td><em>Vibrio cholerae</em></td>
+                                <td>Cólera epidêmica</td>
+                                <td>Enriquecimento em ASPW + TCBS</td>
+                            </tr>
+                            <tr>
+                                <td>E. coli termotolerante</td>
+                                <td>Indicador de contaminação fecal</td>
+                                <td>Filtração em membrana</td>
+                            </tr>
+                            <tr>
+                                <td><em>Enterococcus</em> spp.</td>
+                                <td>Indicador de poluição fecal</td>
+                                <td>Filtração + confirmação</td>
+                            </tr>
+                            <tr>
+                                <td><em>Campylobacter</em> spp.</td>
+                                <td>Gastroenterite</td>
+                                <td>Enriquecimento + isolamento seletivo</td>
+                            </tr>
+                            <tr>
+                                <td><em>Shigella</em> spp.</td>
+                                <td>Disenteria</td>
+                                <td>Isolamento direto + enriquecimento</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Hierarquia de Padrões
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> Estrutura de Padrões</h4>
+                        <p><strong>Padrões Primários:</strong> Diretrizes da Organização Mundial da Saúde (OMS) para Qualidade da Água Potável</p>
+                        <p><strong>Padrões Secundários:</strong> Protocolos CDC/FDA onde orientações da OMS são limitadas</p>
+                        <p><strong>Padrões Terciários:</strong> Métodos EPA para aplicações ambientais específicas</p>
+                    </div>
+                    
+                    <p>Esta hierarquia garante que nossos métodos estejam alinhados com as melhores práticas internacionais de saúde pública, priorizando a orientação da OMS enquanto incorpora protocolos especializados de outras agências quando apropriado.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 2: Sample Collection -->
+        <div class="module-content" id="collection">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-vial"></i>
+                    Coleta de Amostras
+                </div>
+                <div class="module-subtitle">Procedimentos de coleta de campo e transporte em conformidade com a OMS</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Planejamento Pré-Coleta
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Considerações de Segurança</h4>
+                        <p>Sempre use equipamentos de proteção individual (EPI) adequados e avalie os riscos do local antes da coleta de amostras.</p>
+                    </div>
+
+                    <ul class="protocol-list">
+                        <li>Identificar locais de amostragem representativos com base nos objetivos do estudo</li>
+                        <li>Preparar recipientes de amostragem estéreis com preservativos apropriados</li>
+                        <li>Verificar equipamentos de campo (medidores de pH, temperatura, condutividade)</li>
+                        <li>Preparar formulários de cadeia de custódia e etiquetas de amostra</li>
+                        <li>Coordenar transporte e tempo de chegada ao laboratório (≤24h para patógenos)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Técnica de Coleta Estéril
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="danger-box">
+                        <h4><i class="fas fa-ban"></i> Fontes Críticas de Contaminação</h4>
+                        <p>Recipientes não estéreis, contaminação cruzada entre locais e técnica de amostragem inadequada são as principais causas de resultados falso-positivos.</p>
+                    </div>
+
+                    <h4>Protocolo de Coleta de Água Superficial:</h4>
+                    <ul class="protocol-list">
+                        <li>Usar luvas descartáveis estéreis para cada local de amostragem</li>
+                        <li>Enxaguar recipiente 3x com água da amostra (exceto se contiver preservativo)</li>
+                        <li>Coletar água contra a corrente, submergindo o recipiente 20-30 cm abaixo da superfície</li>
+                        <li>Preencher o recipiente completamente, deixando apenas espaço mínimo para expansão</li>
+                        <li>Fechar imediatamente e etiquetar com informações do local e horário</li>
+                        <li>Registrar parâmetros de campo: temperatura, pH, turbidez, condutividade</li>
+                    </ul>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de Coleta de Amostras</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>EPI usado corretamente</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Recipientes estéreis verificados</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Local de amostragem documentado com GPS</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Parâmetros de campo registrados</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Cadeia de custódia iniciada</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Protocolos de Transporte
+                    </div>
+                </div>
+                <div class="step-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Recipiente</th>
+                                <th>Preservativo</th>
+                                <th>Temperatura</th>
+                                <th>Tempo Máximo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Patógenos bacterianos</td>
+                                <td>Frasco estéril de 500mL</td>
+                                <td>Nenhum</td>
+                                <td>4°C ± 2°C</td>
+                                <td>24 horas</td>
+                            </tr>
+                            <tr>
+                                <td><em>Vibrio cholerae</em></td>
+                                <td>Frasco estéril de 500mL</td>
+                                <td>Nenhum</td>
+                                <td>Temperatura ambiente</td>
+                                <td>6 horas</td>
+                            </tr>
+                            <tr>
+                                <td>Indicadores coliforme</td>
+                                <td>Frasco estéril de 100mL</td>
+                                <td>Tiossulfato de sódio</td>
+                                <td>4°C ± 2°C</td>
+                                <td>24 horas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-check-circle"></i> Melhores Práticas de Transporte</h4>
+                        <ul>
+                            <li>Usar coolers isolados com gelo suficiente para manter 4°C</li>
+                            <li>Monitorar temperatura com termômetros de min/max</li>
+                            <li>Transportar para laboratório dentro de 6 horas quando possível</li>
+                            <li>Manter cadeia de custódia durante todo o transporte</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 3: Media Preparation -->
+        <div class="module-content" id="media">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-flask"></i>
+                    Preparação de Meios
+                </div>
+                <div class="module-subtitle">Protocolos padronizados de preparação de meios de cultura</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Tabela Geral de Meios
+                    </div>
+                </div>
+                <div class="step-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Meio</th>
+                                <th>Propósito</th>
+                                <th>pH Final</th>
+                                <th>Condições de Autoclave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Água Peptonada Tamponada (BPW)</td>
+                                <td>Pré-enriquecimento Salmonella</td>
+                                <td>7,2 ± 0,2</td>
+                                <td>121°C, 15 min</td>
+                            </tr>
+                            <tr>
+                                <td>Caldo Rappaport-Vassiliadis (RV)</td>
+                                <td>Enriquecimento seletivo Salmonella</td>
+                                <td>5,2 ± 0,2</td>
+                                <td>121°C, 15 min</td>
+                            </tr>
+                            <tr>
+                                <td>Ágar Xilose Lisina Desoxicolato (XLD)</td>
+                                <td>Isolamento seletivo Salmonella</td>
+                                <td>7,4 ± 0,2</td>
+                                <td>121°C, 15 min</td>
+                            </tr>
+                            <tr>
+                                <td>Água Salina Alcalina Peptonada (ASPW)</td>
+                                <td>Enriquecimento Vibrio</td>
+                                <td>8,5 ± 0,2</td>
+                                <td>121°C, 15 min</td>
+                            </tr>
+                            <tr>
+                                <td>Ágar TCBS</td>
+                                <td>Isolamento seletivo Vibrio</td>
+                                <td>8,6 ± 0,2</td>
+                                <td>Não autoclavar</td>
+                            </tr>
+                            <tr>
+                                <td>Ágar mTEC</td>
+                                <td>E. coli termotolerante</td>
+                                <td>7,3 ± 0,2</td>
+                                <td>121°C, 15 min</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Procedimentos de Esterilização
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="warning-box">
+                        <h4><i class="fas fa-thermometer-full"></i> Validação de Autoclave</h4>
+                        <p>Sempre validar ciclos de autoclave usando indicadores biológicos (esporos de <em>Geobacillus stearothermophilus</em>) antes do uso inicial e semanalmente durante o uso de rotina.</p>
+                    </div>
+
+                    <h4>Protocolo de Esterilização Padrão:</h4>
+                    <ul class="protocol-list">
+                        <li>Pré-aquecer autoclave a 121°C (15 psi)</li>
+                        <li>Carregar meios em recipientes apropriados com tampas frouxas</li>
+                        <li>Incluir indicador de esterilização em cada carga</li>
+                        <li>Esterilizar por 15 minutos (líquidos) ou 20 minutos (ágar)</li>
+                        <li>Permitir descompressão lenta para evitar superaquecimento</li>
+                        <li>Resfriar a ≤45°C antes de verter placas ou usar</li>
+                    </ul>
+
+                    <div class="danger-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> Cuidados Especiais</h4>
+                        <ul>
+                            <li><strong>Ágar TCBS:</strong> Nunca autoclavar - aqueça apenas até dissolução</li>
+                            <li><strong>Meios com açúcar:</strong> Tempo de autoclave reduzido para evitar caramelização</li>
+                            <li><strong>Antibióticos:</strong> Adicionar após autoclavagem e resfriamento a <50°C</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Controle de Qualidade com Cepas ATCC
+                    </div>
+                </div>
+                <div class="step-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Meio</th>
+                                <th>Cepa Positiva</th>
+                                <th>Cepa Negativa</th>
+                                <th>Resultado Esperado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Caldo RV</td>
+                                <td><em>S. Enteritidis</em> ATCC 13076</td>
+                                <td><em>E. coli</em> ATCC 25922</td>
+                                <td>Crescimento / Inibição</td>
+                            </tr>
+                            <tr>
+                                <td>Ágar XLD</td>
+                                <td><em>S. Enteritidis</em> ATCC 13076</td>
+                                <td><em>E. coli</em> ATCC 25922</td>
+                                <td>Colônias vermelhas / Amarelas</td>
+                            </tr>
+                            <tr>
+                                <td>ASPW</td>
+                                <td><em>V. cholerae</em> ATCC 14035</td>
+                                <td><em>E. coli</em> ATCC 25922</td>
+                                <td>Crescimento / Inibição</td>
+                            </tr>
+                            <tr>
+                                <td>Ágar TCBS</td>
+                                <td><em>V. cholerae</em> ATCC 14035</td>
+                                <td><em>S. Enteritidis</em> ATCC 13076</td>
+                                <td>Colônias amarelas / Verdes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de CQ de Meios</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Controles positivos crescem conforme esperado</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Controles negativos são adequadamente inibidos</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>pH de meios está dentro dos limites aceitáveis</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Aparência visual dos meios está normal</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Data de validade e condições de armazenamento verificadas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 4: Isolation Principles -->
+        <div class="module-content" id="principles">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-dna"></i>
+                    Princípios de Isolamento
+                </div>
+                <div class="module-subtitle">Estruturas gerais da OMS para isolamento de patógenos</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Estratégia de Enriquecimento da OMS
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> Conceito de Enriquecimento</h4>
+                        <p>O enriquecimento permite a recuperação de patógenos em baixas concentrações ou estressados, proporcionando condições favoráveis para crescimento enquanto inibe a microbiota competitiva.</p>
+                    </div>
+
+                    <h4>Estratégia de Enriquecimento em Duas Etapas:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Pré-enriquecimento:</strong> Meio não seletivo para revigorar células danificadas ou estressadas</li>
+                        <li><strong>Enriquecimento seletivo:</strong> Meio que inibe competidores e favorece patógenos alvo</li>
+                        <li><strong>Isolamento seletivo:</strong> Ágar diferencial/seletivo para colônias individuais</li>
+                        <li><strong>Confirmação:</strong> Testes bioquímicos e sorológicos para identificação definitiva</li>
+                    </ul>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-chart-line"></i> Benefícios do Enriquecimento</h4>
+                        <ul>
+                            <li>Aumenta sensibilidade para patógenos em baixas concentrações</li>
+                            <li>Permite recuperação de células subletal danificadas</li>
+                            <li>Reduz interferência de microrganismos competitivos</li>
+                            <li>Melhora reprodutibilidade entre laboratórios</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Estrutura de Controles de Qualidade
+                    </div>
+                </div>
+                <div class="step-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Controle</th>
+                                <th>Propósito</th>
+                                <th>Frequência</th>
+                                <th>Critérios de Aceitação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Controle Positivo de Método</td>
+                                <td>Verificar recuperação de patógenos alvo</td>
+                                <td>Cada lote</td>
+                                <td>≥70% de recuperação</td>
+                            </tr>
+                            <tr>
+                                <td>Controle Negativo de Método</td>
+                                <td>Verificar seletividade contra não-alvos</td>
+                                <td>Cada lote</td>
+                                <td>≤10% de falso-positivos</td>
+                            </tr>
+                            <tr>
+                                <td>Branco de Meio</td>
+                                <td>Verificar esterilidade de meios</td>
+                                <td>Cada lote de meio</td>
+                                <td>Sem crescimento</td>
+                            </tr>
+                            <tr>
+                                <td>Branco de Reagente</td>
+                                <td>Verificar pureza de água e reagentes</td>
+                                <td>Cada dia de teste</td>
+                                <td>Sem crescimento</td>
+                            </tr>
+                            <tr>
+                                <td>Amostra Duplicada</td>
+                                <td>Avaliar precisão do método</td>
+                                <td>10% das amostras</td>
+                                <td>±20% variação</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-clipboard-check"></i> Ações Corretivas</h4>
+                        <p>Se controles estiverem fora dos limites aceitáveis, todas as amostras do lote devem ser reanalisadas após identificar e corrigir a causa raiz.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Condições de Incubação
+                    </div>
+                </div>
+                <div class="step-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Patógeno</th>
+                                <th>Temperatura</th>
+                                <th>Atmosfera</th>
+                                <th>Tempo de Incubação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>Salmonella</em> spp.</td>
+                                <td>37°C ± 1°C</td>
+                                <td>Aeróbica</td>
+                                <td>18-24 horas</td>
+                            </tr>
+                            <tr>
+                                <td><em>Vibrio cholerae</em></td>
+                                <td>37°C ± 1°C</td>
+                                <td>Aeróbica</td>
+                                <td>6-18 horas</td>
+                            </tr>
+                            <tr>
+                                <td>E. coli termotolerante</td>
+                                <td>44,5°C ± 0,2°C</td>
+                                <td>Aeróbica</td>
+                                <td>24 ± 2 horas</td>
+                            </tr>
+                            <tr>
+                                <td><em>Enterococcus</em> spp.</td>
+                                <td>37°C ± 1°C</td>
+                                <td>Aeróbica</td>
+                                <td>48 ± 3 horas</td>
+                            </tr>
+                            <tr>
+                                <td><em>Campylobacter</em> spp.</td>
+                                <td>42°C ± 1°C</td>
+                                <td>Microaerofílica (5% O₂, 10% CO₂)</td>
+                                <td>48-72 horas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de Incubação</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Temperatura da incubadora verificada e registrada</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Condições atmosféricas apropriadas estabelecidas</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Tempos de incubação precisamente cronometrados</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Controles incluídos em cada execução</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue with the remaining modules in the same pattern... -->
+        <!-- For brevity, I'll include just the navigation structure for the remaining modules -->
+
+        <!-- Module 5: Salmonella Protocol -->
+        <div class="module-content" id="salmonella">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-bacterium"></i>
+                    Protocolo <em>Salmonella</em>
+                </div>
+                <div class="module-subtitle">Procedimentos padronizados pela OMS para isolamento de <em>Salmonella</em></div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Pré-Enriquecimento em BPW
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-flask"></i> Propósito do Pré-Enriquecimento</h4>
+                        <p>A Água Peptonada Tamponada (BPW) permite a recuperação de células de <em>Salmonella</em> subletal danificadas e fornece condições não seletivas para crescimento inicial.</p>
+                    </div>
+
+                    <h4>Preparação de BPW:</h4>
+                    <ul class="protocol-list">
+                        <li>Dissolver 20g de BPW desidratada em 1L de água destilada</li>
+                        <li>Ajustar pH para 7,2 ± 0,2 usando NaOH 1M ou HCl 1M</li>
+                        <li>Esterilizar por autoclavagem a 121°C por 15 minutos</li>
+                        <li>Resfriar a temperatura ambiente antes do uso</li>
+                        <li>Verificar esterilidade incubando alíquotas de controle a 37°C por 24h</li>
+                    </ul>
+
+                    <h4>Procedimento de Inoculação:</h4>
+                    <ul class="protocol-list">
+                        <li>Adicionar 10mL de amostra de água a 90mL de BPW (diluição 1:10)</li>
+                        <li>Para amostras altamente contaminadas, preparar diluições seriadas</li>
+                        <li>Misturar suavemente por inversão (não agitar vigorosamente)</li>
+                        <li>Incubar a 37°C ± 1°C por 18 ± 2 horas</li>
+                        <li>Observar turvação que indica crescimento bacteriano</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-clock"></i> Tempo Crítico</h4>
+                        <p>Não exceder 20 horas de incubação, pois isso pode resultar em overgrowth de bactérias competitivas e reduzir a recuperação de <em>Salmonella</em>.</p>
+                    </div>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação BPW</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>pH do BPW verificado e ajustado (7,2 ± 0,2)</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Esterilização validada com controles</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Proporção amostra:meio 1:9 mantida</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Temperatura de incubação verificada (37°C ± 1°C)</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Tempo de incubação controlado (18 ± 2h)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Enriquecimento Seletivo RV/TTB
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-filter"></i> Enriquecimento Seletivo</h4>
+                        <p>Caldo Rappaport-Vassiliadis (RV) e Caldo Tetrationato (TTB) inibem a maioria das bactérias gram-positivas e muitas gram-negativas, permitindo o crescimento preferencial de <em>Salmonella</em>.</p>
+                    </div>
+
+                    <h4>Preparação dos Meios Seletivos:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Meio</th>
+                                <th>Composição</th>
+                                <th>pH Final</th>
+                                <th>Incubação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Caldo RV</td>
+                                <td>Base RV + verde malaquita</td>
+                                <td>5,2 ± 0,2</td>
+                                <td>42°C, 24h</td>
+                            </tr>
+                            <tr>
+                                <td>Caldo TTB</td>
+                                <td>Base TTB + solução de tetrationato</td>
+                                <td>8,4 ± 0,2</td>
+                                <td>37°C, 24h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Procedimento de Enriquecimento:</h4>
+                    <ul class="protocol-list">
+                        <li>Transferir 1mL da cultura BPW para 10mL de caldo RV</li>
+                        <li>Transferir 1mL da cultura BPW para 10mL de caldo TTB</li>
+                        <li>Incubar RV a 42°C ± 1°C por 24 ± 3 horas</li>
+                        <li>Incubar TTB a 37°C ± 1°C por 24 ± 3 horas</li>
+                        <li>Observar crescimento e mudança de cor (RV fica mais verde)</li>
+                    </ul>
+
+                    <div class="danger-box">
+                        <h4><i class="fas fa-thermometer-half"></i> Controle de Temperatura</h4>
+                        <p><strong>RV a 42°C:</strong> Esta temperatura elevada é crítica para seletividade. Variações superiores a ±1°C podem resultar em falso-negativo ou crescimento de não-alvos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Isolamento em XLD e HE
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Meios de Isolamento Seletivo:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Meio</th>
+                                <th>Aparência Típica de <em>Salmonella</em></th>
+                                <th>Mecanismo de Diferenciação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XLD (Xilose Lisina Desoxicolato)</td>
+                                <td>Colônias vermelhas com centro preto</td>
+                                <td>Descarboxilação de lisina + H₂S</td>
+                            </tr>
+                            <tr>
+                                <td>HE (Hektoen Entérico)</td>
+                                <td>Colônias azul-esverdeadas com centro preto</td>
+                                <td>Não fermentação de lactose + H₂S</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Técnica de Plaqueamento:</h4>
+                    <ul class="protocol-list">
+                        <li>Usar alça estéril para streak das culturas RV e TTB em XLD e HE</li>
+                        <li>Fazer streak em quadrantes para isolamento de colônias</li>
+                        <li>Incubar placas a 37°C ± 1°C por 24 ± 3 horas</li>
+                        <li>Examinar placas para colônias suspeitas de <em>Salmonella</em></li>
+                        <li>Re-incubar placas negativas por mais 24h antes de descartar</li>
+                    </ul>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-search"></i> Identificação de Colônias</h4>
+                        <p><strong>XLD:</strong> <em>Salmonella</em> aparece como colônias vermelhas/rosa com centros pretos devido à produção de H₂S</p>
+                        <p><strong>HE:</strong> <em>Salmonella</em> aparece como colônias azul-esverdeadas com centros pretos</p>
+                    </div>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de Isolamento</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Placas XLD e HE preparadas e QC validado</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Técnica de streak adequada aplicada</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Incubação a 37°C por 24-48h</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Colônias suspeitas identificadas e marcadas</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Controles positivos e negativos incluídos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        Confirmação Bioquímica
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Testes de Confirmação Primária:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Teste</th>
+                                <th><em>Salmonella</em> Típica</th>
+                                <th>Tempo</th>
+                                <th>Interpretação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>TSI (Ferro Triplo Açúcar)</td>
+                                <td>K/A H₂S+</td>
+                                <td>24h</td>
+                                <td>Slope alcalino/fundo ácido + H₂S</td>
+                            </tr>
+                            <tr>
+                                <td>Urease</td>
+                                <td>Negativo</td>
+                                <td>4h-24h</td>
+                                <td>Sem mudança de cor (permanece amarelo)</td>
+                            </tr>
+                            <tr>
+                                <td>Lisina Descarboxilase</td>
+                                <td>Positivo</td>
+                                <td>24h</td>
+                                <td>Roxo = positivo</td>
+                            </tr>
+                            <tr>
+                                <td>Indol</td>
+                                <td>Negativo</td>
+                                <td>24h</td>
+                                <td>Sem anel vermelho</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Procedimento de Confirmação:</h4>
+                    <ul class="protocol-list">
+                        <li>Selecionar 3-5 colônias suspeitas típicas de cada placa</li>
+                        <li>Inocular TSI fazendo streak no slope e picada no fundo</li>
+                        <li>Inocular tubos de urease, lisina e caldo triptona para indol</li>
+                        <li>Incubar todos os tubos a 37°C ± 1°C por 24 horas</li>
+                        <li>Ler urease após 4h e novamente após 24h</li>
+                        <li>Registrar todos os resultados antes de proceder à sorotipagem</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Interpretação Cuidadosa</h4>
+                        <p>Aproximadamente 1% das cepas de <em>Salmonella</em> podem ser urease-positivas (especialmente <em>S.</em> Paratyphi A). Confirme com testes adicionais se necessário.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 6: Vibrio Protocol -->
+        <div class="module-content" id="vibrio">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-water"></i>
+                    Protocolo <em>Vibrio</em>
+                </div>
+                <div class="module-subtitle">Métodos de detecção de cólera e isolamento de <em>Vibrio</em> da OMS</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Enriquecimento em ASPW
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="danger-box">
+                        <h4><i class="fas fa-biohazard"></i> Alerta de Cólera</h4>
+                        <p><strong>Cuidado:</strong> <em>Vibrio cholerae</em> O1 e O139 são patógenos de notificação obrigatória. Siga protocolos de biossegurança de nível 2 e notifique autoridades de saúde pública imediatamente em caso de isolamento positivo.</p>
+                    </div>
+
+                    <h4>Preparação de ASPW (Água Salina Alcalina Peptonada):</h4>
+                    <ul class="protocol-list">
+                        <li>Dissolver 20g peptona, 20g NaCl, 0,2g KCl, 2,75g Na₂CO₃ em 1L água destilada</li>
+                        <li>Ajustar pH para 8,5 ± 0,2 usando Na₂CO₃ ou HCl</li>
+                        <li>Esterilizar por autoclavagem a 121°C por 15 minutos</li>
+                        <li>Verificar pH final após esterilização e resfriamento</li>
+                        <li>Armazenar a 4°C por até 1 mês</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4><i class="fas fa-balance-scale"></i> Importância do pH Alcalino</h4>
+                        <p>O pH de 8,5 é crítico para inibir a maioria das bactérias entéricas enquanto permite o crescimento de <em>Vibrio</em>, que tolera condições alcalinas.</p>
+                    </div>
+
+                    <h4>Procedimento de Enriquecimento:</h4>
+                    <ul class="protocol-list">
+                        <li>Adicionar 1mL de amostra a 9mL de ASPW (diluição 1:10)</li>
+                        <li>Para amostras suspeitas de alta contaminação, fazer diluições até 1:1000</li>
+                        <li>Incubar a 37°C ± 1°C por 6-8 horas</li>
+                        <li>Examinar para formação de película na superfície</li>
+                        <li>Sub-cultivar após 6h e novamente após 18h se negativo</li>
+                    </ul>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-eye"></i> Sinais de Crescimento de <em>Vibrio</em></h4>
+                        <p>Observe película fina na superfície do caldo ASPW após 6-8h de incubação. Esta é uma característica distintiva do crescimento de <em>Vibrio</em>.</p>
+                    </div>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação ASPW</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>pH ASPW confirmado a 8,5 ± 0,2</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Incubação a 37°C por 6-8h</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Película de superfície observada e documentada</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Sub-cultivar em intervalos apropriados</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Isolamento em TCBS
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Preparação do Ágar TCBS:</h4>
+                    <div class="warning-box">
+                        <h4><i class="fas fa-ban"></i> NÃO Autoclavar TCBS</h4>
+                        <p>O ágar TCBS contém indicadores termolábeis. Apenas aqueça até dissolução completa (~90°C) e resfrie a 45-50°C antes de verter placas.</p>
+                    </div>
+
+                    <ul class="protocol-list">
+                        <li>Suspender 89g de TCBS desidratado em 1L de água destilada</li>
+                        <li>Aquecer com agitação até dissolução completa</li>
+                        <li>NÃO ajustar pH - deve estar em 8,6 ± 0,2</li>
+                        <li>NÃO esterilizar por autoclavagem</li>
+                        <li>Verter placas imediatamente e usar no mesmo dia</li>
+                    </ul>
+
+                    <h4>Técnica de Plaqueamento:</h4>
+                    <ul class="protocol-list">
+                        <li>Usar alça estéril para streak da película ASPW</li>
+                        <li>Fazer streak em quadrantes para isolamento</li>
+                        <li>Incubar a 37°C ± 1°C por 18-24 horas</li>
+                        <li>Examinar para colônias amarelas (sacarose+) e verdes (sacarose-)</li>
+                        <li>Selecionar ambos os tipos para confirmação</li>
+                    </ul>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Espécie de <em>Vibrio</em></th>
+                                <th>Aparência em TCBS</th>
+                                <th>Fermentação de Sacarose</th>
+                                <th>Significância Clínica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>V. cholerae</em></td>
+                                <td>Amarela, grande (2-3mm)</td>
+                                <td>Positiva</td>
+                                <td>Cólera epidêmica</td>
+                            </tr>
+                            <tr>
+                                <td><em>V. parahaemolyticus</em></td>
+                                <td>Verde-azul, pequena (1-2mm)</td>
+                                <td>Negativa</td>
+                                <td>Gastroenterite</td>
+                            </tr>
+                            <tr>
+                                <td><em>V. vulnificus</em></td>
+                                <td>Verde, grande (2-4mm)</td>
+                                <td>Negativa</td>
+                                <td>Septicemia, infecções de feridas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Identificação V. cholerae O1/O139
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Confirmação Bioquímica Inicial:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Teste</th>
+                                <th><em>V. cholerae</em></th>
+                                <th>Método</th>
+                                <th>Interpretação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oxidase</td>
+                                <td>Positivo</td>
+                                <td>Reagente de oxidase</td>
+                                <td>Roxo em 10-30 segundos</td>
+                            </tr>
+                            <tr>
+                                <td>String Test</td>
+                                <td>Positivo</td>
+                                <td>Desoxicolato de sódio 0,5%</td>
+                                <td>Formação de filamento mucoso</td>
+                            </tr>
+                            <tr>
+                                <td>Crescimento em NaCl</td>
+                                <td>Varia por biotipo</td>
+                                <td>Peptona + diferentes conc. NaCl</td>
+                                <td>El Tor: cresce 1% NaCl; Clássico: não</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Sorotipagem O1 e O139:</h4>
+                    <div class="danger-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> Sorotipagem Obrigatória</h4>
+                        <p>Apenas <em>V. cholerae</em> O1 e O139 causam cólera epidêmica. Todas as cepas confirmadas devem ser sorotipadas para determinar potencial epidêmico.</p>
+                    </div>
+
+                    <ul class="protocol-list">
+                        <li>Preparar suspensão densa de colônia suspeita em salina estéril</li>
+                        <li>Testar primeiro com antissoro polivalente O1</li>
+                        <li>Se negativo para O1, testar com antissoro O139</li>
+                        <li>Se positivo para O1, confirmar com anti-soros Ogawa e Inaba</li>
+                        <li>Documentar todos os resultados e notificar autoridades</li>
+                    </ul>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de Identificação</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Teste de oxidase realizado (deve ser positivo)</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>String test confirmado</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Crescimento em NaCl avaliado</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Sorotipagem O1/O139 realizada</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Resultados documentados e reportados</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-phone"></i> Notificação de Saúde Pública</h4>
+                        <p>Qualquer isolamento confirmado de <em>V. cholerae</em> O1 ou O139 deve ser imediatamente reportado às autoridades de saúde pública locais e nacionais conforme regulamentações locais.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        Testes de Sensibilidade Antimicrobiana
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Antimicrobianos de Primeira Linha:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Antimicrobiano</th>
+                                <th>Concentração</th>
+                                <th>Interpretação (mm)</th>
+                                <th>Uso Clínico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Doxiciclina</td>
+                                <td>30µg</td>
+                                <td>≥14 = S, ≤13 = R</td>
+                                <td>Primeira escolha adultos</td>
+                            </tr>
+                            <tr>
+                                <td>Azitromicina</td>
+                                <td>15µg</td>
+                                <td>≥16 = S, ≤15 = R</td>
+                                <td>Primeira escolha crianças</td>
+                            </tr>
+                            <tr>
+                                <td>Ciprofloxacina</td>
+                                <td>5µg</td>
+                                <td>≥21 = S, ≤20 = R</td>
+                                <td>Alternativa</td>
+                            </tr>
+                            <tr>
+                                <td>Eritromicina</td>
+                                <td>15µg</td>
+                                <td>≥23 = S, ≤22 = R</td>
+                                <td>Gravidez/amamentação</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-shield-alt"></i> Resistência Emergente</h4>
+                        <p>Monitore resistência à doxiciclina e azitromicina, que tem sido reportada em algumas regiões. Sempre realize teste de sensibilidade para cepas de cólera.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 7: E. coli Protocol -->
+        <div class="module-content" id="ecoli">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-filter"></i>
+                    Protocolo E. coli
+                </div>
+                <div class="module-subtitle">Métodos CDC/EPA para detecção de E. coli termotolerante</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Filtração em Membrana mTEC
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-thermometer-three-quarters"></i> E. coli Termotolerante</h4>
+                        <p>E. coli termotolerante é definida como coliformes capazes de produzir indol a 44,5°C, servindo como indicador específico de contaminação fecal de origem humana e animal.</p>
+                    </div>
+
+                    <h4>Preparação do Ágar mTEC:</h4>
+                    <ul class="protocol-list">
+                        <li>Dissolver 51g de base mTEC em 1L de água destilada</li>
+                        <li>Ajustar pH para 7,3 ± 0,2 antes da autoclavagem</li>
+                        <li>Esterilizar por autoclavagem a 121°C por 15 minutos</li>
+                        <li>Resfriar a 45-50°C e adicionar suplementos estéreis</li>
+                        <li>Verter placas e usar dentro de 2 semanas</li>
+                    </ul>
+
+                    <h4>Suplementos para mTEC:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Suplemento</th>
+                                <th>Concentração Final</th>
+                                <th>Volume para 1L</th>
+                                <th>Função</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ácido Nalidíxico</td>
+                                <td>50mg/L</td>
+                                <td>5mL (10mg/mL)</td>
+                                <td>Inibir gram-positivos</td>
+                            </tr>
+                            <tr>
+                                <td>Ureidoglicolato</td>
+                                <td>100mg/L</td>
+                                <td>10mL (10mg/mL)</td>
+                                <td>Suporte de crescimento</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Procedimento de Filtração:</h4>
+                    <ul class="protocol-list">
+                        <li>Usar membranas de 0,45μm, 47mm de diâmetro, estéreis</li>
+                        <li>Filtrar volumes apropriados: 100mL, 10mL, 1mL conforme turbidez</li>
+                        <li>Enxaguar funil com 20-30mL de água destilada estéril</li>
+                        <li>Colocar membrana em placa mTEC com pinças estéreis</li>
+                        <li>Incubar a 35°C ± 0,5°C por 2 horas (pre-incubação)</li>
+                        <li>Transferir para 44,5°C ± 0,2°C por 22-24 horas</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-clock"></i> Tempo Crítico de Incubação</h4>
+                        <p>A pre-incubação a 35°C é essencial para reparação de células estressadas. A temperatura de 44,5°C deve ser mantida rigorosamente (±0,2°C) para seletividade termotolerante.</p>
+                    </div>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação mTEC</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>pH do meio ajustado para 7,3 ± 0,2</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Suplementos adicionados após resfriamento</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Membranas 0,45μm verificadas e estéreis</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Pre-incubação 35°C por 2h realizada</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Incubação final 44,5°C ± 0,2°C por 22-24h</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Método Colilert (Substrato Definido)
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-vial"></i> Vantagens do Colilert</h4>
+                        <p>O método Colilert oferece detecção simultânea e confirmação de E. coli e coliformes totais em 24 horas sem necessidade de confirmação secundária.</p>
+                    </div>
+
+                    <h4>Princípio do Método:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>ONPG (o-nitrofenil-β-D-galactopiranosídeo):</strong> Hidrolisado por β-galactosidase (coliformes) → cor amarela</li>
+                        <li><strong>MUG (4-metilumbeliferil-β-D-glucuronídeo):</strong> Hidrolisado por β-glucuronidase (E. coli) → fluorescência azul</li>
+                        <li><strong>Resultado positivo E. coli:</strong> Amarelo + fluorescente</li>
+                        <li><strong>Resultado positivo coliformes totais:</strong> Amarelo (pode ou não ser fluorescente)</li>
+                    </ul>
+
+                    <h4>Procedimento Qualitativo:</h4>
+                    <ul class="protocol-list">
+                        <li>Adicionar reagente Colilert a 100mL de amostra</li>
+                        <li>Agitar até dissolução completa (não deve haver partículas)</li>
+                        <li>Transferir para frasco estéril transparente</li>
+                        <li>Incubar a 35°C ± 0,5°C por 24 ± 2 horas</li>
+                        <li>Examinar para desenvolvimento de cor amarela</li>
+                        <li>Verificar fluorescência azul sob luz UV (365nm)</li>
+                    </ul>
+
+                    <h4>Procedimento Quantitativo (MPN):</h4>
+                    <ul class="protocol-list">
+                        <li>Preparar diluições seriadas da amostra (1:10, 1:100)</li>
+                        <li>Adicionar reagente Colilert a 100mL de cada diluição</li>
+                        <li>Distribuir em bandejas Quanti-Tray (97 poços)</li>
+                        <li>Selar bandeja com seladora Quanti-Tray</li>
+                        <li>Incubar a 35°C por 24h e contar poços positivos</li>
+                        <li>Calcular MPN usando tabela MPN específica</li>
+                    </ul>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Resultado Visual</th>
+                                <th>Fluorescência UV</th>
+                                <th>Interpretação</th>
+                                <th>Contagem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Incolor</td>
+                                <td>Não fluorescente</td>
+                                <td>Negativo</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Amarelo</td>
+                                <td>Não fluorescente</td>
+                                <td>Coliformes totais apenas</td>
+                                <td>CT+ EC-</td>
+                            </tr>
+                            <tr>
+                                <td>Amarelo</td>
+                                <td>Fluorescente azul</td>
+                                <td>Coliformes totais + E. coli</td>
+                                <td>CT+ EC+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-lightbulb"></i> Interpretação de Fluorescência</h4>
+                        <p>Use lâmpada UV de 365nm em ambiente escuro. Fluorescência azul definitiva indica presença de E. coli. Fluorescência fraca ou duvidosa deve ser confirmada.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Controle de Qualidade
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Cepas de Controle Recomendadas:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Cepa</th>
+                                <th>Número ATCC</th>
+                                <th>Resultado Esperado mTEC</th>
+                                <th>Resultado Esperado Colilert</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>E. coli</em></td>
+                                <td>ATCC 25922</td>
+                                <td>Colônias azuis, indol+</td>
+                                <td>Amarelo + fluorescente</td>
+                            </tr>
+                            <tr>
+                                <td><em>Enterobacter aerogenes</em></td>
+                                <td>ATCC 13048</td>
+                                <td>Colônias amarelas/vermelhas</td>
+                                <td>Amarelo, não fluorescente</td>
+                            </tr>
+                            <tr>
+                                <td><em>Pseudomonas aeruginosa</em></td>
+                                <td>ATCC 27853</td>
+                                <td>Inibida ou sem crescimento</td>
+                                <td>Incolor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Frequência de Controle de Qualidade:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Diário:</strong> Controle positivo e negativo com cada lote de amostras</li>
+                        <li><strong>Semanal:</strong> Verificação de temperatura das incubadoras</li>
+                        <li><strong>Mensal:</strong> Teste completo de cepas controle</li>
+                        <li><strong>Anual:</strong> Comparação com laboratório de referência</li>
+                    </ul>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de CQ</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Controle positivo E. coli cresce conforme esperado</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Controle negativo não mostra crescimento</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Temperaturas de incubação verificadas</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Lâmpada UV funcionando adequadamente</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Reagentes dentro do prazo de validade</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        Interpretação de Resultados e Relatórios
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Cálculo de UFC/100mL (mTEC):</h4>
+                    <div class="info-box">
+                        <h4><i class="fas fa-calculator"></i> Fórmula de Cálculo</h4>
+                        <p><strong>UFC/100mL = (Número de colônias × 100) / Volume filtrado (mL)</strong></p>
+                        <p>Para múltiplas diluições, use a que resulta em 20-80 colônias para maior precisão.</p>
+                    </div>
+
+                    <h4>Critérios de Qualidade da Água:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Uso da Água</th>
+                                <th>Limite E. coli (UFC/100mL)</th>
+                                <th>Fonte do Padrão</th>
+                                <th>Ação Requerida</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Água potável</td>
+                                <td>Não detectável</td>
+                                <td>OMS</td>
+                                <td>Investigação imediata</td>
+                            </tr>
+                            <tr>
+                                <td>Recreação (água doce)</td>
+                                <td>≤126</td>
+                                <td>EPA</td>
+                                <td>Monitoramento contínuo</td>
+                            </tr>
+                            <tr>
+                                <td>Irrigação</td>
+                                <td>≤1000</td>
+                                <td>OMS</td>
+                                <td>Avaliação de risco</td>
+                            </tr>
+                            <tr>
+                                <td>Aquicultura</td>
+                                <td>≤1000</td>
+                                <td>FAO</td>
+                                <td>Medidas de mitigação</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Limites de Detecção</h4>
+                        <p>Para filtração de 100mL, o limite de detecção é 1 UFC/100mL. Para amostras com baixa contaminação, considere filtrar volumes maiores (até 1L) para maior sensibilidade.</p>
+                    </div>
+
+                    <h4>Relatório de Resultados:</h4>
+                    <ul class="protocol-list">
+                        <li>Reportar resultados como UFC/100mL ou MPN/100mL</li>
+                        <li>Incluir método utilizado (mTEC ou Colilert)</li>
+                        <li>Especificar volume filtrado ou analisado</li>
+                        <li>Indicar se resultado excede limites regulatórios</li>
+                        <li>Documentar condições de QC e qualquer desvio</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 8: Enterococcus Protocol -->
+        <div class="module-content" id="enterococcus">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-microscope"></i>
+                    Protocolo <em>Enterococcus</em>
+                </div>
+                <div class="module-subtitle">Procedimentos CDC para organismos indicadores enterocócicos</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Filtração em Ágar mE
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> <em>Enterococcus</em> como Indicador</h4>
+                        <p><em>Enterococcus</em> é um indicador valioso de contaminação fecal devido à sua maior resistência a condições ambientais adversas comparado a E. coli, sendo especialmente útil em águas marinhas e salinas.</p>
+                    </div>
+
+                    <h4>Preparação do Ágar mE:</h4>
+                    <ul class="protocol-list">
+                        <li>Dissolver 40g de base mE em 1L de água destilada</li>
+                        <li>Ajustar pH para 7,2 ± 0,2 antes da autoclavagem</li>
+                        <li>Esterilizar por autoclavagem a 121°C por 15 minutos</li>
+                        <li>Resfriar a 45-50°C e adicionar TTC estéril</li>
+                        <li>Concentração final TTC: 50mg/L (5mL de solução 1%)</li>
+                    </div>
+
+                    <h4>Características do Ágar mE:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Componente</th>
+                                <th>Concentração</th>
+                                <th>Função</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Azida Sódica</td>
+                                <td>0,4g/L</td>
+                                <td>Inibir bactérias gram-negativas</td>
+                            </tr>
+                            <tr>
+                                <td>Bile Esculina</td>
+                                <td>4,0g/L</td>
+                                <td>Substrato diferencial</td>
+                            </tr>
+                            <tr>
+                                <td>TTC (Cloreto de Trifenil Tetrazólio)</td>
+                                <td>50mg/L</td>
+                                <td>Indicador de viabilidade</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Procedimento de Filtração:</h4>
+                    <ul class="protocol-list">
+                        <li>Usar membranas de 0,45μm, 47mm de diâmetro</li>
+                        <li>Filtrar 100mL de amostra (ajustar volume conforme contaminação)</li>
+                        <li>Enxaguar funil com 20mL de água destilada estéril</li>
+                        <li>Colocar membrana no ágar mE com pinças estéreis</li>
+                        <li>Incubar a 35°C ± 2°C por 48 ± 3 horas</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-skull-crossbones"></i> Cuidado com Azida Sódica</h4>
+                        <p>Azida sódica é tóxica e pode formar compostos explosivos com metais. Use EPIs adequados e descarte conforme regulamentações para materiais perigosos.</p>
+                    </div>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação mE</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>pH do meio verificado (7,2 ± 0,2)</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>TTC adicionado após esterilização</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Membranas 0,45μm estéreis verificadas</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Incubação 35°C por 48h realizada</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Identificação de Colônias
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Aparência Típica em mE:</h4>
+                    <div class="success-box">
+                        <h4><i class="fas fa-eye"></i> Colônias de <em>Enterococcus</em></h4>
+                        <p><strong>Aparência:</strong> Colônias pequenas (0,5-2mm), cor rosa a vermelha, com ou sem halo escuro devido à hidrólise da esculina</p>
+                        <p><strong>TTC positivo:</strong> Colônias vermelhas devido à redução do tetrazólio</p>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th><em>Enterococcus</em> Típico</th>
+                                <th>Outros Organismos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cor da Colônia</td>
+                                <td>Rosa a vermelho</td>
+                                <td>Incolor, amarelo, azul</td>
+                            </tr>
+                            <tr>
+                                <td>Tamanho</td>
+                                <td>0,5-2mm</td>
+                                <td>Variável</td>
+                            </tr>
+                            <tr>
+                                <td>Hidrólise Esculina</td>
+                                <td>Positiva (halo escuro)</td>
+                                <td>Negativa (sem halo)</td>
+                            </tr>
+                            <tr>
+                                <td>Redução TTC</td>
+                                <td>Positiva (vermelho)</td>
+                                <td>Variável</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Contagem de Colônias:</h4>
+                    <ul class="protocol-list">
+                        <li>Contar todas as colônias rosa a vermelhas</li>
+                        <li>Usar lupa ou microscópio de dissecação se necessário</li>
+                        <li>Selecionar 5-10 colônias típicas para confirmação</li>
+                        <li>Registrar contagem total e número confirmado</li>
+                        <li>Calcular porcentagem de confirmação para validar método</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Método Enterolert
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-flask-vial"></i> Tecnologia de Substrato Definido</h4>
+                        <p>Enterolert utiliza substrato fluorogênico para detecção simultânea e enumeração de <em>Enterococcus</em> sem necessidade de confirmação secundária.</p>
+                    </div>
+
+                    <h4>Princípio do Método:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Substrato:</strong> 4-metilumbeliferil-β-D-glucosídeo</li>
+                        <li><strong>Enzima alvo:</strong> β-glucosidase (específica para <em>Enterococcus</em>)</li>
+                        <li><strong>Produto:</strong> 4-metilumbeliferona (fluorescente azul-branco)</li>
+                        <li><strong>Detecção:</strong> Lâmpada UV 365nm</li>
+                    </ul>
+
+                    <h4>Procedimento Qualitativo:</h4>
+                    <ul class="protocol-list">
+                        <li>Adicionar 1 ampola Enterolert a 100mL de amostra</li>
+                        <li>Agitar até dissolução completa</li>
+                        <li>Incubar a 41°C ± 0,5°C por 24 ± 2 horas</li>
+                        <li>Examinar sob luz UV (365nm) em ambiente escuro</li>
+                        <li>Fluorescência azul-branca = positivo para <em>Enterococcus</em></li>
+                    </ul>
+
+                    <h4>Procedimento Quantitativo (MPN):</h4>
+                    <ul class="protocol-list">
+                        <li>Preparar diluições seriadas conforme necessário</li>
+                        <li>Distribuir em bandejas Quanti-Tray/2000 (97 poços)</li>
+                        <li>Selar e incubar a 41°C por 24h</li>
+                        <li>Contar poços fluorescentes positivos</li>
+                        <li>Calcular MPN usando tabela apropriada</li>
+                    </ul>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Poços Positivos</th>
+                                <th>MPN/100mL</th>
+                                <th>IC 95% (Inferior)</th>
+                                <th>IC 95% (Superior)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>1,0</td>
+                                <td>0,02</td>
+                                <td>5,9</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>10,9</td>
+                                <td>5,3</td>
+                                <td>21,8</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>29,6</td>
+                                <td>19,6</td>
+                                <td>42,4</td>
+                            </tr>
+                            <tr>
+                                <td>50</td>
+                                <td>67,7</td>
+                                <td>52,5</td>
+                                <td>86,0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-lightbulb"></i> Vantagens do Enterolert</h4>
+                        <ul>
+                            <li>Resultados em 24 horas sem confirmação</li>
+                            <li>Menos trabalhoso que filtração em membrana</li>
+                            <li>Reduz risco de contaminação cruzada</li>
+                            <li>Quantificação precisa através de MPN</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        Confirmação Bile-Esculina
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Teste Bile-Esculina:</h4>
+                    <div class="info-box">
+                        <h4><i class="fas fa-flask"></i> Princípio Bile-Esculina</h4>
+                        <p><em>Enterococcus</em> possui capacidade única de crescer na presença de 40% bile e hidrolisar esculina, produzindo esculetina que reage com íons férricos formando complexo escuro.</p>
+                    </div>
+
+                    <h4>Preparação do Meio:</h4>
+                    <ul class="protocol-list">
+                        <li>Ágar bile esculina contém 4% bile de boi e esculina</li>
+                        <li>Esterilizar a 121°C por 15 minutos</li>
+                        <li>Verter placas de 15-20mL</li>
+                        <li>Armazenar a 4°C protegido da luz</li>
+                    </ul>
+
+                    <h4>Procedimento de Confirmação:</h4>
+                    <ul class="protocol-list">
+                        <li>Selecionar colônias suspeitas de <em>Enterococcus</em></li>
+                        <li>Fazer streak em placa de bile esculina</li>
+                        <li>Incubar a 35°C ± 2°C por 24-48 horas</li>
+                        <li>Observar escurecimento do meio ao redor das colônias</li>
+                        <li>Resultado positivo = halo escuro (hidrólise da esculina)</li>
+                    </ul>
+
+                    <h4>Teste de Catalase:</h4>
+                    <ul class="protocol-list">
+                        <li>Adicionar 1 gota de H₂O₂ 3% sobre colônia isolada</li>
+                        <li><em>Enterococcus</em> = catalase negativa (sem borbulhamento)</li>
+                        <li>Estafilococos = catalase positiva (borbulhamento imediato)</li>
+                        <li>Resultado deve ser lido imediatamente</li>
+                    </ul>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Organismo</th>
+                                <th>Bile Esculina</th>
+                                <th>Catalase</th>
+                                <th>Crescimento 45°C</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>Enterococcus</em> spp.</td>
+                                <td>Positiva</td>
+                                <td>Negativa</td>
+                                <td>Positivo</td>
+                            </tr>
+                            <tr>
+                                <td><em>Streptococcus</em> grupo D</td>
+                                <td>Positiva</td>
+                                <td>Negativa</td>
+                                <td>Negativo</td>
+                            </tr>
+                            <tr>
+                                <td><em>Staphylococcus</em> spp.</td>
+                                <td>Variável</td>
+                                <td>Positiva</td>
+                                <td>Positivo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de Confirmação</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Bile esculina positiva (escurecimento)</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Catalase negativa (sem borbulhas)</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Crescimento a 45°C confirmado</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Morfologia cocos gram-positivos em cadeias</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Interpretação Cuidadosa</h4>
+                        <p>Algumas cepas de <em>Streptococcus</em> grupo D também são bile esculina positivas, mas não crescem a 45°C. O teste de temperatura é crucial para diferenciação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 9: Additional Pathogens -->
+        <div class="module-content" id="additional">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Patógenos Adicionais
+                </div>
+                <div class="module-subtitle">Protocolos para <em>Campylobacter</em>, <em>Shigella</em>, <em>Legionella</em> e <em>Yersinia</em></div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        <em>Campylobacter</em> spp.
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-thermometer-full"></i> Características de <em>Campylobacter</em></h4>
+                        <p><em>Campylobacter jejuni</em> e <em>C. coli</em> são patógenos microaerofílicos termofílicos que requerem condições especiais de cultivo: 42°C e atmosfera com 5% O₂, 10% CO₂, 85% N₂.</p>
+                    </div>
+
+                    <h4>Enriquecimento em Caldo Bolton:</h4>
+                    <ul class="protocol-list">
+                        <li>Preparar caldo Bolton com suplemento seletivo (vancomicina, trimetoprima, polimixina B)</li>
+                        <li>Inocular 1mL de amostra em 9mL de caldo Bolton</li>
+                        <li>Incubar a 42°C ± 1°C em atmosfera microaerofílica por 48h</li>
+                        <li>Observar turvação e motilidade característica em forma de "parafuso"</li>
+                    </ul>
+
+                    <h4>Isolamento em Ágar CCDA:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Meio</th>
+                                <th>Composição Seletiva</th>
+                                <th>Incubação</th>
+                                <th>Aparência Colônias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CCDA (Carvão Cefoperazona Desoxicolato)</td>
+                                <td>Cefoperazona + anfotericina B</td>
+                                <td>42°C, 48-72h, microaerofilia</td>
+                                <td>Cinza-acinzentadas, brilhantes, pequenas</td>
+                            </tr>
+                            <tr>
+                                <td>Karmali</td>
+                                <td>Vancomicina + polimixina + trimetoprima</td>
+                                <td>42°C, 48h, microaerofilia</td>
+                                <td>Metálicas, pequenas (1-2mm)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Confirmação:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Oxidase:</strong> Positiva (reação roxa imediata)</li>
+                        <li><strong>Catalase:</strong> Positiva (borbulhamento)</li>
+                        <li><strong>Motilidade:</strong> Móvel em forma de parafuso</li>
+                        <li><strong>Crescimento a 25°C:</strong> Negativo (termofílico)</li>
+                        <li><strong>Hidrólise do hipurato:</strong> <em>C. jejuni</em> positivo, <em>C. coli</em> negativo</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-lungs"></i> Atmosfera Microaerofílica</h4>
+                        <p>Use jarras de anaerobiose com geradores de microaerofilia ou incubadora com controle de gases. Concentração de O₂ acima de 10% inibe o crescimento.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        <em>Shigella</em> spp.
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="danger-box">
+                        <h4><i class="fas fa-biohazard"></i> Risco de Biossegurança</h4>
+                        <p><em>Shigella</em> tem dose infectiva extremamente baixa (<10 células). Manipule com BSL-2 mínimo e notifique autoridades de saúde pública em caso de isolamento positivo.</p>
+                    </div>
+
+                    <h4>Estratégia de Isolamento Dupla:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Plaqueamento direto:</strong> Amostras frescas em XLD e HE</li>
+                        <li><strong>Enriquecimento:</strong> Caldo GN (Gram-Negativo) a 37°C por 6-8h</li>
+                        <li>Sub-cultivar enriquecimento em ágar seletivo após incubação</li>
+                        <li>Incubar placas a 37°C por 24-48h</li>
+                    </ul>
+
+                    <h4>Identificação em Meios Seletivos:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Meio</th>
+                                <th>Aparência <em>Shigella</em></th>
+                                <th>Diferenciação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>XLD</td>
+                                <td>Colônias vermelhas, sem H₂S</td>
+                                <td>Não produz H₂S (vs <em>Salmonella</em>)</td>
+                            </tr>
+                            <tr>
+                                <td>HE</td>
+                                <td>Colônias verdes, sem centro preto</td>
+                                <td>Não fermenta lactose, sem H₂S</td>
+                            </tr>
+                            <tr>
+                                <td>SS (Salmonella-Shigella)</td>
+                                <td>Incolores, transparentes</td>
+                                <td>Não fermenta lactose</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Confirmação Bioquímica:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>TSI:</strong> K/A sem H₂S (slope alcalino/fundo ácido)</li>
+                        <li><strong>Motilidade:</strong> Não móvel (imóvel)</li>
+                        <li><strong>Urease:</strong> Negativa</li>
+                        <li><strong>Lisina descarboxilase:</strong> Negativa</li>
+                        <li><strong>Indol:</strong> Variável por espécie</li>
+                    </ul>
+
+                    <h4>Sorogrupagem:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Sorogrupo</th>
+                                <th>Espécie Representativa</th>
+                                <th>Características</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Grupo A</td>
+                                <td><em>S. dysenteriae</em></td>
+                                <td>Mais virulenta, produz toxina Shiga</td>
+                            </tr>
+                            <tr>
+                                <td>Grupo B</td>
+                                <td><em>S. flexneri</em></td>
+                                <td>Causa comum de disenteria</td>
+                            </tr>
+                            <tr>
+                                <td>Grupo C</td>
+                                <td><em>S. boydii</em></td>
+                                <td>Menos comum</td>
+                            </tr>
+                            <tr>
+                                <td>Grupo D</td>
+                                <td><em>S. sonnei</em></td>
+                                <td>Mais comum em países desenvolvidos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        <em>Legionella</em> spp.
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-building"></i> Habitat de <em>Legionella</em></h4>
+                        <p><em>Legionella</em> prolifera em sistemas de água aquecida (torres de resfriamento, sistemas de água quente, spas) e é transmitida por aerossóis. Causa pneumonia grave (Doença dos Legionários).</p>
+                    </div>
+
+                    <h4>Coleta e Concentração de Amostras:</h4>
+                    <ul class="protocol-list">
+                        <li>Coletar 1L de amostra em frasco estéril</li>
+                        <li>Para amostras potáveis, adicionar 0,1mL de tiossulfato de sódio 10%</li>
+                        <li>Concentrar por filtração (0,2μm) ou centrifugação (3000g, 30min)</li>
+                        <li>Ressuspender precipitado em 10mL de água estéril</li>
+                    </ul>
+
+                    <h4>Tratamento com Ácido:</h4>
+                    <div class="warning-box">
+                        <h4><i class="fas fa-flask"></i> Tratamento Seletivo</h4>
+                        <p>Tratamento com ácido HCl-KCl (pH 2,2) por 4 minutos elimina vegetative bacteria competitivas mas preserva <em>Legionella</em> devido à sua resistência ácida.</p>
+                    </div>
+
+                    <ul class="protocol-list">
+                        <li>Preparar solução ácida: HCl-KCl pH 2,2 ± 0,1</li>
+                        <li>Misturar 1mL de amostra concentrada + 1mL solução ácida</li>
+                        <li>Incubar a temperatura ambiente por 4 minutos exatos</li>
+                        <li>Neutralizar com NaOH 0,1M até pH 6,9-7,0</li>
+                        <li>Plaquear imediatamente em BCYE-α</li>
+                    </ul>
+
+                    <h4>Cultivo em BCYE-α:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Componente</th>
+                                <th>Função</th>
+                                <th>Concentração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>L-cisteína</td>
+                                <td>Fator de crescimento essencial</td>
+                                <td>0,4g/L</td>
+                            </tr>
+                            <tr>
+                                <td>α-cetoglutarato</td>
+                                <td>Fonte de energia</td>
+                                <td>1,0g/L</td>
+                            </tr>
+                            <tr>
+                                <td>Carvão ativado</td>
+                                <td>Remove inibidores</td>
+                                <td>2,0g/L</td>
+                            </tr>
+                            <tr>
+                                <td>Extrato de levedura</td>
+                                <td>Fonte de nutrientes</td>
+                                <td>10,0g/L</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Incubação e Identificação:</h4>
+                    <ul class="protocol-list">
+                        <li>Incubar a 35-37°C em atmosfera umidificada por 2-7 dias</li>
+                        <li>Examinar diariamente para colônias suspeitas</li>
+                        <li>Colônias típicas: cinza-azuladas, com centro convexo, brilho metálico</li>
+                        <li>Confirmar dependência de L-cisteína (não cresce em ágar sangue)</li>
+                        <li>Teste de catalase positiva e oxidase fraca</li>
+                    </ul>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-search"></i> Identificação Específica</h4>
+                        <p>Use antissoros específicos ou PCR para identificação de espécie. <em>L. pneumophila</em> sorogrupo 1 causa 90% dos casos de Doença dos Legionários.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        <em>Yersinia</em> spp.
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="info-box">
+                        <h4><i class="fas fa-snowflake"></i> Psicrotrófica</h4>
+                        <p><em>Yersinia enterocolitica</em> é psicrotrófica, crescendo bem a 4°C. Esta característica é usada para enriquecimento seletivo em temperaturas baixas.</p>
+                    </div>
+
+                    <h4>Enriquecimento a Frio:</h4>
+                    <ul class="protocol-list">
+                        <li>Inocular 1mL de amostra em 9mL de PBS (Salina Tamponada Fosfatada)</li>
+                        <li>Incubar a 4°C por 21 dias (enriquecimento a frio)</li>
+                        <li>Sub-cultivar semanalmente em CIN (Cefsulodina Irgasan Novobiocina)</li>
+                        <li>Incubar placas CIN a 30°C por 24-48h</li>
+                    </ul>
+
+                    <h4>Ágar CIN (Seletivo):</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Componente Seletivo</th>
+                                <th>Concentração</th>
+                                <th>Função</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cefsulodina</td>
+                                <td>15mg/L</td>
+                                <td>Inibir gram-positivos</td>
+                            </tr>
+                            <tr>
+                                <td>Irgasan (Triclosan)</td>
+                                <td>4mg/L</td>
+                                <td>Inibir gram-positivos</td>
+                            </tr>
+                            <tr>
+                                <td>Novobiocina</td>
+                                <td>2,5mg/L</td>
+                                <td>Inibir gram-positivos</td>
+                            </tr>
+                            <tr>
+                                <td>Cristal violeta</td>
+                                <td>1mg/L</td>
+                                <td>Inibir gram-positivos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Identificação de Colônias:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Aparência em CIN:</strong> Colônias pequenas (1-2mm), centro vermelho escuro com borda translúcida ("olho-de-touro")</li>
+                        <li><strong>Teste de urease:</strong> Positivo em 4 horas (diferencia de <em>Salmonella</em>)</li>
+                        <li><strong>Motilidade:</strong> Móvel a 25°C, não móvel a 37°C</li>
+                        <li><strong>Oxidase:</strong> Negativa</li>
+                        <li><strong>Catalase:</strong> Positiva</li>
+                    </ul>
+
+                    <h4>Confirmação de Patogenicidade:</h4>
+                    <ul class="protocol-list">
+                        <li>Teste de autoaglutinação em salina (cepas virulentas não aglutinam)</li>
+                        <li>Dependência de cálcio a 37°C (crescimento reduzido sem Ca²⁺)</li>
+                        <li>Sorotipagem para determinar sorotipo patogênico</li>
+                        <li>PCR para genes de virulência (ail, yst, inv)</li>
+                    </ul>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação Patógenos Adicionais</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Atmosfera microaerofílica para <em>Campylobacter</em></span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Plaqueamento direto + enriquecimento para <em>Shigella</em></span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Tratamento ácido aplicado para <em>Legionella</em></span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Enriquecimento a frio usado para <em>Yersinia</em></span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>BSL-2 mantido para todos os patógenos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 10: Suppliers -->
+        <div class="module-content" id="suppliers">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-shipping-fast"></i>
+                    Fornecedores Globais
+                </div>
+                <div class="module-subtitle">Empresas internacionais de suprimentos laboratoriais e orientação de aquisição</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Principais Fornecedores de Meios de Cultura
+                    </div>
+                </div>
+                <div class="step-content">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Empresa</th>
+                                <th>Região Principal</th>
+                                <th>Especialidades</th>
+                                <th>Certificações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BD Difco/BBL</td>
+                                <td>Global</td>
+                                <td>Meios desidratados, placas prontas</td>
+                                <td>ISO 9001, ISO 13485</td>
+                            </tr>
+                            <tr>
+                                <td>Oxoid (Thermo Fisher)</td>
+                                <td>Europa, Ásia</td>
+                                <td>Meios especializados, controles QC</td>
+                                <td>ISO 9001, ISO 14001</td>
+                            </tr>
+                            <tr>
+                                <td>bioMérieux</td>
+                                <td>França, América</td>
+                                <td>Sistemas automatizados, meios cromogênicos</td>
+                                <td>ISO 9001, FDA</td>
+                            </tr>
+                            <tr>
+                                <td>HiMedia</td>
+                                <td>Índia, Ásia</td>
+                                <td>Meios econômicos, reagentes</td>
+                                <td>ISO 9001, WHO-GMP</td>
+                            </tr>
+                            <tr>
+                                <td>Conda</td>
+                                <td>Espanha, América Latina</td>
+                                <td>Meios desidratados</td>
+                                <td>ISO 9001</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-box">
+                        <h4><i class="fas fa-certificate"></i> Certificações Importantes</h4>
+                        <p><strong>ISO 9001:</strong> Sistema de gestão da qualidade<br>
+                        <strong>ISO 13485:</strong> Dispositivos médicos<br>
+                        <strong>WHO-GMP:</strong> Boas práticas de fabricação da OMS<br>
+                        <strong>FDA:</strong> Aprovação da agência reguladora americana</p>
+                    </div>
+
+                    <h4>Considerações de Aquisição:</h4>
+                    <ul class="protocol-list">
+                        <li>Verificar certificados de análise (COA) para cada lote</li>
+                        <li>Confirmar prazo de validade adequado para consumo previsto</li>
+                        <li>Avaliar condições de transporte e armazenamento</li>
+                        <li>Considerar disponibilidade de suporte técnico local</li>
+                        <li>Verificar compatibilidade com protocolos estabelecidos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Equipamentos de Laboratório
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Equipamentos Essenciais:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Fornecedor Recomendado</th>
+                                <th>Modelo Sugerido</th>
+                                <th>Faixa de Preço (USD)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Incubadoras</td>
+                                <td>Thermo Scientific</td>
+                                <td>Heratherm IMH/IMP Series</td>
+                                <td>$3,000 - $8,000</td>
+                            </tr>
+                            <tr>
+                                <td>Autoclaves</td>
+                                <td>Tuttnauer</td>
+                                <td>3870E, 5075E Series</td>
+                                <td>$15,000 - $35,000</td>
+                            </tr>
+                            <tr>
+                                <td>Centrífugas</td>
+                                <td>Eppendorf</td>
+                                <td>Centrifuge 5810, 5430</td>
+                                <td>$5,000 - $15,000</td>
+                            </tr>
+                            <tr>
+                                <td>Filtração</td>
+                                <td>Millipore/Pall</td>
+                                <td>Sistemas de filtração a vácuo</td>
+                                <td>$500 - $2,000</td>
+                            </tr>
+                            <tr>
+                                <td>Microscópios</td>
+                                <td>Olympus/Nikon</td>
+                                <td>CX23, Eclipse E100</td>
+                                <td>$2,000 - $10,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Fornecedores por Região:</h4>
+                    <div class="info-box">
+                        <h4><i class="fas fa-globe-americas"></i> América Latina</h4>
+                        <ul>
+                            <li><strong>Brasil:</strong> Kasvi, Labstore, Biotec</li>
+                            <li><strong>México:</strong> Tarsons, Sharlau México</li>
+                            <li><strong>Argentina:</strong> Bioars, Britania</li>
+                            <li><strong>Colômbia:</strong> Disan, Deltalab</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><i class="fas fa-globe-africa"></i> África</h4>
+                        <ul>
+                            <li><strong>África do Sul:</strong> Scientific Group, Lasec</li>
+                            <li><strong>Nigéria:</strong> Zep Scientific, Biomed Technologies</li>
+                            <li><strong>Quênia:</strong> Labtronics, Medisel</li>
+                            <li><strong>Egito:</strong> Medical Union Pharmaceuticals</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Cuidados com Importação</h4>
+                        <p>Verifique regulamentações de importação locais, taxas alfandegárias e necessidade de licenças especiais para equipamentos e reagentes microbiológicos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Considerações Orçamentárias
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Laboratório Básico - Setup Inicial (USD):</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantidade</th>
+                                <th>Custo Unitário</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Incubadora 37°C</td>
+                                <td>2</td>
+                                <td>$4,000</td>
+                                <td>$8,000</td>
+                            </tr>
+                            <tr>
+                                <td>Incubadora 44,5°C</td>
+                                <td>1</td>
+                                <td>$5,000</td>
+                                <td>$5,000</td>
+                            </tr>
+                            <tr>
+                                <td>Autoclave vertical 50L</td>
+                                <td>1</td>
+                                <td>$18,000</td>
+                                <td>$18,000</td>
+                            </tr>
+                            <tr>
+                                <td>Capela de fluxo laminar</td>
+                                <td>1</td>
+                                <td>$12,000</td>
+                                <td>$12,000</td>
+                            </tr>
+                            <tr>
+                                <td>Sistema filtração membrana</td>
+                                <td>2</td>
+                                <td>$800</td>
+                                <td>$1,600</td>
+                            </tr>
+                            <tr>
+                                <td>Microscópio binocular</td>
+                                <td>2</td>
+                                <td>$3,000</td>
+                                <td>$6,000</td>
+                            </tr>
+                            <tr>
+                                <td>Reagentes/meios (anuais)</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>$8,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-calculator"></i> Total Estimado Setup Básico</h4>
+                        <p><strong>Investimento inicial:</strong> ~$58,600 USD<br>
+                        <strong>Custos anuais operacionais:</strong> ~$15,000 USD<br>
+                        <strong>Capacidade:</strong> 50-100 amostras/dia</p>
+                    </div>
+
+                    <h4>Opções de Financiamento:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Organismos Internacionais:</strong> OMS, Banco Mundial, USAID</li>
+                        <li><strong>Fundações:</strong> Gates Foundation, Wellcome Trust</li>
+                        <li><strong>Programas Governamentais:</strong> CDC Global Health, NIH Fogarty</li>
+                        <li><strong>Parcerias Público-Privadas:</strong> Colaborações com universidades</li>
+                        <li><strong>Leasing de Equipamentos:</strong> Opções de aluguel/financiamento</li>
+                    </ul>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação Orçamentária</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Levantamento de necessidades específicas concluído</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Cotações de múltiplos fornecedores obtidas</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Custos de instalação e treinamento incluídos</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Garantias e contratos de manutenção avaliados</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Fontes de financiamento identificadas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        Sustentabilidade e Manutenção
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Planejamento de Sustentabilidade:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Treinamento Local:</strong> Capacitar técnicos locais para manutenção básica</li>
+                        <li><strong>Estoque de Peças:</strong> Manter peças críticas de reposição</li>
+                        <li><strong>Contratos de Serviço:</strong> Estabelecer acordos com representantes locais</li>
+                        <li><strong>Parcerias Técnicas:</strong> Colaborar com universidades/institutos técnicos</li>
+                        <li><strong>Programas de Calibração:</strong> Estabelecer rotinas regulares</li>
+                    </ul>
+
+                    <h4>Custos Operacionais Anuais:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>% do Orçamento</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reagentes e Meios</td>
+                                <td>40-50%</td>
+                                <td>Consumíveis de rotina</td>
+                            </tr>
+                            <tr>
+                                <td>Manutenção Equipamentos</td>
+                                <td>15-20%</td>
+                                <td>Contratos de serviço, peças</td>
+                            </tr>
+                            <tr>
+                                <td>Calibração/Validação</td>
+                                <td>10-15%</td>
+                                <td>Serviços metrológicos</td>
+                            </tr>
+                            <tr>
+                                <td>Treinamento Pessoal</td>
+                                <td>10-15%</td>
+                                <td>Capacitação contínua</td>
+                            </tr>
+                            <tr>
+                                <td>Utilidades</td>
+                                <td>10-15%</td>
+                                <td>Energia, água, gases</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="danger-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> Aviso Legal</h4>
+                        <p><strong>Isenção de Responsabilidade:</strong> As informações de fornecedores são fornecidas apenas para orientação educacional. O SciVoice não endossa produtos específicos nem tem afiliação comercial com os fornecedores mencionados. Sempre realize devida diligência e obtenha múltiplas cotações antes de compras importantes.</p>
+                    </div>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-handshake"></i> Parcerias Estratégicas</h4>
+                        <p>Considere estabelecer parcerias com laboratórios regionais de referência para compartilhamento de recursos, expertise técnica e programas de intercâmbio de pessoal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 11: References -->
+        <div class="module-content" id="resources">
+            <div class="module-header">
+                <div class="module-title">
+                    <i class="fas fa-book"></i>
+                    Referências e Recursos
+                </div>
+                <div class="module-subtitle">Padrões OMS/CDC/FDA e literatura científica</div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Padrões da Organização Mundial da Saúde
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Diretrizes Principais da OMS:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Diretrizes para Qualidade da Água Potável, 4ª Edição (2017)</strong> - Padrões internacionais para água segura, incluindo critérios microbiológicos</li>
+                        <li><strong>Water Safety in Buildings (2011)</strong> - Orientações para prevenção de patógenos em sistemas prediais</li>
+                        <li><strong>Guidelines for Safe Recreational Water Environments (2006)</strong> - Padrões para águas recreacionais e indicadores microbiológicos</li>
+                        <li><strong>Cholera Outbreak: Assessing the Outbreak Response and Improving Preparedness (2017)</strong> - Protocolos específicos para <em>Vibrio cholerae</em></li>
+                        <li><strong>Water Quality and Health Strategy 2013–2020</strong> - Estrutura estratégica para vigilância da qualidade da água</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4><i class="fas fa-download"></i> Acesso Digital</h4>
+                        <p>Todos os documentos da OMS estão disponíveis gratuitamente em: <strong>www.who.int/publications</strong></p>
+                        <p>Traduções em português disponíveis através do escritório da OMS/OPAS para as Américas: <strong>www.paho.org</strong></p>
+                    </div>
+
+                    <h4>Documentos Técnicos Específicos:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Código OMS</th>
+                                <th>Relevância</th>
+                                <th>Última Atualização</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Manual for the Laboratory Identification of Vibrio cholerae</td>
+                                <td>WHO/CDS/CSR/GIP/99.3</td>
+                                <td>Protocolo oficial para cólera</td>
+                                <td>2019 (revisão)</td>
+                            </tr>
+                            <tr>
+                                <td>Laboratory Methods for the Diagnosis of Epidemic Dysentery and Cholera</td>
+                                <td>WHO/CDS/CSR/EDC/99.8</td>
+                                <td>Shigella e Vibrio</td>
+                                <td>2018</td>
+                            </tr>
+                            <tr>
+                                <td>Water Safety Plan Manual</td>
+                                <td>WHO/IWA/WSP/2009</td>
+                                <td>Gerenciamento de riscos</td>
+                                <td>2020 (revisão)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Métodos CDC e FDA
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Centers for Disease Control and Prevention (CDC):</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Manual de Métodos Bacteriológicos Analíticos (BAM), 2022</strong> - Métodos de referência para patógenos alimentares</li>
+                        <li><strong>Compêndio de Métodos para Exame Microbiológico de Alimentos, 5ª Ed. (2021)</strong> - APHA, AWWA, WEF</li>
+                        <li><strong>Laboratory Methods for the Diagnosis of Vibrio cholerae (2014)</strong> - Protocolos específicos CDC para cólera</li>
+                        <li><strong>Foodborne Diseases Active Surveillance Network (FoodNet) Protocols (2020)</strong> - Vigilância epidemiológica</li>
+                        <li><strong>Vessel Sanitation Program Manual (2018)</strong> - Prevenção de surtos em embarcações</li>
+                    </ul>
+
+                    <h4>Food and Drug Administration (FDA):</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Fish and Fishery Products Hazards and Controls Guidance, 4ª Ed. (2021)</strong> - Controle de <em>Vibrio</em> em frutos do mar</li>
+                        <li><strong>Grade "A" Pasteurized Milk Ordinance (2019)</strong> - Padrões microbiológicos para laticínios</li>
+                        <li><strong>Food Code 2022</strong> - Regulamentações de segurança alimentar incluindo critérios de água</li>
+                        <li><strong>Seafood HACCP Regulation (2020)</strong> - Análise de perigos e pontos críticos de controle</li>
+                    </ul>
+
+                    <div class="success-box">
+                        <h4><i class="fas fa-link"></i> Recursos Online CDC/FDA</h4>
+                        <ul>
+                            <li><strong>CDC Foodborne Outbreaks:</strong> www.cdc.gov/foodborneburden</li>
+                            <li><strong>FDA Food Safety:</strong> www.fda.gov/food/guidance-regulation</li>
+                            <li><strong>FoodNet Surveillance:</strong> www.cdc.gov/foodnet</li>
+                            <li><strong>CDC Laboratory Standards:</strong> www.cdc.gov/laboratory/standards</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Padrões ISO Relevantes
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Série ISO 9000 - Gestão da Qualidade:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Padrão ISO</th>
+                                <th>Título</th>
+                                <th>Aplicação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ISO 9001:2015</td>
+                                <td>Sistemas de gestão da qualidade - Requisitos</td>
+                                <td>Sistema de qualidade laboratorial</td>
+                            </tr>
+                            <tr>
+                                <td>ISO/IEC 17025:2017</td>
+                                <td>Competência de laboratórios de ensaio e calibração</td>
+                                <td>Acreditação laboratorial</td>
+                            </tr>
+                            <tr>
+                                <td>ISO 15189:2012</td>
+                                <td>Laboratórios clínicos - Requisitos de qualidade</td>
+                                <td>Laboratórios de diagnóstico</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Métodos Microbiológicos Específicos:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>ISO 19458:2006</strong> - Qualidade da água — Amostragem para análise microbiológica</li>
+                        <li><strong>ISO 6579-1:2017</strong> - Microbiologia de alimentos — Método horizontal para detecção, enumeração e sorotipagem de <em>Salmonella</em></li>
+                        <li><strong>ISO 21872-1:2017</strong> - Microbiologia de alimentos — Método horizontal para detecção de <em>Vibrio</em> spp. potencialmente enteropáticos</li>
+                        <li><strong>ISO 9308-1:2014</strong> - Qualidade da água — Enumeração de <em>Escherichia coli</em> e bactérias coliformes</li>
+                        <li><strong>ISO 7899-2:2000</strong> - Qualidade da água — Detecção e enumeração de enterococos intestinais</li>
+                        <li><strong>ISO 11290-1:2017</strong> - Microbiologia de alimentos — Método horizontal para detecção e enumeração de <em>Listeria monocytogenes</em></li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-money-bill"></i> Acesso a Padrões ISO</h4>
+                        <p>Padrões ISO são documentos comerciais. Acesso através de: <strong>www.iso.org</strong> ou associações nacionais de normalização. Muitas bibliotecas técnicas universitárias mantêm coleções de padrões ISO.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        Métodos EPA e Padrões Ambientais
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Environmental Protection Agency (EPA) - EUA:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Method 1603: <em>Escherichia coli</em> in Water by Membrane Filtration (2014)</strong> - Método de referência para E. coli</li>
+                        <li><strong>Method 1600: Enterococci in Water by Membrane Filtration (2009)</strong> - Protocolo para enterococos</li>
+                        <li><strong>Method 1604: Total Coliforms and <em>Escherichia coli</em> in Water by Membrane Filtration (2002)</strong></li>
+                        <li><strong>Recreational Water Quality Criteria (2012)</strong> - Padrões para águas recreacionais</li>
+                        <li><strong>Safe Drinking Water Act Regulations (2020)</strong> - Padrões nacionais de água potável</li>
+                    </ul>
+
+                    <h4>Padrões Regionais Importantes:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Região/País</th>
+                                <th>Órgão Regulador</th>
+                                <th>Padrão Principal</th>
+                                <th>Foco</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>União Europeia</td>
+                                <td>European Food Safety Authority</td>
+                                <td>EU Directive 2020/2184</td>
+                                <td>Qualidade água potável</td>
+                            </tr>
+                            <tr>
+                                <td>Brasil</td>
+                                <td>ANVISA/Ministério da Saúde</td>
+                                <td>Portaria GM/MS 888/2021</td>
+                                <td>Potabilidade da água</td>
+                            </tr>
+                            <tr>
+                                <td>Canadá</td>
+                                <td>Health Canada</td>
+                                <td>Guidelines for Canadian Drinking Water Quality</td>
+                                <td>Água potável e recreacional</td>
+                            </tr>
+                            <tr>
+                                <td>Austrália</td>
+                                <td>National Health and Medical Research Council</td>
+                                <td>Australian Drinking Water Guidelines</td>
+                                <td>Gestão de qualidade da água</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-box">
+                        <h4><i class="fas fa-balance-scale"></i> Harmonização Internacional</h4>
+                        <p>Muitos países baseiam seus padrões nacionais nas diretrizes da OMS, adaptando-os às condições locais. A tendência é uma convergência crescente dos critérios microbiológicos entre diferentes jurisdições.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">5</span>
+                        Literatura Científica e Recursos Educacionais
+                    </div>
+                </div>
+                <div class="step-content">
+                    <h4>Periódicos Científicos Relevantes:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Applied and Environmental Microbiology</strong> - ASM Press, métodos microbiológicos</li>
+                        <li><strong>Water Research</strong> - Elsevier, qualidade da água e tratamento</li>
+                        <li><strong>Journal of Applied Microbiology</strong> - Wiley, microbiologia aplicada</li>
+                        <li><strong>International Journal of Food Microbiology</strong> - Elsevier, patógenos alimentares</li>
+                        <li><strong>Water Science and Technology</strong> - IWA Publishing, tecnologias de água</li>
+                        <li><strong>Journal of Water and Health</strong> - IWA Publishing, saúde e água</li>
+                        <li><strong>Epidemiology and Infection</strong> - Cambridge, epidemiologia de doenças transmitidas pela água</li>
+                    </ul>
+
+                    <h4>Bases de Dados e Recursos Online:</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Recurso</th>
+                                <th>URL</th>
+                                <th>Tipo</th>
+                                <th>Acesso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PubMed/MEDLINE</td>
+                                <td>pubmed.ncbi.nlm.nih.gov</td>
+                                <td>Base de dados médica</td>
+                                <td>Gratuito</td>
+                            </tr>
+                            <tr>
+                                <td>Web of Science</td>
+                                <td>webofknowledge.com</td>
+                                <td>Base de dados científica</td>
+                                <td>Institucional</td>
+                            </tr>
+                            <tr>
+                                <td>SciELO</td>
+                                <td>www.scielo.org</td>
+                                <td>Acesso aberto América Latina</td>
+                                <td>Gratuito</td>
+                            </tr>
+                            <tr>
+                                <td>LILACS</td>
+                                <td>lilacs.bvsalud.org</td>
+                                <td>Literatura Latino-Americana</td>
+                                <td>Gratuito</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Livros de Referência Recomendados:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>"Manual of Clinical Microbiology, 12ª Ed."</strong> - ASM Press (2019) - Referência completa em microbiologia clínica</li>
+                        <li><strong>"Waterborne Pathogens: Detection and Treatment"</strong> - Butterworth-Heinemann (2020) - Patógenos da água e métodos de detecção</li>
+                        <li><strong>"Food and Water Safety for International Travelers"</strong> - CDC Health Information for International Travel (2022)</li>
+                        <li><strong>"Principles and Practice of Public Health Microbiology"</strong> - Academic Press (2021) - Microbiologia de saúde pública</li>
+                        <li><strong>"Laboratory Procedures in Clinical Microbiology, 2ª Ed."</strong> - Springer (2020) - Procedimentos laboratoriais práticos</li>
+                    </ul>
+
+                    <div class="interactive-checklist">
+                        <h4>Lista de Verificação de Recursos</h4>
+                        <ul class="checklist">
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Acesso às diretrizes atuais da OMS confirmado</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Padrões ISO relevantes identificados</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Regulamentações nacionais revisadas</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Assinatura de periódicos relevantes avaliada</span>
+                            </li>
+                            <li onclick="toggleCheckbox(this)">
+                                <input type="checkbox" readonly>
+                                <span>Biblioteca de referências técnicas estabelecida</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-container">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="step-number">6</span>
+                        Plataforma SciVoice e Recursos Adicionais
+                    </div>
+                </div>
+                <div class="step-content">
+                    <div class="success-box">
+                        <h4><i class="fas fa-microscope"></i> Sobre a Plataforma SciVoice</h4>
+                        <p>A <strong>SciVoice</strong> é uma plataforma open-source para democratização de ferramentas de microbiologia de saúde pública, desenvolvida para superar barreiras linguísticas e de recursos em laboratórios de países em desenvolvimento.</p>
+                        <p><strong>Missão:</strong> Tornar protocolos de laboratório de alta qualidade acessíveis em 22+ idiomas para fortalecer sistemas laboratoriais globais.</p>
+                    </div>
+
+                    <h4>Recursos Disponíveis na SciVoice:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Protocolos Multilíngues:</strong> Procedimentos padronizados em português, francês, espanhol, árabe, chinês e outros</li>
+                        <li><strong>Calculadoras Interativas:</strong> Ferramentas para preparação de meios, diluições e estatísticas</li>
+                        <li><strong>Módulos de Treinamento:</strong> Cursos interativos como este em múltiplos idiomas</li>
+                        <li><strong>Base de Conhecimento:</strong> Biblioteca de procedimentos e materiais de referência</li>
+                        <li><strong>Ferramentas de QC:</strong> Templates para controle de qualidade e documentação</li>
+                    </ul>
+
+                    <h4>Acesso e Contribuição:</h4>
+                    <div class="info-box">
+                        <h4><i class="fas fa-globe"></i> Acesso Aberto</h4>
+                        <p><strong>Website Principal:</strong> <a href="https://bhaley1.github.io/scivoice/" target="_blank">bhaley1.github.io/scivoice</a></p>
+                        <p><strong>Repositório GitHub:</strong> <a href="https://github.com/bhaley1/scivoice" target="_blank">github.com/bhaley1/scivoice</a></p>
+                        <p><strong>Licença:</strong> MIT License (código) + CC BY-SA 4.0 (conteúdo educacional)</p>
+                    </div>
+
+                    <h4>Como Contribuir:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>Traduções:</strong> Ajudar com traduções para idiomas adicionais</li>
+                        <li><strong>Validação Técnica:</strong> Revisar protocolos e sugerir melhorias</li>
+                        <li><strong>Desenvolvimento:</strong> Contribuir com código para novas funcionalidades</li>
+                        <li><strong>Testes de Campo:</strong> Implementar protocolos e fornecer feedback</li>
+                        <li><strong>Parcerias Institucionais:</strong> Conectar com organizações para adoção</li>
+                    </ul>
+
+                    <h4>Reconhecimentos e Apoio:</h4>
+                    <ul class="protocol-list">
+                        <li><strong>USDA Agricultural Research Service</strong> - Suporte institucional e desenvolvimento</li>
+                        <li><strong>Fulbright Program</strong> - Financiamento inicial para desenvolvimento internacional</li>
+                        <li><strong>Comunidade Open Source</strong> - Contribuidores voluntários globais</li>
+                        <li><strong>WHO/PAHO</strong> - Orientação em padrões internacionais</li>
+                        <li><strong>CDC Global Health</strong> - Orientação técnica em vigilância</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4><i class="fas fa-balance-scale"></i> Isenção de Responsabilidade</h4>
+                        <p>O conteúdo da SciVoice é fornecido apenas para fins educacionais e informativos. Sempre consulte padrões oficiais e autoridades regulatórias locais para implementação em laboratórios de diagnóstico. Os usuários são responsáveis por validar métodos conforme suas necessidades específicas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Language switching functionality
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function switchLanguage(langCode) {
+            const dropdown = document.getElementById('languageDropdown');
+            if (dropdown) dropdown.classList.remove('active');
+            if (dropdown) dropdown.classList.remove('show');
+
+            const availableFiles = {
+                'en': 'waterborne-pathogen-training-en.html',
+                'fr': 'waterborne-pathogen-training-fr.html',
+                'pt': 'waterborne-pathogen-training-pt.html',
+                'it': 'waterborne-pathogen-training-it.html'
+            };
+
+            if (availableFiles[langCode]) {
+                window.location.href = availableFiles[langCode];
+            } else {
+                alert('This language is coming soon. Currently available: English, French, Portuguese, Italian.');
+            }
+        }
+
+        // Module navigation
+        function showModule(moduleId) {
+            // Hide all modules
+            const modules = document.querySelectorAll('.module-content');
+            modules.forEach(module => module.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected module
+            document.getElementById(moduleId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Update progress indicator
+            const moduleOrder = ['overview', 'collection', 'media', 'principles', 'salmonella', 'vibrio', 'ecoli', 'enterococcus', 'additional', 'suppliers', 'resources'];
+            const currentIndex = moduleOrder.indexOf(moduleId) + 1;
+            document.getElementById('progressText').textContent = `${currentIndex}/11`;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Checkbox functionality
+        function toggleCheckbox(listItem) {
+            const checkbox = listItem.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            
+            // Add visual feedback
+            if (checkbox.checked) {
+                listItem.style.backgroundColor = 'var(--color-success)';
+                listItem.style.color = 'white';
+                setTimeout(() => {
+                    listItem.style.backgroundColor = '';
+                    listItem.style.color = '';
+                }, 500);
+            }
+        }
+
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('languageDropdown');
+            const toggle = document.querySelector('.language-toggle');
+            
+            if (!dropdown.contains(event.target) && !toggle.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        // Progress indicator click functionality
+        document.getElementById('progressIndicator').addEventListener('click', function() {
+            const moduleOrder = ['overview', 'collection', 'media', 'principles', 'salmonella', 'vibrio', 'ecoli', 'enterococcus', 'additional', 'suppliers', 'resources'];
+            const currentModule = document.querySelector('.module-content.active').id;
+            const currentIndex = moduleOrder.indexOf(currentModule);
+            
+            if (currentIndex < moduleOrder.length - 1) {
+                showModule(moduleOrder[currentIndex + 1]);
+                // Update tab selection
+                const tabs = document.querySelectorAll('.nav-tab');
+                tabs.forEach(tab => tab.classList.remove('active'));
+                tabs[currentIndex + 1].classList.add('active');
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey || event.metaKey) {
+                const moduleOrder = ['overview', 'collection', 'media', 'principles', 'salmonella', 'vibrio', 'ecoli', 'enterococcus', 'additional', 'suppliers', 'resources'];
+                const currentModule = document.querySelector('.module-content.active').id;
+                const currentIndex = moduleOrder.indexOf(currentModule);
+                
+                if (event.key === 'ArrowLeft' && currentIndex > 0) {
+                    event.preventDefault();
+                    showModule(moduleOrder[currentIndex - 1]);
+                    const tabs = document.querySelectorAll('.nav-tab');
+                    tabs.forEach(tab => tab.classList.remove('active'));
+                    tabs[currentIndex - 1].classList.add('active');
+                } else if (event.key === 'ArrowRight' && currentIndex < moduleOrder.length - 1) {
+                    event.preventDefault();
+                    showModule(moduleOrder[currentIndex + 1]);
+                    const tabs = document.querySelectorAll('.nav-tab');
+                    tabs.forEach(tab => tab.classList.remove('active'));
+                    tabs[currentIndex + 1].classList.add('active');
+                }
+            }
+        });
+
+        // Auto-save progress (simulated)
+        function saveProgress() {
+            const checkedItems = document.querySelectorAll('.checklist input[type="checkbox"]:checked').length;
+            localStorage.setItem('trainingProgress', checkedItems);
+        }
+
+        // Load progress on page load
+        window.addEventListener('load', function() {
+            const savedProgress = localStorage.getItem('trainingProgress') || 0;
+            console.log(`Progresso carregado: ${savedProgress} itens concluídos`);
+        });
+
+        // Save progress when checkboxes are clicked
+        document.addEventListener('change', function(event) {
+            if (event.target.type === 'checkbox') {
+                saveProgress();
+            }
+        });
+    </script>
+</body>
+</html>
