@@ -281,6 +281,10 @@
             border-top: 1px solid var(--color-border);
         }
 
+        .hidden {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2rem;
@@ -317,12 +321,12 @@
 
     <main class="main-container">
         <div class="hero-section">
-            <h1 class="hero-title">Training and Protocols</h1>
-            <p class="hero-subtitle">Comprehensive waterborne pathogen isolation training following WHO standards</p>
+            <h1 class="hero-title" id="heroTitle">Training and Protocols</h1>
+            <p class="hero-subtitle" id="heroSubtitle">Comprehensive waterborne pathogen isolation training following WHO standards</p>
         </div>
 
         <div class="language-selector">
-            <h3 class="language-title">Select Your Language | Choisissez votre langue | Seleccione su idioma</h3>
+            <h3 class="language-title" id="languageTitle">Select Your Language | Choisissez votre langue | Seleccione su idioma</h3>
             <div class="language-grid">
                 <button class="language-btn active" data-lang="en">🇺🇸 English</button>
                 <button class="language-btn" data-lang="fr">🇨🇩 Français</button>
@@ -349,117 +353,117 @@
             </div>
         </div>
 
-        <div class="standards-highlight">
-            <div class="standards-title">Standards Hierarchy</div>
-            <p><strong>WHO Standards (Primary)</strong> → CDC/FDA Guidelines → EPA Methods</p>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Following World Health Organization guidelines as primary standard, supplemented by CDC and FDA protocols where WHO guidance is not specific.</p>
+        <div class="standards-highlight" id="standardsSection">
+            <div class="standards-title" id="standardsTitle">Standards Hierarchy</div>
+            <p id="standardsText"><strong>WHO Standards (Primary)</strong> → CDC/FDA Guidelines → EPA Methods</p>
+            <p id="standardsDescription" style="font-size: 0.9rem; margin-top: 0.5rem;">Following World Health Organization guidelines as primary standard, supplemented by CDC and FDA protocols where WHO guidance is not specific.</p>
         </div>
 
         <div class="training-section">
             <h2 class="section-title">
                 <i class="fas fa-graduation-cap"></i>
-                Waterborne Pathogen Isolation Course
+                <span id="courseTitle">Waterborne Pathogen Isolation Course</span>
             </h2>
-            <p>Comprehensive step-by-step laboratory protocols for isolating and identifying waterborne bacterial pathogens from surface water samples.</p>
+            <p id="courseDescription">Comprehensive step-by-step laboratory protocols for isolating and identifying waterborne bacterial pathogens from surface water samples.</p>
 
             <div class="module-grid">
                 <div class="module-card" onclick="openTrainingModule('overview')">
                     <div class="module-title">
                         <i class="fas fa-info-circle"></i>
-                        Course Overview
+                        <span id="module1Title">Course Overview</span>
                     </div>
-                    <div class="module-description">Learning objectives, target pathogens, and WHO standards framework</div>
+                    <div class="module-description" id="module1Desc">Learning objectives, target pathogens, and WHO standards framework</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('collection')">
                     <div class="module-title">
                         <i class="fas fa-vial"></i>
-                        Sample Collection
+                        <span id="module2Title">Sample Collection</span>
                     </div>
-                    <div class="module-description">WHO-compliant field collection and transport procedures</div>
+                    <div class="module-description" id="module2Desc">WHO-compliant field collection and transport procedures</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('media')">
                     <div class="module-title">
                         <i class="fas fa-flask"></i>
-                        Media Preparation
+                        <span id="module3Title">Media Preparation</span>
                     </div>
-                    <div class="module-description">Standardized culture media preparation protocols</div>
+                    <div class="module-description" id="module3Desc">Standardized culture media preparation protocols</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('principles')">
                     <div class="module-title">
                         <i class="fas fa-dna"></i>
-                        Isolation Principles
+                        <span id="module4Title">Isolation Principles</span>
                     </div>
-                    <div class="module-description">General WHO frameworks for pathogen isolation</div>
+                    <div class="module-description" id="module4Desc">General WHO frameworks for pathogen isolation</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('salmonella')">
                     <div class="module-title">
                         <i class="fas fa-bacteria"></i>
-                        Salmonella Protocol
+                        <span id="module5Title">Salmonella Protocol</span>
                     </div>
-                    <div class="module-description">WHO-standardized Salmonella isolation procedures</div>
+                    <div class="module-description" id="module5Desc">WHO-standardized Salmonella isolation procedures</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('vibrio')">
                     <div class="module-title">
                         <i class="fas fa-water"></i>
-                        Vibrio Protocol
+                        <span id="module6Title">Vibrio Protocol</span>
                     </div>
-                    <div class="module-description">WHO cholera detection and Vibrio isolation methods</div>
+                    <div class="module-description" id="module6Desc">WHO cholera detection and Vibrio isolation methods</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('ecoli')">
                     <div class="module-title">
                         <i class="fas fa-microscope"></i>
-                        E. coli Protocol
+                        <span id="module7Title">E. coli Protocol</span>
                     </div>
-                    <div class="module-description">CDC/EPA thermotolerant E. coli detection methods</div>
+                    <div class="module-description" id="module7Desc">CDC/EPA thermotolerant E. coli detection methods</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('enterococcus')">
                     <div class="module-title">
                         <i class="fas fa-shield-virus"></i>
-                        Enterococcus Protocol
+                        <span id="module8Title">Enterococcus Protocol</span>
                     </div>
-                    <div class="module-description">CDC enterococcal indicator organism procedures</div>
+                    <div class="module-description" id="module8Desc">CDC enterococcal indicator organism procedures</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('additional')">
                     <div class="module-title">
                         <i class="fas fa-bug"></i>
-                        Additional Pathogens
+                        <span id="module9Title">Additional Pathogens</span>
                     </div>
-                    <div class="module-description">Campylobacter, Shigella, Legionella, and Yersinia protocols</div>
+                    <div class="module-description" id="module9Desc">Campylobacter, Shigella, Legionella, and Yersinia protocols</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('suppliers')">
                     <div class="module-title">
                         <i class="fas fa-shipping-fast"></i>
-                        Global Suppliers
+                        <span id="module10Title">Global Suppliers</span>
                     </div>
-                    <div class="module-description">International laboratory supply companies and procurement guidance</div>
+                    <div class="module-description" id="module10Desc">International laboratory supply companies and procurement guidance</div>
                 </div>
 
                 <div class="module-card" onclick="openTrainingModule('resources')">
                     <div class="module-title">
                         <i class="fas fa-book-open"></i>
-                        References & Resources
+                        <span id="module11Title">References & Resources</span>
                     </div>
-                    <div class="module-description">WHO/CDC/FDA standards and scientific literature</div>
+                    <div class="module-description" id="module11Desc">WHO/CDC/FDA standards and scientific literature</div>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 2rem;">
                 <button class="btn" onclick="startFullCourse()">
                     <i class="fas fa-play"></i>
-                    Start Complete Training Course
+                    <span id="startButton">Start Complete Training Course</span>
                 </button>
                 <a href="https://bhaley1.github.io/scivoice/" class="btn btn-secondary" style="margin-left: 1rem;">
                     <i class="fas fa-arrow-left"></i>
-                    Back to Tools
+                    <span id="backButton">Back to Tools</span>
                 </a>
             </div>
         </div>
@@ -467,55 +471,619 @@
         <div class="training-section">
             <h2 class="section-title">
                 <i class="fas fa-download"></i>
-                Additional Resources
+                <span id="additionalTitle">Additional Resources</span>
             </h2>
             <div class="module-grid">
                 <div class="module-card" onclick="downloadQuickRef()">
                     <div class="module-title">
                         <i class="fas fa-file-pdf"></i>
-                        Quick Reference Cards
+                        <span id="quickRefTitle">Quick Reference Cards</span>
                     </div>
-                    <div class="module-description">Printable protocol cards for laboratory use (Coming Soon)</div>
+                    <div class="module-description" id="quickRefDesc">Printable protocol cards for laboratory use (Coming Soon)</div>
                 </div>
 
                 <div class="module-card" onclick="accessOfflineVersion()">
                     <div class="module-title">
                         <i class="fas fa-mobile-alt"></i>
-                        Offline Version
+                        <span id="offlineTitle">Offline Version</span>
                     </div>
-                    <div class="module-description">Download for use without internet connection (Coming Soon)</div>
+                    <div class="module-description" id="offlineDesc">Download for use without internet connection (Coming Soon)</div>
                 </div>
 
                 <div class="module-card" onclick="viewCertification()">
                     <div class="module-title">
                         <i class="fas fa-certificate"></i>
-                        Certification Track
+                        <span id="certTitle">Certification Track</span>
                     </div>
-                    <div class="module-description">Complete assessments and earn digital certificates (Coming Soon)</div>
+                    <div class="module-description" id="certDesc">Complete assessments and earn digital certificates (Coming Soon)</div>
                 </div>
             </div>
         </div>
 
         <div class="footer-info">
-            <p><strong>Disclaimer:</strong> This training content is provided for educational purposes. Always follow your laboratory's standard operating procedures and local regulations.</p>
-            <p style="margin-top: 0.5rem;">Part of the <a href="https://bhaley1.github.io/scivoice/" style="color: var(--color-primary); text-decoration: none;"><strong>SciVoice</strong></a> platform — Free public health microbiology tools for everyone</p>
+            <p><strong id="disclaimerTitle">Disclaimer:</strong> <span id="disclaimerText">This training content is provided for educational purposes. Always follow your laboratory's standard operating procedures and local regulations.</span></p>
+            <p style="margin-top: 0.5rem;"><span id="footerText">Part of the <a href="https://bhaley1.github.io/scivoice/" style="color: var(--color-primary); text-decoration: none;"><strong>SciVoice</strong></a> platform — Free public health microbiology tools for everyone</span></p>
         </div>
     </main>
 
     <script>
+        // Comprehensive translations for all content
+        const translations = {
+            en: {
+                heroTitle: "Training and Protocols",
+                heroSubtitle: "Comprehensive waterborne pathogen isolation training following WHO standards",
+                languageTitle: "Select Your Language | Choisissez votre langue | Seleccione su idioma",
+                standardsTitle: "Standards Hierarchy",
+                standardsText: "<strong>WHO Standards (Primary)</strong> → CDC/FDA Guidelines → EPA Methods",
+                standardsDescription: "Following World Health Organization guidelines as primary standard, supplemented by CDC and FDA protocols where WHO guidance is not specific.",
+                courseTitle: "Waterborne Pathogen Isolation Course",
+                courseDescription: "Comprehensive step-by-step laboratory protocols for isolating and identifying waterborne bacterial pathogens from surface water samples.",
+                module1Title: "Course Overview",
+                module1Desc: "Learning objectives, target pathogens, and WHO standards framework",
+                module2Title: "Sample Collection",
+                module2Desc: "WHO-compliant field collection and transport procedures",
+                module3Title: "Media Preparation",
+                module3Desc: "Standardized culture media preparation protocols",
+                module4Title: "Isolation Principles",
+                module4Desc: "General WHO frameworks for pathogen isolation",
+                module5Title: "Salmonella Protocol",
+                module5Desc: "WHO-standardized Salmonella isolation procedures",
+                module6Title: "Vibrio Protocol",
+                module6Desc: "WHO cholera detection and Vibrio isolation methods",
+                module7Title: "E. coli Protocol",
+                module7Desc: "CDC/EPA thermotolerant E. coli detection methods",
+                module8Title: "Enterococcus Protocol",
+                module8Desc: "CDC enterococcal indicator organism procedures",
+                module9Title: "Additional Pathogens",
+                module9Desc: "Campylobacter, Shigella, Legionella, and Yersinia protocols",
+                module10Title: "Global Suppliers",
+                module10Desc: "International laboratory supply companies and procurement guidance",
+                module11Title: "References & Resources",
+                module11Desc: "WHO/CDC/FDA standards and scientific literature",
+                startButton: "Start Complete Training Course",
+                backButton: "Back to Tools",
+                additionalTitle: "Additional Resources",
+                quickRefTitle: "Quick Reference Cards",
+                quickRefDesc: "Printable protocol cards for laboratory use (Coming Soon)",
+                offlineTitle: "Offline Version",
+                offlineDesc: "Download for use without internet connection (Coming Soon)",
+                certTitle: "Certification Track",
+                certDesc: "Complete assessments and earn digital certificates (Coming Soon)",
+                disclaimerTitle: "Disclaimer:",
+                disclaimerText: "This training content is provided for educational purposes. Always follow your laboratory's standard operating procedures and local regulations.",
+                footerText: "Part of the <strong>SciVoice</strong> platform — Free public health microbiology tools for everyone"
+            },
+
+            fr: {
+                heroTitle: "Formation et Protocoles",
+                heroSubtitle: "Formation complète sur l'isolement des pathogènes hydriques suivant les normes OMS",
+                languageTitle: "Sélectionnez votre langue | Select Your Language | Seleccione su idioma",
+                standardsTitle: "Hiérarchie des Normes",
+                standardsText: "<strong>Normes OMS (Principal)</strong> → Directives CDC/FDA → Méthodes EPA",
+                standardsDescription: "Suivant les directives de l'Organisation Mondiale de la Santé comme norme principale, complétées par les protocoles CDC et FDA où les directives OMS ne sont pas spécifiques.",
+                courseTitle: "Cours d'Isolement des Pathogènes Hydriques",
+                courseDescription: "Protocoles de laboratoire complets étape par étape pour isoler et identifier les pathogènes bactériens hydriques à partir d'échantillons d'eau de surface.",
+                module1Title: "Aperçu du Cours",
+                module1Desc: "Objectifs d'apprentissage, pathogènes ciblés et cadre des normes OMS",
+                module2Title: "Collecte d'Échantillons",
+                module2Desc: "Procédures de collecte et transport conformes OMS",
+                module3Title: "Préparation des Milieux",
+                module3Desc: "Protocoles de préparation des milieux de culture standardisés",
+                module4Title: "Principes d'Isolement",
+                module4Desc: "Cadres généraux OMS pour l'isolement des pathogènes",
+                module5Title: "Protocole Salmonella",
+                module5Desc: "Procédures d'isolement Salmonella standardisées OMS",
+                module6Title: "Protocole Vibrio",
+                module6Desc: "Détection du choléra OMS et méthodes d'isolement Vibrio",
+                module7Title: "Protocole E. coli",
+                module7Desc: "Méthodes de détection E. coli thermotolérant CDC/EPA",
+                module8Title: "Protocole Enterococcus",
+                module8Desc: "Procédures d'organisme indicateur entérocoque CDC",
+                module9Title: "Pathogènes Additionnels",
+                module9Desc: "Protocoles Campylobacter, Shigella, Legionella et Yersinia",
+                module10Title: "Fournisseurs Mondiaux",
+                module10Desc: "Entreprises d'approvisionnement de laboratoire internationales et conseils d'achat",
+                module11Title: "Références et Ressources",
+                module11Desc: "Normes OMS/CDC/FDA et littérature scientifique",
+                startButton: "Commencer le Cours Complet",
+                backButton: "Retour aux Outils",
+                additionalTitle: "Ressources Supplémentaires",
+                quickRefTitle: "Cartes de Référence Rapide",
+                quickRefDesc: "Cartes de protocole imprimables pour usage en laboratoire (Prochainement)",
+                offlineTitle: "Version Hors Ligne",
+                offlineDesc: "Télécharger pour utilisation sans connexion internet (Prochainement)",
+                certTitle: "Parcours de Certification",
+                certDesc: "Complétez les évaluations et obtenez des certificats numériques (Prochainement)",
+                disclaimerTitle: "Avertissement :",
+                disclaimerText: "Ce contenu de formation est fourni à des fins éducatives. Suivez toujours les procédures opérationnelles standard de votre laboratoire et les réglementations locales.",
+                footerText: "Partie de la plateforme <strong>SciVoice</strong> — Outils gratuits de microbiologie de santé publique pour tous"
+            },
+
+            es: {
+                heroTitle: "Capacitación y Protocolos",
+                heroSubtitle: "Capacitación integral en aislamiento de patógenos transmitidos por agua siguiendo estándares de la OMS",
+                languageTitle: "Seleccione su idioma | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Jerarquía de Estándares",
+                standardsText: "<strong>Estándares OMS (Principal)</strong> → Directrices CDC/FDA → Métodos EPA",
+                standardsDescription: "Siguiendo las directrices de la Organización Mundial de la Salud como estándar principal, complementadas por protocolos CDC y FDA donde las directrices OMS no son específicas.",
+                courseTitle: "Curso de Aislamiento de Patógenos Transmitidos por Agua",
+                courseDescription: "Protocolos de laboratorio integrales paso a paso para aislar e identificar patógenos bacterianos transmitidos por agua de muestras de agua superficial.",
+                module1Title: "Resumen del Curso",
+                module1Desc: "Objetivos de aprendizaje, patógenos objetivo y marco de estándares OMS",
+                module2Title: "Recolección de Muestras",
+                module2Desc: "Procedimientos de recolección y transporte conformes a la OMS",
+                module3Title: "Preparación de Medios",
+                module3Desc: "Protocolos de preparación de medios de cultivo estandarizados",
+                module4Title: "Principios de Aislamiento",
+                module4Desc: "Marcos generales de la OMS para el aislamiento de patógenos",
+                module5Title: "Protocolo Salmonella",
+                module5Desc: "Procedimientos de aislamiento Salmonella estandarizados por la OMS",
+                module6Title: "Protocolo Vibrio",
+                module6Desc: "Detección de cólera OMS y métodos de aislamiento Vibrio",
+                module7Title: "Protocolo E. coli",
+                module7Desc: "Métodos de detección E. coli termotolerante CDC/EPA",
+                module8Title: "Protocolo Enterococcus",
+                module8Desc: "Procedimientos de organismo indicador enterocócico CDC",
+                module9Title: "Patógenos Adicionales",
+                module9Desc: "Protocolos Campylobacter, Shigella, Legionella y Yersinia",
+                module10Title: "Proveedores Globales",
+                module10Desc: "Empresas de suministros de laboratorio internacionales y orientación de adquisiciones",
+                module11Title: "Referencias y Recursos",
+                module11Desc: "Estándares OMS/CDC/FDA y literatura científica",
+                startButton: "Iniciar Curso Completo",
+                backButton: "Volver a Herramientas",
+                additionalTitle: "Recursos Adicionales",
+                quickRefTitle: "Tarjetas de Referencia Rápida",
+                quickRefDesc: "Tarjetas de protocolo imprimibles para uso en laboratorio (Próximamente)",
+                offlineTitle: "Versión Sin Conexión",
+                offlineDesc: "Descargar para uso sin conexión a internet (Próximamente)",
+                certTitle: "Track de Certificación",
+                certDesc: "Complete evaluaciones y obtenga certificados digitales (Próximamente)",
+                disclaimerTitle: "Descargo de responsabilidad:",
+                disclaimerText: "Este contenido de capacitación se proporciona con fines educativos. Siempre siga los procedimientos operativos estándar de su laboratorio y las regulaciones locales.",
+                footerText: "Parte de la plataforma <strong>SciVoice</strong> — Herramientas gratuitas de microbiología de salud pública para todos"
+            },
+
+            pt: {
+                heroTitle: "Treinamento e Protocolos",
+                heroSubtitle: "Treinamento abrangente em isolamento de patógenos veiculados pela água seguindo padrões da OMS",
+                languageTitle: "Selecione seu idioma | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Hierarquia de Padrões",
+                standardsText: "<strong>Padrões OMS (Principal)</strong> → Diretrizes CDC/FDA → Métodos EPA",
+                standardsDescription: "Seguindo as diretrizes da Organização Mundial da Saúde como padrão principal, complementadas por protocolos CDC e FDA onde as diretrizes OMS não são específicas.",
+                courseTitle: "Curso de Isolamento de Patógenos Veiculados pela Água",
+                courseDescription: "Protocolos laboratoriais abrangentes passo a passo para isolar e identificar patógenos bacterianos veiculados pela água de amostras de água superficial.",
+                module1Title: "Visão Geral do Curso",
+                module1Desc: "Objetivos de aprendizagem, patógenos-alvo e estrutura de padrões OMS",
+                module2Title: "Coleta de Amostras",
+                module2Desc: "Procedimentos de coleta e transporte em conformidade com a OMS",
+                module3Title: "Preparação de Meios",
+                module3Desc: "Protocolos de preparação de meios de cultura padronizados",
+                module4Title: "Princípios de Isolamento",
+                module4Desc: "Estruturas gerais da OMS para isolamento de patógenos",
+                module5Title: "Protocolo Salmonella",
+                module5Desc: "Procedimentos de isolamento Salmonella padronizados pela OMS",
+                module6Title: "Protocolo Vibrio",
+                module6Desc: "Detecção de cólera OMS e métodos de isolamento Vibrio",
+                module7Title: "Protocolo E. coli",
+                module7Desc: "Métodos de detecção E. coli termotolerante CDC/EPA",
+                module8Title: "Protocolo Enterococcus",
+                module8Desc: "Procedimentos de organismo indicador enterocócico CDC",
+                module9Title: "Patógenos Adicionais",
+                module9Desc: "Protocolos Campylobacter, Shigella, Legionella e Yersinia",
+                module10Title: "Fornecedores Globais",
+                module10Desc: "Empresas internacionais de suprimentos laboratoriais e orientação de aquisição",
+                module11Title: "Referências e Recursos",
+                module11Desc: "Padrões OMS/CDC/FDA e literatura científica",
+                startButton: "Iniciar Curso Completo",
+                backButton: "Voltar às Ferramentas",
+                additionalTitle: "Recursos Adicionais",
+                quickRefTitle: "Cartões de Referência Rápida",
+                quickRefDesc: "Cartões de protocolo imprimíveis para uso em laboratório (Em Breve)",
+                offlineTitle: "Versão Offline",
+                offlineDesc: "Baixar para uso sem conexão com a internet (Em Breve)",
+                certTitle: "Trilha de Certificação",
+                certDesc: "Complete avaliações e ganhe certificados digitais (Em Breve)",
+                disclaimerTitle: "Isenção de responsabilidade:",
+                disclaimerText: "Este conteúdo de treinamento é fornecido para fins educacionais. Sempre siga os procedimentos operacionais padrão do seu laboratório e as regulamentações locais.",
+                footerText: "Parte da plataforma <strong>SciVoice</strong> — Ferramentas gratuitas de microbiologia de saúde pública para todos"
+            },
+
+            it: {
+                heroTitle: "Formazione e Protocolli",
+                heroSubtitle: "Formazione completa sull'isolamento di patogeni trasmessi dall'acqua seguendo gli standard OMS",
+                languageTitle: "Seleziona la tua lingua | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Gerarchia degli Standard",
+                standardsText: "<strong>Standard OMS (Principale)</strong> → Linee Guida CDC/FDA → Metodi EPA",
+                standardsDescription: "Seguendo le linee guida dell'Organizzazione Mondiale della Sanità come standard principale, integrate dai protocolli CDC e FDA dove le linee guida OMS non sono specifiche.",
+                courseTitle: "Corso di Isolamento Patogeni Trasmessi dall'Acqua",
+                courseDescription: "Protocolli di laboratorio completi passo-passo per isolare e identificare patogeni batterici trasmessi dall'acqua da campioni di acqua superficiale.",
+                startButton: "Inizia Corso Completo",
+                backButton: "Torna agli Strumenti",
+                additionalTitle: "Risorse Aggiuntive",
+                disclaimerTitle: "Disclaimer:",
+                disclaimerText: "Questo contenuto formativo è fornito a scopi educativi. Seguire sempre le procedure operative standard del proprio laboratorio e le normative locali.",
+                footerText: "Parte della piattaforma <strong>SciVoice</strong> — Strumenti gratuiti di microbiologia per la salute pubblica per tutti"
+            },
+
+            ar: {
+                heroTitle: "التدريب والبروتوكولات",
+                heroSubtitle: "تدريب شامل على عزل مسببات الأمراض المنقولة بالمياه وفقاً لمعايير منظمة الصحة العالمية",
+                languageTitle: "اختر لغتك | Select Your Language | Choisissez votre langue",
+                standardsTitle: "تسلسل المعايير",
+                standardsText: "<strong>معايير منظمة الصحة العالمية (الأساسية)</strong> ← إرشادات CDC/FDA ← طرق EPA",
+                standardsDescription: "اتباع إرشادات منظمة الصحة العالمية كمعيار أساسي، مدعومة ببروتوكولات CDC و FDA حيث لا تكون إرشادات منظمة الصحة العالمية محددة.",
+                courseTitle: "دورة عزل مسببات الأمراض المنقولة بالمياه",
+                courseDescription: "بروتوكولات مختبرية شاملة خطوة بخطوة لعزل وتحديد مسببات الأمراض البكتيرية المنقولة بالمياه من عينات المياه السطحية.",
+                startButton: "ابدأ الدورة الكاملة",
+                backButton: "العودة للأدوات",
+                additionalTitle: "موارد إضافية",
+                disclaimerTitle: "إخلاء المسؤولية:",
+                disclaimerText: "يُقدم هذا المحتوى التدريبي لأغراض تعليمية. اتبع دائماً إجراءات التشغيل القياسية لمختبرك واللوائح المحلية.",
+                footerText: "جزء من منصة <strong>SciVoice</strong> — أدوات مجانية لعلم الأحياء الدقيقة للصحة العامة للجميع"
+            },
+
+            zh: {
+                heroTitle: "培训和协议",
+                heroSubtitle: "遵循WHO标准的水传播病原体分离综合培训",
+                languageTitle: "选择语言 | Select Your Language | Choisissez votre langue",
+                standardsTitle: "标准层次",
+                standardsText: "<strong>WHO标准（主要）</strong> → CDC/FDA指南 → EPA方法",
+                standardsDescription: "以世界卫生组织指南为主要标准，在WHO指南不具体的地方由CDC和FDA协议补充。",
+                courseTitle: "水传播病原体分离课程",
+                courseDescription: "从地表水样本中分离和识别水传播细菌病原体的综合逐步实验室协议。",
+                startButton: "开始完整培训课程",
+                backButton: "返回工具",
+                additionalTitle: "其他资源",
+                disclaimerTitle: "免责声明：",
+                disclaimerText: "本培训内容仅供教育目的。请始终遵循您实验室的标准操作程序和当地法规。",
+                footerText: "<strong>SciVoice</strong>平台的一部分 — 面向所有人的免费公共卫生微生物学工具"
+            },
+
+            sw: {
+                heroTitle: "Mafunzo na Taratibu",
+                heroSubtitle: "Mafunzo makuu ya kutengwa kwa vimelea vya maji kufuata viwango vya WHO",
+                languageTitle: "Chagua Lugha Yako | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Utaratibu wa Viwango",
+                standardsText: "<strong>Viwango vya WHO (Vikuu)</strong> → Miongozo ya CDC/FDA → Mbinu za EPA",
+                standardsDescription: "Kufuata miongozo ya Shirika la Afya Ulimwenguni kama kiwango kikuu, ikiokolezwa na itifaki za CDC na FDA pale ambapo miongozo ya WHO si maalum.",
+                courseTitle: "Kozi ya Kutengwa kwa Vimelea vya Maji",
+                courseDescription: "Taratibu kamili za maabara hatua kwa hatua za kutengwa na kutambua vimelea vya bakteria vya maji kutoka kwenye sampuli za maji ya nje.",
+                startButton: "Anza Kozi Kamili ya Mafunzo",
+                backButton: "Rudi Kwenye Zana",
+                additionalTitle: "Rasilimali za Ziada",
+                disclaimerTitle: "Onyo:",
+                disclaimerText: "Maudhui haya ya mafunzo yanatolewa kwa madhumuni ya elimu. Daima fuata taratibu za kawaida za uendeshaji za maabara yako na kanuni za eneo.",
+                footerText: "Sehemu ya jukwaa la <strong>SciVoice</strong> — Zana za bure za microbiolojia ya afya ya umma kwa kila mtu"
+            },
+
+            am: {
+                heroTitle: "ስልጠና እና ፕሮቶኮሎች",
+                heroSubtitle: "የሲሸፈ ደንቦችን በመከተል የውሃ በሽታ አምጭዎች መለያየት አጠቃላይ ስልጠና",
+                languageTitle: "ቋንቋዎን ይምረጡ | Select Your Language | Choisissez votre langue",
+                standardsTitle: "የደንቦች ቅደም ተከተል",
+                standardsText: "<strong>የሲሸፈ ደንቦች (ዋናው)</strong> → የሲዲሲ/ኤፍዲኤ መመሪያዎች → የኢፒኤ ዘዴዎች",
+                standardsDescription: "የአለም ጤና ድርጅት መመሪያዎችን እንደ ዋና ደረጃ በመከተል፣ የሲሸፈ መመሪያ ዝርዝር በማይሆንበት ቦታ በሲዲሲ እና ኤፍዲኤ ፕሮቶኮሎች ይደገፋል።",
+                courseTitle: "የውሃ በሽታ አምጭዎች መለያየት ኮርስ",
+                courseDescription: "ከገጽታ ውሃ ናሙናዎች የውሃ በሽታ አምጭ ባክቴሪያዎችን ለመለየት እና ለመለየት አጠቃላይ ደረጃ በደረጃ የቤተ ሙከራ ፕሮቶኮሎች።",
+                startButton: "ሙሉ ስልጠና ኮርስ ይጀምሩ",
+                backButton: "ወደ መሳሪያዎች ተመለስ",
+                additionalTitle: "ተጨማሪ ግብዓቶች",
+                disclaimerTitle: "ማስተዋወቂያ፡",
+                disclaimerText: "ይህ የስልጠና ይዘት ለትምህርታዊ ዓላማዎች ይቀርባል። ሁልጊዜ የቤተ ሙከራዎን መደበኛ የአሰራር ሂደቶች እና የአካባቢ ደንቦችን ይከተሉ።",
+                footerText: "የ<strong>SciVoice</strong> መድረክ ክፍል — ለሁሉም ነጻ የህዝብ ጤና ማይክሮባዮሎጂ መሳሪያዎች"
+            },
+
+            hi: {
+                heroTitle: "प्रशिक्षण और प्रोटोकॉल",
+                heroSubtitle: "WHO मानकों का पालन करते हुए जलजनित रोगजनकों के अलगाव की व्यापक प्रशिक्षण",
+                languageTitle: "अपनी भाषा चुनें | Select Your Language | Choisissez votre langue",
+                standardsTitle: "मानकों का पदानुक्रम",
+                standardsText: "<strong>WHO मानक (प्राथमिक)</strong> → CDC/FDA दिशानिर्देश → EPA विधियां",
+                standardsDescription: "विश्व स्वास्थ्य संगठन दिशानिर्देशों को प्राथमिक मानक के रूप में अपनाते हुए, जहां WHO दिशानिर्देश विशिष्ट नहीं हैं वहां CDC और FDA प्रोटोकॉल द्वारा पूरक।",
+                courseTitle: "जलजनित रोगजनक अलगाव पाठ्यक्रम",
+                courseDescription: "सतही जल नमूनों से जलजनित बैक्टीरियल रोगजनकों को अलग करने और पहचानने के लिए व्यापक चरण-दर-चरण प्रयोगशाला प्रोटोकॉल।",
+                startButton: "पूर्ण प्रशिक्षण पाठ्यक्रम शुरू करें",
+                backButton: "टूल्स पर वापस जाएं",
+                additionalTitle: "अतिरिक्त संसाधन",
+                disclaimerTitle: "अस्वीकरण:",
+                disclaimerText: "यह प्रशिक्षण सामग्री शैक्षिक उद्देश्यों के लिए प्रदान की गई है। हमेशा अपनी प्रयोगशाला की मानक संचालन प्रक्रियाओं और स्थानीय नियमों का पालन करें।",
+                footerText: "<strong>SciVoice</strong> प्लेटफॉर्म का हिस्सा — सभी के लिए निःशुल्क सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान उपकरण"
+            },
+
+            bn: {
+                heroTitle: "প্রশিক্ষণ এবং প্রোটোকল",
+                heroSubtitle: "WHO মান অনুসরণ করে জলবাহিত রোগজীবাণু বিচ্ছিন্নকরণের ব্যাপক প্রশিক্ষণ",
+                languageTitle: "আপনার ভাষা নির্বাচন করুন | Select Your Language | Choisissez votre langue",
+                standardsTitle: "মানদণ্ডের ক্রমবিন্যাস",
+                standardsText: "<strong>WHO মান (প্রাথমিক)</strong> → CDC/FDA নির্দেশিকা → EPA পদ্ধতি",
+                standardsDescription: "বিশ্ব স্বাস্থ্য সংস্থার নির্দেশিকাকে প্রাথমিক মান হিসেবে অনুসরণ করে, যেখানে WHO নির্দেশিকা নির্দিষ্ট নয় সেখানে CDC এবং FDA প্রোটোকল দ্বারা সম্পূরক।",
+                courseTitle: "জলবাহিত রোগজীবাণু বিচ্ছিন্নকরণ কোর্স",
+                courseDescription: "ভূপৃষ্ঠের পানির নমুনা থেকে জলবাহিত ব্যাকটেরিয়াল রোগজীবাণু বিচ্ছিন্ন এবং সনাক্ত করার জন্য ব্যাপক ধাপে ধাপে গবেষণাগার প্রোটোকল।",
+                startButton: "সম্পূর্ণ প্রশিক্ষণ কোর্স শুরু করুন",
+                backButton: "টুলসে ফিরে যান",
+                additionalTitle: "অতিরিক্ত সম্পদ",
+                disclaimerTitle: "দাবি পরিত্যাগ:",
+                disclaimerText: "এই প্রশিক্ষণ বিষয়বস্তু শিক্ষামূলক উদ্দেশ্যে প্রদান করা হয়েছে। সর্বদা আপনার গবেষণাগারের মান পরিচালনা পদ্ধতি এবং স্থানীয় নিয়মাবলী অনুসরণ করুন।",
+                footerText: "<strong>SciVoice</strong> প্ল্যাটফর্মের অংশ — সবার জন্য বিনামূল্যে জনস্বাস্থ্য মাইক্রোবায়োলজি সরঞ্জাম"
+            },
+
+            id: {
+                heroTitle: "Pelatihan dan Protokol",
+                heroSubtitle: "Pelatihan komprehensif isolasi patogen bawaan air mengikuti standar WHO",
+                languageTitle: "Pilih Bahasa Anda | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Hirarki Standar",
+                standardsText: "<strong>Standar WHO (Utama)</strong> → Pedoman CDC/FDA → Metode EPA",
+                standardsDescription: "Mengikuti pedoman Organisasi Kesehatan Dunia sebagai standar utama, dilengkapi dengan protokol CDC dan FDA di mana pedoman WHO tidak spesifik.",
+                courseTitle: "Kursus Isolasi Patogen Bawaan Air",
+                courseDescription: "Protokol laboratorium komprehensif langkah demi langkah untuk mengisolasi dan mengidentifikasi patogen bakteri bawaan air dari sampel air permukaan.",
+                startButton: "Mulai Kursus Pelatihan Lengkap",
+                backButton: "Kembali ke Alat",
+                additionalTitle: "Sumber Daya Tambahan",
+                disclaimerTitle: "Penafian:",
+                disclaimerText: "Konten pelatihan ini disediakan untuk tujuan pendidikan. Selalu ikuti prosedur operasi standar laboratorium Anda dan peraturan setempat.",
+                footerText: "Bagian dari platform <strong>SciVoice</strong> — Alat mikrobiologi kesehatan masyarakat gratis untuk semua"
+            },
+
+            uk: {
+                heroTitle: "Навчання та Протоколи",
+                heroSubtitle: "Комплексне навчання з ізоляції водних патогенів згідно зі стандартами ВООЗ",
+                languageTitle: "Виберіть вашу мову | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Ієрархія Стандартів",
+                standardsText: "<strong>Стандарти ВООЗ (Основні)</strong> → Керівні принципи CDC/FDA → Методи EPA",
+                standardsDescription: "Дотримання керівних принципів Всесвітньої організації охорони здоров'я як основного стандарту, доповнених протоколами CDC та FDA там, де керівні принципи ВООЗ не є специфічними.",
+                courseTitle: "Курс Ізоляції Водних Патогенів",
+                courseDescription: "Комплексні покрокові лабораторні протоколи для ізоляції та ідентифікації водних бактеріальних патогенів з зразків поверхневих вод.",
+                startButton: "Розпочати Повний Навчальний Курс",
+                backButton: "Повернутися до Інструментів",
+                additionalTitle: "Додаткові Ресурси",
+                disclaimerTitle: "Відмова від відповідальності:",
+                disclaimerText: "Цей навчальний контент надається з освітньою метою. Завжди дотримуйтесь стандартних операційних процедур вашої лабораторії та місцевих правил.",
+                footerText: "Частина платформи <strong>SciVoice</strong> — Безкоштовні інструменти мікробіології громадського здоров'я для всіх"
+            },
+
+            ha: {
+                heroTitle: "Horar da da Tsarin Aiki",
+                heroSubtitle: "Cikakken horar da raba kwayoyin ruwa bi ka'idodin WHO",
+                languageTitle: "Zaɓi Harshenku | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Tsarin Ka'idodi",
+                standardsText: "<strong>Ka'idodin WHO (Na Farko)</strong> → Jagororin CDC/FDA → Hanyoyin EPA",
+                standardsDescription: "Bin jagororin Kungiyar Lafiya ta Duniya a matsayin ka'ida ta farko, da karin goyan bayan ka'idodin CDC da FDA inda jagororin WHO ba su da takamaiman bayani.",
+                courseTitle: "Karatun Raba Kwayoyin Ruwa",
+                courseDescription: "Cikakken tsarin dakin gwaji mataki-mataki don raba da gano kwayoyin cutar ruwa daga samfuran ruwan saman.",
+                startButton: "Fara Cikakkiyar Karatun Horar da",
+                backButton: "Koma zuwa Kayan Aiki",
+                additionalTitle: "Karin Kayan Aiki",
+                disclaimerTitle: "Sanarwa:",
+                disclaimerText: "Ana ba da wannan abun koyo don dalilai na ilimi. Ku bi ka'idodin aiki na dakin gwajinku da dokokin yankin kullum.",
+                footerText: "Wani bangare na dandalin <strong>SciVoice</strong> — Kayan aikin microbiology na lafiyar jama'a kyauta ga kowa"
+            },
+
+            yo: {
+                heroTitle: "Ẹkọ ati Awọn Ilana",
+                heroSubtitle: "Ẹkọ pipe ti yiya awọn kokoro arun omi ti o tẹle awọn iwọn WHO",
+                languageTitle: "Yan Ede Rẹ | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Eto Awọn Iwọn",
+                standardsText: "<strong>Awọn Iwọn WHO (Akọkọ)</strong> → Awọn Itọsọna CDC/FDA → Awọn Ọna EPA",
+                standardsDescription: "Titẹle awọn itọsọna Àjọ Ilera Agbaye gẹgẹbi iwọn akọkọ, ti awọn ilana CDC ati FDA ṣe atilẹyin nibiti awọn itọsọna WHO ko pato.",
+                courseTitle: "Ẹkọ Yiya Awọn Kokoro Arun Omi",
+                courseDescription: "Awọn ilana yàrá iwadi pipe igbesẹ-nipasẹ-igbesẹ lati ya ati idamo awọn kokoro arun bakteria omi lati awọn apẹẹrẹ omi oke.",
+                startButton: "Bẹrẹ Ẹkọ Pipe Kikun",
+                backButton: "Pada si Awọn Irinṣẹ",
+                additionalTitle: "Awọn Ohun Elo Afikun",
+                disclaimerTitle: "Ikede:",
+                disclaimerText: "A pese akoonu ẹkọ yii fun awọn idi eto. Nigbagbogbo tẹle awọn ilana iṣẹ iwọntunwọnsi ti yàrá iwadi rẹ ati awọn ofin agbegbe.",
+                footerText: "Apakan pẹpẹ <strong>SciVoice</strong> — Awọn irinṣẹ microbiology ilera gbogbo eniyan ọfẹ fun gbogbo eniyan"
+            },
+
+            ln: {
+                heroTitle: "Mateya na Nzela ya Mosala",
+                heroSubtitle: "Mateya makasi ya kokabola basilisi ya mai kolanda mibeko ya WHO",
+                languageTitle: "Pona Monoko Na Yo | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Molongo ya Mibeko",
+                standardsText: "<strong>Mibeko ya WHO (Ya Liboso)</strong> → Malako ya CDC/FDA → Biloko ya EPA",
+                standardsDescription: "Kolanda malako ya Ebongiseli ya Bokolongono ya Mokili lokola libanga ya liboso, ekozwa na mikanda ya CDC na FDA epai mibeko ya WHO ezali penza te.",
+                courseTitle: "Kelasi ya Kokabola Basilisi ya Mai",
+                courseDescription: "Nzela ya laboratoire mobimba litambe na litambe ya kokabola mpe koyeba basilisi ya bakterie ya mai banda biloko ya mai ya likolo.",
+                startButton: "Bandela Kelasi Mobimba ya Mateya",
+                backButton: "Zonga na Bisaleli",
+                additionalTitle: "Bisaleli Mosusu",
+                disclaimerTitle: "Boyebisi:",
+                disclaimerText: "Makambo oyo ya mateya epesami mpo na makambo ya mateya. Landa ntango nyonso nzela ya misala ya laboratoire na yo mpe mibeko ya esika.",
+                footerText: "Eteni ya plateforme <strong>SciVoice</strong> — Bisaleli ya microbiology ya bokolongono ya bato nyonso ofele mpo na bato nyonso"
+            },
+
+            mg: {
+                heroTitle: "Fampianarana sy Fomba Fiasa",
+                heroSubtitle: "Fampianarana feno momba ny fanasarahana otrik'aretina avy amin'ny rano manaraka ny fenitry ny WHO",
+                languageTitle: "Safidio ny Fiteninao | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Filaharan'ny Fenitra",
+                standardsText: "<strong>Fenitry ny WHO (Voalohany)</strong> → Torolàlana CDC/FDA → Fomba EPA",
+                standardsDescription: "Manaraka ny torolàlan'ny Fikambanana Iraisampirenena momba ny Fahasalamana ho fenitra voalohany, ampian'ny fomba fiasan'ny CDC sy FDA izay tsy manokana ny torolàlan'ny WHO.",
+                courseTitle: "Fanofanana Fanasarahana Otrik'aretina Avy Amin'ny Rano",
+                courseDescription: "Fomba fiasa feno amin'ny laboratoaira dingana-dingana hanasarahana sy hamantarana otrik'aretina bakteria avy amin'ny rano avy amin'ny santionan-drano ambonin'ny tany.",
+                startButton: "Atombohy ny Fanofanana Feno",
+                backButton: "Hiverina amin'ny Fitaovana",
+                additionalTitle: "Loharano Fanampiny",
+                disclaimerTitle: "Fanamarihana:",
+                disclaimerText: "Ity votoaty fampianarana ity dia omena ho an'ny tanjona fanabeazana. Araho lalandava ny fomba fiasa mahazatra amin'ny laboratoaranao sy ny fitsipiky ny faritra.",
+                footerText: "Ampahany amin'ny sehatra <strong>SciVoice</strong> — Fitaovana microbiologie ho an'ny fahasalaman'ny besinimaro maimaim-poana ho an'ny rehetra"
+            },
+
+            ne: {
+                heroTitle: "प्रशिक्षण र प्रोटोकलहरू",
+                heroSubtitle: "WHO मापदण्डहरू पछ्याउँदै जलजन्य रोगाणुहरूको पृथकीकरणको व्यापक प्रशिक्षण",
+                languageTitle: "आफ्नो भाषा छनोट गर्नुहोस् | Select Your Language | Choisissez votre langue",
+                standardsTitle: "मापदण्डहरूको पदानुक्रम",
+                standardsText: "<strong>WHO मापदण्डहरू (प्राथमिक)</strong> → CDC/FDA दिशानिर्देशहरू → EPA विधिहरू",
+                standardsDescription: "विश्व स्वास्थ्य संगठनका दिशानिर्देशहरूलाई प्राथमिक मापदण्डको रूपमा पछ्याउँदै, जहाँ WHO दिशानिर्देशहरू विशिष्ट छैनन् त्यहाँ CDC र FDA प्रोटोकलहरूद्वारा पूरक।",
+                courseTitle: "जलजन्य रोगाणु पृथकीकरण पाठ्यक्रम",
+                courseDescription: "सतही पानीका नमूनाहरूबाट जलजन्य ब्याक्टेरियल रोगाणुहरू पृथक गर्न र पहिचान गर्नका लागि व्यापक चरणबद्ध प्रयोगशाला प्रोटोकलहरू।",
+                startButton: "पूर्ण प्रशिक्षण पाठ्यक्रम सुरु गर्नुहोस्",
+                backButton: "उपकरणहरूमा फर्कनुहोस्",
+                additionalTitle: "अतिरिक्त स्रोतहरू",
+                disclaimerTitle: "अस्वीकरण:",
+                disclaimerText: "यो प्रशिक्षण सामग्री शैक्षिक उद्देश्यका लागि प्रदान गरिएको छ। सधैं आफ्नो प्रयोगशालाको मानक सञ्चालन प्रक्रियाहरू र स्थानीय नियमहरू पालना गर्नुहोस्।",
+                footerText: "<strong>SciVoice</strong> प्लेटफर्मको भाग — सबैका लागि निःशुल्क सार्वजनिक स्वास्थ्य माइक्रोबायोलोजी उपकरणहरू"
+            },
+
+            tl: {
+                heroTitle: "Pagsasanay at mga Protokol",
+                heroSubtitle: "Komprehensibong pagsasanay sa paghihiwalay ng mga pathogen sa tubig na sumusunod sa mga pamantayan ng WHO",
+                languageTitle: "Piliin ang Inyong Wika | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Hierarchy ng mga Pamantayan",
+                standardsText: "<strong>Mga Pamantayan ng WHO (Pangunahin)</strong> → Mga Gabay ng CDC/FDA → Mga Pamamaraan ng EPA",
+                standardsDescription: "Sumusunod sa mga gabay ng World Health Organization bilang pangunahing pamantayan, pinapalaki ng mga protokol ng CDC at FDA kung saan ang mga gabay ng WHO ay hindi tukoy.",
+                courseTitle: "Kurso sa Paghihiwalay ng mga Pathogen sa Tubig",
+                courseDescription: "Komprehensibong hakbang-hakbang na mga protokol ng laboratoryo para sa paghihiwalay at pagkakakilanlan ng mga bacterial pathogen sa tubig mula sa mga sample ng tubig sa ibabaw.",
+                startButton: "Simulan ang Kumpletong Kurso ng Pagsasanay",
+                backButton: "Balik sa mga Tool",
+                additionalTitle: "Karagdagang mga Resource",
+                disclaimerTitle: "Disclaimer:",
+                disclaimerText: "Ang content ng pagsasanay na ito ay ibinigay para sa mga layuning pang-edukasyon. Palaging sundin ang mga standard operating procedure ng inyong laboratoryo at mga lokal na regulasyon.",
+                footerText: "Bahagi ng <strong>SciVoice</strong> platform — Libreng mga tool ng public health microbiology para sa lahat"
+            },
+
+            rw: {
+                heroTitle: "Amahugurwa n'Amategeko",
+                heroSubtitle: "Amahugurwa yuzuye yo gutandukanya udukoko tw'amazi akurikiza amahame ya WHO",
+                languageTitle: "Hitamo Ururimi Rwawe | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Urwego rw'Amahame",
+                standardsText: "<strong>Amahame ya WHO (Y'ibanze)</strong> → Amabwiriza ya CDC/FDA → Uburyo bwa EPA",
+                standardsDescription: "Gukurikiza amabwiriza y'Umuryango w'Ubuzima ku isi nk'igipimo cy'ibanze, bikaba byongerwemo n'amategeko ya CDC na FDA aho amabwiriza ya WHO ataba meza neza.",
+                courseTitle: "Amasomo yo Gutandukanya Udukoko tw'Amazi",
+                courseDescription: "Amategeko yuzuye y'ikigo cy'ubushakashatsi yintambwe-ku-ntambwe yo gutandukanya no kumenya udukoko tw'ubwoba tw'amazi kuva mu ngero z'amazi y'hejuru.",
+                startButton: "Tangira Amasomo Yuzuye y'Amahugurwa",
+                backButton: "Garuka ku Bikoresho",
+                additionalTitle: "Ibikoresho Byinyongera",
+                disclaimerTitle: "Icyitonderwa:",
+                disclaimerText: "Ibi bintu by'amahugurwa bitangwa mu ntego z'uburezi. Buri gihe gukurikiza imikorere isanzwe y'ikigo cyawe cy'ubushakashatsi n'amategeko y'ahantu.",
+                footerText: "Igice cya plateform ya <strong>SciVoice</strong> — Ibikoresho bya microbiology by'ubuzima rusange nta giciro ku bantu bose"
+            },
+
+            rn: {
+                heroTitle: "Amahugurwa n'Amategeko",
+                heroSubtitle: "Amahugurwa makufi yo gutandukanya udukoko tw'amazi akurikije imigenzo ya WHO",
+                languageTitle: "Toraho Ururimi Rwawe | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Urugero rw'Amahame",
+                standardsText: "<strong>Amahame ya WHO (Y'ingenzi)</strong> → Amabwiriza ya CDC/FDA → Indangagaciro za EPA",
+                standardsDescription: "Gukurikiza amabwiriza y'Umuryango w'Ubuzima ku isi nk'urugero rw'ingenzi, bikaba byatse n'amategeko ya CDC na FDA aho amabwiriza ya WHO adafise ubushake.",
+                courseTitle: "Amasomo yo Gutandukanya Udukoko tw'Amazi",
+                courseDescription: "Amategeko makufi y'ikigo cy'ubushakashatsi yintambwe-ku-ntambwe yo gutandukanya no kumenya udukoko tw'ubwoba tw'amazi muri za sample z'amazi y'ubuso.",
+                startButton: "Tangira Amasomo Yose y'Amahugurwa",
+                backButton: "Garukira ku Bikoresho",
+                additionalTitle: "Ibikoresho Vyongeweho",
+                disclaimerTitle: "Iyitonderwa:",
+                disclaimerText: "Ibi bintu vy'amahugurwa bitanzwe kubera intego z'uburezi. Guhora ukurikije imigenzo isanzwe y'ikigo cyawe cy'ubushakashatsi n'amategeko y'ahantu.",
+                footerText: "Igice ca plateforme ya <strong>SciVoice</strong> — Ibikoresho vya microbiology vy'ubuzima rusange nta kigeragezo ku bantu vyose"
+            },
+
+            ny: {
+                heroTitle: "Maphunziro ndi Ndondomeko",
+                heroSubtitle: "Maphunziro athunthu a kusiyanitsa matenda a m'madzi otsatira miyezo ya WHO",
+                languageTitle: "Sankhani Chilankhulo Chanu | Select Your Language | Choisissez votre langue",
+                standardsTitle: "Dongosolo la Miyezo",
+                standardsText: "<strong>Miyezo ya WHO (Yoyamba)</strong> → Malangizo a CDC/FDA → Njira za EPA",
+                standardsDescription: "Kutsatira malangizo a World Health Organization ngati miyezo yoyamba, yowonjezeredwa ndi ma protocol a CDC ndi FDA pomwe malangizo a WHO sali odziwika bwino.",
+                courseTitle: "Kalasi ya Kusiyanitsa Matenda a m'Madzi",
+                courseDescription: "Ma protocol athunthu a labu osiyanasiyana pakusiyanitsa ndi kuzindikira matenda a bakteriya a m'madzi kuchokera ku zitsanzo za madzi a pamwamba.",
+                startButton: "Yambani Kalasi Yathunthu ya Maphunziro",
+                backButton: "Bwererani ku Zida",
+                additionalTitle: "Zothandiza Zowonjezera",
+                disclaimerTitle: "Chenjezo:",
+                disclaimerText: "Zamphunziro izi zaperekedwa pazifukwa zamaphunziro. Nthawi zonse tsatirani njira zoyenera za ntchito za labu yanu ndi malamulo adera.",
+                footerText: "Gawo la nsanja ya <strong>SciVoice</strong> — Zida zaulere za microbiology ya thanzi la anthu kwa aliyense"
+            }
+        };
+
         let currentLanguage = 'en';
 
         // Language switching functionality
         document.querySelectorAll('.language-btn').forEach(btn => {
             btn.addEventListener('click', function() {
+                // Remove active from all buttons
                 document.querySelectorAll('.language-btn').forEach(b => b.classList.remove('active'));
+                
+                // Add active to clicked button
                 this.classList.add('active');
+                
+                // Update language
                 currentLanguage = this.dataset.lang;
                 
-                // Here you would typically update all text content based on the selected language
-                console.log('Language switched to:', currentLanguage);
+                // Update all content
+                updateContent();
             });
         });
+
+        function updateContent() {
+            const trans = translations[currentLanguage] || translations.en;
+            
+            // Update all text elements
+            const updates = [
+                ['heroTitle', trans.heroTitle],
+                ['heroSubtitle', trans.heroSubtitle],
+                ['languageTitle', trans.languageTitle],
+                ['standardsTitle', trans.standardsTitle],
+                ['standardsText', trans.standardsText],
+                ['standardsDescription', trans.standardsDescription],
+                ['courseTitle', trans.courseTitle],
+                ['courseDescription', trans.courseDescription],
+                ['module1Title', trans.module1Title || 'Course Overview'],
+                ['module1Desc', trans.module1Desc || 'Learning objectives, target pathogens, and WHO standards framework'],
+                ['module2Title', trans.module2Title || 'Sample Collection'],
+                ['module2Desc', trans.module2Desc || 'WHO-compliant field collection and transport procedures'],
+                ['module3Title', trans.module3Title || 'Media Preparation'],
+                ['module3Desc', trans.module3Desc || 'Standardized culture media preparation protocols'],
+                ['module4Title', trans.module4Title || 'Isolation Principles'],
+                ['module4Desc', trans.module4Desc || 'General WHO frameworks for pathogen isolation'],
+                ['module5Title', trans.module5Title || 'Salmonella Protocol'],
+                ['module5Desc', trans.module5Desc || 'WHO-standardized Salmonella isolation procedures'],
+                ['module6Title', trans.module6Title || 'Vibrio Protocol'],
+                ['module6Desc', trans.module6Desc || 'WHO cholera detection and Vibrio isolation methods'],
+                ['module7Title', trans.module7Title || 'E. coli Protocol'],
+                ['module7Desc', trans.module7Desc || 'CDC/EPA thermotolerant E. coli detection methods'],
+                ['module8Title', trans.module8Title || 'Enterococcus Protocol'],
+                ['module8Desc', trans.module8Desc || 'CDC enterococcal indicator organism procedures'],
+                ['module9Title', trans.module9Title || 'Additional Pathogens'],
+                ['module9Desc', trans.module9Desc || 'Campylobacter, Shigella, Legionella, and Yersinia protocols'],
+                ['module10Title', trans.module10Title || 'Global Suppliers'],
+                ['module10Desc', trans.module10Desc || 'International laboratory supply companies and procurement guidance'],
+                ['module11Title', trans.module11Title || 'References & Resources'],
+                ['module11Desc', trans.module11Desc || 'WHO/CDC/FDA standards and scientific literature'],
+                ['startButton', trans.startButton],
+                ['backButton', trans.backButton],
+                ['additionalTitle', trans.additionalTitle],
+                ['quickRefTitle', trans.quickRefTitle || 'Quick Reference Cards'],
+                ['quickRefDesc', trans.quickRefDesc || 'Printable protocol cards for laboratory use (Coming Soon)'],
+                ['offlineTitle', trans.offlineTitle || 'Offline Version'],
+                ['offlineDesc', trans.offlineDesc || 'Download for use without internet connection (Coming Soon)'],
+                ['certTitle', trans.certTitle || 'Certification Track'],
+                ['certDesc', trans.certDesc || 'Complete assessments and earn digital certificates (Coming Soon)'],
+                ['disclaimerTitle', trans.disclaimerTitle],
+                ['disclaimerText', trans.disclaimerText],
+                ['footerText', trans.footerText]
+            ];
+
+            updates.forEach(([id, text]) => {
+                const element = document.getElementById(id);
+                if (element && text) {
+                    if (id === 'standardsText' || id === 'footerText') {
+                        element.innerHTML = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+
+            // Update page title and meta description based on language
+            if (currentLanguage !== 'en') {
+                document.title = `${trans.heroTitle} | SciVoice`;
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) {
+                    metaDesc.content = trans.heroSubtitle;
+                }
+            }
+        }
 
         function openTrainingModule(moduleId) {
             // Create URL with language parameter
@@ -529,64 +1097,43 @@
         }
 
         function downloadQuickRef() {
-            alert('Quick reference cards will be available soon. Subscribe to updates for notifications.');
+            const messages = {
+                en: 'Quick reference cards will be available soon. Subscribe to updates for notifications.',
+                fr: 'Les cartes de référence rapide seront bientôt disponibles. Abonnez-vous aux mises à jour pour les notifications.',
+                es: 'Las tarjetas de referencia rápida estarán disponibles pronto. Suscríbete a las actualizaciones para notificaciones.',
+                pt: 'Cartões de referência rápida estarão disponíveis em breve. Inscreva-se para atualizações e notificações.',
+                ar: 'ستتوفر بطاقات المرجع السريع قريباً. اشترك في التحديثات للإشعارات.',
+                zh: '快速参考卡将很快推出。订阅更新以获取通知。',
+                sw: 'Kadi za marejeleo za haraka zitapatikana hivi karibuni. Jiandikishe kwa masasisho kwa arifa.'
+            };
+            alert(messages[currentLanguage] || messages.en);
         }
 
         function accessOfflineVersion() {
-            alert('Offline version coming soon. The training is currently web-based and works offline once loaded.');
+            const messages = {
+                en: 'Offline version coming soon. The training is currently web-based and works offline once loaded.',
+                fr: 'Version hors ligne bientôt disponible. La formation est actuellement basée sur le web et fonctionne hors ligne une fois chargée.',
+                es: 'Versión sin conexión próximamente. El entrenamiento es actualmente basado en web y funciona sin conexión una vez cargado.',
+                pt: 'Versão offline em breve. O treinamento é atualmente baseado na web e funciona offline depois de carregado.',
+                ar: 'النسخة غير المتصلة قادمة قريباً. التدريب حالياً عبر الويب ويعمل بدون اتصال بمجرد التحميل.',
+                zh: '离线版本即将推出。培训目前基于网络，加载后可离线工作。',
+                sw: 'Toleo la nje ya mtandao linakuja hivi karibuni. Mafunzo kwa sasa yanategemea wavuti na yanafanya kazi nje ya mtandao baada ya kupakiwa.'
+            };
+            alert(messages[currentLanguage] || messages.en);
         }
 
         function viewCertification() {
-            alert('Certification track is under development. Complete training modules to prepare for future certification.');
+            const messages = {
+                en: 'Certification track is under development. Complete training modules to prepare for future certification.',
+                fr: 'Le parcours de certification est en développement. Complétez les modules de formation pour vous préparer à la certification future.',
+                es: 'El track de certificación está en desarrollo. Complete los módulos de entrenamiento para prepararse para la certificación futura.',
+                pt: 'A trilha de certificação está em desenvolvimento. Complete os módulos de treinamento para se preparar para certificação futura.',
+                ar: 'مسار الشهادة قيد التطوير. أكمل وحدات التدريب للتحضير للشهادة المستقبلية.',
+                zh: '认证轨道正在开发中。完成培训模块为未来认证做准备。',
+                sw: 'Msimbo wa cheti unatengenezwa. Kamilisha moduli za mafunzo ili kujiandaa kwa cheti cha baadaye.'
+            };
+            alert(messages[currentLanguage] || messages.en);
         }
-
-        // PWA installation prompt
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            
-            // Show install button if not already installed
-            const installBtn = document.createElement('button');
-            installBtn.className = 'btn btn-secondary';
-            installBtn.innerHTML = '<i class="fas fa-download"></i> Install Training App';
-            installBtn.style.position = 'fixed';
-            installBtn.style.bottom = '20px';
-            installBtn.style.right = '20px';
-            installBtn.style.zIndex = '1000';
-            
-            installBtn.addEventListener('click', async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        console.log('PWA installed');
-                        installBtn.remove();
-                    }
-                    deferredPrompt = null;
-                }
-            });
-            
-            document.body.appendChild(installBtn);
-        });
-
-        // Analytics and usage tracking (privacy-friendly)
-        function trackModuleAccess(moduleId) {
-            // Track which modules are accessed most frequently
-            const usage = JSON.parse(localStorage.getItem('scivoice_training_usage') || '{}');
-            usage[moduleId] = (usage[moduleId] || 0) + 1;
-            usage.lastAccessed = Date.now();
-            localStorage.setItem('scivoice_training_usage', JSON.stringify(usage));
-        }
-
-        // Add click tracking to module cards
-        document.querySelectorAll('.module-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const moduleId = this.onclick.toString().match(/openTrainingModule\('(.+?)'/)?.[1];
-                if (moduleId) trackModuleAccess(moduleId);
-            });
-        });
     </script>
 </body>
 </html>
