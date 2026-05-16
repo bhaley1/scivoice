@@ -26,18 +26,41 @@ html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.7;min-height:100vh;}
 header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;position:sticky;top:0;z-index:300;box-shadow:0 1px 12px rgba(0,0,0,0.04);}
 .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;gap:1rem;}
-.header-left{display:flex;align-items:center;gap:1.5rem;min-width:0;}
+.header-left{display:flex;align-items:center;gap:1rem;min-width:0;}
 .logo{font-family:'Lora',serif;font-size:20px;font-weight:600;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .logo-mark{width:32px;height:32px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;}
 .logo-text span{color:var(--accent);}
 .header-tool-links{display:flex;align-items:center;gap:1rem;}
-.header-tool-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:color 0.15s;white-space:nowrap;}
+.header-tool-link{display:inline-flex;align-items:center;gap:7px;font-size:18px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:color 0.15s;white-space:nowrap;}
 .header-tool-link:hover{color:var(--accent);}
-.header-tool-link .htl-icon{font-size:15px;}
+.header-tool-link .htl-icon{font-size:20px;}
 .header-nav{display:flex;align-items:center;gap:1.5rem;flex-shrink:0;}
-.header-nav a{font-size:13px;color:var(--ink-3);text-decoration:none;transition:color 0.15s;}
+.header-nav a{font-size:18px;color:var(--ink-2);text-decoration:none;transition:color 0.15s;}
 .header-nav a:hover{color:var(--ink);}
 .header-nav a.active{color:var(--ink);font-weight:500;}
+.btn-contact{display:inline-flex;align-items:center;gap:7px;font-family:'DM Sans',sans-serif;font-size:18px;font-weight:500;color:var(--ink-2);background:none;border:1.5px solid var(--rule);border-radius:99px;padding:6px 18px;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+.btn-contact:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.contact-overlay{display:none;position:fixed;inset:0;z-index:700;background:rgba(26,24,20,0.55);align-items:center;justify-content:center;padding:1.5rem;}
+.contact-overlay.open{display:flex;}
+.contact-modal{background:white;border-radius:var(--radius-xl);max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);overflow:hidden;max-height:90vh;overflow-y:auto;}
+.contact-modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--rule);}
+.contact-modal-title{font-family:'Lora',serif;font-size:1.25rem;font-weight:600;color:var(--ink);}
+.contact-close{background:none;border:none;font-size:22px;line-height:1;color:var(--ink-3);cursor:pointer;padding:4px;}
+.contact-close:hover{color:var(--ink);}
+.contact-modal-body{padding:1.5rem;}
+.contact-intro{font-size:13px;color:var(--ink-3);line-height:1.6;margin-bottom:1.25rem;}
+.contact-field{margin-bottom:1rem;}
+.contact-field label{display:block;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:5px;}
+.contact-field input,.contact-field textarea{width:100%;border:1.5px solid var(--rule);border-radius:var(--radius-lg);padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--paper);outline:none;transition:border-color 0.15s;}
+.contact-field input:focus,.contact-field textarea:focus{border-color:var(--accent);}
+.contact-field textarea{resize:vertical;min-height:110px;}
+.contact-submit{width:100%;background:var(--ink);color:white;border:none;border-radius:99px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.15s;}
+.contact-submit:hover{background:var(--accent);}
+.contact-submit:disabled{opacity:0.6;cursor:not-allowed;}
+.contact-status{font-size:13px;text-align:center;margin-top:0.85rem;line-height:1.5;}
+.contact-status.ok{color:var(--green);}
+.contact-status.err{color:var(--red);}
+.contact-privacy{font-size:11px;color:var(--ink-3);text-align:center;margin-top:0.85rem;line-height:1.5;}
 @media(max-width:880px){.header-tool-links{display:none;}}
 
 .about-hero{padding:4rem 2rem 2.5rem;background:linear-gradient(160deg,#f8f4ef 0%,#f0eff8 40%,#eef4f8 100%);border-bottom:1px solid var(--rule);text-align:center;}
@@ -67,8 +90,8 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
 .footer-logo{font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--ink);}
 .footer-logo span{color:var(--accent);}
 .footer-tagline{font-size:12px;color:var(--ink-3);margin-top:3px;}
-.footer-links{display:flex;gap:1.25rem 1.5rem;flex-wrap:wrap;max-width:640px;justify-content:flex-end;}
-.footer-links a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.footer-links{display:flex;gap:1rem 1.5rem;flex-wrap:wrap;max-width:760px;justify-content:flex-end;}
+.footer-links a{font-size:18px;color:var(--ink-3);text-decoration:none;}
 .footer-links a:hover{color:var(--ink);}
 @media(max-width:700px){.footer-inner{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}}
 </style>
@@ -92,6 +115,9 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
   </div>
   <div class="header-nav">
    <a href="./about.html" class="active">About</a>
+   <button class="btn-contact" id="navContact" onclick="openContact()">
+    <span>✉️</span><span>Contact</span>
+   </button>
   </div>
  </div>
 </header>
@@ -612,6 +638,93 @@ footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
   </div>
  </div>
 </footer>
+
+<!-- ====================== CONTACT MODAL ======================
+ Identical to the modal on index.html. Posts to Formspree; will NOT deliver
+ messages until a real Formspree form ID replaces FORMSPREE_ID_HERE below.
+ Use the SAME form ID here as on index.html.
+============================================================== -->
+<div class="contact-overlay" id="contactOverlay" onclick="if(event.target===this)closeContact()">
+ <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <div class="contact-modal-header">
+   <span class="contact-modal-title" id="contactTitle">Contact</span>
+   <button class="contact-close" onclick="closeContact()" aria-label="Close">✕</button>
+  </div>
+  <div class="contact-modal-body">
+   <p class="contact-intro">
+    Questions, corrections, translation fixes, or ideas for new tools — send a message.
+    You don't need to share your identity, and no email address is shown.
+   </p>
+   <form id="contactForm" action="https://formspree.io/f/xkoyddny" method="POST">
+    <div class="contact-field">
+     <label for="cfName">Name <span style="font-weight:400;color:var(--ink-3)">(optional)</span></label>
+     <input type="text" id="cfName" name="name" autocomplete="off">
+    </div>
+    <div class="contact-field">
+     <label for="cfEmail">Your email <span style="font-weight:400;color:var(--ink-3)">(optional — only if you want a reply)</span></label>
+     <input type="email" id="cfEmail" name="email" autocomplete="off">
+    </div>
+    <div class="contact-field">
+     <label for="cfMessage">Message</label>
+     <textarea id="cfMessage" name="message" required></textarea>
+    </div>
+    <button type="submit" class="contact-submit" id="contactSubmit">Send message</button>
+    <div class="contact-status" id="contactStatus"></div>
+    <div class="contact-privacy">
+     Your message goes straight to the project maintainer. The site owner's
+     contact details are never shown to visitors.
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
+
+<script>
+function openContact(){
+ document.getElementById('contactOverlay').classList.add('open');
+ document.body.style.overflow='hidden';
+ const f=document.getElementById('cfName'); if(f) f.focus();
+}
+function closeContact(){
+ document.getElementById('contactOverlay').classList.remove('open');
+ document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeContact(); });
+
+(function(){
+ const form=document.getElementById('contactForm');
+ if(!form) return;
+ const status=document.getElementById('contactStatus');
+ const submitBtn=document.getElementById('contactSubmit');
+ form.addEventListener('submit',async function(e){
+  e.preventDefault();
+  status.textContent=''; status.className='contact-status';
+  if(form.action.indexOf('FORMSPREE_ID_HERE')!==-1){
+   status.textContent='Contact form is not yet connected. Please check back soon.';
+   status.classList.add('err'); return;
+  }
+  submitBtn.disabled=true;
+  const original=submitBtn.textContent;
+  submitBtn.textContent='Sending…';
+  try{
+   const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+   if(res.ok){
+    form.reset();
+    status.textContent='Message sent — thank you. It has been delivered to the maintainer.';
+    status.classList.add('ok');
+   }else{
+    status.textContent='Something went wrong sending the message. Please try again later.';
+    status.classList.add('err');
+   }
+  }catch(err){
+   status.textContent='Connection error. Please check your internet and try again.';
+   status.classList.add('err');
+  }finally{
+   submitBtn.disabled=false; submitBtn.textContent=original;
+  }
+ });
+})();
+</script>
 
 </body>
 </html>
