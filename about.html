@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About SciVoice — Public Health Microbiology Tools for Everyone</title>
+<meta name="description" content="About SciVoice: free, open, multilingual public health microbiology tools, and the philosophy behind making scientific knowledge accessible in 22 languages.">
+<link rel="canonical" href="https://bhaley1.github.io/scivoice/about.html">
+<meta name="theme-color" content="#1a1814">
+<link rel="manifest" href="/scivoice/manifest.json">
+<link rel="apple-touch-icon" href="/scivoice/icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+ --ink:#1a1814;--ink-2:#4a4640;--ink-3:#8a8480;
+ --paper:#faf8f4;--paper-2:#f2efe8;--paper-3:#e8e4db;
+ --rule:rgba(26,24,20,0.10);--rule-2:rgba(26,24,20,0.06);
+ --accent:#1a4d8f;--accent-light:#e8eff8;
+ --green:#1a6b3c;--green-light:#e8f5ee;
+ --radius:4px;--radius-lg:10px;--radius-xl:16px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.7;min-height:100vh;}
+header{border-bottom:1px solid var(--rule);padding:0 2rem;background:white;position:sticky;top:0;z-index:300;box-shadow:0 1px 12px rgba(0,0,0,0.04);}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;gap:1rem;}
+.header-left{display:flex;align-items:center;gap:1.5rem;min-width:0;}
+.logo{font-family:'Lora',serif;font-size:20px;font-weight:600;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.logo-mark{width:32px;height:32px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;}
+.logo-text span{color:var(--accent);}
+.header-tool-links{display:flex;align-items:center;gap:1rem;}
+.header-tool-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:color 0.15s;white-space:nowrap;}
+.header-tool-link:hover{color:var(--accent);}
+.header-tool-link .htl-icon{font-size:15px;}
+.header-nav{display:flex;align-items:center;gap:1.5rem;flex-shrink:0;}
+.header-nav a{font-size:13px;color:var(--ink-3);text-decoration:none;transition:color 0.15s;}
+.header-nav a:hover{color:var(--ink);}
+.header-nav a.active{color:var(--ink);font-weight:500;}
+@media(max-width:880px){.header-tool-links{display:none;}}
+
+.about-hero{padding:4rem 2rem 2.5rem;background:linear-gradient(160deg,#f8f4ef 0%,#f0eff8 40%,#eef4f8 100%);border-bottom:1px solid var(--rule);text-align:center;}
+.about-hero-eyebrow{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1rem;}
+.about-hero h1{font-family:'Lora',serif;font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.15;letter-spacing:-0.03em;margin-bottom:0.75rem;}
+.about-hero h1 em{font-style:italic;color:var(--accent);}
+.about-hero p{font-size:16px;color:var(--ink-2);font-weight:300;max-width:640px;margin:0 auto;}
+
+.about-wrap{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem;}
+.translations-note{background:var(--accent-light);border:1px solid rgba(26,77,143,0.18);border-radius:var(--radius-lg);padding:1rem 1.25rem;font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:2.5rem;}
+.translations-note strong{color:var(--ink);font-weight:600;}
+
+.lang-block{border-bottom:1px solid var(--rule);padding:2rem 0;}
+.lang-block:first-of-type{padding-top:0;}
+.lang-block:last-child{border-bottom:none;}
+.lang-block-head{display:flex;align-items:baseline;gap:10px;margin-bottom:0.85rem;flex-wrap:wrap;}
+.lang-block-native{font-family:'Lora',serif;font-size:1.35rem;font-weight:600;color:var(--ink);}
+.lang-block-english{font-size:13px;color:var(--ink-3);}
+.lang-block-flag{font-size:18px;}
+.lang-block-body{font-size:15px;color:var(--ink-2);line-height:1.85;}
+.lang-block.rtl .lang-block-head{direction:rtl;}
+.lang-block.rtl .lang-block-body{direction:rtl;text-align:right;}
+.unverified-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-3);background:var(--paper-2);border:1px solid var(--rule);border-radius:99px;padding:2px 9px;}
+
+footer{border-top:1px solid var(--rule);padding:2.5rem 2rem;background:white;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+.footer-logo{font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--ink);}
+.footer-logo span{color:var(--accent);}
+.footer-tagline{font-size:12px;color:var(--ink-3);margin-top:3px;}
+.footer-links{display:flex;gap:1.25rem 1.5rem;flex-wrap:wrap;max-width:640px;justify-content:flex-end;}
+.footer-links a{font-size:12px;color:var(--ink-3);text-decoration:none;}
+.footer-links a:hover{color:var(--ink);}
+@media(max-width:700px){.footer-inner{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <div class="header-left">
+   <a class="logo" href="./index.html">
+    <div class="logo-mark">🔬</div>
+    <div class="logo-text">Sci<span>Voice</span></div>
+   </a>
+   <div class="header-tool-links">
+    <a class="header-tool-link" href="https://bhaley1.github.io/outbreakwatch/" target="_blank">
+     <span class="htl-icon">🌍</span><span>OutbreakWatch</span>
+    </a>
+    <a class="header-tool-link" href="https://bhaley1.github.io/scivoice/training/">
+     <span class="htl-icon">📋</span><span>Training</span>
+    </a>
+   </div>
+  </div>
+  <div class="header-nav">
+   <a href="./about.html" class="active">About</a>
+  </div>
+ </div>
+</header>
+
+<section class="about-hero">
+ <div class="about-hero-eyebrow">About the Platform</div>
+ <h1>Science for <em>everyone</em>,<br>in every language.</h1>
+ <p>What SciVoice is, and the idea behind it — in all 22 of the platform's languages.</p>
+</section>
+
+<div class="about-wrap">
+
+ <div class="translations-note">
+  <strong>A note on the translations below.</strong> The same description appears in all 22 languages
+  the platform supports. Translations into widely-resourced languages have been prepared with care.
+  Translations marked <span class="unverified-tag">Awaiting native review</span> have not yet been
+  checked by a native speaker and may contain errors — community corrections are welcome via the
+  Feedback link.
+ </div>
+
+ <!-- ===================== ENGLISH (source) ===================== -->
+ <div class="lang-block" lang="en">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🌐</span>
+   <span class="lang-block-native">English</span>
+   <span class="lang-block-english">English</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice is a free, open collection of public health microbiology tools built on a simple
+   conviction: language should never decide who gets to use scientific knowledge. Every tool —
+   from manuscript translation to culture media preparation, field sampling templates, and
+   biosafety guidance — works in 22 languages, runs in any browser, and requires no account,
+   no payment, and no internet connection once loaded. It is made for the scientists, clinicians,
+   students, and field workers who carry out public health microbiology everywhere, especially
+   in low-resource settings where good tools are hardest to reach. The goal is not to replace
+   expertise but to remove the barriers around it, so that practical scientific work can be done
+   in the language a person already thinks in.
+  </div>
+ </div>
+
+ <!-- ===================== FRENCH (verified) ===================== -->
+ <div class="lang-block" lang="fr">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇫🇷</span>
+   <span class="lang-block-native">Français</span>
+   <span class="lang-block-english">French</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice est une collection gratuite et ouverte d'outils de microbiologie en santé publique,
+   fondée sur une conviction simple : la langue ne devrait jamais déterminer qui peut utiliser
+   les connaissances scientifiques. Chaque outil — de la traduction de manuscrits à la préparation
+   des milieux de culture, en passant par les modèles d'échantillonnage de terrain et les conseils
+   de biosécurité — fonctionne en 22 langues, s'exécute dans n'importe quel navigateur et ne
+   nécessite aucun compte, aucun paiement ni aucune connexion Internet une fois chargé. Il est
+   destiné aux scientifiques, cliniciens, étudiants et agents de terrain qui pratiquent la
+   microbiologie en santé publique partout dans le monde, en particulier dans les contextes à
+   faibles ressources où les bons outils sont les plus difficiles d'accès. L'objectif n'est pas
+   de remplacer l'expertise, mais de lever les obstacles qui l'entourent, afin que le travail
+   scientifique concret puisse se faire dans la langue dans laquelle une personne pense déjà.
+  </div>
+ </div>
+
+ <!-- ===================== SPANISH (verified) ===================== -->
+ <div class="lang-block" lang="es">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇪🇸</span>
+   <span class="lang-block-native">Español</span>
+   <span class="lang-block-english">Spanish</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice es una colección gratuita y abierta de herramientas de microbiología en salud pública,
+   construida sobre una convicción sencilla: el idioma nunca debería decidir quién puede usar el
+   conocimiento científico. Cada herramienta —desde la traducción de manuscritos hasta la
+   preparación de medios de cultivo, las plantillas de muestreo de campo y las orientaciones de
+   bioseguridad— funciona en 22 idiomas, se ejecuta en cualquier navegador y no requiere cuenta,
+   ni pago, ni conexión a internet una vez cargada. Está hecha para los científicos, clínicos,
+   estudiantes y trabajadores de campo que realizan microbiología en salud pública en todas
+   partes, especialmente en entornos de bajos recursos donde las buenas herramientas son más
+   difíciles de alcanzar. El objetivo no es reemplazar la experiencia, sino eliminar las barreras
+   que la rodean, para que el trabajo científico práctico pueda hacerse en el idioma en el que
+   una persona ya piensa.
+  </div>
+ </div>
+
+ <!-- ===================== PORTUGUESE (verified) ===================== -->
+ <div class="lang-block" lang="pt">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇧🇷</span>
+   <span class="lang-block-native">Português</span>
+   <span class="lang-block-english">Portuguese</span>
+  </div>
+  <div class="lang-block-body">
+   O SciVoice é uma coleção gratuita e aberta de ferramentas de microbiologia em saúde pública,
+   construída sobre uma convicção simples: a língua nunca deveria decidir quem pode usar o
+   conhecimento científico. Cada ferramenta — da tradução de manuscritos à preparação de meios
+   de cultura, modelos de amostragem de campo e orientações de biossegurança — funciona em 22
+   idiomas, é executada em qualquer navegador e não exige conta, pagamento ou conexão à internet
+   depois de carregada. Foi feita para os cientistas, clínicos, estudantes e profissionais de
+   campo que realizam microbiologia em saúde pública em toda parte, especialmente em contextos
+   de poucos recursos, onde boas ferramentas são mais difíceis de alcançar. O objetivo não é
+   substituir a competência, mas remover as barreiras que a cercam, para que o trabalho
+   científico prático possa ser feito no idioma em que a pessoa já pensa.
+  </div>
+ </div>
+
+ <!-- ===================== ITALIAN (verified) ===================== -->
+ <div class="lang-block" lang="it">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇮🇹</span>
+   <span class="lang-block-native">Italiano</span>
+   <span class="lang-block-english">Italian</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice è una raccolta gratuita e aperta di strumenti di microbiologia per la salute pubblica,
+   costruita su una convinzione semplice: la lingua non dovrebbe mai decidere chi può usare la
+   conoscenza scientifica. Ogni strumento — dalla traduzione di manoscritti alla preparazione dei
+   terreni di coltura, dai modelli di campionamento sul campo alle indicazioni di biosicurezza —
+   funziona in 22 lingue, gira in qualsiasi browser e non richiede account, pagamenti né
+   connessione a internet una volta caricato. È pensato per gli scienziati, i clinici, gli
+   studenti e gli operatori sul campo che svolgono microbiologia per la salute pubblica ovunque,
+   soprattutto nei contesti a basse risorse dove gli strumenti adeguati sono più difficili da
+   raggiungere. L'obiettivo non è sostituire la competenza, ma rimuovere le barriere che la
+   circondano, così che il lavoro scientifico concreto possa essere svolto nella lingua in cui
+   una persona già pensa.
+  </div>
+ </div>
+
+ <!-- ===================== ARABIC (verified) ===================== -->
+ <div class="lang-block rtl" lang="ar" dir="rtl">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇪🇬</span>
+   <span class="lang-block-native">العربية</span>
+   <span class="lang-block-english">Arabic</span>
+  </div>
+  <div class="lang-block-body">
+   ساي فويس مجموعة مجانية ومفتوحة من أدوات علم الأحياء الدقيقة للصحة العامة، بُنيت على قناعة
+   بسيطة: ينبغي ألا تحدد اللغة أبداً من يستطيع استخدام المعرفة العلمية. كل أداة — من ترجمة
+   المخطوطات إلى تحضير أوساط الزرع، ونماذج أخذ العينات الميدانية، وإرشادات السلامة البيولوجية —
+   تعمل بـ 22 لغة، وتعمل في أي متصفح، ولا تتطلب حساباً ولا دفعاً ولا اتصالاً بالإنترنت بعد
+   تحميلها. صُممت للعلماء والأطباء والطلاب والعاملين الميدانيين الذين يمارسون علم الأحياء الدقيقة
+   للصحة العامة في كل مكان، خاصة في البيئات محدودة الموارد حيث يصعب الوصول إلى الأدوات الجيدة.
+   الهدف ليس استبدال الخبرة بل إزالة الحواجز المحيطة بها، حتى يمكن إنجاز العمل العلمي العملي
+   باللغة التي يفكر بها الشخص بالفعل.
+  </div>
+ </div>
+
+ <!-- ===================== MANDARIN CHINESE (verified) ===================== -->
+ <div class="lang-block" lang="zh">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇨🇳</span>
+   <span class="lang-block-native">中文</span>
+   <span class="lang-block-english">Mandarin Chinese</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice 是一套免费、开放的公共卫生微生物学工具，建立在一个简单的信念之上：语言绝不应该决定谁
+   能够使用科学知识。从手稿翻译到培养基配制、野外采样模板和生物安全指导，每一个工具都支持 22 种
+   语言，可在任何浏览器中运行，加载后无需账户、无需付费、也无需联网。它面向世界各地从事公共卫生
+   微生物学工作的科学家、临床医生、学生和现场工作者，尤其是那些优质工具最难获得的资源匮乏地区。
+   我们的目标不是取代专业知识，而是消除围绕它的障碍，让切实的科学工作能够用一个人本来就在使用的
+   语言来完成。
+  </div>
+ </div>
+
+ <!-- ===================== SWAHILI (verified) ===================== -->
+ <div class="lang-block" lang="sw">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇹🇿</span>
+   <span class="lang-block-native">Kiswahili</span>
+   <span class="lang-block-english">Swahili</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice ni mkusanyiko huru na wazi wa zana za microbiolojia ya afya ya umma, uliojengwa juu
+   ya imani rahisi: lugha haipaswi kamwe kuamua ni nani anayeweza kutumia maarifa ya kisayansi.
+   Kila zana — kuanzia tafsiri ya maandishi hadi utayarishaji wa vyombo vya utamaduni, violezo
+   vya ukusanyaji wa sampuli shambani, na mwongozo wa usalama wa kibiolojia — hufanya kazi kwa
+   lugha 22, huendeshwa katika kivinjari chochote, na haihitaji akaunti, malipo, wala muunganisho
+   wa intaneti baada ya kupakiwa. Imetengenezwa kwa ajili ya wanasayansi, madaktari, wanafunzi,
+   na wafanyakazi wa shambani wanaofanya microbiolojia ya afya ya umma kila mahali, hasa katika
+   mazingira yenye rasilimali chache ambapo zana bora ni vigumu zaidi kuzipata. Lengo si kuchukua
+   nafasi ya utaalamu bali kuondoa vizuizi vinavyouzunguka, ili kazi ya kisayansi ya vitendo
+   iweze kufanyika kwa lugha ambayo mtu tayari anaifikiria.
+  </div>
+ </div>
+
+ <!-- ===================== HINDI (verified) ===================== -->
+ <div class="lang-block" lang="hi">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇮🇳</span>
+   <span class="lang-block-native">हिन्दी</span>
+   <span class="lang-block-english">Hindi</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान उपकरणों का एक मुफ़्त और मुक्त संग्रह है, जो एक सरल
+   विश्वास पर आधारित है: भाषा को कभी यह तय नहीं करना चाहिए कि वैज्ञानिक ज्ञान का उपयोग कौन कर सकता है।
+   पांडुलिपि अनुवाद से लेकर संवर्धन माध्यम तैयार करने, क्षेत्रीय नमूना टेम्पलेट और जैव सुरक्षा मार्गदर्शन तक —
+   हर उपकरण 22 भाषाओं में काम करता है, किसी भी ब्राउज़र में चलता है, और एक बार लोड होने के बाद किसी खाते,
+   भुगतान या इंटरनेट कनेक्शन की आवश्यकता नहीं होती। यह उन वैज्ञानिकों, चिकित्सकों, छात्रों और क्षेत्रीय
+   कार्यकर्ताओं के लिए बनाया गया है जो हर जगह सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञान का कार्य करते हैं,
+   विशेष रूप से कम संसाधन वाले क्षेत्रों में जहाँ अच्छे उपकरण सबसे कठिनाई से उपलब्ध होते हैं। उद्देश्य
+   विशेषज्ञता को प्रतिस्थापित करना नहीं, बल्कि उसके चारों ओर की बाधाओं को हटाना है, ताकि व्यावहारिक
+   वैज्ञानिक कार्य उसी भाषा में किया जा सके जिसमें व्यक्ति पहले से सोचता है।
+  </div>
+ </div>
+
+ <!-- ===================== BENGALI (verified) ===================== -->
+ <div class="lang-block" lang="bn">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇧🇩</span>
+   <span class="lang-block-native">বাংলা</span>
+   <span class="lang-block-english">Bengali</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice হলো জনস্বাস্থ্য মাইক্রোবায়োলজি সরঞ্জামের একটি বিনামূল্যের ও উন্মুক্ত সংগ্রহ, যা একটি সরল
+   বিশ্বাসের উপর প্রতিষ্ঠিত: ভাষা কখনোই নির্ধারণ করা উচিত নয় কে বৈজ্ঞানিক জ্ঞান ব্যবহার করতে পারবে।
+   পাণ্ডুলিপি অনুবাদ থেকে শুরু করে কালচার মিডিয়া প্রস্তুতি, ক্ষেত্র নমুনা সংগ্রহের টেমপ্লেট ও জৈব
+   নিরাপত্তা নির্দেশনা পর্যন্ত — প্রতিটি সরঞ্জাম ২২টি ভাষায় কাজ করে, যেকোনো ব্রাউজারে চলে, এবং একবার
+   লোড হওয়ার পর কোনো অ্যাকাউন্ট, অর্থ প্রদান বা ইন্টারনেট সংযোগের প্রয়োজন হয় না। এটি সেই বিজ্ঞানী,
+   চিকিৎসক, শিক্ষার্থী ও মাঠকর্মীদের জন্য তৈরি যারা সর্বত্র জনস্বাস্থ্য মাইক্রোবায়োলজির কাজ করেন,
+   বিশেষত স্বল্প-সম্পদসম্পন্ন পরিবেশে যেখানে ভালো সরঞ্জাম পাওয়া সবচেয়ে কঠিন। লক্ষ্য দক্ষতা প্রতিস্থাপন
+   করা নয়, বরং তার চারপাশের বাধাগুলি দূর করা, যাতে ব্যবহারিক বৈজ্ঞানিক কাজ সেই ভাষায় করা যায় যে
+   ভাষায় একজন মানুষ আগে থেকেই চিন্তা করেন।
+  </div>
+ </div>
+
+ <!-- ===================== INDONESIAN (verified) ===================== -->
+ <div class="lang-block" lang="id">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇮🇩</span>
+   <span class="lang-block-native">Bahasa Indonesia</span>
+   <span class="lang-block-english">Indonesian</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice adalah kumpulan alat mikrobiologi kesehatan masyarakat yang gratis dan terbuka,
+   dibangun atas satu keyakinan sederhana: bahasa tidak pernah boleh menentukan siapa yang dapat
+   menggunakan pengetahuan ilmiah. Setiap alat — mulai dari penerjemahan naskah hingga penyiapan
+   media kultur, templat pengambilan sampel lapangan, dan panduan biosafety — bekerja dalam 22
+   bahasa, berjalan di peramban apa pun, dan tidak memerlukan akun, pembayaran, maupun koneksi
+   internet setelah dimuat. Alat ini dibuat untuk para ilmuwan, klinisi, mahasiswa, dan pekerja
+   lapangan yang menjalankan mikrobiologi kesehatan masyarakat di mana saja, terutama di
+   lingkungan dengan sumber daya terbatas tempat alat yang baik paling sulit dijangkau. Tujuannya
+   bukan menggantikan keahlian, melainkan menghilangkan hambatan di sekitarnya, agar pekerjaan
+   ilmiah yang praktis dapat dilakukan dalam bahasa yang sudah digunakan seseorang untuk berpikir.
+  </div>
+ </div>
+
+ <!-- ===================== UKRAINIAN (verified) ===================== -->
+ <div class="lang-block" lang="uk">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇺🇦</span>
+   <span class="lang-block-native">Українська</span>
+   <span class="lang-block-english">Ukrainian</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice — це безкоштовна відкрита збірка інструментів мікробіології громадського здоров'я,
+   побудована на простому переконанні: мова ніколи не повинна вирішувати, хто може користуватися
+   науковими знаннями. Кожен інструмент — від перекладу рукописів до приготування поживних
+   середовищ, шаблонів польового відбору проб і вказівок з біобезпеки — працює 22 мовами,
+   запускається в будь-якому браузері й не потребує облікового запису, оплати чи підключення до
+   інтернету після завантаження. Його створено для науковців, клініцистів, студентів і польових
+   працівників, які займаються мікробіологією громадського здоров'я всюди, особливо в умовах
+   обмежених ресурсів, де хороші інструменти найважче отримати. Мета — не замінити фаховість, а
+   усунути бар'єри навколо неї, щоб практичну наукову роботу можна було виконувати тією мовою,
+   якою людина вже мислить.
+  </div>
+ </div>
+
+ <!-- ===================== AMHARIC (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Amharic, needs native-speaker review -->
+ <div class="lang-block" lang="am">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇪🇹</span>
+   <span class="lang-block-native">አማርኛ</span>
+   <span class="lang-block-english">Amharic</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice ነፃና ክፍት የሆነ የህዝብ ጤና ማይክሮባዮሎጂ መሣሪያዎች ስብስብ ሲሆን፣ በቀላል እምነት ላይ የተመሰረተ ነው፦
+   ቋንቋ ሳይንሳዊ እውቀትን ማን መጠቀም እንደሚችል ፈጽሞ መወሰን የለበትም። እያንዳንዱ መሣሪያ — ከጽሑፍ ትርጉም
+   አንስቶ እስከ የባህል ሚዲያ ዝግጅት፣ የመስክ ናሙና ቅጾችና የባዮ ደህንነት መመሪያ ድረስ — በ22 ቋንቋዎች ይሠራል፣
+   በማንኛውም አሳሽ ይከፈታል፣ አንዴ ከተጫነ በኋላም መለያ፣ ክፍያ ወይም የኢንተርኔት ግንኙነት አያስፈልገውም። ይህ
+   በሁሉም ቦታ የህዝብ ጤና ማይክሮባዮሎጂ ሥራ ለሚሠሩ ሳይንቲስቶች፣ ሐኪሞች፣ ተማሪዎችና የመስክ ሠራተኞች
+   የተዘጋጀ ነው፣ በተለይም ጥሩ መሣሪያዎች ለማግኘት አስቸጋሪ በሆኑ ዝቅተኛ ሀብት ባላቸው አካባቢዎች። ዓላማው
+   እውቀትን መተካት ሳይሆን በዙሪያው ያሉትን እንቅፋቶች ማስወገድ ነው፣ ስለዚህ ተግባራዊ ሳይንሳዊ ሥራ አንድ ሰው
+   አስቀድሞ በሚያስብበት ቋንቋ ሊከናወን ይችላል።
+  </div>
+ </div>
+
+ <!-- ===================== HAUSA (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Hausa, needs native-speaker review -->
+ <div class="lang-block" lang="ha">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇳🇬</span>
+   <span class="lang-block-native">Hausa</span>
+   <span class="lang-block-english">Hausa</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice tarin kayan aikin ilimin ƙwayoyin cuta na lafiyar jama'a ne kyauta kuma a buɗe, wanda
+   aka gina shi a kan wata akida mai sauƙi: kada harshe ya taɓa yanke shawarar wanda zai iya
+   amfani da ilimin kimiyya. Kowane kayan aiki — daga fassarar rubuce-rubuce zuwa shirya kafofin
+   noma na al'adu, samfuran tattara samfura a fili, da jagororin tsaron halittu — yana aiki da
+   harsuna 22, yana gudana a kowane irin burauza, kuma ba ya buƙatar asusu, biya, ko haɗin
+   intanet bayan an loda shi. An yi shi ne don masana kimiyya, likitoci, ɗalibai, da ma'aikatan
+   fili da ke gudanar da ilimin ƙwayoyin cuta na lafiyar jama'a a ko'ina, musamman a wuraren da
+   ke da ƙarancin albarkatu inda kayan aiki masu kyau suka fi wahalar samu. Manufar ba ita ce
+   maye gurbin ƙwarewa ba, sai dai cire shingayen da ke kewaye da ita, domin a iya yin aikin
+   kimiyya mai amfani a cikin harshen da mutum ya riga ya saba tunani da shi.
+  </div>
+ </div>
+
+ <!-- ===================== YORUBA (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Yoruba, needs native-speaker review -->
+ <div class="lang-block" lang="yo">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇳🇬</span>
+   <span class="lang-block-native">Yorùbá</span>
+   <span class="lang-block-english">Yoruba</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice jẹ́ àkójọ ọ̀fẹ́ àti ṣíṣí sílẹ̀ ti àwọn irinṣẹ́ microbiology ìlera gbogbogbò, tí a kọ́
+   lórí ìgbàgbọ́ rírọrùn kan: èdè kò gbọdọ̀ pinnu ẹni tí ó lè lo ìmọ̀ sáyẹ́nsì láé. Gbogbo
+   irinṣẹ́ — láti ìtumọ̀ àwọn àfọwọ́kọ sí ìmúrasílẹ̀ àwọn ohun èlò àṣà, àwọn àwòṣe ìkójọ àpẹẹrẹ
+   pápá, àti ìtọ́sọ́nà ààbò ohun alààyè — ń ṣiṣẹ́ ní èdè méjìlélógún, ó ń ṣiṣẹ́ nínú ẹ̀rọ
+   aṣàwákiri èyíkéyìí, kò sì nílò àkàùntì, ìsanwó, tàbí ìsopọ̀ íńtánẹ́ẹ̀tì lẹ́yìn tí a bá ti gbé
+   e wọlé. A ṣe é fún àwọn onímọ̀ sáyẹ́nsì, àwọn dókítà, àwọn akẹ́kọ̀ọ́, àti àwọn òṣìṣẹ́ pápá tí
+   ń ṣe microbiology ìlera gbogbogbò níbi gbogbo, pàápàá ní àwọn àyíká tí kò ní ohun èlò tó
+   gbọrọ̀ níbi tí ó ti ṣòro jùlọ láti rí àwọn irinṣẹ́ tó dára. Èròngbà náà kì í ṣe láti rọ́pò
+   ìmọ̀ àmọ̀dájú bí kò ṣe láti yọ àwọn ìdènà tó yí i ká kúrò, kí iṣẹ́ sáyẹ́nsì tó wúlò lè ṣeé ṣe
+   ní èdè tí ènìyàn ti ń ronú nínú rẹ̀ tẹ́lẹ̀.
+  </div>
+ </div>
+
+ <!-- ===================== LINGALA (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Lingala, needs native-speaker review -->
+ <div class="lang-block" lang="ln">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇨🇩</span>
+   <span class="lang-block-native">Lingála</span>
+   <span class="lang-block-english">Lingala</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice ezali liboke ya ofele mpe ya polele ya bisaleli ya microbiologie ya santé ya bato,
+   etongami likoló ya bondimi ya pɛtɛɛ: monoko esengeli te kokata soki nani akoki kosalela
+   boyebi ya siansi. Esaleli nyonso — kobanda na kobongola mikanda tii na kolɛngɛla biloko ya
+   culture, ba modɛlɛ ya kozwa ba échantillon na esika, mpe litambwisi ya bokɛngɛli ya bomoi —
+   esalaka na minoko 22, etambolaka na navigateur nyonso, mpe esengaka te kɔntɛ, kofuta, to
+   boyokani ya internet sima ya kotya yango. Esalemi mpo na ba siantifike, ba monganga,
+   bayekoli, mpe basali ya esika oyo basalaka microbiologie ya santé ya bato bisika nyonso,
+   mingimingi na bisika oyo bazali na biloko mingi te epai wapi bisaleli ya malamu ezali mpasi
+   mingi mpo na kozwa. Mokano ezali te kozongisa mayele na esika mosusu kasi kolongola mikakatano
+   oyo ezingi yango, mpo ete mosala ya siansi ya solo ekoka kosalema na monoko oyo moto azali
+   kokanisa na yango.
+  </div>
+ </div>
+
+ <!-- ===================== MALAGASY (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Malagasy, needs native-speaker review -->
+ <div class="lang-block" lang="mg">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇲🇬</span>
+   <span class="lang-block-native">Malagasy</span>
+   <span class="lang-block-english">Malagasy</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice dia fitambarana maimaim-poana sy misokatra amin'ny fitaovana mikrobiolojia ho an'ny
+   fahasalamam-bahoaka, naorina amin'ny finoana tsotra iray: tsy tokony hamaritra mihitsy ny
+   fiteny hoe iza no afaka mampiasa ny fahalalana siantifika. Ny fitaovana tsirairay — manomboka
+   amin'ny fandikana sora-tanana ka hatramin'ny fanomanana akora fambolena, ny endrika fanangonana
+   santionany an-tsaha, ary ny torolalana momba ny fiarovana ara-biolojika — dia miasa amin'ny
+   fiteny 22, mandeha amin'ny mpitety tranonkala rehetra, ary tsy mila kaonty, fandoavam-bola, na
+   fifandraisana aterineto rehefa voa-alaina. Natao ho an'ny mpahay siansa, mpitsabo, mpianatra,
+   ary mpiasa an-tsaha izay manao mikrobiolojia ho an'ny fahasalamam-bahoaka na aiza na aiza izy
+   io, indrindra any amin'ny toerana tsy dia manana loharanonkarena be izay sarotra indrindra ny
+   mahazo fitaovana tsara. Ny tanjona dia tsy ny hanolo ny fahaiza-manao fa ny hanaisotra ny
+   sakana manodidina azy, mba ahafahana manao asa siantifika azo ampiharina amin'ny fiteny efa
+   eritreretin'ny olona iray.
+  </div>
+ </div>
+
+ <!-- ===================== NEPALI (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Nepali, needs native-speaker review -->
+ <div class="lang-block" lang="ne">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇳🇵</span>
+   <span class="lang-block-native">नेपाली</span>
+   <span class="lang-block-english">Nepali</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञानका उपकरणहरूको एक निःशुल्क र खुला सङ्ग्रह हो, जुन
+   एउटा सरल विश्वासमा आधारित छ: भाषाले कहिल्यै निर्धारण गर्नु हुँदैन कि वैज्ञानिक ज्ञान कसले प्रयोग गर्न
+   सक्छ। पाण्डुलिपि अनुवाददेखि कल्चर मिडिया तयारी, क्षेत्रीय नमुना सङ्कलन ढाँचा र जैविक सुरक्षा निर्देशनसम्म —
+   प्रत्येक उपकरण २२ भाषामा काम गर्छ, कुनै पनि ब्राउजरमा चल्छ, र एकपटक लोड भएपछि खाता, भुक्तानी वा
+   इन्टरनेट जडान आवश्यक पर्दैन। यो ती वैज्ञानिक, चिकित्सक, विद्यार्थी र क्षेत्रीय कर्मचारीहरूका लागि बनाइएको
+   हो जसले जताततै सार्वजनिक स्वास्थ्य सूक्ष्मजीव विज्ञानको काम गर्छन्, विशेष गरी न्यून स्रोत भएका
+   ठाउँहरूमा जहाँ राम्रा उपकरण प्राप्त गर्न सबैभन्दा कठिन हुन्छ। उद्देश्य विशेषज्ञता प्रतिस्थापन गर्नु होइन,
+   बरु यसको वरिपरिका अवरोधहरू हटाउनु हो, ताकि व्यावहारिक वैज्ञानिक काम मानिसले पहिल्यैदेखि सोच्ने
+   भाषामा गर्न सकियोस्।
+  </div>
+ </div>
+
+ <!-- ===================== TAGALOG (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Tagalog, needs native-speaker review -->
+ <div class="lang-block" lang="tl">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇵🇭</span>
+   <span class="lang-block-native">Tagalog</span>
+   <span class="lang-block-english">Tagalog</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   Ang SciVoice ay isang libre at bukas na koleksyon ng mga kasangkapan sa microbiology ng
+   pampublikong kalusugan, na itinayo sa isang simpleng paniniwala: hindi dapat magpasya ang
+   wika kung sino ang makagagamit ng kaalamang pang-agham. Bawat kasangkapan — mula sa pagsasalin
+   ng manuskrito hanggang sa paghahanda ng culture media, mga template para sa pagkuha ng sample
+   sa field, at gabay sa biosafety — ay gumagana sa 22 wika, tumatakbo sa anumang browser, at
+   hindi nangangailangan ng account, bayad, o koneksyon sa internet kapag na-load na. Ginawa ito
+   para sa mga siyentipiko, klinisyan, estudyante, at manggagawa sa field na nagsasagawa ng
+   microbiology ng pampublikong kalusugan saanman, lalo na sa mga lugar na may kakaunting
+   rekurso kung saan pinakamahirap makuha ang mahuhusay na kasangkapan. Ang layunin ay hindi
+   palitan ang kadalubhasaan kundi alisin ang mga hadlang na nakapaligid dito, upang ang
+   praktikal na gawaing pang-agham ay magawa sa wikang kinasanayan nang mag-isip ng isang tao.
+  </div>
+ </div>
+
+ <!-- ===================== KINYARWANDA (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Kinyarwanda, needs native-speaker review -->
+ <div class="lang-block" lang="rw">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇷🇼</span>
+   <span class="lang-block-native">Kinyarwanda</span>
+   <span class="lang-block-english">Kinyarwanda</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice ni ikusanyirizo ry'ubuntu kandi rifunguye ry'ibikoresho bya microbiologie y'ubuzima
+   rusange, ryubakiye ku kwemera kworoshye: ururimi ntirukwiye na rimwe kugena uwemerewe gukoresha
+   ubumenyi bwa siyansi. Buri gikoresho — uhereye ku guhindura inyandiko ukageza ku gutegura
+   ibikoresho by'umuco, inyandiko-rugero zo gukusanya ingero mu murima, n'amabwiriza y'umutekano
+   w'ibinyabuzima — gikora mu ndimi 22, gitwara kuri buri mushakisha, kandi ntigisaba konti,
+   kwishyura, cyangwa interineti nyuma yo gupakirwa. Cyakorewe abahanga, abaganga, abanyeshuri,
+   n'abakozi bo mu murima bakora microbiologie y'ubuzima rusange ahantu hose, cyane cyane mu
+   turere dufite umutungo muke aho ibikoresho byiza biruhije kuboneka. Intego si ugusimbura
+   ubuhanga ahubwo ni ugukuraho inzitizi zibukikije, kugira ngo akazi ka siyansi gafatika
+   gashobore gukorwa mu rurimi umuntu asanzwe atekerezamo.
+  </div>
+ </div>
+
+ <!-- ===================== KIRUNDI (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Kirundi, needs native-speaker review -->
+ <div class="lang-block" lang="rn">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇧🇮</span>
+   <span class="lang-block-native">Ikirundi</span>
+   <span class="lang-block-english">Kirundi</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice ni ikusanyirizo ry'ubuntu kandi rifunguye ry'ibikoresho vya microbiologie y'amagara
+   rusange, ryubatswe ku kwizera koroshe: ururimi ntirukwiye na rimwe kugena uwemerewe gukoresha
+   ubumenyi bwa siyansi. Igikoresho cose — guhera ku guhindura inyandiko gushika ku gutegura
+   ibikoresho vy'umuco, inyandiko-mpemba zo gukusanya uburorero mu mirima, n'ubuyobozi bw'umutekano
+   w'ibinyabuzima — gikora mu ndimi 22, kigenda kuri buri mushakisha, kandi ntigisaba konti,
+   kuriha, canke umuyoboro wa internet inyuma yo kupakirwa. Cakozwe ku bahinga, abaganga,
+   abanyeshure, n'abakozi bo mu mirima bakora microbiologie y'amagara rusange ahantu hose, na
+   canecane mu turere dufise uburyo buke aho ibikoresho vyiza biruhije kuboneka. Intumbero si
+   ugusubirira ubuhinga ahubwo ni ugukuraho inzitizi zibukikije, kugira ngo igikorwa ca siyansi
+   gifatika gishobore gukorwa mu rurimi umuntu asanzwe yiyumvirizamwo.
+  </div>
+ </div>
+
+ <!-- ===================== CHICHEWA (awaiting native review) ===================== -->
+ <!-- TRANSLATION NOT VERIFIED — machine-quality Chichewa, needs native-speaker review -->
+ <div class="lang-block" lang="ny">
+  <div class="lang-block-head">
+   <span class="lang-block-flag">🇲🇼</span>
+   <span class="lang-block-native">Chichewa</span>
+   <span class="lang-block-english">Chichewa</span>
+   <span class="unverified-tag">Awaiting native review</span>
+  </div>
+  <div class="lang-block-body">
+   SciVoice ndi mndandanda waulere ndi wotseguka wa zida za microbiology ya zaumoyo wa anthu,
+   wopangidwa pa chikhulupiriro chosavuta: chinenero sichiyenera kusankha amene angagwiritse
+   ntchito chidziwitso cha sayansi. Chida chilichonse — kuyambira pomasulira zolembedwa mpaka
+   kukonza zakudya za chikhalidwe, matemphulesi otolera zitsanzo kumunda, ndi malangizo a
+   chitetezo cha zamoyo — chimagwira ntchito m'zinenero 22, chimayenda pa msakatuli uliwonse,
+   ndipo sichifuna akaunti, kulipira, kapena intaneti chikatsitsidwa kale. Chinapangidwira
+   asayansi, madokotala, ophunzira, ndi ogwira ntchito kumunda omwe amachita microbiology ya
+   zaumoyo wa anthu kulikonse, makamaka m'malo opanda chuma chambiri kumene zida zabwino
+   zimavuta kwambiri kuzipeza. Cholinga sicholoza m'malo mwa luso koma kuchotsa zopinga
+   zozungulira lonse, kuti ntchito ya sayansi yothandiza ichitike m'chinenero chomwe munthu
+   amaganiziramo kale.
+  </div>
+ </div>
+
+</div>
+
+<footer>
+ <div class="footer-inner">
+  <div>
+   <div class="footer-logo">Sci<span>Voice</span></div>
+   <div class="footer-tagline">Public health microbiology tools for everyone — in your language.</div>
+  </div>
+  <div class="footer-links">
+   <a href="https://github.com/bhaley1" target="_blank">GitHub</a>
+   <a href="mailto:bradd.haley@usda.gov">Feedback</a>
+   <a href="https://bhaley1.github.io/manuscript-summarizer---beta/" target="_blank">SciSummarize</a>
+   <a href="https://bhaley1.github.io/envirocollect/" target="_blank">EnviroCollect</a>
+   <a href="https://bhaley1.github.io/clinicalcollect/" target="_blank">ClinicalCollect</a>
+   <a href="https://bhaley1.github.io/agrocollect/" target="_blank">AgroCollect</a>
+   <a href="https://bhaley1.github.io/mediaprep/" target="_blank">MediaPrep</a>
+   <a href="https://bhaley1.github.io/biosafetysop/" target="_blank">BiosafetySOP</a>
+   <a href="./microglossary/">MicroGlossary</a>
+   <a href="https://bhaley1.github.io/outbreakwatch/" target="_blank">OutbreakWatch</a>
+  </div>
+ </div>
+</footer>
+
+</body>
+</html>
