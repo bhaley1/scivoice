@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterborne Pathogen Isolation Training | SciVoice</title>
+    <meta name="description" content="Interactive training course for waterborne pathogen isolation following WHO standards">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #fafaf9;
+            --color-surface: #ffffff;
+            --color-primary: #1a1814;
+            --color-secondary: #78716c;
+            --color-accent: #dc2626;
+            --color-success: #16a34a;
+            --color-warning: #ea580c;
+            --color-info: #0ea5e9;
+            --color-border: #e7e5e4;
+            --color-hover: #f5f5f4;
+            
+            --font-family: 'Inter', system-ui, sans-serif;
+            --border-radius: 12px;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .language-selector-small {
+            position: relative;
+        }
+
+        .language-toggle {
+            padding: 0.5rem 1rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            min-width: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .language-option:hover {
+            background: var(--color-hover);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .course-nav {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:hover {
+            background: var(--color-hover);
+            color: var(--color-primary);
+        }
+
+        .nav-tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-accent);
+            background: var(--color-hover);
+        }
+
+        .module-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .module-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .module-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .module-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .module-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .step-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .step-header {
+            background: var(--color-hover);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .step-number {
+            background: var(--color-accent);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .step-content {
+            padding: 2rem;
+        }
+
+        .protocol-list {
+            list-style: none;
+            counter-reset: protocol-counter;
+        }
+
+        .protocol-list li {
+            counter-increment: protocol-counter;
+            margin-bottom: 1rem;
+            padding: 1rem 1rem 1rem 4rem;
+            background: var(--color-bg);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .protocol-list li::before {
+            content: counter(protocol-counter);
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            background: var(--color-accent);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .info-box, .warning-box, .danger-box, .success-box {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left-color: var(--color-info);
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left-color: var(--color-warning);
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border-left-color: var(--color-accent);
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left-color: var(--color-success);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--color-surface);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .data-table th {
+            background: var(--color-primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: var(--color-hover);
+        }
+
+        .interactive-checklist {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .checklist li:hover {
+            background: var(--color-hover);
+        }
+
+        .checklist input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: var(--color-success);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+        }
+
+        .loading-content {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading-spinner {
+            font-size: 2rem;
+            color: var(--color-accent);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-family);
+        }
+
+        .btn:hover {
+            background: #b91c1c;
+            transform: translateY(-1px);
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .progress-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: var(--color-border);
+            transition: all 0.2s;
+        }
+
+        .progress-dot.active {
+            background: var(--color-accent);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .nav-tab {
+                text-align: left;
+                padding: 0.75rem 1rem;
+            }
+            
+            .module-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner"></i>
+            </div>
+            <p style="margin-top: 1rem;">Loading training content...</p>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="https://bhaley1.github.io/scivoice/" class="logo">
+                <i class="fas fa-microscope"></i>
+                SciVoice Training
+            </a>
+            <div class="header-controls">
+                <div class="language-selector-small">
+                    <button class="language-toggle" onclick="toggleLanguageDropdown()">
+                        <span id="currentLangFlag">🇺🇸</span>
+                        <span id="currentLangName">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <!-- Languages will be populated by JavaScript -->
+                    </div>
+                </div>
+                <a href="training-protocols.html" class="btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+                    <i class="fas fa-arrow-left"></i>
+                    Back
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="course-nav">
+            <div class="nav-tabs" id="navTabs">
+                <!-- Navigation tabs will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-indicator" id="progressIndicator">
+            <!-- Progress dots will be populated by JavaScript -->
+        </div>
+
+        <div id="moduleContainer">
+            <!-- Module content will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <script>
+        // Comprehensive multilingual content
+        const courseContent = {
+            en: {
+                tabs: {
+                    overview: "Course Overview",
+                    collection: "Sample Collection", 
+                    media: "Media Preparation",
+                    principles: "Isolation Principles",
+                    salmonella: "Salmonella",
+                    vibrio: "Vibrio",
+                    ecoli: "E. coli",
+                    enterococcus: "Enterococcus",
+                    additional: "Additional Pathogens",
+                    suppliers: "Suppliers",
+                    resources: "References"
+                },
+                overview: {
+                    title: "Course Overview",
+                    subtitle: "Master waterborne pathogen isolation using WHO-standardized laboratory protocols",
+                    objectives: {
+                        title: "Learning Objectives",
+                        items: [
+                            "Understand WHO Guidelines for water quality testing",
+                            "Master sample collection and transport procedures",
+                            "Prepare standardized culture media following WHO/CDC protocols",
+                            "Execute isolation protocols for priority waterborne pathogens",
+                            "Interpret results and maintain quality control",
+                            "Implement biosafety measures and laboratory safety protocols"
+                        ]
+                    },
+                    pathogens: {
+                        title: "Target Pathogens",
+                        intro: "This course covers isolation protocols for the most significant waterborne bacterial pathogens as defined by WHO and CDC surveillance priorities.",
+                        items: [
+                            "Salmonella spp. - Major cause of gastroenteritis and typhoid fever",
+                            "Vibrio cholerae - Cholera agent, critical for outbreak response",
+                            "Escherichia coli - Indicator organism and pathogenic strains (STEC)",
+                            "Enterococcus spp. - Indicator organism for fecal contamination",
+                            "Additional pathogens: Campylobacter, Shigella, Yersinia, Legionella"
+                        ]
+                    },
+                    standards: {
+                        title: "Standards Hierarchy",
+                        priority: "Protocol Priority: WHO Standards → CDC/FDA Guidelines → EPA Methods",
+                        text: "This training prioritizes World Health Organization guidelines as the primary standard, supplemented by CDC and FDA protocols where WHO guidance is not specific, and EPA methods for environmental water testing considerations."
+                    }
+                },
+                collection: {
+                    title: "Sample Collection and Transport",
+                    subtitle: "WHO-compliant procedures for water sample collection and preservation",
+                    planning: {
+                        title: "Pre-Collection Planning",
+                        critical: "Proper planning prevents contamination and ensures representative sampling according to WHO Guidelines for Drinking-water Quality.",
+                        items: [
+                            "Review site accessibility and safety conditions",
+                            "Prepare sterile collection containers (500mL minimum for pathogen isolation)",
+                            "Organize cold chain transport (4°C ± 2°C)",
+                            "Prepare chain of custody documentation",
+                            "Coordinate laboratory notification for sample receipt",
+                            "Plan collection timing (morning preferred to avoid diurnal variations)"
+                        ]
+                    },
+                    technique: {
+                        title: "Sterile Collection Technique",
+                        items: [
+                            "Wear nitrile gloves and replace for each sample location",
+                            "Remove container cap without touching inner surface",
+                            "Hold container at base, submerge mouth downward",
+                            "Rotate container underwater to fill completely",
+                            "Leave 2-3cm headspace for thermal expansion",
+                            "Replace cap immediately while container underwater",
+                            "Label with waterproof marker: site, date, time, collector ID",
+                            "Record GPS coordinates and environmental conditions"
+                        ],
+                        note: "WHO Recommendation: Collect from areas with flowing water when possible. Avoid stagnant pools or areas with visible contamination that may not be representative."
+                    },
+                    transport: {
+                        title: "Transport and Storage",
+                        tableData: [
+                            ["Parameter", "WHO Standard", "CDC Guideline", "Maximum Time"],
+                            ["Temperature", "4°C ± 2°C", "1-8°C", "During transport"],
+                            ["Salmonella isolation", "24 hours", "24 hours", "From collection"],
+                            ["Vibrio isolation", "6 hours preferred", "6-12 hours", "From collection"],
+                            ["E. coli enumeration", "24 hours", "24 hours", "From collection"],
+                            ["Enterococcus", "48 hours", "48 hours", "From collection"]
+                        ],
+                        critical: "Never freeze samples intended for pathogen isolation. Freezing kills vegetative bacteria and compromises recovery.",
+                        checklist: {
+                            title: "Chain of Custody Checklist",
+                            items: [
+                                "Sample ID matches container label",
+                                "Collection date and time recorded",
+                                "GPS coordinates documented",
+                                "Temperature log maintained during transport",
+                                "Laboratory receipt time ≤ 24 hours from collection",
+                                "Sample integrity verified upon receipt"
+                            ]
+                        }
+                    }
+                },
+                salmonella: {
+                    title: "Salmonella Isolation Protocol",
+                    subtitle: "WHO-standardized protocol for Salmonella detection in water samples",
+                    preEnrichment: {
+                        title: "Pre-enrichment in Buffered Peptone Water",
+                        rationale: "WHO Rationale: Salmonella in environmental waters are often stressed and require gentle recovery conditions before selective pressure.",
+                        steps: [
+                            "Add 25mL water sample to 225mL sterile BPW (1:10 dilution)",
+                            "Mix gently by inversion 3-5 times",
+                            "Incubate at 37°C ± 1°C for 18-24 hours",
+                            "Do not shake during incubation (prevents oxygen depletion)",
+                            "Check for turbidity development after 18 hours"
+                        ],
+                        critical: "Heavy contamination may require 1:100 dilution in BPW to prevent overgrowth."
+                    },
+                    selectiveEnrichment: {
+                        title: "Selective Enrichment",
+                        rvBroth: {
+                            title: "Rappaport-Vassiliadis (RV) Broth:",
+                            steps: [
+                                "Transfer 1mL of BPW culture to 9mL RV broth",
+                                "Mix gently and incubate at 42°C ± 1°C for 18-24 hours",
+                                "Observe for growth (turbidity development)",
+                                "Positive growth appears as increased turbidity"
+                            ]
+                        },
+                        ttb: {
+                            title: "Alternative: Tetrathionate Broth (TTB):",
+                            steps: [
+                                "Transfer 1mL of BPW culture to 9mL TTB",
+                                "Incubate at 37°C ± 1°C for 18-24 hours",
+                                "TTB may recover different Salmonella serotypes than RV"
+                            ]
+                        },
+                        recommendation: "WHO Recommendation: Use both RV and TTB for maximum recovery, especially in surveillance programs."
+                    }
+                }
+            },
+            
+            // Additional languages can be added here following the same structure
+            fr: {
+                tabs: {
+                    overview: "Aperçu du Cours",
+                    collection: "Collecte d'Échantillons",
+                    media: "Préparation des Milieux",
+                    principles: "Principes d'Isolement",
+                    salmonella: "Salmonella",
+                    vibrio: "Vibrio",
+                    ecoli: "E. coli",
+                    enterococcus: "Enterococcus",
+                    additional: "Pathogènes Additionnels",
+                    suppliers: "Fournisseurs",
+                    resources: "Références"
+                },
+                overview: {
+                    title: "Aperçu du Cours",
+                    subtitle: "Maîtrisez l'isolement des pathogènes hydriques en utilisant les protocoles de laboratoire standardisés OMS"
+                }
+            }
+            // More languages would be added here...
+        };
+
+        const languages = [
+            {code: 'en', flag: '🇺🇸', name: 'English'},
+            {code: 'fr', flag: '🇨🇩', name: 'Français'},
+            {code: 'es', flag: '🇵🇪', name: 'Español'},
+            {code: 'pt', flag: '🇧🇷', name: 'Português'},
+            {code: 'it', flag: '🇮🇹', name: 'Italiano'},
+            {code: 'ar', flag: '🇮🇶', name: 'العربية'},
+            {code: 'zh', flag: '🇨🇳', name: '中文'},
+            {code: 'sw', flag: '🇨🇩', name: 'Kiswahili'},
+            {code: 'am', flag: '🇪🇹', name: 'አማርኛ'},
+            {code: 'hi', flag: '🇮🇳', name: 'हिन्दी'},
+            {code: 'bn', flag: '🇧🇩', name: 'বাংলা'},
+            {code: 'id', flag: '🇮🇩', name: 'Bahasa Indonesia'},
+            {code: 'uk', flag: '🇺🇦', name: 'Українська'},
+            {code: 'ha', flag: '🇳🇬', name: 'Hausa'},
+            {code: 'yo', flag: '🇳🇬', name: 'Yorùbá'},
+            {code: 'ln', flag: '🇨🇩', name: 'Lingála'},
+            {code: 'mg', flag: '🇲🇬', name: 'Malagasy'},
+            {code: 'ne', flag: '🇳🇵', name: 'नेपाली'},
+            {code: 'tl', flag: '🇵🇭', name: 'Tagalog'},
+            {code: 'rw', flag: '🇷🇼', name: 'Kinyarwanda'},
+            {code: 'rn', flag: '🇧🇮', name: 'Ikirundi'},
+            {code: 'ny', flag: '🇲🇼', name: 'Chichewa'}
+        ];
+
+        let currentLanguage = 'en';
+        let currentModule = 'overview';
+
+        // Initialize the course
+        function initializeCourse() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            const moduleParam = urlParams.get('module');
+
+            if (langParam && languages.find(l => l.code === langParam)) {
+                currentLanguage = langParam;
+            }
+
+            if (moduleParam) {
+                currentModule = moduleParam;
+            }
+
+            // Populate language dropdown
+            populateLanguageDropdown();
+            
+            // Load content
+            loadContent();
+
+            // Hide loading overlay
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }, 1000);
+        }
+
+        function populateLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.innerHTML = '';
+
+            languages.forEach(lang => {
+                const option = document.createElement('div');
+                option.className = 'language-option';
+                option.innerHTML = `${lang.flag} ${lang.name}`;
+                option.onclick = () => switchLanguage(lang.code);
+                dropdown.appendChild(option);
+            });
+
+            // Update current language display
+            const currentLang = languages.find(l => l.code === currentLanguage);
+            document.getElementById('currentLangFlag').textContent = currentLang.flag;
+            document.getElementById('currentLangName').textContent = currentLang.name;
+        }
+
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        function switchLanguage(langCode) {
+            currentLanguage = langCode;
+            
+            // Update URL
+            const url = new URL(window.location);
+            url.searchParams.set('lang', langCode);
+            window.history.pushState({}, '', url);
+
+            // Update display
+            populateLanguageDropdown();
+            loadContent();
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('active');
+        }
+
+        function loadContent() {
+            const content = courseContent[currentLanguage] || courseContent.en;
+            
+            // Populate navigation tabs
+            populateNavTabs(content.tabs);
+            
+            // Populate progress indicator
+            populateProgressIndicator();
+            
+            // Load module content
+            loadModuleContent(content);
+        }
+
+        function populateNavTabs(tabs) {
+            const navTabs = document.getElementById('navTabs');
+            navTabs.innerHTML = '';
+
+            Object.keys(tabs).forEach((tabKey, index) => {
+                const tab = document.createElement('button');
+                tab.className = `nav-tab ${tabKey === currentModule ? 'active' : ''}`;
+                tab.textContent = tabs[tabKey];
+                tab.onclick = () => showModule(tabKey);
+                navTabs.appendChild(tab);
+            });
+        }
+
+        function populateProgressIndicator() {
+            const content = courseContent[currentLanguage] || courseContent.en;
+            const indicator = document.getElementById('progressIndicator');
+            indicator.innerHTML = '';
+
+            const modules = Object.keys(content.tabs);
+            const currentIndex = modules.indexOf(currentModule);
+
+            modules.forEach((module, index) => {
+                const dot = document.createElement('div');
+                dot.className = `progress-dot ${index <= currentIndex ? 'active' : ''}`;
+                indicator.appendChild(dot);
+            });
+        }
+
+        function showModule(moduleId) {
+            currentModule = moduleId;
+            
+            // Update URL
+            const url = new URL(window.location);
+            url.searchParams.set('module', moduleId);
+            window.history.pushState({}, '', url);
+            
+            // Update active tab
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update progress
+            populateProgressIndicator();
+            
+            // Load content
+            const content = courseContent[currentLanguage] || courseContent.en;
+            loadModuleContent(content);
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function loadModuleContent(content) {
+            const container = document.getElementById('moduleContainer');
+            
+            if (!content[currentModule]) {
+                container.innerHTML = `
+                    <div class="module-header">
+                        <div class="module-title">
+                            <i class="fas fa-cog"></i>
+                            ${content.tabs[currentModule] || 'Module'}
+                        </div>
+                        <div class="module-subtitle">Content for this module is being developed. Please check back soon.</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const moduleData = content[currentModule];
+            let html = '';
+
+            if (currentModule === 'overview') {
+                html = generateOverviewContent(moduleData);
+            } else if (currentModule === 'collection') {
+                html = generateCollectionContent(moduleData);
+            } else if (currentModule === 'salmonella') {
+                html = generateSalmonellaContent(moduleData);
+            } else {
+                html = `
+                    <div class="module-header">
+                        <div class="module-title">
+                            <i class="fas fa-flask"></i>
+                            ${moduleData.title || content.tabs[currentModule]}
+                        </div>
+                        <div class="module-subtitle">${moduleData.subtitle || 'Detailed content coming soon'}</div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+            attachEventListeners();
+        }
+
+        function generateOverviewContent(data) {
+            return `
+                <div class="module-header">
+                    <div class="module-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        ${data.title}
+                    </div>
+                    <div class="module-subtitle">${data.subtitle}</div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            ${data.objectives.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <div class="interactive-checklist">
+                            <ul class="checklist">
+                                ${data.objectives.items.map(item => 
+                                    `<li><input type="checkbox"> <span>${item}</span></li>`
+                                ).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            ${data.pathogens.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <div class="info-box">
+                            <strong>Focus:</strong> ${data.pathogens.intro}
+                        </div>
+                        <ul class="protocol-list">
+                            ${data.pathogens.items.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            ${data.standards.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <div class="success-box">
+                            <strong>${data.standards.priority}</strong>
+                        </div>
+                        <p>${data.standards.text}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateCollectionContent(data) {
+            return `
+                <div class="module-header">
+                    <div class="module-title">
+                        <i class="fas fa-vial"></i>
+                        ${data.title}
+                    </div>
+                    <div class="module-subtitle">${data.subtitle}</div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            ${data.planning.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <div class="warning-box">
+                            <strong>Critical:</strong> ${data.planning.critical}
+                        </div>
+                        <ul class="protocol-list">
+                            ${data.planning.items.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            ${data.technique.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <ol class="protocol-list">
+                            ${data.technique.items.map(item => `<li>${item}</li>`).join('')}
+                        </ol>
+                        
+                        <div class="info-box">
+                            <strong>WHO Recommendation:</strong> ${data.technique.note}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            ${data.transport.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <table class="data-table">
+                            ${data.transport.tableData.map((row, index) => 
+                                `<tr>${index === 0 ? 
+                                    row.map(cell => `<th>${cell}</th>`).join('') :
+                                    row.map(cell => `<td>${cell}</td>`).join('')
+                                }</tr>`
+                            ).join('')}
+                        </table>
+
+                        <div class="danger-box">
+                            <strong>Critical Control Point:</strong> ${data.transport.critical}
+                        </div>
+                        
+                        <div class="interactive-checklist">
+                            <h4>${data.transport.checklist.title}</h4>
+                            <ul class="checklist">
+                                ${data.transport.checklist.items.map(item => 
+                                    `<li><input type="checkbox"> <span>${item}</span></li>`
+                                ).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateSalmonellaContent(data) {
+            return `
+                <div class="module-header">
+                    <div class="module-title">
+                        <i class="fas fa-bacteria"></i>
+                        ${data.title}
+                    </div>
+                    <div class="module-subtitle">${data.subtitle}</div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            ${data.preEnrichment.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <div class="info-box">
+                            <strong>${data.preEnrichment.rationale}</strong>
+                        </div>
+                        
+                        <ol class="protocol-list">
+                            ${data.preEnrichment.steps.map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+
+                        <div class="warning-box">
+                            <strong>Critical Point:</strong> ${data.preEnrichment.critical}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            ${data.selectiveEnrichment.title}
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <h4>${data.selectiveEnrichment.rvBroth.title}</h4>
+                        <ol class="protocol-list">
+                            ${data.selectiveEnrichment.rvBroth.steps.map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+
+                        <h4>${data.selectiveEnrichment.ttb.title}</h4>
+                        <ol class="protocol-list">
+                            ${data.selectiveEnrichment.ttb.steps.map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+
+                        <div class="success-box">
+                            <strong>${data.selectiveEnrichment.recommendation}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function attachEventListeners() {
+            // Checkbox functionality
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const listItem = this.parentElement;
+                    if (this.checked) {
+                        listItem.style.background = '#f0fdf4';
+                        listItem.style.color = '#15803d';
+                    } else {
+                        listItem.style.background = '';
+                        listItem.style.color = '';
+                    }
+                });
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('languageDropdown');
+            const toggle = document.querySelector('.language-toggle');
+            
+            if (!toggle.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Initialize course when page loads
+        document.addEventListener('DOMContentLoaded', initializeCourse);
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            const moduleParam = urlParams.get('module');
+
+            if (langParam) currentLanguage = langParam;
+            if (moduleParam) currentModule = moduleParam;
+
+            loadContent();
+        });
+    </script>
+</body>
+</html>
