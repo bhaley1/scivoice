@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Fecal Pathogen Isolation — interactive multilingual laboratory training following WHO/CDC/CLSI standards.">
+<title>Fecal Pathogen Isolation | SciVoice Training</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f3; --surface:#ffffff; --surface-2:#f0ede8;
+  --primary:#1a1814; --secondary:#6b6560;
+  --accent:#c0392b; --accent-hover:#a93226;
+  --accent-soft:#fdf0ee; --accent-border:#f5c4be;
+  --border:#e0dbd4; --border-2:#d5cfc8; --success:#1e8449;
+  --radius:14px; --radius-sm:8px;
+  --shadow:0 2px 8px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.05);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.10),0 2px 8px rgba(0,0,0,.06);
+  --font-display:'EB Garamond',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--primary);line-height:1.6;}
+
+/* NAV */
+nav{background:var(--surface);border-bottom:1px solid var(--border);padding:.8rem 0;position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:880px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--font-display);font-style:italic;font-size:1.35rem;font-weight:600;color:var(--primary);text-decoration:none;display:flex;align-items:center;gap:.5rem;}
+.nav-logo i{color:var(--accent);font-size:1.05rem;font-style:normal;}
+.nav-back{font-size:.85rem;color:var(--secondary);text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:color .2s;}
+.nav-back:hover{color:var(--primary);}
+
+.wrap{max-width:880px;margin:0 auto;padding:1.75rem 1.5rem 4rem;}
+
+/* HEADER BLOCK */
+.course-head{margin-bottom:1.25rem;}
+.ctype{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .7rem;border-radius:100px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-border);margin-bottom:.75rem;}
+.course-head h1{font-family:var(--font-display);font-size:2.3rem;font-weight:600;line-height:1.15;margin-bottom:.4rem;}
+.course-head p{font-size:.95rem;color:var(--secondary);max-width:620px;}
+
+/* SHARE / DOWNLOAD BAR */
+.action-bar{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.1rem;}
+.action-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.82rem;font-weight:500;font-family:var(--font-body);
+  padding:.5rem .9rem;border-radius:var(--radius-sm);
+  border:1px solid var(--border-2);background:var(--surface);
+  color:var(--primary);cursor:pointer;text-decoration:none;
+  transition:all .18s ease;
+}
+.action-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow);}
+.action-btn i{font-size:.9rem;}
+.action-btn.pdf{background:var(--accent);color:#fff;border-color:var(--accent);}
+.action-btn.pdf:hover{background:var(--accent-hover);}
+.action-btn.wa:hover{border-color:#25D366;color:#128C7E;}
+.action-btn.sms:hover{border-color:#2d9cdb;color:#1a5276;}
+.action-btn.mail:hover{border-color:var(--accent);color:var(--accent);}
+
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+
+/* BADGES ROW */
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 1.75rem;border-bottom:1px solid var(--border);background:var(--surface-2);}
+.badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.8rem;color:var(--secondary);background:var(--surface);border:1px solid var(--border-2);border-radius:100px;padding:.3rem .7rem;}
+.badge i{font-size:.7rem;}
+.badge.hl{color:var(--success);border-color:#a9dfbf;background:#eafaf1;}
+
+/* MODULES */
+.section{padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);}
+.section-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--secondary);margin-bottom:.8rem;}
+.mod-grid{display:flex;flex-wrap:wrap;gap:.4rem;}
+.mod-chip{font-size:.8rem;color:var(--primary);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.32rem .68rem;white-space:nowrap;}
+.mod-chip em{font-style:italic;}
+
+/* LANGUAGE GRID */
+.lang-section{padding:1.25rem 1.75rem 1.75rem;}
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.5rem;}
+.lang-btn{display:flex;align-items:center;gap:.6rem;padding:.6rem .85rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);text-decoration:none;color:var(--primary);transition:all .18s ease;}
+.lang-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow);}
+.lang-btn.ready:hover{border-color:#f5b7b1;background:var(--accent-soft);}
+.lang-btn.soon{opacity:.55;cursor:default;pointer-events:none;}
+.lang-flag{font-size:1.1rem;flex-shrink:0;}
+.lang-info{display:flex;flex-direction:column;min-width:0;}
+.lang-name{font-weight:500;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lang-native{font-size:.72rem;color:var(--secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lang-status{margin-left:auto;flex-shrink:0;font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.18rem .42rem;border-radius:4px;}
+.lang-btn.ready .lang-status{background:#eafaf1;color:var(--success);border:1px solid #a9dfbf;}
+.lang-btn.soon .lang-status{background:var(--surface-2);color:var(--secondary);border:1px solid var(--border);}
+
+/* ABOUT */
+.about{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.75rem;margin-top:1.5rem;font-size:.875rem;color:var(--secondary);line-height:1.65;}
+
+/* TOAST */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:#fff;font-size:.84rem;padding:.7rem 1.1rem;border-radius:100px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:all .3s ease;z-index:100;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* SHARE SHEET (mobile-friendly modal) */
+.sheet-overlay{position:fixed;inset:0;background:rgba(20,18,16,.5);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:90;}
+.sheet-overlay.show{opacity:1;pointer-events:auto;}
+.sheet{position:fixed;left:50%;bottom:0;transform:translateX(-50%) translateY(100%);width:min(440px,100%);background:var(--surface);border-radius:var(--radius) var(--radius) 0 0;box-shadow:var(--shadow-lg);transition:transform .3s cubic-bezier(.2,.7,.2,1);z-index:95;padding:1.25rem 1.25rem 1.75rem;}
+.sheet.show{transform:translateX(-50%) translateY(0);}
+.sheet h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.25rem;}
+.sheet p{font-size:.82rem;color:var(--secondary);margin-bottom:1rem;}
+.sheet-opts{display:flex;flex-direction:column;gap:.5rem;}
+.sheet-opt{display:flex;align-items:center;gap:.75rem;padding:.7rem .9rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);font-size:.88rem;color:var(--primary);cursor:pointer;text-decoration:none;transition:all .15s ease;font-family:var(--font-body);}
+.sheet-opt:hover{background:var(--surface-2);}
+.sheet-opt .ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
+.ico.wa{background:#25D366;} .ico.sms{background:#2d9cdb;} .ico.mail{background:var(--accent);} .ico.copy{background:var(--secondary);}
+.sheet-close{margin-top:.85rem;width:100%;padding:.6rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.84rem;cursor:pointer;font-family:var(--font-body);color:var(--secondary);}
+
+@media (max-width:560px){
+  .course-head h1{font-size:1.75rem;}
+  .badges,.section,.lang-section{padding-left:1.1rem;padding-right:1.1rem;}
+  .action-btn{flex:1;justify-content:center;}
+}
+@media print{
+  nav,.action-bar,.toast,.sheet,.sheet-overlay{display:none!important;}
+  body{background:#fff;}
+  .card,.about{box-shadow:none;border-color:#ccc;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://bhaley1.github.io/scivoice/" class="nav-logo"><i class="fas fa-microscope"></i> SciVoice</a>
+    <a href="training-index.html" class="nav-back"><i class="fas fa-arrow-left"></i> All courses</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="course-head">
+    <span class="ctype"><i class="fas fa-flask"></i> Fecal Sampling</span>
+    <h1>Fecal Pathogen Isolation</h1>
+    <p>Standardized methods for isolation, identification, and confirmation of bacterial enteric pathogens from human fecal specimens, following WHO, CDC, and CLSI laboratory standards.</p>
+
+    <div class="action-bar">
+      <button class="action-btn pdf" onclick="window.print()">
+        <i class="fas fa-file-pdf"></i> Download PDF
+      </button>
+      <button class="action-btn wa" onclick="shareTo('whatsapp')">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+      <button class="action-btn sms" onclick="shareTo('sms')">
+        <i class="fas fa-comment-sms"></i> Text
+      </button>
+      <button class="action-btn mail" onclick="shareTo('email')">
+        <i class="fas fa-envelope"></i> Email
+      </button>
+      <button class="action-btn" onclick="openSheet()">
+        <i class="fas fa-share-nodes"></i> Share
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badges">
+      <span class="badge"><i class="fas fa-layer-group"></i> 11 interactive modules</span>
+      <span class="badge"><i class="fas fa-clock"></i> ~4 hours self-paced</span>
+      <span class="badge"><i class="fas fa-certificate"></i> WHO / CDC / CLSI aligned</span>
+      <span class="badge hl"><i class="fas fa-wifi"></i> Works offline</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Course modules</div>
+      <div class="mod-grid">
+        <span class="mod-chip">Course Overview</span>
+        <span class="mod-chip">Sample Collection</span>
+        <span class="mod-chip"><em>Salmonella</em></span>
+        <span class="mod-chip"><em>Listeria</em></span>
+        <span class="mod-chip">STEC / EHEC</span>
+        <span class="mod-chip"><em>Campylobacter</em></span>
+        <span class="mod-chip"><em>Shigella</em></span>
+        <span class="mod-chip"><em>Vibrio</em></span>
+        <span class="mod-chip">Additional Pathogens</span>
+        <span class="mod-chip">Global Suppliers</span>
+        <span class="mod-chip">References</span>
+      </div>
+    </div>
+
+    <div class="lang-section">
+      <div class="section-label">Choose your language</div>
+      <div class="lang-grid">
+        <a href="fecal-pathogen-training-en.html" class="lang-btn ready">
+          <span class="lang-flag">🇺🇸</span><span class="lang-info"><span class="lang-name">English</span><span class="lang-native">English</span></span><span class="lang-status">Ready</span>
+        </a>
+        <a href="fecal-pathogen-training-fr.html" class="lang-btn ready">
+          <span class="lang-flag">🇫🇷</span><span class="lang-info"><span class="lang-name">French</span><span class="lang-native">Français</span></span><span class="lang-status">Ready</span>
+        </a>
+        <a href="fecal-pathogen-training-pt.html" class="lang-btn ready">
+          <span class="lang-flag">🇧🇷</span><span class="lang-info"><span class="lang-name">Portuguese</span><span class="lang-native">Português</span></span><span class="lang-status">Ready</span>
+        </a>
+        <a href="fecal-pathogen-training-es.html" class="lang-btn ready">
+          <span class="lang-flag">🇪🇸</span><span class="lang-info"><span class="lang-name">Spanish</span><span class="lang-native">Español</span></span><span class="lang-status">Ready</span>
+        </a>
+        <a href="fecal-pathogen-training-ar.html" class="lang-btn ready">
+          <span class="lang-flag">🇸🇦</span><span class="lang-info"><span class="lang-name">Arabic</span><span class="lang-native">العربية</span></span><span class="lang-status">Ready</span>
+        </a>
+        <a href="fecal-pathogen-training-bn.html" class="lang-btn ready">
+          <span class="lang-flag">🇧🇩</span><span class="lang-info"><span class="lang-name">Bengali</span><span class="lang-native">বাংলা</span></span><span class="lang-status">Ready</span>
+        </a>
+        <span class="lang-btn soon"><span class="lang-flag">🇨🇳</span><span class="lang-info"><span class="lang-name">Chinese</span><span class="lang-native">中文</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇹🇿</span><span class="lang-info"><span class="lang-name">Swahili</span><span class="lang-native">Kiswahili</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇪🇹</span><span class="lang-info"><span class="lang-name">Amharic</span><span class="lang-native">አማርኛ</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇮🇳</span><span class="lang-info"><span class="lang-name">Hindi</span><span class="lang-native">हिन्दी</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇮🇩</span><span class="lang-info"><span class="lang-name">Indonesian</span><span class="lang-native">Bahasa</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇺🇦</span><span class="lang-info"><span class="lang-name">Ukrainian</span><span class="lang-native">Українська</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇳🇬</span><span class="lang-info"><span class="lang-name">Hausa</span><span class="lang-native">Hausa</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇳🇬</span><span class="lang-info"><span class="lang-name">Yoruba</span><span class="lang-native">Yorùbá</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇨🇩</span><span class="lang-info"><span class="lang-name">Lingala</span><span class="lang-native">Lingála</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇲🇬</span><span class="lang-info"><span class="lang-name">Malagasy</span><span class="lang-native">Malagasy</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇳🇵</span><span class="lang-info"><span class="lang-name">Nepali</span><span class="lang-native">नेपाली</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇵🇭</span><span class="lang-info"><span class="lang-name">Tagalog</span><span class="lang-native">Tagalog</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇷🇼</span><span class="lang-info"><span class="lang-name">Kinyarwanda</span><span class="lang-native">Kinyarwanda</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇧🇮</span><span class="lang-info"><span class="lang-name">Kirundi</span><span class="lang-native">Ikirundi</span></span><span class="lang-status">Soon</span></span>
+        <span class="lang-btn soon"><span class="lang-flag">🇲🇼</span><span class="lang-info"><span class="lang-name">Chichewa</span><span class="lang-native">Chichewa</span></span><span class="lang-status">Soon</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about">
+    Every module aligns with WHO laboratory guidelines, CDC/CLSI bacteriological methods, and relevant ISO standards. Content can be saved locally, printed for field use, and works on any device with a browser — no install required.
+  </div>
+
+</div>
+
+<!-- SHARE SHEET -->
+<div class="sheet-overlay" id="sheetOverlay" onclick="closeSheet()"></div>
+<div class="sheet" id="shareSheet" role="dialog" aria-modal="true" aria-label="Share this course">
+  <h3>Share this course</h3>
+  <p>Send the Fecal Pathogen Isolation training to a colleague.</p>
+  <div class="sheet-opts">
+    <a class="sheet-opt" id="optWa" onclick="shareTo('whatsapp');closeSheet();">
+      <span class="ico wa"><i class="fab fa-whatsapp"></i></span> Share via WhatsApp
+    </a>
+    <a class="sheet-opt" id="optSms" onclick="shareTo('sms');closeSheet();">
+      <span class="ico sms"><i class="fas fa-comment-sms"></i></span> Share via Text Message
+    </a>
+    <a class="sheet-opt" id="optMail" onclick="shareTo('email');closeSheet();">
+      <span class="ico mail"><i class="fas fa-envelope"></i></span> Share via Email
+    </a>
+    <a class="sheet-opt" onclick="copyLink();closeSheet();">
+      <span class="ico copy"><i class="fas fa-link"></i></span> Copy link
+    </a>
+  </div>
+  <button class="sheet-close" onclick="closeSheet()">Cancel</button>
+</div>
+
+<div class="toast" id="toast">Link copied</div>
+
+<script>
+const COURSE_URL   = window.location.href;
+const COURSE_TITLE = "SciVoice Training — Fecal Pathogen Isolation";
+const SHARE_MSG    = COURSE_TITLE + " — a free multilingual lab training course following WHO/CDC/CLSI standards: " + COURSE_URL;
+
+function shareTo(channel){
+  // Use the native share sheet when available (best on mobile)
+  if(channel === 'native' && navigator.share){
+    navigator.share({title:COURSE_TITLE, text:SHARE_MSG, url:COURSE_URL}).catch(()=>{});
+    return;
+  }
+  let url;
+  if(channel === 'whatsapp'){
+    url = 'https://wa.me/?text=' + encodeURIComponent(SHARE_MSG);
+  } else if(channel === 'sms'){
+    // sms: scheme works on both iOS and Android
+    url = 'sms:?&body=' + encodeURIComponent(SHARE_MSG);
+  } else if(channel === 'email'){
+    url = 'mailto:?subject=' + encodeURIComponent(COURSE_TITLE)
+        + '&body=' + encodeURIComponent(SHARE_MSG);
+  }
+  window.open(url, '_blank');
+}
+
+function copyLink(){
+  navigator.clipboard.writeText(COURSE_URL)
+    .then(()=>showToast('Link copied to clipboard'))
+    .catch(()=>showToast('Could not copy link'));
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.classList.remove('show'), 2600);
+}
+
+function openSheet(){
+  // Prefer the OS-native share sheet on mobile devices
+  if(navigator.share){
+    navigator.share({title:COURSE_TITLE, text:SHARE_MSG, url:COURSE_URL}).catch(()=>{});
+    return;
+  }
+  document.getElementById('sheetOverlay').classList.add('show');
+  document.getElementById('shareSheet').classList.add('show');
+}
+function closeSheet(){
+  document.getElementById('sheetOverlay').classList.remove('show');
+  document.getElementById('shareSheet').classList.remove('show');
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSheet(); });
+</script>
+</body>
+</html>

@@ -1,615 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training & Protocols | SciVoice</title>
-    <meta name="description" content="Free multilingual training modules for waterborne pathogen isolation, following WHO/CDC/FDA standards. Available in 22 languages.">
-    <meta name="keywords" content="waterborne pathogen training, WHO protocols, laboratory methods, multilingual lab training, LMIC microbiology">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free multilingual training modules for waterborne and fecal pathogen isolation, following WHO/CDC/FDA standards.">
+<meta name="keywords" content="waterborne pathogen training, fecal pathogen training, WHO protocols, multilingual lab training, LMIC microbiology">
+<title>Training & Protocols | SciVoice</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f3; --surface:#ffffff; --surface-2:#f0ede8;
+  --primary:#1a1814; --secondary:#6b6560;
+  --water:#1a5276; --water-soft:#e8f4fd; --water-border:#bde0f7;
+  --fecal:#c0392b; --fecal-soft:#fdf0ee; --fecal-border:#f5c4be;
+  --border:#e0dbd4; --border-2:#d5cfc8; --success:#1e8449;
+  --radius:18px; --radius-sm:9px;
+  --shadow:0 2px 10px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.05);
+  --shadow-lg:0 14px 44px rgba(0,0,0,.13),0 4px 12px rgba(0,0,0,.07);
+  --font-display:'EB Garamond',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  font-family:var(--font-body);background:var(--bg);color:var(--primary);
+  display:flex;flex-direction:column;min-height:100vh;overflow-x:hidden;
+}
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+/* NAV */
+nav{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:.8rem 0;flex-shrink:0;
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:var(--font-display);font-style:italic;font-size:1.4rem;
+  font-weight:600;color:var(--primary);text-decoration:none;
+  display:flex;align-items:center;gap:.5rem;
+}
+.nav-logo i{color:var(--fecal);font-size:1.05rem;font-style:normal;}
+.nav-back{
+  font-size:.85rem;color:var(--secondary);text-decoration:none;
+  display:flex;align-items:center;gap:.4rem;transition:color .2s;
+}
+.nav-back:hover{color:var(--primary);}
 
-    <style>
-        :root {
-            --color-bg: #fafaf9;
-            --color-surface: #ffffff;
-            --color-primary: #1a1814;
-            --color-secondary: #78716c;
-            --color-accent: #dc2626;
-            --color-success: #16a34a;
-            --color-warning: #ea580c;
-            --color-info: #0ea5e9;
-            --color-border: #e7e5e4;
-            --color-hover: #f5f5f4;
+/* LAYOUT — fills viewport, no scroll */
+.page{
+  flex:1;display:flex;flex-direction:column;
+  max-width:1080px;width:100%;margin:0 auto;padding:1.5rem 1.5rem 1.25rem;
+  min-height:0;
+}
+.head{text-align:center;flex-shrink:0;margin-bottom:.9rem;}
+.head h1{
+  font-family:var(--font-display);font-size:2rem;font-weight:600;
+  line-height:1.1;letter-spacing:-.01em;
+}
+.head h1 em{font-style:italic;color:var(--fecal);}
+.head p{
+  font-size:.95rem;color:var(--secondary);
+  max-width:520px;margin:.4rem auto 0;
+}
 
-            --font-family: 'Inter', system-ui, sans-serif;
-            --border-radius: 12px;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
+/* GRID — two cards side by side */
+.grid{
+  flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,330px));
+  gap:1.6rem;min-height:0;align-items:center;justify-content:center;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+/* CARD */
+.card{
+  position:relative;display:flex;flex-direction:column;
+  width:100%;aspect-ratio:1/1.06;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;text-decoration:none;color:inherit;cursor:pointer;
+  transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s ease,border-color .28s ease;
+  isolation:isolate;
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.card:focus-visible{outline:3px solid var(--water);outline-offset:3px;}
+.card.water:hover{border-color:var(--water-border);}
+.card.fecal:hover{border-color:var(--fecal-border);}
 
-        body {
-            font-family: var(--font-family);
-            background: var(--color-bg);
-            color: var(--color-primary);
-            line-height: 1.6;
-        }
+/* tinted top wash */
+.card-art{
+  position:relative;flex:1;display:flex;align-items:center;justify-content:center;
+  min-height:0;padding:1rem;
+}
+.card.water .card-art{background:linear-gradient(160deg,#f3f9fe 0%,#e8f4fd 100%);}
+.card.fecal .card-art{background:linear-gradient(160deg,#fdf4f3 0%,#fdf0ee 100%);}
+.card-art svg{width:100%;height:100%;max-height:150px;max-width:200px;overflow:visible;}
 
-        .header {
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(8px);
-        }
+/* type badge */
+.badge{
+  position:absolute;top:.8rem;left:.8rem;z-index:2;
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.58rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;padding:.28rem .6rem;border-radius:100px;
+}
+.card.water .badge{background:var(--water-soft);color:var(--water);border:1px solid var(--water-border);}
+.card.fecal .badge{background:var(--fecal-soft);color:var(--fecal);border:1px solid var(--fecal-border);}
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+/* meta pill top-right */
+.langcount{
+  position:absolute;top:.8rem;right:.8rem;z-index:2;
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.6rem;font-weight:500;color:var(--secondary);
+  background:rgba(255,255,255,.85);backdrop-filter:blur(4px);
+  border:1px solid var(--border);border-radius:100px;padding:.3rem .6rem;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 600;
-            font-style: italic;
-            font-size: 1.25rem;
-            color: var(--color-primary);
-            text-decoration: none;
-        }
+/* card body */
+.card-body{
+  flex-shrink:0;padding:.85rem 1.1rem 1rem;
+  border-top:1px solid var(--border);background:var(--surface);
+}
+.card-kicker{
+  font-size:.62rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--secondary);margin-bottom:.25rem;
+}
+/* rotating title */
+.rotor{
+  min-height:3.4rem;display:flex;align-items:center;
+}
+.rotor-title{
+  font-family:var(--font-display);font-size:1.08rem;font-weight:600;
+  line-height:1.22;transition:opacity .45s ease,transform .45s ease;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.rotor-title.swap{opacity:0;transform:translateY(-8px);}
+.card.water .rotor-title{color:var(--water);}
+.card.fecal .rotor-title{color:var(--fecal);}
+.rotor-lang{
+  font-size:.66rem;color:var(--secondary);margin-top:.15rem;
+  letter-spacing:.04em;min-height:.9rem;transition:opacity .45s ease;
+}
+.rotor-lang.swap{opacity:0;}
+.card-foot{
+  display:flex;align-items:center;gap:.7rem;margin-top:.55rem;
+  font-size:.72rem;color:var(--secondary);flex-wrap:wrap;
+}
+.card-foot span{display:inline-flex;align-items:center;gap:.35rem;}
+.card-foot i{font-size:.66rem;}
+.card-foot .go{
+  margin-left:auto;font-weight:600;display:inline-flex;
+  align-items:center;gap:.4rem;transition:gap .2s ease;
+}
+.card.water .card-foot .go{color:var(--water);}
+.card.fecal .card-foot .go{color:var(--fecal);}
+.card:hover .card-foot .go{gap:.65rem;}
 
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
+/* footer */
+footer{
+  flex-shrink:0;border-top:1px solid var(--border);
+  padding:.85rem 0;text-align:center;background:var(--surface);
+}
+.footer-inner{
+  max-width:1080px;margin:0 auto;padding:0 1.5rem;
+  font-size:.78rem;color:var(--secondary);
+}
+.footer-inner a{color:var(--secondary);text-decoration:none;}
+.footer-inner a:hover{color:var(--primary);text-decoration:underline;}
 
-        .back-link:hover { color: var(--color-primary); }
-
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--color-secondary);
-            max-width: 720px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-num {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-accent);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--color-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem 4rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .section-subtitle {
-            color: var(--color-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .course-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .course-card-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .course-icon {
-            width: 3.5rem;
-            height: 3.5rem;
-            background: linear-gradient(135deg, var(--color-accent) 0%, #b91c1c 100%);
-            color: white;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .course-title-block h3 {
-            font-size: 1.35rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .course-title-block p {
-            color: var(--color-secondary);
-            font-size: 0.95rem;
-        }
-
-        .course-meta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: var(--color-hover);
-            border-radius: 8px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.85rem;
-            color: var(--color-secondary);
-        }
-
-        .meta-item i { color: var(--color-accent); }
-
-        .language-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .language-card {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.9rem 1rem;
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--color-primary);
-            background: var(--color-surface);
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .language-card:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .language-card.unavailable {
-            opacity: 0.55;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        .lang-flag { font-size: 1.4rem; }
-
-        .lang-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .lang-name {
-            font-weight: 500;
-            font-size: 0.95rem;
-            display: block;
-        }
-
-        .lang-native {
-            font-size: 0.8rem;
-            color: var(--color-secondary);
-            display: block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .lang-badge {
-            font-size: 0.7rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 99px;
-            background: var(--color-success);
-            color: white;
-            font-weight: 500;
-        }
-
-        .lang-badge.coming {
-            background: var(--color-border);
-            color: var(--color-secondary);
-        }
-
-        .info-box {
-            background: #eff6ff;
-            border-left: 4px solid var(--color-info);
-            padding: 1.25rem 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-
-        .info-box h4 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .info-box p {
-            font-size: 0.92rem;
-            color: var(--color-secondary);
-            margin: 0;
-        }
-
-        .modules-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 0.5rem;
-            margin: 1rem 0 1.5rem;
-        }
-
-        .module-chip {
-            padding: 0.5rem 0.75rem;
-            background: var(--color-hover);
-            border-radius: 6px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-secondary);
-        }
-
-        .module-chip i {
-            color: var(--color-accent);
-            font-size: 0.75rem;
-        }
-
-        footer {
-            border-top: 1px solid var(--color-border);
-            padding: 2rem 1.5rem;
-            text-align: center;
-            color: var(--color-secondary);
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: var(--color-accent);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.75rem; }
-            .hero-stats { gap: 1.5rem; }
-            .stat-num { font-size: 1.5rem; }
-            .course-card { padding: 1.5rem; }
-            .course-card-header { flex-direction: column; }
-        }
-    </style>
+/* responsive: stack on narrow screens (scroll allowed there) */
+@media (max-width:760px){
+  body{overflow-y:auto;}
+  .grid{grid-template-columns:minmax(0,300px);gap:1.1rem;}
+  .head h1{font-size:1.8rem;}
+  .card-art svg{max-height:135px;}
+}
+@media (min-width:761px) and (max-height:560px){
+  .head{margin-bottom:.6rem;}
+  .head h1{font-size:1.8rem;}
+  .head p{display:none;}
+}
+</style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <a href="../" class="logo">
-                <i class="fas fa-microscope"></i>
-                SciVoice
-            </a>
-            <a href="../" class="back-link">
-                <i class="fas fa-arrow-left"></i>
-                Back to tools
-            </a>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://bhaley1.github.io/scivoice/" class="nav-logo"><i class="fas fa-microscope"></i> SciVoice</a>
+    <a href="https://bhaley1.github.io/scivoice/" class="nav-back"><i class="fas fa-arrow-left"></i> Back to tools</a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="head">
+    <h1>Training &amp; <em>Protocols</em></h1>
+    <p>Interactive, multilingual laboratory training following WHO, CDC, and FDA standards. Free, offline-capable, built for public health labs everywhere.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ===== WATERBORNE ===== -->
+    <a class="card water" href="waterborne-pathogen-isolation.html" aria-label="Waterborne Pathogen Isolation course">
+      <div class="card-art">
+        <span class="badge"><i class="fas fa-tint"></i> Water Sampling</span>
+        <span class="langcount"><i class="fas fa-globe"></i> 4 languages</span>
+        <!-- SVG: water droplet + sample vial -->
+        <svg viewBox="0 0 300 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Water droplet and sampling vial">
+          <defs>
+            <linearGradient id="wdrop" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#5dade2"/>
+              <stop offset="1" stop-color="#1a5276"/>
+            </linearGradient>
+            <linearGradient id="wwater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#7fc4e8"/>
+              <stop offset="1" stop-color="#2980b9"/>
+            </linearGradient>
+          </defs>
+          <!-- large droplet -->
+          <path d="M96 26 C96 26 150 92 150 132 A54 54 0 0 1 42 132 C42 92 96 26 96 26 Z" fill="url(#wdrop)"/>
+          <ellipse cx="78" cy="118" rx="16" ry="22" fill="#ffffff" opacity="0.30"/>
+          <!-- ripples -->
+          <path d="M40 188 q22 -12 44 0 t44 0 t44 0 t44 0" fill="none" stroke="#2980b9" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+          <path d="M52 204 q22 -11 44 0 t44 0 t44 0" fill="none" stroke="#5dade2" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+          <!-- sample vial -->
+          <g transform="translate(196 70)">
+            <rect x="6" y="-14" width="40" height="12" rx="3" fill="#34495e"/>
+            <rect x="11" y="-2" width="30" height="118" rx="11" fill="#eef4f7" stroke="#9bb3c4" stroke-width="2.5"/>
+            <path d="M13 70 h26 v34 a11 11 0 0 1 -11 11 h-4 a11 11 0 0 1 -11 -11 Z" fill="url(#wwater)"/>
+            <ellipse cx="26" cy="70" rx="13" ry="4.5" fill="#aed6ec"/>
+            <line x1="44" y1="22" x2="50" y2="22" stroke="#9bb3c4" stroke-width="2"/>
+            <line x1="44" y1="42" x2="50" y2="42" stroke="#9bb3c4" stroke-width="2"/>
+            <line x1="44" y1="62" x2="50" y2="62" stroke="#9bb3c4" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker">Course 01</div>
+        <div class="rotor" aria-hidden="false">
+          <div>
+            <div class="rotor-title" id="waterTitle">Waterborne Pathogen Isolation</div>
+          </div>
         </div>
-    </header>
-
-    <section class="hero">
-        <h1>Training &amp; <em>Protocols</em></h1>
-        <p>Interactive, multilingual training modules following WHO, CDC, and FDA laboratory standards. Free, offline-capable, and built for public health labs everywhere.</p>
-        <div class="hero-stats">
-            <div class="stat">
-                <span class="stat-num">11</span>
-                <span class="stat-label">Modules</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">22</span>
-                <span class="stat-label">Languages</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">100%</span>
-                <span class="stat-label">Free</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">WHO</span>
-                <span class="stat-label">Aligned</span>
-            </div>
+        <div class="rotor-lang" id="waterLang">English</div>
+        <div class="card-foot">
+          <span><i class="fas fa-layer-group"></i> 11 modules</span>
+          <span><i class="fas fa-clock"></i> ~4 hrs</span>
+          <span class="go">Start course <i class="fas fa-arrow-right"></i></span>
         </div>
-    </section>
+      </div>
+    </a>
 
-    <main class="main-container">
-        <div class="course-card">
-            <div class="course-card-header">
-                <div class="course-icon">
-                    <i class="fas fa-tint"></i>
-                </div>
-                <div class="course-title-block">
-                    <h3>Waterborne Pathogen Isolation</h3>
-                    <p>Standardized methods for isolation, identification, and confirmation of bacterial waterborne pathogens in public health and environmental laboratories.</p>
-                </div>
-            </div>
-
-            <div class="course-meta">
-                <span class="meta-item"><i class="fas fa-layer-group"></i> 11 interactive modules</span>
-                <span class="meta-item"><i class="fas fa-clock"></i> ~4 hours self-paced</span>
-                <span class="meta-item"><i class="fas fa-certificate"></i> WHO / CDC / FDA aligned</span>
-                <span class="meta-item"><i class="fas fa-wifi-slash"></i> Works offline</span>
-            </div>
-
-            <div class="modules-preview">
-                <div class="module-chip"><i class="fas fa-circle"></i> Course Overview</div>
-                <div class="module-chip"><i class="fas fa-circle"></i> Sample Collection</div>
-                <div class="module-chip"><i class="fas fa-circle"></i> Media Preparation</div>
-                <div class="module-chip"><i class="fas fa-circle"></i> Isolation Principles</div>
-                <div class="module-chip"><i class="fas fa-circle"></i> <em>Salmonella</em></div>
-                <div class="module-chip"><i class="fas fa-circle"></i> <em>Vibrio</em></div>
-                <div class="module-chip"><i class="fas fa-circle"></i> E. coli</div>
-                <div class="module-chip"><i class="fas fa-circle"></i> <em>Enterococcus</em></div>
-                <div class="module-chip"><i class="fas fa-circle"></i> Additional Pathogens</div>
-                <div class="module-chip"><i class="fas fa-circle"></i> Global Suppliers</div>
-                <div class="module-chip"><i class="fas fa-circle"></i> References</div>
-            </div>
-
-            <h4 style="margin: 1.5rem 0 1rem; font-size: 1rem; font-weight: 600;">
-                <i class="fas fa-globe" style="color: var(--color-accent); margin-right: 0.5rem;"></i>
-                Choose your language
-            </h4>
-
-            <div class="language-grid">
-                <a href="waterborne-pathogen-training-en.html" class="language-card">
-                    <span class="lang-flag">🇺🇸</span>
-                    <div class="lang-info">
-                        <span class="lang-name">English</span>
-                        <span class="lang-native">English</span>
-                    </div>
-                    <span class="lang-badge">Ready</span>
-                </a>
-                <a href="waterborne-pathogen-training-fr.html" class="language-card">
-                    <span class="lang-flag">🇫🇷</span>
-                    <div class="lang-info">
-                        <span class="lang-name">French</span>
-                        <span class="lang-native">Français</span>
-                    </div>
-                    <span class="lang-badge">Ready</span>
-                </a>
-                <a href="waterborne-pathogen-training-pt.html" class="language-card">
-                    <span class="lang-flag">🇧🇷</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Portuguese</span>
-                        <span class="lang-native">Português</span>
-                    </div>
-                    <span class="lang-badge">Ready</span>
-                </a>
-                <a href="waterborne-pathogen-training-it.html" class="language-card">
-                    <span class="lang-flag">🇮🇹</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Italian</span>
-                        <span class="lang-native">Italiano</span>
-                    </div>
-                    <span class="lang-badge">Ready</span>
-                </a>
-
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇪🇸</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Spanish</span>
-                        <span class="lang-native">Español</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇸🇦</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Arabic</span>
-                        <span class="lang-native">العربية</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇨🇳</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Chinese</span>
-                        <span class="lang-native">中文</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇹🇿</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Swahili</span>
-                        <span class="lang-native">Kiswahili</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇪🇹</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Amharic</span>
-                        <span class="lang-native">አማርኛ</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇮🇳</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Hindi</span>
-                        <span class="lang-native">हिन्दी</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇧🇩</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Bengali</span>
-                        <span class="lang-native">বাংলা</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇮🇩</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Indonesian</span>
-                        <span class="lang-native">Bahasa Indonesia</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇺🇦</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Ukrainian</span>
-                        <span class="lang-native">Українська</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇳🇬</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Hausa</span>
-                        <span class="lang-native">Hausa</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇳🇬</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Yoruba</span>
-                        <span class="lang-native">Yorùbá</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇨🇩</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Lingala</span>
-                        <span class="lang-native">Lingála</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇲🇬</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Malagasy</span>
-                        <span class="lang-native">Malagasy</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇳🇵</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Nepali</span>
-                        <span class="lang-native">नेपाली</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇵🇭</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Tagalog</span>
-                        <span class="lang-native">Tagalog</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇷🇼</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Kinyarwanda</span>
-                        <span class="lang-native">Kinyarwanda</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇧🇮</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Kirundi</span>
-                        <span class="lang-native">Ikirundi</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-                <span class="language-card unavailable">
-                    <span class="lang-flag">🇲🇼</span>
-                    <div class="lang-info">
-                        <span class="lang-name">Chichewa</span>
-                        <span class="lang-native">Chichewa</span>
-                    </div>
-                    <span class="lang-badge coming">Soon</span>
-                </span>
-            </div>
-
-            <div class="info-box">
-                <h4><i class="fas fa-info-circle"></i> About this course</h4>
-                <p>Every module aligns with WHO Guidelines for Drinking-Water Quality (4th edition), CDC/FDA bacteriological methods, and relevant ISO standards. Content can be saved locally, printed for field use, and works on any device with a browser — no install required.</p>
-            </div>
+    <!-- ===== FECAL ===== -->
+    <a class="card fecal" href="fecal-pathogen-isolation.html" aria-label="Fecal Pathogen Isolation course">
+      <div class="card-art">
+        <span class="badge"><i class="fas fa-flask"></i> Fecal Sampling</span>
+        <span class="langcount"><i class="fas fa-globe"></i> 6 languages</span>
+        <!-- SVG: specimen container + culture plate with colonies -->
+        <svg viewBox="0 0 300 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Specimen container and culture plate">
+          <defs>
+            <linearGradient id="fagar" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e8b9b2"/>
+              <stop offset="1" stop-color="#c97f73"/>
+            </linearGradient>
+            <radialGradient id="fplate" cx="0.5" cy="0.4" r="0.65">
+              <stop offset="0" stop-color="#f6ddd8"/>
+              <stop offset="1" stop-color="#e3b4ab"/>
+            </radialGradient>
+          </defs>
+          <!-- culture plate (petri dish, top-down) -->
+          <g transform="translate(150 132)">
+            <ellipse cx="2" cy="8" rx="92" ry="60" fill="#000000" opacity="0.07"/>
+            <ellipse cx="0" cy="0" rx="92" ry="60" fill="#cfd8dc"/>
+            <ellipse cx="0" cy="-3" rx="84" ry="54" fill="url(#fplate)"/>
+            <!-- streak lines -->
+            <path d="M-62 -22 q40 -16 120 6" fill="none" stroke="#b06b5e" stroke-width="2" opacity="0.55"/>
+            <path d="M-64 -6 q44 -12 122 10" fill="none" stroke="#b06b5e" stroke-width="2" opacity="0.5"/>
+            <path d="M-60 12 q42 -8 116 10" fill="none" stroke="#b06b5e" stroke-width="2" opacity="0.45"/>
+            <!-- colonies: black-centered (Salmonella on XLD style) -->
+            <circle cx="-34" cy="-20" r="7" fill="#d98c7d"/><circle cx="-34" cy="-20" r="3" fill="#2c2622"/>
+            <circle cx="-8" cy="-26" r="6" fill="#d98c7d"/><circle cx="-8" cy="-26" r="2.6" fill="#2c2622"/>
+            <circle cx="20" cy="-14" r="8" fill="#d98c7d"/><circle cx="20" cy="-14" r="3.4" fill="#2c2622"/>
+            <circle cx="-22" cy="6" r="6.5" fill="#d98c7d"/><circle cx="-22" cy="6" r="2.8" fill="#2c2622"/>
+            <circle cx="10" cy="14" r="7" fill="#d98c7d"/><circle cx="10" cy="14" r="3" fill="#2c2622"/>
+            <circle cx="42" cy="2" r="5.5" fill="#d98c7d"/><circle cx="42" cy="2" r="2.4" fill="#2c2622"/>
+            <circle cx="-50" cy="-2" r="5" fill="#d98c7d"/><circle cx="-50" cy="-2" r="2.2" fill="#2c2622"/>
+            <circle cx="30" cy="-30" r="4.5" fill="#d98c7d"/><circle cx="30" cy="-30" r="2" fill="#2c2622"/>
+          </g>
+          <!-- specimen container -->
+          <g transform="translate(40 38)">
+            <rect x="4" y="-12" width="46" height="16" rx="4" fill="#7d8a3c"/>
+            <rect x="2" y="2" width="50" height="14" rx="3" fill="#9aa84d"/>
+            <rect x="8" y="16" width="38" height="92" rx="9" fill="#eef0e6" stroke="#9aa84d" stroke-width="2.5"/>
+            <path d="M10 72 h34 v22 a9 9 0 0 1 -9 9 h-16 a9 9 0 0 1 -9 -9 Z" fill="url(#fagar)"/>
+            <ellipse cx="27" cy="72" rx="17" ry="5" fill="#d9a89d"/>
+            <!-- spoon line on lid -->
+            <line x1="27" y1="-12" x2="27" y2="-2" stroke="#5f6a2d" stroke-width="2.5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker">Course 02</div>
+        <div class="rotor" aria-hidden="false">
+          <div>
+            <div class="rotor-title" id="fecalTitle">Fecal Pathogen Isolation</div>
+          </div>
         </div>
-    </main>
+        <div class="rotor-lang" id="fecalLang">English</div>
+        <div class="card-foot">
+          <span><i class="fas fa-layer-group"></i> 11 modules</span>
+          <span><i class="fas fa-clock"></i> ~4 hrs</span>
+          <span class="go">Start course <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </a>
 
-    <footer>
-        <p>SciVoice · Public health microbiology tools for everyone — in your language.</p>
-        <p style="margin-top: 0.5rem;">
-            <a href="../">← Back to SciVoice</a>
-        </p>
-    </footer>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="https://bhaley1.github.io/scivoice/">← Back to SciVoice</a>
+    &nbsp;·&nbsp; Public health microbiology tools for everyone — in your language.
+  </div>
+</footer>
+
+<script>
+/* Rotating translated titles.
+   Each entry: [translated title, language label].
+   English is the anchor — shown between every other language. */
+const waterborne = [
+  ["Waterborne Pathogen Isolation","English"],
+  ["Isolement des pathogènes hydriques","Français — French"],
+  ["Aislamiento de patógenos transmitidos por agua","Español — Spanish"],
+  ["Isolamento de patógenos veiculados pela água","Português — Portuguese"],
+  ["Isolamento dei patogeni di origine idrica","Italiano — Italian"],
+  ["عزل مسببات الأمراض المنقولة بالمياه","العربية — Arabic"],
+  ["水传播病原体的分离","中文 — Chinese"],
+  ["Kutenga vimelea vinavyoenezwa na maji","Kiswahili — Swahili"],
+  ["በውሃ የሚተላለፉ በሽታ አምጪ ተህዋሲያንን መለየት","አማርኛ — Amharic"],
+  ["जल जनित रोगजनकों का पृथक्करण","हिन्दी — Hindi"],
+  ["পানিবাহিত রোগজীবাণু বিচ্ছিন্নকরণ","বাংলা — Bengali"],
+  ["Isolasi patogen yang ditularkan melalui air","Bahasa Indonesia — Indonesian"],
+  ["Виділення збудників, що передаються через воду","Українська — Ukrainian"],
+  ["Ware kwayoyin cuta da ake daukar su ta ruwa","Hausa"],
+  ["Yíyà àwọn kòkòrò àrùn inú omi sọ́tọ̀","Yorùbá — Yoruba"],
+  ["Kokakatola mikrobe ya maladi na mai","Lingála — Lingala"],
+  ["Fanavahana ny otrikaretina avy amin'ny rano","Malagasy"],
+  ["पानीबाट सर्ने रोगजनकहरूको पृथकीकरण","नेपाली — Nepali"],
+  ["Paghihiwalay ng mga pathogen mula sa tubig","Tagalog"],
+  ["Gutandukanya mikorobe iterwa n'amazi","Kinyarwanda"],
+  ["Gutandukanya udukoko tw'indwara tuva mu mazi","Ikirundi — Kirundi"],
+  ["Kupatula tizilombo toyambitsa matenda m'madzi","Chichewa"]
+];
+
+const fecal = [
+  ["Fecal Pathogen Isolation","English"],
+  ["Isolement des pathogènes fécaux","Français — French"],
+  ["Aislamiento de patógenos fecales","Español — Spanish"],
+  ["Isolamento de patógenos fecais","Português — Portuguese"],
+  ["Isolamento dei patogeni fecali","Italiano — Italian"],
+  ["عزل مسببات الأمراض البرازية","العربية — Arabic"],
+  ["粪便病原体的分离","中文 — Chinese"],
+  ["Kutenga vimelea vya magonjwa kwenye kinyesi","Kiswahili — Swahili"],
+  ["በሰገራ ውስጥ ያሉ በሽታ አምጪ ተህዋሲያንን መለየት","አማርኛ — Amharic"],
+  ["मल जनित रोगजनकों का पृथक्करण","हिन्दी — Hindi"],
+  ["মলবাহিত রোগজীবাণু বিচ্ছিন্নকরণ","বাংলা — Bengali"],
+  ["Isolasi patogen tinja","Bahasa Indonesia — Indonesian"],
+  ["Виділення збудників із фекалій","Українська — Ukrainian"],
+  ["Ware kwayoyin cuta daga kashi","Hausa"],
+  ["Yíyà àwọn kòkòrò àrùn inú ìgbẹ́ sọ́tọ̀","Yorùbá — Yoruba"],
+  ["Kokakatola mikrobe ya maladi na nyei","Lingála — Lingala"],
+  ["Fanavahana ny otrikaretina avy amin'ny tay","Malagasy"],
+  ["दिसाजन्य रोगजनकहरूको पृथकीकरण","नेपाली — Nepali"],
+  ["Paghihiwalay ng mga pathogen mula sa dumi","Tagalog"],
+  ["Gutandukanya mikorobe iterwa n'amabyi","Kinyarwanda"],
+  ["Gutandukanya udukoko tw'indwara tuva mu mavi","Ikirundi — Kirundi"],
+  ["Kupatula tizilombo toyambitsa matenda m'manyowa","Chichewa"]
+];
+
+function makeRotator(list, titleEl, langEl){
+  // Build a sequence that returns to English (index 0) between every language:
+  // English -> L1 -> English -> L2 -> English -> L3 ...
+  const seq = [];
+  for (let k = 1; k < list.length; k++){
+    seq.push(0);   // English anchor
+    seq.push(k);   // next foreign language
+  }
+  let step = 0;
+  return function(){
+    step = (step + 1) % seq.length;
+    const entry = list[seq[step]];
+    titleEl.classList.add('swap');
+    langEl.classList.add('swap');
+    setTimeout(()=>{
+      titleEl.textContent = entry[0];
+      langEl.textContent = entry[1];
+      const rtl = /[\u0600-\u06FF]/.test(entry[0]);
+      titleEl.style.direction = rtl ? 'rtl' : 'ltr';
+      titleEl.classList.remove('swap');
+      langEl.classList.remove('swap');
+    }, 450);
+  };
+}
+
+const wTitle = document.getElementById('waterTitle');
+const wLang  = document.getElementById('waterLang');
+const fTitle = document.getElementById('fecalTitle');
+const fLang  = document.getElementById('fecalLang');
+
+const rotateWater = makeRotator(waterborne, wTitle, wLang);
+const rotateFecal = makeRotator(fecal, fTitle, fLang);
+
+/* Offset the two rotators so they don't flip in unison */
+setInterval(rotateWater, 3200);
+setTimeout(()=> setInterval(rotateFecal, 3200), 1600);
+
+/* Respect reduced-motion preference */
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  /* still rotate, but skip the transform/opacity transition */
+  document.querySelectorAll('.rotor-title,.rotor-lang').forEach(el=>el.style.transition='none');
+}
+</script>
 </body>
 </html>
