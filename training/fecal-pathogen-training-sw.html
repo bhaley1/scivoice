@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mafunzo ya Kutenga Vimelea vya Kinyesi | SciVoice</title>
+<meta name="description" content="Utengaji wa kimatibabu wa vimelea vya utumbo kutoka kinyesi cha binadamu, kwa kufuata mbinu za maabara za CDC na WHO.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#fafaf9;--color-surface:#ffffff;--color-primary:#1a1814;
+  --color-secondary:#78716c;--color-accent:#dc2626;--color-success:#16a34a;
+  --color-warning:#ea580c;--color-info:#0ea5e9;--color-border:#e7e5e4;
+  --color-hover:#f5f5f4;--font-family:'Inter',system-ui,sans-serif;
+  --border-radius:12px;
+  --shadow:0 1px 3px 0 rgb(0 0 0 / 0.1),0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-family);background:var(--color-bg);color:var(--color-primary);line-height:1.6;}
+em{font-style:italic;}
+.header{background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:1rem 0;position:sticky;top:0;z-index:100;}
+.header-content{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:0.75rem;font-weight:600;font-style:italic;font-size:1.25rem;color:var(--color-primary);text-decoration:none;}
+.logo i{color:var(--color-accent);font-style:normal;}
+.btn{background:var(--color-accent);color:white;border:none;padding:0.5rem 1rem;border-radius:var(--border-radius);font-weight:500;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-family);}
+.btn:hover{background:#b91c1c;transform:translateY(-1px);}
+a{color:var(--color-accent);text-decoration:none;transition:all 0.2s;}
+a:hover{color:#b91c1c;text-decoration:underline;}
+a:visited{color:#7c2d12;}
+.external-link::after{content:" \2197";font-size:0.8rem;color:var(--color-secondary);}
+.progress-indicator{position:fixed;bottom:1rem;right:1rem;background:var(--color-accent);color:white;padding:0.75rem;border-radius:50%;font-weight:600;z-index:100;cursor:pointer;}
+.main-container{max-width:1200px;margin:0 auto;padding:2rem;}
+.nav-tabs{display:flex;border-bottom:1px solid var(--color-border);margin-bottom:2rem;overflow-x:auto;gap:0.25rem;}
+.nav-tab{background:none;border:none;padding:0.875rem 1.1rem;font-weight:500;color:var(--color-secondary);cursor:pointer;border-radius:var(--border-radius) var(--border-radius) 0 0;transition:all 0.2s;white-space:nowrap;font-family:var(--font-family);font-size:0.9rem;}
+.nav-tab:hover{background:var(--color-hover);color:var(--color-primary);}
+.nav-tab.active{background:var(--color-surface);color:var(--color-primary);border-bottom:2px solid var(--color-accent);}
+.module-content{display:none;background:var(--color-surface);border-radius:var(--border-radius);box-shadow:var(--shadow);padding:2rem;}
+.module-content.active{display:block;}
+.module-header{margin-bottom:2rem;text-align:center;}
+.module-title{font-size:1.85rem;font-weight:700;color:var(--color-primary);margin-bottom:0.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;}
+.module-subtitle{font-size:1rem;color:var(--color-secondary);}
+.step-container{margin-bottom:2rem;border:1px solid var(--color-border);border-radius:var(--border-radius);overflow:hidden;}
+.step-header{background:linear-gradient(135deg,var(--color-accent),#dc2626);color:white;padding:1rem 1.5rem;}
+.step-title{font-size:1.125rem;font-weight:600;display:flex;align-items:center;gap:1rem;}
+.step-number{background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:50%;width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+.step-content{padding:1.5rem;}
+.protocol-list{list-style:none;padding:0;}
+.protocol-list li{background:var(--color-hover);margin:0.5rem 0;padding:1rem;border-radius:var(--border-radius);border-left:4px solid var(--color-accent);}
+.data-table{width:100%;border-collapse:collapse;margin:1rem 0;background:var(--color-surface);border-radius:var(--border-radius);overflow:hidden;box-shadow:var(--shadow);}
+.data-table th,.data-table td{padding:0.875rem;text-align:left;border-bottom:1px solid var(--color-border);}
+.data-table th{background:var(--color-accent);color:white;font-weight:600;}
+.data-table tr:nth-child(even){background:var(--color-hover);}
+.info-box,.warning-box,.danger-box,.success-box{padding:1rem;border-radius:var(--border-radius);margin:1rem 0;}
+.info-box{background:#eff6ff;border-left:4px solid var(--color-info);color:#1e40af;}
+.warning-box{background:#fff7ed;border-left:4px solid var(--color-warning);color:#c2410c;}
+.danger-box{background:#fef2f2;border-left:4px solid var(--color-accent);color:#dc2626;}
+.success-box{background:#f0fdf4;border-left:4px solid var(--color-success);color:#166534;}
+.info-box h4,.warning-box h4,.danger-box h4,.success-box h4{margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;}
+.source-tag{display:inline-block;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:0.2rem 0.55rem;border-radius:6px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;margin:0.35rem 0;}
+.source-tag.who{background:#ecfeff;color:#155e75;border-color:#a5f3fc;}
+.diagram-figure{margin:1.25rem 0;text-align:center;background:#fcfbf9;border:1px solid var(--color-border);border-radius:var(--border-radius);padding:1.25rem;}
+.diagram-figure svg{width:100%;height:auto;max-width:340px;}
+.diagram-figure.diagram-figure--wide svg{max-width:680px;}
+.diagram-figure figcaption{margin-top:0.65rem;font-size:0.85rem;color:var(--color-secondary);}
+.diagram-figure figcaption b{color:var(--color-primary);}
+.interactive-checklist{background:var(--color-surface);border-radius:var(--border-radius);padding:1rem;box-shadow:var(--shadow);margin:1rem 0;}
+.checklist{list-style:none;padding:0;}
+.checklist li{display:flex;align-items:center;gap:0.75rem;padding:0.75rem;border-radius:var(--border-radius);cursor:pointer;transition:all 0.2s;}
+.checklist li:hover{background:var(--color-hover);}
+.checklist input[type="checkbox"]{pointer-events:none;flex-shrink:0;}
+h4{color:var(--color-primary);margin-bottom:1rem;font-size:1.1rem;}
+h5{color:var(--color-primary);margin-bottom:0.5rem;font-weight:600;}
+@media (max-width:768px){.main-container{padding:1rem;}.module-content{padding:1rem;}.step-content{padding:1rem;}.data-table{font-size:0.875rem;}}
+@media print{.header,.nav-tabs,.progress-indicator{display:none;}.module-content{display:block !important;page-break-after:always;}.step-container{page-break-inside:avoid;}.diagram-figure{page-break-inside:avoid;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-content">
+    <a href="../index.html" class="logo"><i class="fas fa-microscope"></i> SciVoice</a>
+    <button class="btn" onclick="window.print()"><i class="fas fa-print"></i> Pakua PDF</button>
+  </div>
+</header>
+<div class="progress-indicator" id="progressIndicator"><span id="progressText">1/10</span></div>
+<style>
+.validation-notice{background:#fff7ed;border:1px solid #fdba74;border-left:4px solid #ea580c;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;gap:.85rem;align-items:flex-start;}
+.validation-notice i{color:#ea580c;font-size:1.15rem;margin-top:.15rem;flex-shrink:0;}
+.validation-notice h4{margin:0 0 .25rem;font-size:.95rem;color:#9a3412;}
+.validation-notice p{margin:0;font-size:.85rem;color:#9a3412;line-height:1.55;}
+@media print{.validation-notice{break-inside:avoid;}}
+</style>
+<main class="main-container">
+  <div class="validation-notice">
+    <i class="fas fa-triangle-exclamation"></i>
+    <div><h4>Tafsiri inasubiri uthibitishaji</h4><p>Tafsiri hii ya Kiswahili imeandaliwa kwa uangalifu lakini bado haijakaguliwa na mtaalamu wa maikrobiolojia anayejua Kiswahili. Inapaswa kuthibitishwa kabla ya matumizi yoyote ya kimatibabu au ya mafunzo. Kumbuka: istilahi za kiufundi zimebaki kwa Kiingereza ndani ya matini ya Kiswahili, kama ilivyo kawaida katika maabara za Afrika Mashariki — wakaguzi wanaweza kurekebisha hili. Pakiwa na shaka, toleo la Kiingereza ndilo la kumbukumbu.</p></div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showModule('m1')">Muhtasari</button>
+    <button class="nav-tab" onclick="showModule('m2')">Ukusanyaji wa Sampuli</button>
+    <button class="nav-tab" onclick="showModule('m3')"><em>Salmonella</em></button>
+    <button class="nav-tab" onclick="showModule('m4')"><em>Shigella</em></button>
+    <button class="nav-tab" onclick="showModule('m5')">STEC/EHEC</button>
+    <button class="nav-tab" onclick="showModule('m6')"><em>Campylobacter</em></button>
+    <button class="nav-tab" onclick="showModule('m7')"><em>Vibrio</em></button>
+    <button class="nav-tab" onclick="showModule('m8')">Mbinu za Molekuli</button>
+    <button class="nav-tab" onclick="showModule('m9')">Vifaa</button>
+    <button class="nav-tab" onclick="showModule('m10')">Marejeo</button>
+  </div>
+<style>
+.practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin:1rem 0;}
+.practice-card{background:#fcfbf9;border:1px solid var(--color-border);border-radius:var(--border-radius);padding:1rem;cursor:pointer;transition:all 0.2s;text-align:center;}
+.practice-card:hover{border-color:var(--color-accent);transform:translateY(-2px);box-shadow:var(--shadow);}
+.practice-art svg{width:100%;height:auto;max-width:130px;}
+.practice-q{font-weight:600;font-size:0.9rem;margin-top:0.6rem;color:var(--color-primary);}
+.practice-a{display:none;margin-top:0.6rem;font-size:0.85rem;color:var(--color-secondary);text-align:left;background:#f0fdf4;border-left:3px solid var(--color-success);padding:0.6rem 0.75rem;border-radius:6px;}
+.practice-card.revealed .practice-a{display:block;}
+.practice-card.revealed .practice-q{color:var(--color-success);}
+@media print{.practice-a{display:block !important;}.practice-card{break-inside:avoid;}}
+</style>
+<!-- MODULE 1: MUHTASARI -->
+<div class="module-content active" id="m1">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-graduation-cap"></i> Mafunzo ya Kutenga Vimelea vya Kinyesi</div>
+    <div class="module-subtitle">Utengaji wa kimaabara wa bakteria vya magonjwa ya utumbo kutoka kinyesi cha binadamu, kwa kufuata mbinu za CDC na WHO</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Kuhusu kozi hii</div></div>
+    <div class="step-content">
+      <p>Kozi hii inafundisha <strong>utengaji wa kimaabara</strong> wa bakteria vya magonjwa ya utumbo kutoka sampuli za kinyesi cha binadamu — kazi ya benchi ya kupata, kukuza, na kutambua kiumbe hai. Haishughulikii uchunguzi wa kimatibabu wala matibabu ya mgonjwa.</p>
+      <div class="info-box">
+        <h4><i class="fas fa-flask"></i> Kanuni: utamaduni (culture) kwanza</h4>
+        <p>Utamaduni ndio mbinu ya msingi. Vipimo vya molekuli vinaweza kugundua asidi-nyukliki ya kimelea lakini havitoi kiumbe chochote — na kisanga hai ni muhimu kwa kipimo cha usikivu wa viuavijasumu (antibiogram), uainishaji wa serotype, na uchunguzi wa mlipuko. Pale mbinu za molekuli zinapotumika, sampuli lazima ipandwe katika utamaduni.</p>
+      </div>
+      <h4>Mwishoni mwa kozi hii, washiriki wataweza:</h4>
+      <ul class="protocol-list">
+        <li><strong>Kutenga na kutambua</strong> bakteria wakuu wa magonjwa ya utumbo kutoka sampuli za kinyesi cha binadamu</li>
+        <li><strong>Kutumia</strong> itifaki za kawaida za utengaji za CDC na WHO, kwa kutumia selective media na enrichment broth zinazofaa</li>
+        <li><strong>Kufanya</strong> vipimo vya uthibitisho vya kibayokemikali na serolojia</li>
+        <li><strong>Kuzingatia</strong> kanuni za usalama wa kibayolojia na udhibiti wa ubora</li>
+        <li><strong>Kuelewa</strong> nafasi ya ziada ya mbinu za molekuli na kanuni ya utamaduni wa uthibitisho (reflex culture)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Vimelea vinavyolengwa</div></div>
+    <div class="step-content">
+      <table class="data-table">
+        <thead><tr><th>Kimelea</th><th>Umuhimu wa kimatibabu</th><th>Selective medium ya msingi</th><th>Chanzo cha mbinu</th></tr></thead>
+        <tbody>
+          <tr><td><em>Salmonella</em> spp.</td><td>Gastroenteritis, homa ya matumbo</td><td>XLD, HE</td><td>CDC</td></tr>
+          <tr><td><em>Shigella</em> spp.</td><td>Kuhara damu (dysentery)</td><td>XLD, HE, SS</td><td>CDC</td></tr>
+          <tr><td>STEC / EHEC</td><td>Kuhara damu, HUS</td><td>SMAC</td><td>CDC</td></tr>
+          <tr><td><em>Campylobacter</em> spp.</td><td>Gastroenteritis</td><td>Karmali, Skirrow</td><td>CDC</td></tr>
+          <tr><td><em>Vibrio cholerae</em></td><td>Kipindupindu, kuhara maji</td><td>TCBS</td><td>CDC / WHO</td></tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <h4><i class="fas fa-info-circle"></i> Dokezo kuhusu upeo</h4>
+        <p><em>Listeria monocytogenes</em> haijajumuishwa katika kozi hii. Listeriosis ni maambukizi vamizi yanayothibitishwa kutoka maeneo yasiyo na vijidudu kwa kawaida (damu, CSF); kinyesi si sampuli ya kawaida ya kimatibabu kwa utengaji wake.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Vyanzo vya mbinu</div></div>
+    <div class="step-content">
+      <p>Kila mbinu katika kozi hii imewekewa lebo ya shirika linalochapisha. Mashirika mawili yanatumika:</p>
+      <ul class="protocol-list">
+        <li><span class="source-tag">Chanzo cha mbinu: CDC</span><br>Vituo vya Marekani vya Kudhibiti na Kuzuia Magonjwa — mbinu za maabara za utengaji wa kimatibabu wa vimelea vya utumbo.</li>
+        <li><span class="source-tag who">Chanzo cha mbinu: WHO / GTFCC</span><br>Shirika la Afya Duniani na Kikosi Kazi cha Kimataifa cha Kudhibiti Kipindupindu — miongozo ya maabara ya kipindupindu, iliyolengwa kwa mazingira yenye rasilimali chache.</li>
+      </ul>
+      <div class="warning-box">
+        <h4><i class="fas fa-exclamation-triangle"></i> Mahitaji ya ndani</h4>
+        <p>Daima thibitisha mahitaji ya kitaifa na ya ndani. Vimelea kadhaa vya utumbo ni vya kuripotiwa kwa lazima na vinahitaji taarifa ya haraka; kupeleka kisanga kwenye maabara ya rejea kunaweza kuwa lazima.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 2: UKUSANYAJI WA SAMPULI -->
+<div class="module-content" id="m2">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-vials"></i> Ukusanyaji na usafirishaji wa sampuli</div>
+    <div class="module-subtitle">Kukusanya na kusafirisha sampuli za kinyesi cha binadamu kwa utengaji wa bakteria</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Kukusanya sampuli</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Sampuli inayopendelewa:</strong> kinyesi kilichotolewa hivi karibuni, kilichokusanywa mapema iwezekanavyo baada ya kuanza kwa dalili na kabla ya matibabu yoyote ya viuavijasumu</li>
+        <li><strong>Chombo:</strong> chombo safi, kisichovuja, chenye mdomo mpana na kifuniko cha kuzungusha</li>
+        <li><strong>Kiasi:</strong> gramu 1 hadi 2 za kinyesi, au mililita 2 hadi 3 ikiwa ni kimiminika</li>
+        <li><strong>Pendelea</strong> sehemu zenye ute, damu, au usaha</li>
+        <li><strong>Pamba za puru (rectal swabs)</strong> zinakubalika tu wakati sampuli ya kinyesi haiwezi kupatikana — lazima kuwe na kinyesi kinachoonekana kwenye pamba</li>
+      </ul>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="62" y="22" width="76" height="20" rx="5" fill="#7d8a3c"/>
+          <line x1="100" y1="22" x2="100" y2="42" stroke="#5f6a2d" stroke-width="3"/>
+          <rect x="66" y="42" width="68" height="124" rx="11" fill="#eef0e6" stroke="#9aa84d" stroke-width="2.5"/>
+          <path d="M68 118 h64 v36 a11 11 0 0 1 -11 11 h-42 a11 11 0 0 1 -11 -11 Z" fill="#d2b48c"/>
+          <ellipse cx="100" cy="118" rx="32" ry="6" fill="#c4a376"/>
+        </svg>
+        <figcaption><b>Chombo cha sampuli ya kinyesi.</b> Mdomo mpana, kisichovuja, tasa, chenye kijiko cha kukusanyia.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Usafirishaji — Cary-Blair medium</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Shughulikia haraka:</strong> ikiwezekana ndani ya saa 2 baada ya ukusanyaji</li>
+        <li><strong>Ikiwa kuna ucheleweshaji:</strong> weka sampuli katika Cary-Blair transport medium</li>
+        <li><strong>Cary-Blair</strong> ni medium nusu-imara inayofaa kwa bakteria wengi wa utumbo, ikihifadhi uhai hadi siku kadhaa</li>
+        <li><strong>Uhifadhi:</strong> inaweza kuhifadhiwa katika 2-8&deg;C; sampuli zinazoshukiwa kuwa za kipindupindu katika Cary-Blair zinaweza kusafirishwa katika joto la kawaida</li>
+      </ul>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="78" y="20" width="44" height="14" rx="3" fill="#34495e"/>
+          <rect x="80" y="34" width="40" height="12" rx="2" fill="#4a6278"/>
+          <rect x="84" y="46" width="32" height="120" rx="12" fill="#eef2f4" stroke="#9bb0bf" stroke-width="2.5"/>
+          <path d="M86 96 h28 v58 a12 12 0 0 1 -12 12 h-4 a12 12 0 0 1 -12 -12 Z" fill="#bcd9c9"/>
+          <ellipse cx="100" cy="96" rx="14" ry="4.5" fill="#a3ccb5"/>
+        </svg>
+        <figcaption><b>Cary-Blair transport medium.</b> Medium nusu-imara katika bomba lenye kifuniko cha kuzungusha kwa usafirishaji wa sampuli.</figcaption>
+      </figure>
+      <div class="info-box">
+        <h4><i class="fas fa-clock"></i> Kwa nini usafirishaji ni muhimu</h4>
+        <p>Vimelea vya utumbo hupoteza uhai kutokana na ucheleweshaji, mabadiliko ya pH ya kinyesi, na msongo wa usafirishaji. <em>Shigella</em> ni dhaifu hasa. Usafirishaji sahihi hulinda kiumbe ili bado kiweze kukuzwa.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Usalama wa kibayolojia</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <h4>Vifaa vya kujikinga binafsi:</h4>
+      <ul class="protocol-list">
+        <li><strong>Glavu:</strong> zibadilishwe kati ya kila sampuli</li>
+        <li><strong>Koti la maabara:</strong> lililofungwa, lenye mikono mirefu</li>
+        <li><strong>Kinga ya macho:</strong> pale kunapokuwa na hatari ya kuruka kwa kimiminika</li>
+        <li><strong>Viatu vilivyofunikwa</strong></li>
+      </ul>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="50" r="26" fill="#f0d9c0"/>
+          <path d="M74 50 a26 26 0 0 1 52 0 v6 h-52 Z" fill="#5d7a9a"/>
+          <rect x="70" y="58" width="60" height="20" rx="6" fill="#d6e4ef" stroke="#9bb0bf" stroke-width="2"/>
+          <path d="M62 92 q38 -20 76 0 l8 76 h-92 Z" fill="#ffffff" stroke="#c9c3b8" stroke-width="2.5"/>
+          <line x1="100" y1="80" x2="100" y2="168" stroke="#c9c3b8" stroke-width="2"/>
+          <path d="M62 96 l-14 36 14 8 8 -30 Z" fill="#5dade2"/>
+          <path d="M138 96 l14 36 -14 8 -8 -30 Z" fill="#5dade2"/>
+        </svg>
+        <figcaption><b>PPE ya Kiwango cha Usalama wa Kibayolojia 2.</b> Glavu, koti, na kinga ya macho — lazima kwa sampuli zote za kinyesi.</figcaption>
+      </figure>
+      <div class="danger-box">
+        <h4><i class="fas fa-biohazard"></i> Kiwango cha Usalama wa Kibayolojia 2</h4>
+        <p>Shughulikia sampuli zote za kinyesi katika kiwango cha BSL-2. Chukulia kila sampuli kama yenye uwezekano wa kuambukiza.</p>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Orodha ya ukaguzi — ukusanyaji</h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Kinyesi kipya kilichokusanywa kabla ya matibabu yoyote ya viuavijasumu</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Chombo kisichovuja, kilichowekewa lebo sahihi</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Kilishughulikiwa ndani ya saa 2, au kuwekwa katika Cary-Blair</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>PPE ya BSL-2 imevaliwa wakati wote</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 3: SALMONELLA -->
+<div class="module-content" id="m3">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Utengaji wa <em>Salmonella</em></div>
+    <div class="module-subtitle">Kutenga <em>Salmonella</em> isiyo ya homa ya matumbo kutoka kinyesi cha binadamu, kwa kufuata mbinu za CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Mtiririko wa utengaji</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Kupata <em>Salmonella</em> kutoka kinyesi hufuata mpangilio wa hatua nne. Kinyesi kina flora ya kawaida nyingi; hivyo hatua za awali hutumika <strong>kukandamiza flora hiyo na kuruhusu kimelea kukua</strong> kabla ya hatua za utambuzi.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="20" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="80" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Sampuli</text>
+          <text x="80" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Kinyesi katika Cary-Blair</text>
+          <path d="M144 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah3)"/>
+          <rect x="180" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="240" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Enrichment</text>
+          <text x="240" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Selenite au TT broth</text>
+          <path d="M304 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah3)"/>
+          <rect x="340" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="400" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Utengaji</text>
+          <text x="400" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">XLD na HE agar</text>
+          <path d="M464 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah3)"/>
+          <rect x="500" y="40" width="120" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="560" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Uthibitisho</text>
+          <text x="560" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Bayokemikali / serolojia</text>
+        </svg>
+        <figcaption><b>Mtiririko wa utengaji wa hatua nne.</b> Mpangilio huu hujirudia katika kila moduli ya kimelea.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Selective enrichment</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Panda</strong> enrichment broth — Selenite (SEL) au Tetrathionate (TT) — kutoka sampuli ya kinyesi</li>
+        <li><strong>Tunza (incubate)</strong> kulingana na maelekezo ya mtengenezaji wa medium kabla ya kupandikiza kwenye selective agar</li>
+        <li><strong>Kwa nini ni muhimu:</strong> enrichment huongeza usikivu kwa kuruhusu idadi ndogo ya <em>Salmonella</em> kuzaliana wakati flora ya kinyesi inazuiliwa</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-flask"></i> Kuchagua broth</h4>
+        <p>Ikiwa <em>S.</em> Typhi inazingatiwa, Selenite kwa kawaida hupendelewa. Daima rejea maelekezo ya mtengenezaji kuhusu muda na joto la incubation — haya hutofautiana kwa bidhaa.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Utengaji kwenye selective agar</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Pandikiza enrichment broth kwenye <strong>angalau selective media mbili</strong>. XLD na HE ndizo zinazotumika zaidi; CHROMagar, SS, au XLT-4 ni mbadala.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#d94f70"/>
+          <path d="M40 78 q60 -22 122 8" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.5"/>
+          <path d="M36 100 q64 -16 128 10" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.45"/>
+          <path d="M42 124 q58 -12 120 12" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.4"/>
+          <circle cx="74" cy="78" r="8" fill="#e07a3f"/><circle cx="74" cy="78" r="3.5" fill="#1a1410"/>
+          <circle cx="112" cy="70" r="7" fill="#e07a3f"/><circle cx="112" cy="70" r="3" fill="#1a1410"/>
+          <circle cx="138" cy="96" r="8" fill="#e07a3f"/><circle cx="138" cy="96" r="3.5" fill="#1a1410"/>
+          <circle cx="84" cy="116" r="7" fill="#e07a3f"/><circle cx="84" cy="116" r="3" fill="#1a1410"/>
+          <circle cx="120" cy="130" r="8" fill="#e07a3f"/><circle cx="120" cy="130" r="3.5" fill="#1a1410"/>
+          <circle cx="64" cy="104" r="6" fill="#e07a3f"/><circle cx="64" cy="104" r="2.6" fill="#1a1410"/>
+        </svg>
+        <figcaption><b>XLD agar.</b> <em>Salmonella</em> ya kawaida — koloni nyekundu/pinki zenye kitovu cheusi, kutokana na uzalishaji wa H&#8322;S.</figcaption>
+      </figure>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Kusoma sahani — hatua ya uamuzi</h4>
+        <p><strong><em>Salmonella</em> ya kawaida kwenye XLD:</strong> koloni nyekundu au pinki, mara nyingi yenye kitovu cheusi kilicho dhahiri. Kitovu cheusi ni H&#8322;S — kidokezo muhimu, lakini si uthibitisho peke yake.</p>
+        <p><strong>Amua:</strong> chukua koloni 2-3 zilizotengana vizuri za kila umbo linaloshukiwa kwa uthibitisho. Pale koloni zimesongamana au zinapishana, pandikiza kwanza kwenye sahani mpya ili kupata koloni safi, zilizotengana — kamwe usifanye vipimo vya uthibitisho kutoka kwa ukuaji mchanganyiko.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Matokeo yenye utata — ya kuangalia</h4>
+        <p><strong>Kuna <em>Salmonella</em> zisizo na H&#8322;S</strong> — koloni nyekundu isiyo na kitovu cheusi haiondolewi moja kwa moja. <strong>Viumbe vingine huzalisha H&#8322;S</strong> — <em>Proteus</em> inaweza kutoa koloni zenye kitovu cheusi na kupotosha. Ndio maana hasa selective medium ya pili na uthibitisho wa kibayokemikali vinahitajika: kamwe usitambue <em>Salmonella</em> kwa muonekano wa XLD peke yake.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Uthibitisho wa kibayokemikali</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Chukua koloni zinazoshukiwa kwenye media za uthibitisho. TSI (triple sugar iron) slant pamoja na urease ni jozi ya kawaida ya uchunguzi wa awali; maabara nyingi hutumia MALDI-TOF au panel kama API 20E kwa utambuzi.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="80" y="16" width="40" height="12" rx="3" fill="#d8b04a"/>
+          <path d="M82 28 h36 v140 a14 14 0 0 1 -14 14 h-8 a14 14 0 0 1 -14 -14 Z" fill="#eef2f4" stroke="#9bb0bf" stroke-width="2.5"/>
+          <path d="M84 60 L116 38 v22 L84 82 Z" fill="#e0584f"/>
+          <path d="M84 82 L116 60 v94 a12 12 0 0 1 -12 12 h-8 a12 12 0 0 1 -12 -12 Z" fill="#f2c93f"/>
+          <ellipse cx="100" cy="150" rx="14" ry="6" fill="#2a2420" opacity="0.85"/>
+          <text x="148" y="50" font-family="Inter" font-size="10" fill="#6b6560">Slant: nyekundu</text>
+          <text x="148" y="112" font-family="Inter" font-size="10" fill="#6b6560">Butt: njano</text>
+          <text x="148" y="152" font-family="Inter" font-size="10" fill="#6b6560">Cheusi = H&#8322;S+</text>
+        </svg>
+        <figcaption><b>TSI slant.</b> <em>Salmonella</em> ya kawaida: slant ya alkali (nyekundu), butt ya asidi (njano), weusi kutokana na H&#8322;S.</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Kipimo</th><th><em>Salmonella</em> ya kawaida</th><th>Tafsiri</th></tr></thead>
+        <tbody>
+          <tr><td>Mwitikio wa TSI</td><td>K/A (slant ya alkali / butt ya asidi)</td><td>Glukosi imechachuliwa, laktosi haijachachuliwa</td></tr>
+          <tr><td>Uzalishaji wa H&#8322;S</td><td>Chanya</td><td>Mchanga mweusi katika butt</td></tr>
+          <tr><td>Urease</td><td>Hasi</td><td>Husaidia kutofautisha na <em>Proteus</em></td></tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <h4><i class="fas fa-dna"></i> Baada ya uthibitisho</h4>
+        <p>Mara <em>Salmonella</em> inapothibitishwa, kisanga ndicho msingi wa uainishaji wa serotype na, pale inapopatikana, whole-genome sequencing kwa uainishaji. Ni kisanga hai — si matokeo ya molekuli — kinachofanya hilo liwezekane. <span class="source-tag">Chanzo cha mbinu: CDC</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Sababu za kawaida za kushindwa</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Mwongozo wa kivitendo wa maabara</h4>
+        <p>Mambo yafuatayo ni mazoea bora yanayotokana na uzoefu, si hatua ya itifaki iliyonukuliwa ya CDC/WHO. Yanaeleza kwa nini jaribio la utengaji hushindwa.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Viuavijasumu vya awali &rarr; matokeo hasi ya uongo.</strong> Ikiwa mgonjwa alipata viuavijasumu kabla ya ukusanyaji, <em>Salmonella</em> inaweza isikue hata kama maambukizi yapo. Rekodi historia ya viuavijasumu; utamaduni hasi hauondoi maambukizi.</li>
+        <li><strong>Ucheleweshaji wa usafirishaji &rarr; kupoteza uhai.</strong> Kinyesi kisichohifadhiwa kilichoachwa muda mrefu, au kuruka Cary-Blair, hupunguza upataji. Ikiwa usafirishaji ulicheleweshwa, rekodi hilo — husaidia tafsiri ya matokeo hasi.</li>
+        <li><strong>Kuruka enrichment &rarr; maambukizi madogo kukoswa.</strong> Kupanda kinyesi moja kwa moja kwenye selective agar bila enrichment kunaweza kukosa idadi ndogo ya viumbe. Ni enrichment inayoyanasa.</li>
+        <li><strong>Kusoma sahani mchanganyiko.</strong> Vipimo vya uthibitisho vilivyofanywa kwenye koloni isiyo safi hutoa matokeo yasiyotafsirika. Daima pandikiza kwanza kwenye koloni moja iliyotengana vizuri.</li>
+        <li><strong>Media zilizoisha muda au zilizohifadhiwa vibaya.</strong> Selective agar hupoteza uselective baada ya tarehe ya mwisho au ikihifadhiwa vibaya. Fanya udhibiti wa ubora wa media kwa strains za udhibiti kabla ya kuamini sahani.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">6</span> Zoezi — soma sahani</div></div>
+    <div class="step-content">
+      <p>Gusa kila sahani kufichua kinachoonyeshwa. Tumia zoezi hili kuthibitisha usomaji wako mwenyewe kabla ya kuendelea.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/>
+              <circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#e07a3f"/><circle cx="62" cy="62" r="3" fill="#1a1410"/>
+              <circle cx="98" cy="58" r="6" fill="#e07a3f"/><circle cx="98" cy="58" r="2.6" fill="#1a1410"/>
+              <circle cx="100" cy="98" r="7" fill="#e07a3f"/><circle cx="100" cy="98" r="3" fill="#1a1410"/>
+              <circle cx="64" cy="100" r="6" fill="#e07a3f"/><circle cx="64" cy="100" r="2.6" fill="#1a1410"/>
+            </svg>
+          </div>
+          <div class="practice-q">XLD agar — hii ni nini?</div>
+          <div class="practice-a"><strong><em>Salmonella</em> inayoshukiwa.</strong> Koloni nyekundu zenye kitovu cheusi (H&#8322;S+). Chukua koloni zilizotengana vizuri kwa uthibitisho — muonekano peke yake si uthibitisho.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/>
+              <circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#f2d63f"/>
+              <circle cx="98" cy="58" r="6" fill="#f2d63f"/>
+              <circle cx="100" cy="98" r="7" fill="#f2d63f"/>
+              <circle cx="64" cy="100" r="6" fill="#f2d63f"/>
+            </svg>
+          </div>
+          <div class="practice-q">XLD agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Si <em>Salmonella</em>.</strong> Koloni za njano = uchachushaji wa xylose/laktosi bila H&#8322;S. Ni kawaida kwa flora ya coliform ya msingi — usichukue kwa uthibitisho.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/>
+              <circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="80" cy="80" r="34" fill="#c0392b" opacity="0.55"/>
+              <circle cx="62" cy="62" r="6" fill="#e07a3f"/><circle cx="62" cy="62" r="2.6" fill="#1a1410"/>
+              <circle cx="104" cy="96" r="6" fill="#e07a3f"/><circle cx="104" cy="96" r="2.6" fill="#1a1410"/>
+            </svg>
+          </div>
+          <div class="practice-q">XLD agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Yenye utata — ukuaji uenezao (swarming).</strong> Utando unaoenea kwenye sahani unaashiria <em>Proteus</em>, ambayo pia inaweza kutoa weusi. Pandikiza koloni iliyotengana; thibitisha kwa urease (<em>Salmonella</em> ni urease-hasi).</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Orodha ya ukaguzi — utengaji wa <em>Salmonella</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Enrichment broth (Selenite au TT) imepandwa</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Imepandikizwa kwenye angalau selective media mbili</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Koloni zinazoshukiwa zimechukuliwa safi kwa uthibitisho</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>TSI na urease (au MALDI-TOF / panel) zimefanywa</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Kisanga kilichothibitishwa kimehifadhiwa kwa serotyping / sequencing</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 4: SHIGELLA -->
+<div class="module-content" id="m4">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Utengaji wa <em>Shigella</em></div>
+    <div class="module-subtitle">Kutenga <em>Shigella</em> kutoka kinyesi cha binadamu, kwa kufuata mbinu za CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Kiumbe dhaifu — umuhimu wa kasi</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p><em>Shigella</em> ni dhaifu na huishi vibaya nje ya mwenyeji. Tofauti na <em>Salmonella</em>, hupandwa <strong>moja kwa moja</strong> kwenye selective agar — enrichment ina manufaa kidogo na upataji hushuka haraka kutokana na ucheleweshaji.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="40" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="115" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Sampuli mpya</text>
+          <text x="115" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Shughulikia ndani ya saa 2</text>
+          <path d="M194 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah4)"/>
+          <rect x="238" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="313" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Kupanda moja kwa moja</text>
+          <text x="313" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">XLD, HE, SS agar</text>
+          <path d="M392 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah4)"/>
+          <rect x="436" y="40" width="150" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="511" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Uthibitisho</text>
+          <text x="511" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Bayokemikali / serolojia</text>
+        </svg>
+        <figcaption><b>Mtiririko wa <em>Shigella</em>.</b> Kupanda moja kwa moja, si enrichment — kasi hulinda kiumbe dhaifu.</figcaption>
+      </figure>
+      <div class="warning-box">
+        <h4><i class="fas fa-clock"></i> Usikivu kwa muda</h4>
+        <p>Shughulikia ndani ya saa 2. Ikiwa ucheleweshaji unatarajiwa, sampuli lazima isafiri katika Cary-Blair — uasidishaji wa kinyesi huua <em>Shigella</em> haraka.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Utengaji kwenye selective agar</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Panda moja kwa moja kwenye selective media — XLD, HE na SS ni za kawaida. <em>Shigella</em> haichachui laktosi na haizalishi H&#8322;S.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#d94f70"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.5"/>
+          <path d="M38 104 q62 -14 126 8" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.45"/>
+          <circle cx="74" cy="78" r="8" fill="#f5b8c6"/>
+          <circle cx="112" cy="70" r="7" fill="#f5b8c6"/>
+          <circle cx="138" cy="100" r="8" fill="#f5b8c6"/>
+          <circle cx="84" cy="118" r="7" fill="#f5b8c6"/>
+          <circle cx="118" cy="130" r="6.5" fill="#f5b8c6"/>
+        </svg>
+        <figcaption><b>XLD agar.</b> <em>Shigella</em> — koloni nyekundu/pinki, <strong>bila kitovu cheusi</strong> (H&#8322;S-hasi).</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Medium</th><th>Muonekano wa <em>Shigella</em></th><th>Tofauti muhimu</th></tr></thead>
+        <tbody>
+          <tr><td>XLD</td><td>Nyekundu/pinki, bila kitovu cheusi</td><td>H&#8322;S-hasi — inatofautisha na <em>Salmonella</em></td></tr>
+          <tr><td>HE</td><td>Kijani, yenye unyevu</td><td>Haichachui laktosi</td></tr>
+          <tr><td>SS</td><td>Isiyo na rangi</td><td>Haichachui laktosi, H&#8322;S-hasi</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Kusoma sahani — hatua ya uamuzi</h4>
+        <p><strong>Ishara muhimu ni <em>kutokuwepo</em> kwa kitovu cheusi</strong> kwenye XLD — koloni nyekundu isiyo na H&#8322;S inaelekeza kwa <em>Shigella</em> badala ya <em>Salmonella</em>. Chukua koloni zisizochachua laktosi, H&#8322;S-hasi, safi, kwa uthibitisho.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Matokeo yenye utata</h4>
+        <p><em>Shigella</em> na <em>E. coli</em> zina uhusiano wa karibu na zinaweza kufanana kwenye selective agar. Muonekano wa koloni ni uchunguzi wa awali tu — uthibitisho wa kibayokemikali na serolojia daima unahitajika kuzitofautisha.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Uthibitisho</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <table class="data-table">
+        <thead><tr><th>Kipimo</th><th><em>Shigella</em> ya kawaida</th><th>Kwa nini husaidia</th></tr></thead>
+        <tbody>
+          <tr><td>TSI</td><td>K/A, bila gesi, H&#8322;S-hasi</td><td>Glukosi pekee; hakuna H&#8322;S</td></tr>
+          <tr><td>Motility (mwendo)</td><td>Haina mwendo</td><td>Tofauti muhimu na <em>E. coli</em></td></tr>
+          <tr><td>Urease</td><td>Hasi</td><td>Inatofautisha na <em>Proteus</em></td></tr>
+        </tbody>
+      </table>
+      <p>Uthibitisho wa serolojia kwa antisera za kikundi, na utambuzi wa spishi (MALDI-TOF au panel ya kibayokemikali), hukamilisha utambuzi.</p>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Sababu za kawaida za kushindwa</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Mwongozo wa kivitendo wa maabara</h4>
+        <p>Mazoea bora yanayotokana na uzoefu, si hatua ya itifaki iliyonukuliwa ya CDC/WHO.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Ucheleweshaji wa usafirishaji &rarr; kiumbe kilichokufa.</strong> <em>Shigella</em> ndiye kimelea dhaifu zaidi katika kozi hii. Hatua ya Cary-Blair iliyorukwa au kucheleweshwa ndio sababu ya kawaida zaidi ya utamaduni hasi wa uongo.</li>
+        <li><strong>Kutegemea enrichment.</strong> Kushughulikia <em>Shigella</em> kama <em>Salmonella</em> na kufanya enrichment badala ya kupanda moja kwa moja hupoteza viumbe — kupanda moja kwa moja kwa sampuli mpya ndiyo mazoea sahihi.</li>
+        <li><strong>Kuichanganya na <em>E. coli</em>.</strong> Kuishia kwenye muonekano wa koloni huhatarisha kuchukua <em>E. coli</em> kama <em>Shigella</em> au kinyume chake. Daima thibitisha kwa motility na serolojia.</li>
+        <li><strong>Viuavijasumu vya awali.</strong> Kama ilivyo kwa vimelea vyote vya utumbo, viuavijasumu vya awali hupunguza upataji — rekodi historia.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Zoezi — soma sahani</div></div>
+    <div class="step-content">
+      <p>Gusa kila sahani kufichua kinachoonyeshwa.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#f5b8c6"/><circle cx="98" cy="58" r="6" fill="#f5b8c6"/>
+              <circle cx="100" cy="98" r="7" fill="#f5b8c6"/><circle cx="64" cy="100" r="6" fill="#f5b8c6"/>
+            </svg>
+          </div>
+          <div class="practice-q">XLD agar — hii ni nini?</div>
+          <div class="practice-a"><strong><em>Shigella</em> inayoshukiwa.</strong> Koloni nyekundu/pinki <em>bila</em> kitovu cheusi. Chukua koloni safi; thibitisha kwa motility (haina mwendo) na serolojia.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#e07a3f"/><circle cx="62" cy="62" r="3" fill="#1a1410"/>
+              <circle cx="100" cy="98" r="7" fill="#e07a3f"/><circle cx="100" cy="98" r="3" fill="#1a1410"/>
+            </svg>
+          </div>
+          <div class="practice-q">XLD agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Si <em>Shigella</em>.</strong> Vitovu vyeusi vinamaanisha uzalishaji wa H&#8322;S — hii inaelekeza kwa <em>Salmonella</em>. <em>Shigella</em> ni H&#8322;S-hasi.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8c84a"/>
+              <circle cx="62" cy="62" r="7" fill="#d8b43a"/><circle cx="98" cy="58" r="6" fill="#d8b43a"/>
+              <circle cx="100" cy="98" r="7" fill="#d8b43a"/>
+            </svg>
+          </div>
+          <div class="practice-q">XLD agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Si <em>Shigella</em>.</strong> Sahani ya njano inamaanisha vichachushi vya laktosi/xylose vimeasidisha agar — flora ya coliform ya msingi. Tafuta badala yake koloni zisizochachua.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Orodha ya ukaguzi — utengaji wa <em>Shigella</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Sampuli mpya imepandwa moja kwa moja ndani ya saa 2 (au Cary-Blair imetumika)</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Imepandwa kwenye XLD, HE na SS</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Koloni zisizochachua laktosi, H&#8322;S-hasi zimechukuliwa safi</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Motility (haina mwendo) imethibitishwa</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Uthibitisho wa serolojia umefanywa</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 5: STEC -->
+<div class="module-content" id="m5">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Utengaji wa STEC / EHEC</div>
+    <div class="module-subtitle"><em>E. coli</em> inayozalisha Shiga toxin kutoka kinyesi cha binadamu, kwa kufuata mbinu za CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Mambo mawili ya kutafuta</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Utengaji wa STEC ni wa kipekee: CDC inapendekeza kufanya <strong>mambo mawili kwa kila kinyesi kilichowasilishwa kwa utamaduni</strong> — uchunguzi wa msingi wa utamaduni wa <em>E. coli</em> O157, <em>na</em> kipimo cha Shiga toxin au jeni <em>stx1</em> / <em>stx2</em>. O157 ndiyo sababu ya kawaida zaidi ya ugonjwa mkali, lakini STEC zisizo O157 pia husababisha ugonjwa na huepuka utamaduni wa O157 peke yake.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="270" y="14" width="140" height="44" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="340" y="40" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Sampuli ya kinyesi</text>
+          <path d="M320 58 L210 88" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah5)"/>
+          <path d="M360 58 L470 88" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah5)"/>
+          <rect x="70" y="90" width="200" height="46" rx="8" fill="#eef2f4" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="170" y="110" font-family="Inter" font-size="11" font-weight="600" fill="#3a4660" text-anchor="middle">Utamaduni kwenye SMAC</text>
+          <text x="170" y="126" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">Uchunguzi wa O157</text>
+          <rect x="410" y="90" width="200" height="46" rx="8" fill="#eef2f4" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="510" y="110" font-family="Inter" font-size="11" font-weight="600" fill="#3a4660" text-anchor="middle">Kipimo cha Shiga toxin / stx</text>
+          <text x="510" y="126" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">Hunasa STEC zisizo O157</text>
+        </svg>
+        <figcaption><b>STEC inahitaji vipimo viwili sambamba.</b> Utamaduni wa O157 peke yake hukosa strains zisizo O157. <span style="font-style:normal">Chanzo cha mbinu: CDC</span></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Utengaji kwenye SMAC agar</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Sorbitol-MacConkey (SMAC) agar hutumia tabia ya kipekee ya <em>E. coli</em> O157: tofauti na <em>E. coli</em> wengi, <strong>haichachui</strong> sorbitol.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#e8d5b0"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#c9b487" stroke-width="2" opacity="0.55"/>
+          <path d="M38 106 q62 -14 126 8" fill="none" stroke="#c9b487" stroke-width="2" opacity="0.5"/>
+          <circle cx="78" cy="80" r="8" fill="#f4efe4"/><circle cx="78" cy="80" r="8" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+          <circle cx="120" cy="76" r="7" fill="#f4efe4"/><circle cx="120" cy="76" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+          <circle cx="132" cy="110" r="8" fill="#f4efe4"/><circle cx="132" cy="110" r="8" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+          <circle cx="112" cy="130" r="6" fill="#c97f5a"/>
+          <circle cx="66" cy="104" r="5.5" fill="#c97f5a"/>
+        </svg>
+        <figcaption><b>SMAC agar.</b> <em>E. coli</em> O157 = isiyo na rangi (sorbitol-hasi); <em>E. coli</em> ya kawaida = pinki.</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Kiumbe</th><th>Muonekano kwenye SMAC</th><th>Sorbitol</th></tr></thead>
+        <tbody>
+          <tr><td><em>E. coli</em> O157</td><td>Isiyo na rangi</td><td>Hasi</td></tr>
+          <tr><td><em>E. coli</em> ya kawaida</td><td>Pinki</td><td>Chanya</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Kusoma sahani — hatua ya uamuzi</h4>
+        <p>Chukua koloni <strong>zisizo na rangi (sorbitol-hasi)</strong> kama O157 zinazoshukiwa. Thibitisha kwa agglutination na antiserum ya O157. Lakini kumbuka kipimo cha pili bado ni muhimu — angalia sababu za kushindwa.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Matokeo yenye utata</h4>
+        <p>SMAC agar hunasa O157 pekee. <strong>STEC zisizo O157 huchachua sorbitol na huonekana pinki — hazitofautishiki na <em>E. coli</em> zisizodhuru kwenye sahani hii.</strong> SMAC safi haiondoi STEC; ni kipimo cha Shiga toxin / <em>stx</em> kinachozinasa.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Ugunduzi wa Shiga toxin</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>CDC inapendekeza kupima Shiga toxin au jeni zake kwenye kinyesi chote kilichowasilishwa kwa utamaduni. Jeni <em>stx1</em> na <em>stx2</em> hufafanua STEC; <em>eae</em> (intimin) ni alama ya virusi inayohusiana.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg">
+          <line x1="24" y1="52" x2="196" y2="52" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="44" y="42" width="52" height="20" rx="3" fill="#d98c7d"/>
+          <text x="70" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#5c2018" text-anchor="middle">stx1</text>
+          <rect x="124" y="42" width="52" height="20" rx="3" fill="#c0556b"/>
+          <text x="150" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#4b1528" text-anchor="middle">stx2</text>
+          <line x1="24" y1="104" x2="196" y2="104" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="84" y="94" width="52" height="20" rx="3" fill="#e8a23f"/>
+          <text x="110" y="108" font-family="Inter" font-size="11" font-style="italic" fill="#5a3a08" text-anchor="middle">eae</text>
+          <text x="110" y="146" font-family="Inter" font-size="11" fill="#6b6560" text-anchor="middle">Jeni stx1 / stx2 hufafanua STEC</text>
+        </svg>
+        <figcaption><b>Jeni lengwa za STEC.</b> Ugunduzi wa <em>stx1</em> / <em>stx2</em> hufafanua strain inayozalisha Shiga toxin.</figcaption>
+      </figure>
+      <div class="danger-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Dharura ya kimatibabu</h4>
+        <p>STEC inaweza kusababisha haemolytic uraemic syndrome (HUS), hasa kwa watoto. Matokeo chanya yanahitaji mawasiliano ya haraka na uhifadhi wa kisanga chochote kwa uchunguzi wa afya ya umma.</p>
+      </div>
+      <div class="info-box">
+        <h4><i class="fas fa-dna"></i> Ugunduzi dhidi ya kisanga</h4>
+        <p>Matokeo chanya ya Shiga toxin au jeni <em>stx</em> hutambua STEC lakini hayatoi kiumbe chochote. Pale mbinu ya molekuli inapokuwa chanya, sampuli inapaswa kupandwa kupata kisanga hai kwa uainishaji. <span class="source-tag">Chanzo cha mbinu: CDC</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Sababu za kawaida za kushindwa</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Mwongozo wa kivitendo wa maabara</h4>
+        <p>Mazoea bora yanayotokana na uzoefu, si hatua ya itifaki iliyonukuliwa ya CDC/WHO.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Kupima O157 pekee &rarr; STEC kukoswa.</strong> Kosa muhimu zaidi na STEC: kufanya utamaduni wa SMAC kwa O157 lakini kuruka kipimo cha Shiga toxin / <em>stx</em>. STEC zisizo O157 hufanana na <em>E. coli</em> za kawaida na zitakoswa kabisa.</li>
+        <li><strong>Kutupa kisanga baada ya kipimo chanya cha toxin.</strong> Matokeo chanya si mwisho — kisanga kinahitajika kwa serotyping na kazi ya mlipuko. Kikuze na kihifadhi.</li>
+        <li><strong>Kutoashiria dharura.</strong> STEC hubeba hatari ya HUS; matokeo yaliyoachwa katika foleni ya kawaida hucheleweshe mwitikio unaoweza kuwa muhimu kimatibabu.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Zoezi — soma sahani</div></div>
+    <div class="step-content">
+      <p>Gusa kila sahani kufichua kinachoonyeshwa.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8d5b0"/>
+              <circle cx="62" cy="62" r="7" fill="#f4efe4"/><circle cx="62" cy="62" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+              <circle cx="100" cy="58" r="6" fill="#f4efe4"/><circle cx="100" cy="58" r="6" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+              <circle cx="98" cy="100" r="7" fill="#f4efe4"/><circle cx="98" cy="100" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="practice-q">SMAC agar — hii ni nini?</div>
+          <div class="practice-a"><strong><em>E. coli</em> O157 inayoshukiwa.</strong> Isiyo na rangi = sorbitol-hasi. Thibitisha kwa agglutination na antiserum ya O157.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8d5b0"/>
+              <circle cx="62" cy="62" r="7" fill="#c97f5a"/><circle cx="100" cy="58" r="6" fill="#c97f5a"/>
+              <circle cx="98" cy="100" r="7" fill="#c97f5a"/><circle cx="62" cy="100" r="6" fill="#c97f5a"/>
+            </svg>
+          </div>
+          <div class="practice-q">SMAC agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Pinki — sorbitol-chanya.</strong> Si O157. Lakini tahadhari: STEC isiyo O157 ingeonekana hivi hivi. SMAC safi <em>haiondoi</em> STEC — kipimo cha <em>stx</em> daima kinatumika.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8d5b0"/>
+              <circle cx="58" cy="60" r="7" fill="#f4efe4"/><circle cx="58" cy="60" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+              <circle cx="104" cy="98" r="7" fill="#c97f5a"/>
+            </svg>
+          </div>
+          <div class="practice-q">SMAC agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Ukuaji mchanganyiko.</strong> Koloni zisizo na rangi na za pinki zipo. Chukua na thibitisha koloni isiyo na rangi kwa O157 — na bado fanya kipimo cha Shiga toxin / <em>stx</em>.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Orodha ya ukaguzi — utengaji wa STEC / EHEC</h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Kinyesi kimepandwa kwenye SMAC kwa uchunguzi wa O157</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Kipimo cha Shiga toxin / stx kimefanywa kwenye sampuli ile ile</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Koloni zisizo na rangi zimethibitishwa kwa antiserum ya O157</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Sampuli chanya za toxin zimepandwa kupata kisanga</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Matokeo chanya yamewasilishwa haraka; kisanga kimehifadhiwa</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 6: CAMPYLOBACTER -->
+<div class="module-content" id="m6">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Utengaji wa <em>Campylobacter</em></div>
+    <div class="module-subtitle">Kutenga <em>Campylobacter</em> kutoka kinyesi cha binadamu, kwa kufuata mbinu za CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Kiumbe chenye mahitaji maalum</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p><em>Campylobacter</em> ina mahitaji maalum na inahitaji mazingira ambayo bakteria wengi wa utumbo hawahitaji: <strong>mazingira yenye oksijeni iliyopunguzwa (microaerophilic)</strong>, joto la juu zaidi la incubation, na incubation ndefu zaidi. CDC inaeleza utengaji kutoka kinyesi au rectal swabs kwenye selective media zilizotunzwa chini ya oksijeni iliyopunguzwa katika 42&deg;C kwa saa 72.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="40" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="115" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Sampuli</text>
+          <text x="115" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Kinyesi / rectal swab</text>
+          <path d="M194 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah6)"/>
+          <rect x="238" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="313" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Selective agar</text>
+          <text x="313" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">42&deg;C, microaerophilic</text>
+          <path d="M392 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah6)"/>
+          <rect x="436" y="40" width="150" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="511" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Uthibitisho</text>
+          <text x="511" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Hadubini / bayokemikali</text>
+        </svg>
+        <figcaption><b>Mtiririko wa <em>Campylobacter</em>.</b> Hitaji bainishi ni mazingira ya microaerophilic katika 42&deg;C.</figcaption>
+      </figure>
+      <div class="info-box">
+        <h4><i class="fas fa-wind"></i> Mazingira ya microaerophilic</h4>
+        <p><em>Campylobacter</em> inahitaji oksijeni iliyopunguzwa — takriban 5% O&#8322;, 10% CO&#8322;. Haya huundwa kwa sachet ya kuzalisha gesi ya kibiashara katika jar iliyofungwa, au mfumo unaolingana.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Mazingira — vifaa</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="58" y="30" width="84" height="20" rx="8" fill="#7d8a96"/>
+          <rect x="50" y="48" width="100" height="120" rx="14" fill="#e8eef1" stroke="#9bb0bf" stroke-width="3"/>
+          <rect x="50" y="48" width="100" height="120" rx="14" fill="#5dade2" opacity="0.12"/>
+          <ellipse cx="100" cy="92" rx="34" ry="9" fill="#cfd8dc"/><ellipse cx="100" cy="92" rx="30" ry="7" fill="#d8d2c4"/>
+          <ellipse cx="100" cy="120" rx="34" ry="9" fill="#cfd8dc"/><ellipse cx="100" cy="120" rx="30" ry="7" fill="#d8d2c4"/>
+          <ellipse cx="100" cy="148" rx="34" ry="9" fill="#cfd8dc"/><ellipse cx="100" cy="148" rx="30" ry="7" fill="#d8d2c4"/>
+          <rect x="118" y="128" width="22" height="30" rx="3" fill="#f4eee2" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="129" y="147" font-family="Inter" font-size="8" fill="#6b6560" text-anchor="middle">gesi</text>
+        </svg>
+        <figcaption><b>Jar ya microaerophilic.</b> Sahani pamoja na sachet ya kuzalisha gesi katika jar iliyofungwa — takriban 5% O&#8322;, 10% CO&#8322;.</figcaption>
+      </figure>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Hatua ya uamuzi — kupata mazingira sahihi</h4>
+        <p>Ikiwa jar haijafungwa vizuri, au sachet imeisha muda au imeachwa, mazingira yatakuwa si sahihi na <em>Campylobacter</em> haitakua — ikitoa matokeo hasi ya uongo bila onyo linaloonekana. Thibitisha kuwa jar inafunga kabisa na tumia sachet mpya kwa kila mzunguko.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Utengaji na uthibitisho</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Panda kwenye selective medium ya <em>Campylobacter</em> — Karmali au Skirrow ni za kawaida. Tunza katika mazingira ya microaerophilic katika 42&deg;C; ukuaji unaweza kuchukua hadi saa 72.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#d8d2c4"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#b3ab97" stroke-width="2" opacity="0.55"/>
+          <path d="M38 106 q62 -14 126 8" fill="none" stroke="#b3ab97" stroke-width="2" opacity="0.5"/>
+          <ellipse cx="80" cy="82" rx="10" ry="6" fill="#9a9384"/>
+          <ellipse cx="120" cy="78" rx="9" ry="5.5" fill="#9a9384"/>
+          <ellipse cx="128" cy="114" rx="10" ry="6" fill="#9a9384"/>
+          <ellipse cx="84" cy="122" rx="8" ry="5" fill="#9a9384"/>
+        </svg>
+        <figcaption><b>Karmali agar.</b> <em>Campylobacter</em> — koloni za kijivu, bapa, zenye unyevu na zinazoenea.</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Kipimo</th><th><em>C. jejuni</em></th><th>Maelezo</th></tr></thead>
+        <tbody>
+          <tr><td>Oxidase</td><td>Chanya</td><td>Kipimo cha haraka cha uchunguzi</td></tr>
+          <tr><td>Catalase</td><td>Chanya</td><td>—</td></tr>
+          <tr><td>Hadubini</td><td>Vijiti vya Gram-hasi vilivyopinda/vilivyosokota</td><td>Mwendo bainishi wa kuyumbayumba</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Kusoma sahani — hatua ya uamuzi</h4>
+        <p>Koloni za <em>Campylobacter</em> ni bapa, zenye unyevu, na mara nyingi zinazoenea — rahisi kupuuzwa ikiwa unatarajia koloni zilizoinuka, zilizotengana. Thibitisha ukuaji unaoshukiwa kwa oxidase na hadubini: kijiti cha Gram-hasi kilichopinda/kilichosokota ni bainishi sana.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Sababu za kawaida za kushindwa</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Mwongozo wa kivitendo wa maabara</h4>
+        <p>Mazoea bora yanayotokana na uzoefu, si hatua ya itifaki iliyonukuliwa ya CDC/WHO.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Mazingira yasiyo sahihi &rarr; hakuna ukuaji.</strong> Kushindwa kwa kawaida zaidi na <em>Campylobacter</em>: jar isiyofungwa au sachet iliyoisha muda. Sahani inaonekana tupu na matokeo ni hasi ya uongo. Thibitisha mfuniko na sachet kwa kila mzunguko.</li>
+        <li><strong>Kutunza katika 35-37&deg;C.</strong> Joto la kawaida la utumbo ni la chini sana kwa utengaji bainishi wa <em>C. jejuni</em> — 42&deg;C inahitajika.</li>
+        <li><strong>Kusoma mapema sana.</strong> Kutupa sahani katika saa 24-48 hukosa ukuaji wa polepole zaidi — ihifadhi hadi saa 72 kabla ya kuiita hasi.</li>
+        <li><strong>Ucheleweshaji wa usafirishaji.</strong> <em>Campylobacter</em> ni dhaifu na nyeti kwa oksijeni; sampuli zilizocheleweshwa zisizowekwa katika Cary-Blair hupoteza uhai.</li>
+        <li><strong>Kukosa koloni bapa.</strong> Ukuaji unaoenea, kama utando, ni rahisi kupuuzwa — kagua sahani kwa makini.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Zoezi — soma sahani</div></div>
+    <div class="step-content">
+      <p>Gusa kila sahani kufichua kinachoonyeshwa.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d8d2c4"/>
+              <ellipse cx="64" cy="64" rx="9" ry="5" fill="#9a9384"/>
+              <ellipse cx="100" cy="60" rx="8" ry="5" fill="#9a9384"/>
+              <ellipse cx="102" cy="100" rx="9" ry="5" fill="#9a9384"/>
+            </svg>
+          </div>
+          <div class="practice-q">Karmali agar, 42&deg;C — hii ni nini?</div>
+          <div class="practice-a"><strong><em>Campylobacter</em> inayoshukiwa.</strong> Koloni za kijivu, bapa, zenye unyevu na zinazoenea. Thibitisha kwa oxidase (chanya) na hadubini (vijiti vilivyopinda vya Gram-hasi).</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d8d2c4"/>
+            </svg>
+          </div>
+          <div class="practice-q">Karmali agar — hakuna ukuaji katika saa 72. Sasa nini?</div>
+          <div class="practice-a"><strong>Thibitisha mazingira kabla ya kuhitimisha hasi.</strong> Sahani tupu mara nyingi hutokana na jar ya microaerophilic iliyoshindwa — mfuniko usiofungwa au sachet iliyoisha muda — si hasi ya kweli. Thibitisha mfuniko na sachet, na hakikisha 42&deg;C ilitumika.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d8d2c4"/>
+              <ellipse cx="80" cy="80" rx="44" ry="30" fill="#9a9384" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="practice-q">Karmali agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Ukuaji unaoenea, kama utando.</strong> <em>Campylobacter</em> mara nyingi hukua kama utando wenye unyevu badala ya koloni zilizotengana — rahisi kupuuzwa. Chukua utando, thibitisha kwa oxidase na hadubini.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Orodha ya ukaguzi — utengaji wa <em>Campylobacter</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Imepandwa kwenye selective agar ya Karmali au Skirrow</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Jar ya microaerophilic imefungwa; sachet mpya ya gesi imetumika</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Imetunzwa katika 42&deg;C, imehifadhiwa hadi saa 72</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Oxidase na hadubini zimefanywa kwenye ukuaji unaoshukiwa</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 7: VIBRIO -->
+<div class="module-content" id="m7">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Utengaji wa <em>Vibrio cholerae</em></div>
+    <div class="module-subtitle">Kutenga <em>Vibrio cholerae</em> kutoka kinyesi cha binadamu, kwa kufuata mbinu za WHO/GTFCC na CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Utengaji katika hali ya mlipuko</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Chanzo cha mbinu: WHO / GTFCC</span>
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Utengaji wa <em>Vibrio cholerae</em> umejengwa kwenye mawazo mawili: kipindupindu kwa kawaida huchunguzwa <strong>wakati wa milipuko</strong>, na kiumbe <strong>huvumilia hali za alkali</strong> zinazokandamiza flora shindani. Miongozo ya maabara ya WHO/GTFCC na mwongozo wa CDC wa dysentery na kipindupindu vyote vinaeleza mtiririko huu kwa mazingira yenye rasilimali chache.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="20" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="80" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Sampuli</text>
+          <text x="80" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Kinyesi katika Cary-Blair</text>
+          <path d="M144 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah7)"/>
+          <rect x="180" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="240" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Enrichment</text>
+          <text x="240" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Alkaline peptone water</text>
+          <path d="M304 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah7)"/>
+          <rect x="340" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="400" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Utengaji</text>
+          <text x="400" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">TCBS agar</text>
+          <path d="M464 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah7)"/>
+          <rect x="500" y="40" width="120" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="560" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Uthibitisho</text>
+          <text x="560" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Oxidase / serolojia</text>
+        </svg>
+        <figcaption><b>Mtiririko wa <em>Vibrio</em>.</b> Alkaline peptone water hufanya enrichment; TCBS agar hutenga.</figcaption>
+      </figure>
+      <div class="danger-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Kuripoti mlipuko</h4>
+        <p>Kipindupindu kinachoshukiwa kina dharura ya afya ya umma. Matokeo ya awali ya <em>V. cholerae</em> O1/O139 lazima yawasilishwe haraka, kwa kufuata mahitaji ya kuripoti ya kitaifa na kimataifa.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Enrichment ya alkali</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Chanzo cha mbinu: WHO / GTFCC</span>
+      <ul class="protocol-list">
+        <li><strong>Alkaline peptone water (APW)</strong> kwenye pH ya takriban 8.4-8.6 hufanya enrichment ya <em>V. cholerae</em> huku ikikandamiza flora nyingine za utumbo</li>
+        <li><strong>Tunza kwa muda mfupi</strong> — <em>Vibrio</em> hukua haraka na kujikusanya juu ya uso kama utando</li>
+        <li><strong>Pandikiza kutoka uso</strong> wa APW kwenda selective agar</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-tint"></i> Kwa nini alkali</h4>
+        <p><em>V. cholerae</em> huvumilia pH ya juu vizuri zaidi kuliko viumbe shindani vya utumbo. Hatua ya alkali ni njia rahisi na ya gharama nafuu ya kuipa nafasi ya kuanza mbele.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Utengaji kwenye TCBS na uthibitisho</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Chanzo cha mbinu: WHO / GTFCC</span>
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Thiosulfate-citrate-bile-sucrose (TCBS) agar ndio selective medium kwa <em>Vibrio</em>. <em>V. cholerae</em> huchachua sucrose na huunda koloni za njano bainishi.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#3f7d4f"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#2d5e3a" stroke-width="2" opacity="0.5"/>
+          <path d="M38 106 q62 -14 126 8" fill="none" stroke="#2d5e3a" stroke-width="2" opacity="0.45"/>
+          <circle cx="78" cy="80" r="9" fill="#f2d63f"/>
+          <circle cx="118" cy="74" r="8" fill="#f2d63f"/>
+          <circle cx="132" cy="110" r="9" fill="#f2d63f"/>
+          <circle cx="86" cy="122" r="8" fill="#f2d63f"/>
+          <circle cx="114" cy="132" r="7" fill="#f2d63f"/>
+        </svg>
+        <figcaption><b>TCBS agar.</b> <em>V. cholerae</em> — koloni za njano angavu (uchachushaji wa sucrose).</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Kipimo</th><th><em>V. cholerae</em></th><th>Maelezo</th></tr></thead>
+        <tbody>
+          <tr><td>Rangi ya koloni kwenye TCBS</td><td>Njano</td><td>Sucrose-chanya</td></tr>
+          <tr><td>Oxidase</td><td>Chanya</td><td>Kipimo cha haraka cha uchunguzi</td></tr>
+          <tr><td>Serolojia</td><td>Agglutination ya O1 au O139</td><td>Huthibitisha uwezekano wa mlipuko</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Kusoma sahani — hatua ya uamuzi</h4>
+        <p>Chukua koloni <strong>za njano, oxidase-chanya</strong> kama <em>V. cholerae</em> zinazoshukiwa. Thibitisha kwa antisera za O1 na O139 — ni serogroups hizo tu zenye uwezekano wa mlipuko na zinazochochea mwitikio.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Matokeo yenye utata</h4>
+        <p>Spishi nyingine za <em>Vibrio</em> hukua kwenye TCBS — baadhi kama koloni za kijani (zisizochachua sucrose), nyingine njano. Rangi ya koloni ni uchunguzi wa awali tu; oxidase pamoja na serolojia ya O1/O139 ndizo zinazothibitisha <em>V. cholerae</em> ya mlipuko.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Sababu za kawaida za kushindwa</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Mwongozo wa kivitendo wa maabara</h4>
+        <p>Mazoea bora yanayotokana na uzoefu, si hatua ya itifaki iliyonukuliwa ya WHO/CDC.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Kuruka enrichment ya alkali.</strong> Katika maambukizi madogo au sampuli za kupona, kupanda moja kwa moja kwenye TCBS bila APW kunaweza kukosa idadi ndogo ya viumbe.</li>
+        <li><strong>Kupandikiza kutoka sehemu isiyo sahihi ya APW.</strong> <em>Vibrio</em> hujikusanya kama utando wa uso — chukua uso, si kina cha broth.</li>
+        <li><strong>Kuishia kwenye koloni za njano.</strong> Koloni ya njano kwenye TCBS ni ya awali tu. <em>Vibrio</em> wengine huiiga; serolojia ya O1/O139 inahitajika kabla ya kuripoti kipindupindu.</li>
+        <li><strong>Kuripoti kwa kuchelewa.</strong> Kipindupindu ni kimelea cha mlipuko — matokeo ya awali yaliyoachwa katika foleni ya kawaida hucheleweshe mwitikio wa afya ya umma.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Zoezi — soma sahani</div></div>
+    <div class="step-content">
+      <p>Gusa kila sahani kufichua kinachoonyeshwa.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#3f7d4f"/>
+              <circle cx="62" cy="62" r="8" fill="#f2d63f"/><circle cx="100" cy="58" r="7" fill="#f2d63f"/>
+              <circle cx="100" cy="100" r="8" fill="#f2d63f"/><circle cx="62" cy="100" r="7" fill="#f2d63f"/>
+            </svg>
+          </div>
+          <div class="practice-q">TCBS agar — hii ni nini?</div>
+          <div class="practice-a"><strong><em>V. cholerae</em> inayoshukiwa.</strong> Koloni za njano angavu = uchachushaji wa sucrose. Thibitisha kwa oxidase na serolojia ya O1/O139 — ni serogroups hizo tu za mlipuko.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#3f7d4f"/>
+              <circle cx="62" cy="62" r="8" fill="#2f6b58"/><circle cx="100" cy="58" r="7" fill="#2f6b58"/>
+              <circle cx="100" cy="100" r="8" fill="#2f6b58"/>
+            </svg>
+          </div>
+          <div class="practice-q">TCBS agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Koloni za kijani — si <em>V. cholerae</em>.</strong> Kijani = haichachui sucrose. Spishi nyingine za <em>Vibrio</em> (mfano <em>V. parahaemolyticus</em>) huonekana hivi. Si kipindupindu cha mlipuko.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#3f7d4f"/>
+              <circle cx="62" cy="62" r="8" fill="#f2d63f"/><circle cx="104" cy="100" r="8" fill="#2f6b58"/>
+            </svg>
+          </div>
+          <div class="practice-q">TCBS agar — hii ni nini?</div>
+          <div class="practice-a"><strong>Ukuaji mchanganyiko wa njano na kijani.</strong> Chukua koloni ya njano, oxidase-chanya, na thibitisha kwa serolojia ya O1/O139. Rangi peke yake kamwe haithibitishi kipindupindu.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Orodha ya ukaguzi — utengaji wa <em>Vibrio cholerae</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Sampuli imefanyiwa enrichment katika alkaline peptone water</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Utando wa uso umepandikizwa kwenye TCBS agar</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Koloni za njano, oxidase-chanya zimechukuliwa</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Serolojia ya O1 / O139 imefanywa</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Matokeo ya awali yameripotiwa haraka</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 8: MBINU ZA MOLEKULI -->
+<div class="module-content" id="m8">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-dna"></i> Mbinu za molekuli na uainishaji</div>
+    <div class="module-subtitle">Nafasi ya ziada ya mbinu za molekuli katika kozi inayotegemea utamaduni</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Kwa nini utamaduni kwanza</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Vipimo vya molekuli — PCR panels, vipimo vya antijeni — vinaweza kugundua asidi-nyukliki au antijeni ya kimelea moja kwa moja katika kinyesi, mara nyingi haraka kuliko utamaduni. Ni vya manufaa. Lakini vina kikwazo kimoja cha maamuzi kwa kozi hii: <strong>havitoi kiumbe chochote.</strong></p>
+      <div class="info-box">
+        <h4><i class="fas fa-flask"></i> Kile kisanga cha utamaduni hutoa ambacho matokeo ya molekuli hayawezi</h4>
+        <p>Kisanga hai ni muhimu kwa antibiogram, uainishaji wa serotype, na whole-genome sequencing katika uchunguzi wa milipuko. Matokeo chanya ya molekuli huonyesha kuwa kitu kipo; hayatoi kiumbe ambacho hatua hizo zinazofuata zinahitaji.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Kanuni ya utamaduni wa uthibitisho</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Mwongozo wa CDC ni thabiti kwa vimelea vya utumbo: pale kipimo kisichotegemea utamaduni kinapokuwa chanya, sampuli inapaswa <strong>kupandwa kwa utamaduni wa uthibitisho</strong> kupata kisanga.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="20" y="48" width="170" height="54" rx="8" fill="#eef2f4" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="105" y="70" font-family="Inter" font-size="12" font-weight="600" fill="#3a4660" text-anchor="middle">Kipimo cha molekuli +</text>
+          <text x="105" y="87" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">PCR / antijeni kwenye kinyesi</text>
+          <path d="M194 75 h44" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah8)"/>
+          <rect x="242" y="48" width="170" height="54" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="327" y="70" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Utamaduni wa uthibitisho</text>
+          <text x="327" y="87" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Pata kisanga hai</text>
+          <path d="M416 75 h44" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah8)"/>
+          <rect x="464" y="48" width="170" height="54" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="549" y="70" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Kisanga kimepatikana</text>
+          <text x="549" y="87" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Serotype, sequencing, AST</text>
+          <text x="327" y="128" font-family="Inter" font-size="11" fill="#6b6560" text-anchor="middle">Matokeo chanya ya molekuli si mwisho — utamaduni lazima ufuate</text>
+        </svg>
+        <figcaption><b>Kanuni ya utamaduni wa uthibitisho.</b> Kipimo cha molekuli hugundua; utamaduni hupata kisanga. <span style="font-style:normal">Chanzo cha mbinu: CDC</span></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> STEC — pale kipimo cha molekuli kinapopendekezwa</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>STEC ndio mfano dhahiri zaidi ambapo CDC inapendekeza lengo la molekuli kama nyongeza ya utamaduni. Kupima Shiga toxin au jeni <em>stx1</em> na <em>stx2</em> kwenye kinyesi chote kilichowasilishwa kwa utamaduni huwezesha kunasa STEC zisizo O157 ambazo utamaduni wa O157 peke yake ungekosa.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg">
+          <line x1="24" y1="52" x2="196" y2="52" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="44" y="42" width="52" height="20" rx="3" fill="#d98c7d"/>
+          <text x="70" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#5c2018" text-anchor="middle">stx1</text>
+          <rect x="124" y="42" width="52" height="20" rx="3" fill="#c0556b"/>
+          <text x="150" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#4b1528" text-anchor="middle">stx2</text>
+          <line x1="24" y1="104" x2="196" y2="104" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="84" y="94" width="52" height="20" rx="3" fill="#e8a23f"/>
+          <text x="110" y="108" font-family="Inter" font-size="11" font-style="italic" fill="#5a3a08" text-anchor="middle">eae</text>
+          <text x="110" y="146" font-family="Inter" font-size="11" fill="#6b6560" text-anchor="middle">stx1 / stx2 hufafanua STEC; eae ni alama</text>
+        </svg>
+        <figcaption><b>Jeni lengwa za STEC.</b> Ugunduzi wa <em>stx1</em> / <em>stx2</em> — kisha utamaduni kupata kisanga.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Uainishaji wa kisanga</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <p>Mara kisanga kinapokuwa mkononi, mbinu za molekuli huonyesha thamani yao kamili — si kwa ugunduzi, bali kwa <strong>uainishaji</strong>: whole-genome sequencing kwa uainishaji wa serotype na subtype, ambao husimamia uchunguzi wa milipuko.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ahw2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <ellipse cx="66" cy="58" rx="28" ry="18" fill="#eafaf1" stroke="#a9dfbf" stroke-width="2"/>
+          <text x="66" y="62" font-family="Inter" font-size="10" fill="#1e6b3a" text-anchor="middle">Kisanga</text>
+          <path d="M66 78 v18" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ahw2)"/>
+          <g stroke="#3a8a6d" stroke-width="3" fill="none">
+            <path d="M44 106 q11 -8 22 0 t22 0"/>
+            <path d="M44 116 q11 8 22 0 t22 0"/>
+          </g>
+          <text x="118" y="112" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="start">Genome imefuatwa</text>
+          <rect x="46" y="134" width="11" height="24" fill="#d98c7d"/>
+          <rect x="61" y="140" width="11" height="18" fill="#c0556b"/>
+          <rect x="76" y="130" width="11" height="28" fill="#e8a23f"/>
+          <text x="124" y="148" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="start">Serotype, subtype</text>
+          <text x="110" y="184" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">Uainishaji, si ugunduzi</text>
+        </svg>
+        <figcaption><b>Whole-genome sequencing.</b> Hutumika kwa kisanga kilichopatikana, kwa subtyping na kazi ya milipuko.</figcaption>
+      </figure>
+      <div class="success-box">
+        <h4><i class="fas fa-circle-check"></i> Uzi unaopita katika kozi hii</h4>
+        <p>Gundua kwa zana za molekuli pale inapofaa; <strong>pata kiumbe kwa utamaduni</strong>; ainisha kisanga. Utamaduni ndiyo hatua inayofanya kila kitu kingine kiwezekane.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 9: VIFAA -->
+<div class="module-content" id="m9">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-boxes-stacked"></i> Media, vitendanishi na vifaa</div>
+    <div class="module-subtitle">Kile kila mtiririko wa utengaji unahitaji</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Media na vitendanishi kwa kila kimelea</div></div>
+    <div class="step-content">
+      <table class="data-table">
+        <thead><tr><th>Kimelea</th><th>Enrichment</th><th>Selective agar</th><th>Uthibitisho muhimu</th></tr></thead>
+        <tbody>
+          <tr><td><em>Salmonella</em></td><td>Selenite au Tetrathionate broth</td><td>XLD, HE (au CHROMagar, SS, XLT-4)</td><td>TSI, urease</td></tr>
+          <tr><td><em>Shigella</em></td><td>Kupanda moja kwa moja (bila enrichment)</td><td>XLD, HE, SS</td><td>TSI, motility, serolojia</td></tr>
+          <tr><td>STEC / EHEC</td><td>Kupanda moja kwa moja</td><td>SMAC</td><td>Antiserum ya O157; kipimo cha Shiga toxin / stx</td></tr>
+          <tr><td><em>Campylobacter</em></td><td>Kupanda moja kwa moja</td><td>Karmali au Skirrow</td><td>Oxidase, hadubini</td></tr>
+          <tr><td><em>Vibrio cholerae</em></td><td>Alkaline peptone water</td><td>TCBS</td><td>Oxidase, serolojia ya O1/O139</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Vifaa vya pamoja</div></div>
+    <div class="step-content">
+      <ul class="protocol-list">
+        <li><strong>Usafirishaji:</strong> mabomba ya Cary-Blair medium</li>
+        <li><strong>Mazingira:</strong> jar ya microaerophilic na sachet za kuzalisha gesi (<em>Campylobacter</em>)</li>
+        <li><strong>Incubation:</strong> incubators zenye uwezo wa 35-37&deg;C na 42&deg;C</li>
+        <li><strong>Utambuzi:</strong> media za kibayokemikali au, pale zinapopatikana, MALDI-TOF au panel ya utambuzi</li>
+        <li><strong>Usalama wa kibayolojia:</strong> vituo na PPE vya kiwango cha BSL-2</li>
+        <li><strong>Udhibiti wa ubora:</strong> strains za udhibiti za rejea kwa QC ya media</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-globe"></i> Ununuzi katika mazingira yenye rasilimali chache</h4>
+        <p>Media zinaweza kununuliwa tayari kumwagwa au kuandaliwa hapo hapo kutoka unga uliokaushwa. Panga usafirishaji wa mnyororo wa baridi pale unapohitajika, na muda wa kusubiri kwa maagizo ya kimataifa. Thibitisha kuwa bidhaa yoyote inakidhi mahitaji ya udhibiti ya ndani.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Mwongozo wa kivitendo wa maabara</h4>
+        <p>Daima fanya udhibiti wa ubora wa media kwa strains za udhibiti zinazojulikana kabla ya kutumia lot mpya — selective media zilizoisha muda au zilizohifadhiwa vibaya hupoteza uselective wao na husababisha matokeo hasi ya uongo na makosa ya utambuzi. Fuatilia namba za lot na tarehe za mwisho.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 10: MAREJEO -->
+<div class="module-content" id="m10">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-book-open"></i> Marejeo na vyanzo vya mbinu</div>
+    <div class="module-subtitle">Hati rasmi ambazo kozi hii imejengwa juu yake</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Vyanzo vya CDC</div></div>
+    <div class="step-content">
+      <span class="source-tag">Chanzo cha mbinu: CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Laboratory Methods for the Diagnosis of Epidemic Dysentery and Cholera</strong> — mwongozo wa CDC kwa mazingira yenye uwezo mdogo wa maabara; unahusu utengaji na utambuzi wa <em>Vibrio cholerae</em> na <em>Shigella</em>, ukusanyaji wa sampuli, usalama wa kibayolojia, na udhibiti wa ubora. <a href="https://www.cdc.gov/cholera/php/laboratories/index.html" target="_blank" class="external-link">cdc.gov/cholera/php/laboratories</a></li>
+        <li><strong>CDC Yellow Book 2024 — Nontyphoidal Salmonellosis.</strong> Utengaji wa kimatibabu wa <em>Salmonella</em>; utamaduni kama mbinu ya uthibitisho. <a href="https://wwwnc.cdc.gov/travel/yellowbook/2024/infections-diseases/salmonellosis-nontyphoidal" target="_blank" class="external-link">wwwnc.cdc.gov/travel/yellowbook</a></li>
+        <li><strong>CDC Yellow Book 2024 — Campylobacteriosis.</strong> Utengaji kutoka kinyesi kwenye selective media chini ya oksijeni iliyopunguzwa katika 42&deg;C. <a href="https://wwwnc.cdc.gov/travel/yellowbook/2024/infections-diseases/campylobacteriosis" target="_blank" class="external-link">wwwnc.cdc.gov/travel/yellowbook</a></li>
+        <li><strong>CDC Clinical Overview of Salmonellosis.</strong> Utamaduni kama mbinu ya msingi; utamaduni wa uthibitisho wa sampuli chanya za vipimo visivyotegemea utamaduni. <a href="https://www.cdc.gov/salmonella/hcp/clinical-overview/index.html" target="_blank" class="external-link">cdc.gov/salmonella/hcp</a></li>
+        <li><strong>Mapendekezo ya CDC kuhusu upimaji wa STEC.</strong> Uchunguzi wa msingi wa utamaduni wa O157 na upimaji wa Shiga toxin / <em>stx1</em> na <em>stx2</em> kwenye kinyesi chote kilichowasilishwa kwa utamaduni.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Vyanzo vya WHO / GTFCC</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Chanzo cha mbinu: WHO / GTFCC</span>
+      <ul class="protocol-list">
+        <li><strong>WHO Cholera Outbreak Toolbox.</strong> Inahifadhi miongozo ya maabara ya Kikosi Kazi cha Kimataifa cha Kudhibiti Kipindupindu, ikijumuisha <em>Isolation and Presumptive Identification of Vibrio cholerae O1/O139 from fecal specimens</em>. <a href="https://www.who.int/emergencies/outbreak-toolkit/disease-outbreak-toolboxes/cholera-outbreak-toolbox" target="_blank" class="external-link">who.int — cholera outbreak toolbox</a></li>
+        <li><strong>Miongozo ya GTFCC kuhusu ukusanyaji na usafirishaji.</strong> Kukusanya na kusafirisha sampuli za kinyesi katika Cary-Blair kwa uthibitisho wa kipindupindu maabarani.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Jinsi vyanzo vinavyotumika katika kozi hii</div></div>
+    <div class="step-content">
+      <ul class="protocol-list">
+        <li><strong>Hatua za mbinu</strong> hubeba lebo iliyojumuishwa — <span class="source-tag">Chanzo cha mbinu: CDC</span> au <span class="source-tag who">Chanzo cha mbinu: WHO / GTFCC</span> — inayotambua shirika lililo nyuma ya utaratibu.</li>
+        <li>Visanduku vya <strong>mwongozo wa kivitendo wa maabara</strong> (sababu za kushindwa, ushauri wa QC) ni mazoea bora yanayotokana na uzoefu na yamewekewa lebo kama hivyo — si hatua za itifaki zilizonukuliwa za shirika rasmi.</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-circle-info"></i> Dokezo kuhusu upeo</h4>
+        <p>Kozi hii inahusu utengaji wa kimatibabu wa bakteria vya magonjwa ya utumbo kutoka kinyesi cha binadamu. Si kozi ya uchunguzi, matibabu, wala upimaji wa chakula au maji. Daima thibitisha mahitaji ya kitaifa na ya ndani yaliyopo, ambayo yanaweza kutofautiana na mbinu za jumla zilizoelezwa hapa.</p>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Kukamilisha kozi</h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Ukusanyaji na usafirishaji wa sampuli umeeleweka</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Mtiririko wa utengaji umefanywa kwa vimelea vyote vitano</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Kanuni ya utamaduni wa uthibitisho imeeleweka</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Sababu za kushindwa zimepitiwa kwa kila kimelea</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<script>
+const moduleOrder=['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10'];
+function showModule(id){
+  document.querySelectorAll('.module-content').forEach(function(m){m.classList.remove('active');});
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+  var el=document.getElementById(id); if(el){el.classList.add('active');}
+  if(window.event&&window.event.target){
+    var tab=window.event.target.closest('.nav-tab');
+    if(tab){tab.classList.add('active');}
+  }
+  var idx=moduleOrder.indexOf(id)+1;
+  document.getElementById('progressText').textContent=idx+'/10';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleCheckbox(li){
+  var cb=li.querySelector('input[type="checkbox"]');
+  cb.checked=!cb.checked;
+  if(cb.checked){
+    li.style.backgroundColor='var(--color-success)';
+    li.style.color='white';
+    setTimeout(function(){li.style.backgroundColor='';li.style.color='';},500);
+  }
+}
+function flipCard(card){card.classList.toggle('revealed');}
+document.getElementById('progressIndicator').addEventListener('click',function(){
+  var cur=document.querySelector('.module-content.active').id;
+  var idx=moduleOrder.indexOf(cur);
+  if(idx<moduleOrder.length-1){
+    var nextId=moduleOrder[idx+1];
+    document.querySelectorAll('.module-content').forEach(function(m){m.classList.remove('active');});
+    document.getElementById(nextId).classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.nav-tab')[idx+1].classList.add('active');
+    document.getElementById('progressText').textContent=(idx+2)+'/10';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+});
+</script>
+</body>
+</html>

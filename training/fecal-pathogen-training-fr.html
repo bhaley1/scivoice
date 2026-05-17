@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation à l'isolement des pathogènes fécaux | SciVoice</title>
+<meta name="description" content="Isolement clinique des pathogènes entériques à partir de selles humaines, selon les méthodes de laboratoire des CDC et de l'OMS.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#fafaf9;--color-surface:#ffffff;--color-primary:#1a1814;
+  --color-secondary:#78716c;--color-accent:#dc2626;--color-success:#16a34a;
+  --color-warning:#ea580c;--color-info:#0ea5e9;--color-border:#e7e5e4;
+  --color-hover:#f5f5f4;--font-family:'Inter',system-ui,sans-serif;
+  --border-radius:12px;
+  --shadow:0 1px 3px 0 rgb(0 0 0 / 0.1),0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-family);background:var(--color-bg);color:var(--color-primary);line-height:1.6;}
+em{font-style:italic;}
+.header{background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:1rem 0;position:sticky;top:0;z-index:100;}
+.header-content{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:0.75rem;font-weight:600;font-style:italic;font-size:1.25rem;color:var(--color-primary);text-decoration:none;}
+.logo i{color:var(--color-accent);font-style:normal;}
+.btn{background:var(--color-accent);color:white;border:none;padding:0.5rem 1rem;border-radius:var(--border-radius);font-weight:500;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-family);}
+.btn:hover{background:#b91c1c;transform:translateY(-1px);}
+a{color:var(--color-accent);text-decoration:none;transition:all 0.2s;}
+a:hover{color:#b91c1c;text-decoration:underline;}
+a:visited{color:#7c2d12;}
+.external-link::after{content:" \2197";font-size:0.8rem;color:var(--color-secondary);}
+.progress-indicator{position:fixed;bottom:1rem;right:1rem;background:var(--color-accent);color:white;padding:0.75rem;border-radius:50%;font-weight:600;z-index:100;cursor:pointer;}
+.main-container{max-width:1200px;margin:0 auto;padding:2rem;}
+.nav-tabs{display:flex;border-bottom:1px solid var(--color-border);margin-bottom:2rem;overflow-x:auto;gap:0.25rem;}
+.nav-tab{background:none;border:none;padding:0.875rem 1.1rem;font-weight:500;color:var(--color-secondary);cursor:pointer;border-radius:var(--border-radius) var(--border-radius) 0 0;transition:all 0.2s;white-space:nowrap;font-family:var(--font-family);font-size:0.9rem;}
+.nav-tab:hover{background:var(--color-hover);color:var(--color-primary);}
+.nav-tab.active{background:var(--color-surface);color:var(--color-primary);border-bottom:2px solid var(--color-accent);}
+.module-content{display:none;background:var(--color-surface);border-radius:var(--border-radius);box-shadow:var(--shadow);padding:2rem;}
+.module-content.active{display:block;}
+.module-header{margin-bottom:2rem;text-align:center;}
+.module-title{font-size:1.85rem;font-weight:700;color:var(--color-primary);margin-bottom:0.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;}
+.module-subtitle{font-size:1rem;color:var(--color-secondary);}
+.step-container{margin-bottom:2rem;border:1px solid var(--color-border);border-radius:var(--border-radius);overflow:hidden;}
+.step-header{background:linear-gradient(135deg,var(--color-accent),#dc2626);color:white;padding:1rem 1.5rem;}
+.step-title{font-size:1.125rem;font-weight:600;display:flex;align-items:center;gap:1rem;}
+.step-number{background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:50%;width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+.step-content{padding:1.5rem;}
+.protocol-list{list-style:none;padding:0;}
+.protocol-list li{background:var(--color-hover);margin:0.5rem 0;padding:1rem;border-radius:var(--border-radius);border-left:4px solid var(--color-accent);}
+.data-table{width:100%;border-collapse:collapse;margin:1rem 0;background:var(--color-surface);border-radius:var(--border-radius);overflow:hidden;box-shadow:var(--shadow);}
+.data-table th,.data-table td{padding:0.875rem;text-align:left;border-bottom:1px solid var(--color-border);}
+.data-table th{background:var(--color-accent);color:white;font-weight:600;}
+.data-table tr:nth-child(even){background:var(--color-hover);}
+.info-box,.warning-box,.danger-box,.success-box{padding:1rem;border-radius:var(--border-radius);margin:1rem 0;}
+.info-box{background:#eff6ff;border-left:4px solid var(--color-info);color:#1e40af;}
+.warning-box{background:#fff7ed;border-left:4px solid var(--color-warning);color:#c2410c;}
+.danger-box{background:#fef2f2;border-left:4px solid var(--color-accent);color:#dc2626;}
+.success-box{background:#f0fdf4;border-left:4px solid var(--color-success);color:#166534;}
+.info-box h4,.warning-box h4,.danger-box h4,.success-box h4{margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;}
+.source-tag{display:inline-block;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;padding:0.2rem 0.55rem;border-radius:6px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;margin:0.35rem 0;}
+.source-tag.who{background:#ecfeff;color:#155e75;border-color:#a5f3fc;}
+.diagram-figure{margin:1.25rem 0;text-align:center;background:#fcfbf9;border:1px solid var(--color-border);border-radius:var(--border-radius);padding:1.25rem;}
+.diagram-figure svg{width:100%;height:auto;max-width:340px;}
+.diagram-figure.diagram-figure--wide svg{max-width:680px;}
+.diagram-figure figcaption{margin-top:0.65rem;font-size:0.85rem;color:var(--color-secondary);}
+.diagram-figure figcaption b{color:var(--color-primary);}
+.interactive-checklist{background:var(--color-surface);border-radius:var(--border-radius);padding:1rem;box-shadow:var(--shadow);margin:1rem 0;}
+.checklist{list-style:none;padding:0;}
+.checklist li{display:flex;align-items:center;gap:0.75rem;padding:0.75rem;border-radius:var(--border-radius);cursor:pointer;transition:all 0.2s;}
+.checklist li:hover{background:var(--color-hover);}
+.checklist input[type="checkbox"]{pointer-events:none;flex-shrink:0;}
+h4{color:var(--color-primary);margin-bottom:1rem;font-size:1.1rem;}
+h5{color:var(--color-primary);margin-bottom:0.5rem;font-weight:600;}
+@media (max-width:768px){.main-container{padding:1rem;}.module-content{padding:1rem;}.step-content{padding:1rem;}.data-table{font-size:0.875rem;}}
+@media print{.header,.nav-tabs,.progress-indicator{display:none;}.module-content{display:block !important;page-break-after:always;}.step-container{page-break-inside:avoid;}.diagram-figure{page-break-inside:avoid;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-content">
+    <a href="../index.html" class="logo"><i class="fas fa-microscope"></i> SciVoice</a>
+    <button class="btn" onclick="window.print()"><i class="fas fa-print"></i> Télécharger le PDF</button>
+  </div>
+</header>
+<div class="progress-indicator" id="progressIndicator"><span id="progressText">1/10</span></div>
+<main class="main-container">
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showModule('m1')">Présentation</button>
+    <button class="nav-tab" onclick="showModule('m2')">Prélèvement</button>
+    <button class="nav-tab" onclick="showModule('m3')"><em>Salmonella</em></button>
+    <button class="nav-tab" onclick="showModule('m4')"><em>Shigella</em></button>
+    <button class="nav-tab" onclick="showModule('m5')">STEC/EHEC</button>
+    <button class="nav-tab" onclick="showModule('m6')"><em>Campylobacter</em></button>
+    <button class="nav-tab" onclick="showModule('m7')"><em>Vibrio</em></button>
+    <button class="nav-tab" onclick="showModule('m8')">Méthodes moléculaires</button>
+    <button class="nav-tab" onclick="showModule('m9')">Fournitures</button>
+    <button class="nav-tab" onclick="showModule('m10')">Références</button>
+  </div>
+<style>
+.practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin:1rem 0;}
+.practice-card{background:#fcfbf9;border:1px solid var(--color-border);border-radius:var(--border-radius);padding:1rem;cursor:pointer;transition:all 0.2s;text-align:center;}
+.practice-card:hover{border-color:var(--color-accent);transform:translateY(-2px);box-shadow:var(--shadow);}
+.practice-art svg{width:100%;height:auto;max-width:130px;}
+.practice-q{font-weight:600;font-size:0.9rem;margin-top:0.6rem;color:var(--color-primary);}
+.practice-a{display:none;margin-top:0.6rem;font-size:0.85rem;color:var(--color-secondary);text-align:left;background:#f0fdf4;border-left:3px solid var(--color-success);padding:0.6rem 0.75rem;border-radius:6px;}
+.practice-card.revealed .practice-a{display:block;}
+.practice-card.revealed .practice-q{color:var(--color-success);}
+@media print{.practice-a{display:block !important;}.practice-card{break-inside:avoid;}}
+</style>
+<!-- MODULE 1: PRÉSENTATION -->
+<div class="module-content active" id="m1">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-graduation-cap"></i> Formation à l'isolement des pathogènes fécaux</div>
+    <div class="module-subtitle">Isolement en laboratoire des bactéries entéropathogènes à partir de selles humaines, selon les méthodes des CDC et de l'OMS</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> À propos de ce cours</div></div>
+    <div class="step-content">
+      <p>Ce cours enseigne l'<strong>isolement en laboratoire</strong> des bactéries entéropathogènes à partir de prélèvements de selles humaines — le travail de paillasse consistant à récupérer, cultiver et identifier un micro-organisme viable. Il ne traite pas du diagnostic clinique ni de la prise en charge du patient.</p>
+      <div class="info-box">
+        <h4><i class="fas fa-flask"></i> Principe : la culture d'abord</h4>
+        <p>La culture est la méthode de référence. Les tests moléculaires peuvent détecter l'acide nucléique d'un pathogène mais ne fournissent aucun micro-organisme — or une souche vivante est indispensable pour l'antibiogramme, le sérotypage et la caractérisation des épidémies. Lorsque des méthodes moléculaires sont utilisées, le prélèvement doit être ensemencé en culture.</p>
+      </div>
+      <h4>À la fin de ce cours, les participants seront capables de :</h4>
+      <ul class="protocol-list">
+        <li><strong>Isoler et identifier</strong> les principales bactéries entéropathogènes à partir de prélèvements de selles humaines</li>
+        <li><strong>Appliquer</strong> les protocoles d'isolement standard des CDC et de l'OMS, en utilisant les milieux sélectifs et d'enrichissement appropriés</li>
+        <li><strong>Réaliser</strong> les tests de confirmation biochimiques et sérologiques</li>
+        <li><strong>Respecter</strong> les pratiques de biosécurité et de contrôle qualité</li>
+        <li><strong>Comprendre</strong> le rôle complémentaire des méthodes moléculaires et le principe de la mise en culture de confirmation</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Pathogènes ciblés</div></div>
+    <div class="step-content">
+      <table class="data-table">
+        <thead><tr><th>Pathogène</th><th>Importance clinique</th><th>Milieu d'isolement primaire</th><th>Source de la méthode</th></tr></thead>
+        <tbody>
+          <tr><td><em>Salmonella</em> spp.</td><td>Gastro-entérite, fièvre entérique</td><td>XLD, HE</td><td>CDC</td></tr>
+          <tr><td><em>Shigella</em> spp.</td><td>Dysenterie bacillaire</td><td>XLD, HE, SS</td><td>CDC</td></tr>
+          <tr><td>STEC / EHEC</td><td>Diarrhée sanglante, SHU</td><td>SMAC</td><td>CDC</td></tr>
+          <tr><td><em>Campylobacter</em> spp.</td><td>Gastro-entérite</td><td>Karmali, Skirrow</td><td>CDC</td></tr>
+          <tr><td><em>Vibrio cholerae</em></td><td>Choléra, diarrhée aqueuse</td><td>TCBS</td><td>CDC / OMS</td></tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <h4><i class="fas fa-info-circle"></i> Note sur le périmètre</h4>
+        <p><em>Listeria monocytogenes</em> n'est pas incluse dans ce cours. La listériose est une infection invasive confirmée à partir de sites normalement stériles (sang, LCR) ; les selles ne sont pas un prélèvement clinique standard pour son isolement.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Sources des méthodes</div></div>
+    <div class="step-content">
+      <p>Chaque méthode de ce cours est étiquetée avec l'organisme qui la publie. Deux organismes sont utilisés :</p>
+      <ul class="protocol-list">
+        <li><span class="source-tag">Source de la méthode : CDC</span><br>Centres américains de contrôle et de prévention des maladies — méthodes de laboratoire pour l'isolement clinique des pathogènes entériques.</li>
+        <li><span class="source-tag who">Source de la méthode : OMS / GTFCC</span><br>Organisation mondiale de la santé et Groupe spécial mondial de lutte contre le choléra — aide-mémoires de laboratoire pour le choléra, adaptés aux contextes à faibles ressources.</li>
+      </ul>
+      <div class="warning-box">
+        <h4><i class="fas fa-exclamation-triangle"></i> Exigences locales</h4>
+        <p>Vérifiez toujours les exigences nationales et locales. Plusieurs pathogènes entériques sont à déclaration obligatoire et nécessitent un signalement rapide ; la transmission de la souche à un laboratoire de référence peut être obligatoire.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 2: PRÉLÈVEMENT -->
+<div class="module-content" id="m2">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-vials"></i> Prélèvement et transport des échantillons</div>
+    <div class="module-subtitle">Prélever et transporter des échantillons de selles humaines pour l'isolement bactérien</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Prélever l'échantillon</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Échantillon préféré :</strong> selles fraîchement émises, prélevées le plus tôt possible après le début des symptômes et avant tout traitement antimicrobien</li>
+        <li><strong>Récipient :</strong> récipient propre, étanche, à large ouverture et à bouchon vissé</li>
+        <li><strong>Volume :</strong> 1 à 2 g de matière fécale, ou 2 à 3 mL si liquide</li>
+        <li><strong>Privilégier</strong> les portions contenant du mucus, du sang ou du pus</li>
+        <li><strong>Les écouvillons rectaux</strong> ne sont acceptables que lorsqu'un échantillon de selles ne peut être obtenu — de la matière fécale visible doit être présente sur l'écouvillon</li>
+      </ul>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="62" y="22" width="76" height="20" rx="5" fill="#7d8a3c"/>
+          <line x1="100" y1="22" x2="100" y2="42" stroke="#5f6a2d" stroke-width="3"/>
+          <rect x="66" y="42" width="68" height="124" rx="11" fill="#eef0e6" stroke="#9aa84d" stroke-width="2.5"/>
+          <path d="M68 118 h64 v36 a11 11 0 0 1 -11 11 h-42 a11 11 0 0 1 -11 -11 Z" fill="#d2b48c"/>
+          <ellipse cx="100" cy="118" rx="32" ry="6" fill="#c4a376"/>
+        </svg>
+        <figcaption><b>Récipient pour échantillon de selles.</b> Large ouverture, étanche, stérile, avec cuillère de prélèvement.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Transport — milieu de Cary-Blair</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Traiter rapidement :</strong> idéalement dans les 2 heures suivant le prélèvement</li>
+        <li><strong>En cas de retard :</strong> placer l'échantillon dans un milieu de transport de Cary-Blair</li>
+        <li><strong>Le Cary-Blair</strong> est un milieu semi-solide adapté à la plupart des bactéries entériques, préservant la viabilité jusqu'à plusieurs jours</li>
+        <li><strong>Conservation :</strong> peut être conservé à 2-8&deg;C ; les échantillons suspects de choléra en Cary-Blair peuvent être expédiés à température ambiante</li>
+      </ul>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="78" y="20" width="44" height="14" rx="3" fill="#34495e"/>
+          <rect x="80" y="34" width="40" height="12" rx="2" fill="#4a6278"/>
+          <rect x="84" y="46" width="32" height="120" rx="12" fill="#eef2f4" stroke="#9bb0bf" stroke-width="2.5"/>
+          <path d="M86 96 h28 v58 a12 12 0 0 1 -12 12 h-4 a12 12 0 0 1 -12 -12 Z" fill="#bcd9c9"/>
+          <ellipse cx="100" cy="96" rx="14" ry="4.5" fill="#a3ccb5"/>
+        </svg>
+        <figcaption><b>Milieu de transport de Cary-Blair.</b> Milieu semi-solide en tube à bouchon vissé pour le transport des échantillons.</figcaption>
+      </figure>
+      <div class="info-box">
+        <h4><i class="fas fa-clock"></i> Pourquoi le transport est important</h4>
+        <p>Les pathogènes entériques perdent leur viabilité avec le délai, le changement de pH fécal et le stress du transport. <em>Shigella</em> est particulièrement fragile. Un transport correct protège le micro-organisme afin qu'il puisse encore être cultivé.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Biosécurité</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <h4>Équipement de protection individuelle :</h4>
+      <ul class="protocol-list">
+        <li><strong>Gants :</strong> changés entre chaque échantillon</li>
+        <li><strong>Blouse de laboratoire :</strong> fermée, à manches longues</li>
+        <li><strong>Protection oculaire :</strong> en cas de risque d'éclaboussures</li>
+        <li><strong>Chaussures fermées</strong></li>
+      </ul>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="50" r="26" fill="#f0d9c0"/>
+          <path d="M74 50 a26 26 0 0 1 52 0 v6 h-52 Z" fill="#5d7a9a"/>
+          <rect x="70" y="58" width="60" height="20" rx="6" fill="#d6e4ef" stroke="#9bb0bf" stroke-width="2"/>
+          <path d="M62 92 q38 -20 76 0 l8 76 h-92 Z" fill="#ffffff" stroke="#c9c3b8" stroke-width="2.5"/>
+          <line x1="100" y1="80" x2="100" y2="168" stroke="#c9c3b8" stroke-width="2"/>
+          <path d="M62 96 l-14 36 14 8 8 -30 Z" fill="#5dade2"/>
+          <path d="M138 96 l14 36 -14 8 -8 -30 Z" fill="#5dade2"/>
+        </svg>
+        <figcaption><b>EPI de niveau de biosécurité 2.</b> Gants, blouse et protection oculaire — obligatoires pour tous les échantillons de selles.</figcaption>
+      </figure>
+      <div class="danger-box">
+        <h4><i class="fas fa-biohazard"></i> Niveau de biosécurité 2</h4>
+        <p>Manipulez tous les échantillons de selles au niveau NSB-2. Considérez chaque échantillon comme potentiellement infectieux.</p>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Liste de contrôle — prélèvement</h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Selles fraîches prélevées avant tout traitement antimicrobien</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Récipient étanche, correctement étiqueté</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Traité dans les 2 h, ou placé en Cary-Blair</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>EPI NSB-2 porté en permanence</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 3: SALMONELLA -->
+<div class="module-content" id="m3">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Isolement de <em>Salmonella</em></div>
+    <div class="module-subtitle">Isoler <em>Salmonella</em> non typhique à partir de selles humaines, selon les méthodes des CDC</div>
+  </div>
+
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Le déroulement de l'isolement</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>La récupération de <em>Salmonella</em> à partir de selles suit un schéma en quatre étapes. Les selles contiennent une flore normale abondante ; les premières étapes servent donc à <strong>supprimer cette flore et laisser croître le pathogène</strong> avant les étapes d'identification.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="20" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="80" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Échantillon</text>
+          <text x="80" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Selles en Cary-Blair</text>
+          <path d="M144 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah3)"/>
+          <rect x="180" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="240" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Enrichissement</text>
+          <text x="240" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Bouillon sélénite ou TT</text>
+          <path d="M304 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah3)"/>
+          <rect x="340" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="400" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Isolement</text>
+          <text x="400" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Gélose XLD et HE</text>
+          <path d="M464 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah3)"/>
+          <rect x="500" y="40" width="120" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="560" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Confirmation</text>
+          <text x="560" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Biochimie / sérologie</text>
+        </svg>
+        <figcaption><b>Le déroulement de l'isolement en quatre étapes.</b> Ce même schéma se retrouve dans chaque module pathogène.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Enrichissement sélectif</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Ensemencer</strong> un bouillon d'enrichissement — sélénite (SEL) ou tétrathionate (TT) — à partir de l'échantillon de selles</li>
+        <li><strong>Incuber</strong> selon les instructions du fabricant du milieu avant le repiquage sur gélose sélective</li>
+        <li><strong>Pourquoi c'est important :</strong> l'enrichissement augmente la sensibilité en laissant un petit nombre de <em>Salmonella</em> se multiplier tandis que la flore fécale est freinée</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-flask"></i> Choisir le bouillon</h4>
+        <p>Si <em>S.</em> Typhi est envisagée, le sélénite est généralement préféré. Consultez toujours les instructions du fabricant pour la durée et la température d'incubation — celles-ci varient selon le produit.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Isolement sur gélose sélective</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Repiquer le bouillon d'enrichissement sur <strong>au moins deux milieux sélectifs</strong>. XLD et HE sont les plus utilisés ; CHROMagar, SS ou XLT-4 sont des alternatives.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#d94f70"/>
+          <path d="M40 78 q60 -22 122 8" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.5"/>
+          <path d="M36 100 q64 -16 128 10" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.45"/>
+          <path d="M42 124 q58 -12 120 12" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.4"/>
+          <circle cx="74" cy="78" r="8" fill="#e07a3f"/><circle cx="74" cy="78" r="3.5" fill="#1a1410"/>
+          <circle cx="112" cy="70" r="7" fill="#e07a3f"/><circle cx="112" cy="70" r="3" fill="#1a1410"/>
+          <circle cx="138" cy="96" r="8" fill="#e07a3f"/><circle cx="138" cy="96" r="3.5" fill="#1a1410"/>
+          <circle cx="84" cy="116" r="7" fill="#e07a3f"/><circle cx="84" cy="116" r="3" fill="#1a1410"/>
+          <circle cx="120" cy="130" r="8" fill="#e07a3f"/><circle cx="120" cy="130" r="3.5" fill="#1a1410"/>
+          <circle cx="64" cy="104" r="6" fill="#e07a3f"/><circle cx="64" cy="104" r="2.6" fill="#1a1410"/>
+        </svg>
+        <figcaption><b>Gélose XLD.</b> <em>Salmonella</em> typique — colonies rouges/roses à centre noir, dû à la production d'H&#8322;S.</figcaption>
+      </figure>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Lire la boîte — point de décision</h4>
+        <p><strong><em>Salmonella</em> typique sur XLD :</strong> colonie rouge ou rose, souvent avec un centre noir distinct. Le centre noir correspond à l'H&#8322;S — un indice utile, mais pas une preuve à lui seul.</p>
+        <p><strong>Décider :</strong> prélever 2 à 3 colonies bien isolées de chaque morphologie suspecte pour confirmation. Lorsque les colonies sont serrées ou se chevauchent, repiquer d'abord sur une nouvelle boîte pour obtenir des colonies pures et isolées — ne jamais réaliser de tests de confirmation à partir d'une culture mixte.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Résultats ambigus — à surveiller</h4>
+        <p><strong>Il existe des <em>Salmonella</em> H&#8322;S-négatives</strong> — une colonie rouge sans centre noir n'est pas automatiquement exclue. <strong>D'autres micro-organismes produisent de l'H&#8322;S</strong> — <em>Proteus</em> peut donner des colonies à centre noir et induire en erreur. C'est précisément pourquoi un deuxième milieu sélectif et une confirmation biochimique sont nécessaires : ne jamais identifier <em>Salmonella</em> sur la seule apparence XLD.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Confirmation biochimique</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Prélever les colonies suspectes sur des milieux de confirmation. Une gélose TSI (triple sucre fer) associée à l'uréase est un couple de dépistage courant ; de nombreux laboratoires utilisent le MALDI-TOF ou une galerie telle que l'API 20E pour l'identification.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="80" y="16" width="40" height="12" rx="3" fill="#d8b04a"/>
+          <path d="M82 28 h36 v140 a14 14 0 0 1 -14 14 h-8 a14 14 0 0 1 -14 -14 Z" fill="#eef2f4" stroke="#9bb0bf" stroke-width="2.5"/>
+          <path d="M84 60 L116 38 v22 L84 82 Z" fill="#e0584f"/>
+          <path d="M84 82 L116 60 v94 a12 12 0 0 1 -12 12 h-8 a12 12 0 0 1 -12 -12 Z" fill="#f2c93f"/>
+          <ellipse cx="100" cy="150" rx="14" ry="6" fill="#2a2420" opacity="0.85"/>
+          <text x="148" y="50" font-family="Inter" font-size="10" fill="#6b6560">Pente : rouge (alc.)</text>
+          <text x="148" y="112" font-family="Inter" font-size="10" fill="#6b6560">Culot : jaune (acide)</text>
+          <text x="148" y="152" font-family="Inter" font-size="10" fill="#6b6560">Noir = H&#8322;S+</text>
+        </svg>
+        <figcaption><b>Gélose TSI.</b> <em>Salmonella</em> typique : pente alcaline (rouge), culot acide (jaune), noircissement par H&#8322;S.</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Test</th><th><em>Salmonella</em> typique</th><th>Interprétation</th></tr></thead>
+        <tbody>
+          <tr><td>Réaction TSI</td><td>K/A (pente alcaline / culot acide)</td><td>Glucose fermenté, lactose non</td></tr>
+          <tr><td>Production d'H&#8322;S</td><td>Positive</td><td>Précipité noir dans le culot</td></tr>
+          <tr><td>Uréase</td><td>Négative</td><td>Aide à distinguer de <em>Proteus</em></td></tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <h4><i class="fas fa-dna"></i> Après confirmation</h4>
+        <p>Une fois <em>Salmonella</em> confirmée, la souche sert de base au sérotypage et, lorsqu'il est disponible, au séquençage du génome entier pour la caractérisation. C'est une souche viable — et non un résultat moléculaire — qui rend cela possible. <span class="source-tag">Source de la méthode : CDC</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Causes fréquentes d'échec</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Conseils pratiques de laboratoire</h4>
+        <p>Les points ci-dessous relèvent des bonnes pratiques fondées sur l'expérience, et non d'une étape de protocole citée des CDC/OMS. Ils expliquent pourquoi une tentative d'isolement échoue.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Antibiotiques préalables &rarr; faux négatif.</strong> Si le patient a reçu des antimicrobiens avant le prélèvement, <em>Salmonella</em> peut ne pas croître même en cas d'infection. Notez les antécédents antibiotiques ; une culture négative n'exclut pas l'infection.</li>
+        <li><strong>Retard de transport &rarr; perte de viabilité.</strong> Des selles non conservées laissées trop longtemps, ou l'omission du Cary-Blair, réduisent la récupération. En cas de retard de transport, notez-le — cela éclaire l'interprétation d'un résultat négatif.</li>
+        <li><strong>Enrichissement omis &rarr; infections faibles manquées.</strong> Ensemencer les selles directement sur gélose sélective sans enrichissement peut manquer un faible nombre de micro-organismes. C'est l'enrichissement qui les capte.</li>
+        <li><strong>Lecture d'une boîte mixte.</strong> Des tests de confirmation réalisés sur une colonie non pure donnent des résultats ininterprétables. Repiquez toujours sur une colonie unique et bien isolée d'abord.</li>
+        <li><strong>Milieux périmés ou mal conservés.</strong> Les géloses sélectives perdent leur sélectivité après péremption ou en cas de mauvaise conservation. Effectuez un contrôle qualité des milieux avec des souches témoins avant de vous fier à une boîte.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">6</span> Exercice — lire la boîte</div></div>
+    <div class="step-content">
+      <p>Touchez chaque boîte pour révéler ce qu'elle montre. Utilisez cet exercice pour vérifier votre propre lecture avant de poursuivre.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/>
+              <circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#e07a3f"/><circle cx="62" cy="62" r="3" fill="#1a1410"/>
+              <circle cx="98" cy="58" r="6" fill="#e07a3f"/><circle cx="98" cy="58" r="2.6" fill="#1a1410"/>
+              <circle cx="100" cy="98" r="7" fill="#e07a3f"/><circle cx="100" cy="98" r="3" fill="#1a1410"/>
+              <circle cx="64" cy="100" r="6" fill="#e07a3f"/><circle cx="64" cy="100" r="2.6" fill="#1a1410"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose XLD — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong><em>Salmonella</em> suspecte.</strong> Colonies rouges à centre noir (H&#8322;S+). Prélevez des colonies bien isolées pour confirmation — l'apparence seule n'est pas une preuve.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/>
+              <circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#f2d63f"/>
+              <circle cx="98" cy="58" r="6" fill="#f2d63f"/>
+              <circle cx="100" cy="98" r="7" fill="#f2d63f"/>
+              <circle cx="64" cy="100" r="6" fill="#f2d63f"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose XLD — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Pas <em>Salmonella</em>.</strong> Colonies jaunes = fermentation du xylose/lactose sans H&#8322;S. Typique de la flore coliforme de fond — ne pas prélever pour confirmation.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/>
+              <circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="80" cy="80" r="34" fill="#c0392b" opacity="0.55"/>
+              <circle cx="62" cy="62" r="6" fill="#e07a3f"/><circle cx="62" cy="62" r="2.6" fill="#1a1410"/>
+              <circle cx="104" cy="96" r="6" fill="#e07a3f"/><circle cx="104" cy="96" r="2.6" fill="#1a1410"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose XLD — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Ambigu — envahissement.</strong> Un voile s'étalant sur la boîte évoque <em>Proteus</em>, qui peut aussi noircir. Repiquez une colonie isolée ; confirmez par l'uréase (<em>Salmonella</em> est uréase-négative).</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Liste de contrôle — isolement de <em>Salmonella</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Bouillon d'enrichissement (sélénite ou TT) ensemencé</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Repiqué sur au moins deux milieux sélectifs</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Colonies suspectes prélevées pures pour confirmation</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>TSI et uréase (ou MALDI-TOF / galerie) réalisés</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Souche confirmée conservée pour sérotypage / séquençage</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 4: SHIGELLA -->
+<div class="module-content" id="m4">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Isolement de <em>Shigella</em></div>
+    <div class="module-subtitle">Isoler <em>Shigella</em> à partir de selles humaines, selon les méthodes des CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Un micro-organisme fragile — l'importance de la rapidité</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p><em>Shigella</em> est fragile et survit mal en dehors de l'hôte. Contrairement à <em>Salmonella</em>, elle est <strong>ensemencée directement</strong> sur gélose sélective — l'enrichissement a peu d'intérêt et la récupération chute rapidement avec le délai.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="40" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="115" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Échantillon frais</text>
+          <text x="115" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Traiter dans les 2 h</text>
+          <path d="M194 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah4)"/>
+          <rect x="238" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="313" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Ensemencement direct</text>
+          <text x="313" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Gélose XLD, HE, SS</text>
+          <path d="M392 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah4)"/>
+          <rect x="436" y="40" width="150" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="511" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Confirmation</text>
+          <text x="511" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Biochimie / sérologie</text>
+        </svg>
+        <figcaption><b>Déroulement pour <em>Shigella</em>.</b> Ensemencement direct, et non enrichissement — la rapidité protège un micro-organisme fragile.</figcaption>
+      </figure>
+      <div class="warning-box">
+        <h4><i class="fas fa-clock"></i> Sensibilité au délai</h4>
+        <p>Traiter dans les 2 heures. Si un retard est prévu, l'échantillon doit voyager en Cary-Blair — l'acidification des selles tue rapidement <em>Shigella</em>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Isolement sur gélose sélective</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Ensemencer directement sur milieux sélectifs — XLD, HE et SS sont standard. <em>Shigella</em> ne fermente pas le lactose et ne produit pas d'H&#8322;S.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#d94f70"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.5"/>
+          <path d="M38 104 q62 -14 126 8" fill="none" stroke="#a82f4d" stroke-width="2" opacity="0.45"/>
+          <circle cx="74" cy="78" r="8" fill="#f5b8c6"/>
+          <circle cx="112" cy="70" r="7" fill="#f5b8c6"/>
+          <circle cx="138" cy="100" r="8" fill="#f5b8c6"/>
+          <circle cx="84" cy="118" r="7" fill="#f5b8c6"/>
+          <circle cx="118" cy="130" r="6.5" fill="#f5b8c6"/>
+        </svg>
+        <figcaption><b>Gélose XLD.</b> <em>Shigella</em> — colonies rouges/roses, <strong>sans centre noir</strong> (H&#8322;S-négative).</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Milieu</th><th>Aspect de <em>Shigella</em></th><th>Distinction clé</th></tr></thead>
+        <tbody>
+          <tr><td>XLD</td><td>Rouge/rose, sans centre noir</td><td>H&#8322;S-négative — distingue de <em>Salmonella</em></td></tr>
+          <tr><td>HE</td><td>Verte, humide</td><td>Ne fermente pas le lactose</td></tr>
+          <tr><td>SS</td><td>Incolore</td><td>Non-lactose, H&#8322;S-négative</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Lire la boîte — point de décision</h4>
+        <p><strong>Le signal clé est l'<em>absence</em> de centre noir</strong> sur XLD — une colonie rouge sans H&#8322;S oriente vers <em>Shigella</em> plutôt que <em>Salmonella</em>. Prélever des colonies non fermentantes du lactose, H&#8322;S-négatives, pures, pour confirmation.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Résultats ambigus</h4>
+        <p><em>Shigella</em> et <em>E. coli</em> sont étroitement apparentées et peuvent se ressembler sur gélose sélective. L'aspect des colonies n'est qu'un dépistage — une confirmation biochimique et sérologique est toujours nécessaire pour les distinguer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Confirmation</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <table class="data-table">
+        <thead><tr><th>Test</th><th><em>Shigella</em> typique</th><th>Pourquoi c'est utile</th></tr></thead>
+        <tbody>
+          <tr><td>TSI</td><td>K/A, sans gaz, H&#8322;S-négative</td><td>Glucose seul ; pas d'H&#8322;S</td></tr>
+          <tr><td>Mobilité</td><td>Immobile</td><td>Distinction clé d'avec <em>E. coli</em></td></tr>
+          <tr><td>Uréase</td><td>Négative</td><td>Distingue de <em>Proteus</em></td></tr>
+        </tbody>
+      </table>
+      <p>La confirmation sérologique avec des antisérums de groupe, et l'identification d'espèce (MALDI-TOF ou galerie biochimique), complètent l'identification.</p>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Causes fréquentes d'échec</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Conseils pratiques de laboratoire</h4>
+        <p>Bonnes pratiques fondées sur l'expérience, et non une étape de protocole citée des CDC/OMS.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Retard de transport &rarr; micro-organisme mort.</strong> <em>Shigella</em> est le pathogène le plus fragile de ce cours. Une étape de Cary-Blair omise ou retardée est la cause la plus fréquente d'une culture faussement négative.</li>
+        <li><strong>Se fier à l'enrichissement.</strong> Traiter <em>Shigella</em> comme <em>Salmonella</em> et enrichir au lieu d'ensemencer directement fait perdre des micro-organismes — l'ensemencement direct d'un échantillon frais est la bonne pratique.</li>
+        <li><strong>La confondre avec <em>E. coli</em>.</strong> S'arrêter à l'aspect des colonies risque de prendre <em>E. coli</em> pour <em>Shigella</em> ou l'inverse. Confirmez toujours par la mobilité et la sérologie.</li>
+        <li><strong>Antibiotiques préalables.</strong> Comme pour tous les pathogènes entériques, des antimicrobiens préalables réduisent la récupération — notez les antécédents.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Exercice — lire la boîte</div></div>
+    <div class="step-content">
+      <p>Touchez chaque boîte pour révéler ce qu'elle montre.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#f5b8c6"/><circle cx="98" cy="58" r="6" fill="#f5b8c6"/>
+              <circle cx="100" cy="98" r="7" fill="#f5b8c6"/><circle cx="64" cy="100" r="6" fill="#f5b8c6"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose XLD — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong><em>Shigella</em> suspecte.</strong> Colonies rouges/roses <em>sans</em> centre noir. Prélevez des colonies pures ; confirmez par la mobilité (immobile) et la sérologie.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d94f70"/>
+              <circle cx="62" cy="62" r="7" fill="#e07a3f"/><circle cx="62" cy="62" r="3" fill="#1a1410"/>
+              <circle cx="100" cy="98" r="7" fill="#e07a3f"/><circle cx="100" cy="98" r="3" fill="#1a1410"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose XLD — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Pas <em>Shigella</em>.</strong> Des centres noirs signifient une production d'H&#8322;S — cela oriente vers <em>Salmonella</em>. <em>Shigella</em> est H&#8322;S-négative.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8c84a"/>
+              <circle cx="62" cy="62" r="7" fill="#d8b43a"/><circle cx="98" cy="58" r="6" fill="#d8b43a"/>
+              <circle cx="100" cy="98" r="7" fill="#d8b43a"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose XLD — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Pas <em>Shigella</em>.</strong> Une boîte jaune signifie que des fermenteurs du lactose/xylose ont acidifié la gélose — flore coliforme de fond. Cherchez plutôt des colonies non fermentantes.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Liste de contrôle — isolement de <em>Shigella</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Échantillon frais ensemencé directement dans les 2 h (ou Cary-Blair utilisé)</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Ensemencé sur XLD, HE et SS</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Colonies non-lactose, H&#8322;S-négatives prélevées pures</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Mobilité (immobile) confirmée</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Confirmation sérologique réalisée</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 5: STEC -->
+<div class="module-content" id="m5">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Isolement des STEC / EHEC</div>
+    <div class="module-subtitle"><em>E. coli</em> producteurs de shigatoxines à partir de selles humaines, selon les méthodes des CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Deux choses à rechercher</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>L'isolement des STEC est particulier : les CDC recommandent de faire <strong>deux choses sur chaque selle soumise à culture</strong> — un dépistage par culture d'<em>E. coli</em> O157, <em>et</em> une recherche de shigatoxine ou des gènes <em>stx1</em> / <em>stx2</em>. O157 est la cause la plus fréquente de maladie grave, mais les STEC non-O157 provoquent aussi des maladies et échappent à la seule culture O157.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="270" y="14" width="140" height="44" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="340" y="40" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Échantillon de selles</text>
+          <path d="M320 58 L210 88" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah5)"/>
+          <path d="M360 58 L470 88" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah5)"/>
+          <rect x="70" y="90" width="200" height="46" rx="8" fill="#eef2f4" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="170" y="110" font-family="Inter" font-size="11" font-weight="600" fill="#3a4660" text-anchor="middle">Culture sur SMAC</text>
+          <text x="170" y="126" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">Dépistage de O157</text>
+          <rect x="410" y="90" width="200" height="46" rx="8" fill="#eef2f4" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="510" y="110" font-family="Inter" font-size="11" font-weight="600" fill="#3a4660" text-anchor="middle">Test shigatoxine / stx</text>
+          <text x="510" y="126" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">Capte les STEC non-O157</text>
+        </svg>
+        <figcaption><b>Les STEC exigent deux tests en parallèle.</b> La seule culture O157 manque les souches non-O157. <span style="font-style:normal">Source de la méthode : CDC</span></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Isolement sur gélose SMAC</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>La gélose sorbitol-MacConkey (SMAC) exploite une particularité d'<em>E. coli</em> O157 : contrairement à la plupart des <em>E. coli</em>, elle ne fermente <strong>pas</strong> le sorbitol.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#e8d5b0"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#c9b487" stroke-width="2" opacity="0.55"/>
+          <path d="M38 106 q62 -14 126 8" fill="none" stroke="#c9b487" stroke-width="2" opacity="0.5"/>
+          <circle cx="78" cy="80" r="8" fill="#f4efe4"/><circle cx="78" cy="80" r="8" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+          <circle cx="120" cy="76" r="7" fill="#f4efe4"/><circle cx="120" cy="76" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+          <circle cx="132" cy="110" r="8" fill="#f4efe4"/><circle cx="132" cy="110" r="8" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+          <circle cx="112" cy="130" r="6" fill="#c97f5a"/>
+          <circle cx="66" cy="104" r="5.5" fill="#c97f5a"/>
+        </svg>
+        <figcaption><b>Gélose SMAC.</b> <em>E. coli</em> O157 = incolore (sorbitol-négative) ; <em>E. coli</em> ordinaire = rose.</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Micro-organisme</th><th>Aspect sur SMAC</th><th>Sorbitol</th></tr></thead>
+        <tbody>
+          <tr><td><em>E. coli</em> O157</td><td>Incolore</td><td>Négatif</td></tr>
+          <tr><td><em>E. coli</em> ordinaire</td><td>Rose</td><td>Positif</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Lire la boîte — point de décision</h4>
+        <p>Prélever les colonies <strong>incolores (sorbitol-négatives)</strong> comme O157 suspectes. Confirmer par agglutination avec un antisérum O157. Mais rappelez-vous que le second test reste essentiel — voir les causes d'échec.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Résultats ambigus</h4>
+        <p>La gélose SMAC ne capte que O157. <strong>Les STEC non-O157 fermentent le sorbitol et apparaissent roses — indistinguables des <em>E. coli</em> inoffensives sur cette boîte.</strong> Une SMAC propre n'exclut pas les STEC ; c'est le test shigatoxine / <em>stx</em> qui les capte.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Détection des shigatoxines</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Les CDC recommandent de rechercher la shigatoxine ou ses gènes sur toutes les selles soumises à culture. Les gènes <em>stx1</em> et <em>stx2</em> définissent les STEC ; <em>eae</em> (intimine) est un marqueur de virulence apparenté.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg">
+          <line x1="24" y1="52" x2="196" y2="52" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="44" y="42" width="52" height="20" rx="3" fill="#d98c7d"/>
+          <text x="70" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#5c2018" text-anchor="middle">stx1</text>
+          <rect x="124" y="42" width="52" height="20" rx="3" fill="#c0556b"/>
+          <text x="150" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#4b1528" text-anchor="middle">stx2</text>
+          <line x1="24" y1="104" x2="196" y2="104" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="84" y="94" width="52" height="20" rx="3" fill="#e8a23f"/>
+          <text x="110" y="108" font-family="Inter" font-size="11" font-style="italic" fill="#5a3a08" text-anchor="middle">eae</text>
+          <text x="110" y="146" font-family="Inter" font-size="11" fill="#6b6560" text-anchor="middle">Les gènes stx1 / stx2 définissent les STEC</text>
+        </svg>
+        <figcaption><b>Cibles géniques des STEC.</b> La détection de <em>stx1</em> / <em>stx2</em> définit une souche productrice de shigatoxines.</figcaption>
+      </figure>
+      <div class="danger-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Urgence clinique</h4>
+        <p>Les STEC peuvent entraîner un syndrome hémolytique et urémique (SHU), en particulier chez l'enfant. Un résultat positif nécessite une communication rapide et la conservation de toute souche pour l'investigation de santé publique.</p>
+      </div>
+      <div class="info-box">
+        <h4><i class="fas fa-dna"></i> Détection ou souche</h4>
+        <p>Un résultat positif à la shigatoxine ou aux gènes <em>stx</em> identifie les STEC mais ne fournit aucun micro-organisme. Lorsqu'une méthode moléculaire est positive, le prélèvement doit être mis en culture pour récupérer une souche viable destinée à la caractérisation. <span class="source-tag">Source de la méthode : CDC</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Causes fréquentes d'échec</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Conseils pratiques de laboratoire</h4>
+        <p>Bonnes pratiques fondées sur l'expérience, et non une étape de protocole citée des CDC/OMS.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Tester uniquement O157 &rarr; STEC manqués.</strong> L'erreur la plus importante avec les STEC : cultiver la SMAC pour O157 mais omettre le test shigatoxine / <em>stx</em>. Les STEC non-O157 ressemblent à des <em>E. coli</em> normales et seront entièrement manqués.</li>
+        <li><strong>Jeter la souche après un test toxinique positif.</strong> Un résultat positif n'est pas la fin — la souche est nécessaire au sérotypage et au travail sur les épidémies. Cultivez-la et conservez-la.</li>
+        <li><strong>Ne pas signaler l'urgence.</strong> Les STEC comportent un risque de SHU ; un résultat laissé dans une file d'attente de routine retarde une réponse qui peut compter sur le plan clinique.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Exercice — lire la boîte</div></div>
+    <div class="step-content">
+      <p>Touchez chaque boîte pour révéler ce qu'elle montre.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8d5b0"/>
+              <circle cx="62" cy="62" r="7" fill="#f4efe4"/><circle cx="62" cy="62" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+              <circle cx="100" cy="58" r="6" fill="#f4efe4"/><circle cx="100" cy="58" r="6" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+              <circle cx="98" cy="100" r="7" fill="#f4efe4"/><circle cx="98" cy="100" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose SMAC — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong><em>E. coli</em> O157 suspecte.</strong> Incolore = sorbitol-négative. Confirmez par agglutination avec un antisérum O157.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8d5b0"/>
+              <circle cx="62" cy="62" r="7" fill="#c97f5a"/><circle cx="100" cy="58" r="6" fill="#c97f5a"/>
+              <circle cx="98" cy="100" r="7" fill="#c97f5a"/><circle cx="62" cy="100" r="6" fill="#c97f5a"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose SMAC — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Rose — sorbitol-positive.</strong> Pas O157. Mais attention : un STEC non-O157 aurait exactement cet aspect. Une SMAC propre n'exclut <em>pas</em> les STEC — le test <em>stx</em> s'applique toujours.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#e8d5b0"/>
+              <circle cx="58" cy="60" r="7" fill="#f4efe4"/><circle cx="58" cy="60" r="7" fill="none" stroke="#c9b487" stroke-width="1.2"/>
+              <circle cx="104" cy="98" r="7" fill="#c97f5a"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose SMAC — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Culture mixte.</strong> Colonies incolores et roses présentes. Prélevez et confirmez la colonie incolore pour O157 — et réalisez tout de même le test shigatoxine / <em>stx</em>.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Liste de contrôle — isolement des STEC / EHEC</h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Selles ensemencées sur SMAC pour le dépistage de O157</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Test shigatoxine / stx réalisé sur le même échantillon</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Colonies incolores confirmées avec un antisérum O157</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Échantillons toxine-positifs mis en culture pour récupérer une souche</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Résultat positif communiqué rapidement ; souche conservée</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 6: CAMPYLOBACTER -->
+<div class="module-content" id="m6">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Isolement de <em>Campylobacter</em></div>
+    <div class="module-subtitle">Isoler <em>Campylobacter</em> à partir de selles humaines, selon les méthodes des CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Un micro-organisme exigeant</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p><em>Campylobacter</em> est exigeant et nécessite des conditions que la plupart des bactéries entériques ne requièrent pas : une <strong>atmosphère appauvrie en oxygène (microaérophile)</strong>, une température d'incubation plus élevée et une incubation plus longue. Les CDC décrivent l'isolement à partir de selles ou d'écouvillons rectaux sur milieux sélectifs incubés sous oxygène réduit à 42&deg;C pendant 72 heures.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="40" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="115" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Échantillon</text>
+          <text x="115" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Selles / écouvillon rectal</text>
+          <path d="M194 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah6)"/>
+          <rect x="238" y="40" width="150" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="313" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Gélose sélective</text>
+          <text x="313" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">42&deg;C, microaérophile</text>
+          <path d="M392 65 h40" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah6)"/>
+          <rect x="436" y="40" width="150" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="511" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Confirmation</text>
+          <text x="511" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Microscopie / biochimie</text>
+        </svg>
+        <figcaption><b>Déroulement pour <em>Campylobacter</em>.</b> L'exigence déterminante est une atmosphère microaérophile à 42&deg;C.</figcaption>
+      </figure>
+      <div class="info-box">
+        <h4><i class="fas fa-wind"></i> Atmosphère microaérophile</h4>
+        <p><em>Campylobacter</em> nécessite un oxygène réduit — environ 5&nbsp;% d'O&#8322;, 10&nbsp;% de CO&#8322;. Ceci est créé à l'aide d'un sachet générateur de gaz commercial dans une jarre hermétique, ou d'un système équivalent.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> L'atmosphère — équipement</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="58" y="30" width="84" height="20" rx="8" fill="#7d8a96"/>
+          <rect x="50" y="48" width="100" height="120" rx="14" fill="#e8eef1" stroke="#9bb0bf" stroke-width="3"/>
+          <rect x="50" y="48" width="100" height="120" rx="14" fill="#5dade2" opacity="0.12"/>
+          <ellipse cx="100" cy="92" rx="34" ry="9" fill="#cfd8dc"/><ellipse cx="100" cy="92" rx="30" ry="7" fill="#d8d2c4"/>
+          <ellipse cx="100" cy="120" rx="34" ry="9" fill="#cfd8dc"/><ellipse cx="100" cy="120" rx="30" ry="7" fill="#d8d2c4"/>
+          <ellipse cx="100" cy="148" rx="34" ry="9" fill="#cfd8dc"/><ellipse cx="100" cy="148" rx="30" ry="7" fill="#d8d2c4"/>
+          <rect x="118" y="128" width="22" height="30" rx="3" fill="#f4eee2" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="129" y="147" font-family="Inter" font-size="8" fill="#6b6560" text-anchor="middle">gaz</text>
+        </svg>
+        <figcaption><b>Jarre microaérophile.</b> Boîtes plus sachet générateur de gaz dans une jarre hermétique — environ 5&nbsp;% d'O&#8322;, 10&nbsp;% de CO&#8322;.</figcaption>
+      </figure>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Point de décision — réussir l'atmosphère</h4>
+        <p>Si la jarre n'est pas correctement scellée, ou si le sachet est périmé ou omis, l'atmosphère est incorrecte et <em>Campylobacter</em> ne croîtra pas — produisant un faux négatif sans avertissement visible. Vérifiez que la jarre se ferme hermétiquement et utilisez un sachet neuf à chaque série.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Isolement et confirmation</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Ensemencer sur un milieu sélectif pour <em>Campylobacter</em> — Karmali ou Skirrow sont standard. Incuber en atmosphère microaérophile à 42&deg;C ; la croissance peut prendre jusqu'à 72 heures.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#d8d2c4"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#b3ab97" stroke-width="2" opacity="0.55"/>
+          <path d="M38 106 q62 -14 126 8" fill="none" stroke="#b3ab97" stroke-width="2" opacity="0.5"/>
+          <ellipse cx="80" cy="82" rx="10" ry="6" fill="#9a9384"/>
+          <ellipse cx="120" cy="78" rx="9" ry="5.5" fill="#9a9384"/>
+          <ellipse cx="128" cy="114" rx="10" ry="6" fill="#9a9384"/>
+          <ellipse cx="84" cy="122" rx="8" ry="5" fill="#9a9384"/>
+        </svg>
+        <figcaption><b>Gélose Karmali.</b> <em>Campylobacter</em> — colonies grises, plates, humides et étalées.</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Test</th><th><em>C. jejuni</em></th><th>Remarques</th></tr></thead>
+        <tbody>
+          <tr><td>Oxydase</td><td>Positive</td><td>Test de dépistage rapide</td></tr>
+          <tr><td>Catalase</td><td>Positive</td><td>—</td></tr>
+          <tr><td>Microscopie</td><td>Bacilles à Gram négatif incurvés/spiralés</td><td>Mobilité caractéristique en vol de moucheron</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Lire la boîte — point de décision</h4>
+        <p>Les colonies de <em>Campylobacter</em> sont plates, humides et souvent étalées — faciles à manquer si l'on s'attend à des colonies bombées et discrètes. Confirmez la croissance suspecte par l'oxydase et la microscopie : le bacille à Gram négatif incurvé/spiralé est très caractéristique.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Causes fréquentes d'échec</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Conseils pratiques de laboratoire</h4>
+        <p>Bonnes pratiques fondées sur l'expérience, et non une étape de protocole citée des CDC/OMS.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Mauvaise atmosphère &rarr; pas de croissance.</strong> L'échec le plus fréquent avec <em>Campylobacter</em> : une jarre non scellée ou un sachet périmé. La boîte semble vide et le résultat est faussement négatif. Vérifiez le joint et le sachet à chaque série.</li>
+        <li><strong>Incuber à 35-37&deg;C.</strong> La température entérique de routine est trop basse pour l'isolement sélectif de <em>C. jejuni</em> — 42&deg;C est requis.</li>
+        <li><strong>Lecture trop précoce.</strong> Jeter une boîte à 24-48 h fait manquer une croissance plus lente — conservez-la jusqu'à 72 h avant de la déclarer négative.</li>
+        <li><strong>Retard de transport.</strong> <em>Campylobacter</em> est fragile et sensible à l'oxygène ; les échantillons retardés non placés en Cary-Blair perdent leur viabilité.</li>
+        <li><strong>Manquer les colonies plates.</strong> Une croissance étalée, en voile, est facile à manquer — inspectez la boîte attentivement.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Exercice — lire la boîte</div></div>
+    <div class="step-content">
+      <p>Touchez chaque boîte pour révéler ce qu'elle montre.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d8d2c4"/>
+              <ellipse cx="64" cy="64" rx="9" ry="5" fill="#9a9384"/>
+              <ellipse cx="100" cy="60" rx="8" ry="5" fill="#9a9384"/>
+              <ellipse cx="102" cy="100" rx="9" ry="5" fill="#9a9384"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose Karmali, 42&deg;C — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong><em>Campylobacter</em> suspect.</strong> Colonies grises, plates, humides et étalées. Confirmez par l'oxydase (positive) et la microscopie (bacilles incurvés à Gram négatif).</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d8d2c4"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose Karmali — aucune croissance à 72 h. Que faire ?</div>
+          <div class="practice-a"><strong>Vérifiez l'atmosphère avant de conclure au négatif.</strong> Une boîte vide résulte souvent d'une jarre microaérophile défaillante — couvercle non scellé ou sachet périmé — et non d'un vrai négatif. Vérifiez le joint et le sachet, et confirmez que 42&deg;C a été utilisé.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#d8d2c4"/>
+              <ellipse cx="80" cy="80" rx="44" ry="30" fill="#9a9384" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose Karmali — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Croissance étalée, en voile.</strong> <em>Campylobacter</em> croît souvent en voile humide plutôt qu'en colonies discrètes — facile à manquer. Prélevez le voile, confirmez par l'oxydase et la microscopie.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Liste de contrôle — isolement de <em>Campylobacter</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Ensemencé sur gélose sélective Karmali ou Skirrow</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Jarre microaérophile scellée ; sachet de gaz neuf utilisé</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Incubé à 42&deg;C, conservé jusqu'à 72 h</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Oxydase et microscopie réalisées sur la croissance suspecte</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 7: VIBRIO -->
+<div class="module-content" id="m7">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-bacterium"></i> Isolement de <em>Vibrio cholerae</em></div>
+    <div class="module-subtitle">Isoler <em>Vibrio cholerae</em> à partir de selles humaines, selon les méthodes de l'OMS/GTFCC et des CDC</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Isolement en contexte épidémique</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Source de la méthode : OMS / GTFCC</span>
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>L'isolement de <em>Vibrio cholerae</em> repose sur deux idées : le choléra est habituellement investigué <strong>en contexte épidémique</strong>, et le micro-organisme <strong>tolère les conditions alcalines</strong> qui suppriment la flore concurrente. Les aide-mémoires de laboratoire de l'OMS/GTFCC et le manuel des CDC sur la dysenterie et le choléra décrivent tous deux ce déroulement pour les contextes à faibles ressources.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="20" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="80" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Échantillon</text>
+          <text x="80" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Selles en Cary-Blair</text>
+          <path d="M144 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah7)"/>
+          <rect x="180" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="240" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Enrichissement</text>
+          <text x="240" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Eau peptonée alcaline</text>
+          <path d="M304 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah7)"/>
+          <rect x="340" y="40" width="120" height="50" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="400" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Isolement</text>
+          <text x="400" y="78" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Gélose TCBS</text>
+          <path d="M464 65 h32" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah7)"/>
+          <rect x="500" y="40" width="120" height="50" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="560" y="62" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Confirmation</text>
+          <text x="560" y="78" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Oxydase / sérologie</text>
+        </svg>
+        <figcaption><b>Déroulement pour <em>Vibrio</em>.</b> L'eau peptonée alcaline enrichit ; la gélose TCBS isole.</figcaption>
+      </figure>
+      <div class="danger-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Signalement épidémique</h4>
+        <p>Un choléra suspecté revêt une urgence de santé publique. Un résultat présomptif de <em>V. cholerae</em> O1/O139 doit être communiqué rapidement, conformément aux exigences de signalement nationales et internationales.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Enrichissement alcalin</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Source de la méthode : OMS / GTFCC</span>
+      <ul class="protocol-list">
+        <li><strong>L'eau peptonée alcaline (EPA)</strong> à un pH d'environ 8,4-8,6 enrichit <em>V. cholerae</em> tout en supprimant les autres flores entériques</li>
+        <li><strong>Incuber brièvement</strong> — <em>Vibrio</em> croît rapidement et se concentre en surface sous forme de voile</li>
+        <li><strong>Repiquer à partir de la surface</strong> de l'EPA sur gélose sélective</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-tint"></i> Pourquoi alcalin</h4>
+        <p><em>V. cholerae</em> tolère un pH élevé mieux que les micro-organismes entériques concurrents. L'étape alcaline est un moyen simple et peu coûteux de lui donner une longueur d'avance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Isolement sur TCBS et confirmation</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Source de la méthode : OMS / GTFCC</span>
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>La gélose thiosulfate-citrate-bile-saccharose (TCBS) est le milieu sélectif pour <em>Vibrio</em>. <em>V. cholerae</em> fermente le saccharose et forme des colonies jaunes caractéristiques.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="102" cy="106" rx="84" ry="84" fill="#000" opacity="0.06"/>
+          <circle cx="100" cy="100" r="84" fill="#cfd8dc"/>
+          <circle cx="100" cy="100" r="76" fill="#3f7d4f"/>
+          <path d="M40 80 q60 -20 122 8" fill="none" stroke="#2d5e3a" stroke-width="2" opacity="0.5"/>
+          <path d="M38 106 q62 -14 126 8" fill="none" stroke="#2d5e3a" stroke-width="2" opacity="0.45"/>
+          <circle cx="78" cy="80" r="9" fill="#f2d63f"/>
+          <circle cx="118" cy="74" r="8" fill="#f2d63f"/>
+          <circle cx="132" cy="110" r="9" fill="#f2d63f"/>
+          <circle cx="86" cy="122" r="8" fill="#f2d63f"/>
+          <circle cx="114" cy="132" r="7" fill="#f2d63f"/>
+        </svg>
+        <figcaption><b>Gélose TCBS.</b> <em>V. cholerae</em> — colonies jaune vif (fermentation du saccharose).</figcaption>
+      </figure>
+      <table class="data-table">
+        <thead><tr><th>Test</th><th><em>V. cholerae</em></th><th>Remarques</th></tr></thead>
+        <tbody>
+          <tr><td>Couleur des colonies sur TCBS</td><td>Jaune</td><td>Saccharose-positive</td></tr>
+          <tr><td>Oxydase</td><td>Positive</td><td>Test de dépistage rapide</td></tr>
+          <tr><td>Sérologie</td><td>Agglutination O1 ou O139</td><td>Confirme le potentiel épidémique</td></tr>
+        </tbody>
+      </table>
+      <div class="success-box">
+        <h4><i class="fas fa-eye"></i> Lire la boîte — point de décision</h4>
+        <p>Prélever les colonies <strong>jaunes, oxydase-positives</strong> comme <em>V. cholerae</em> suspectes. Confirmer avec les antisérums O1 et O139 — seuls ces sérogroupes présentent un potentiel épidémique et déclenchent la réponse.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-triangle-exclamation"></i> Résultats ambigus</h4>
+        <p>D'autres espèces de <em>Vibrio</em> croissent sur TCBS — certaines en colonies vertes (non-saccharose), d'autres jaunes. La couleur des colonies n'est qu'un dépistage ; l'oxydase plus la sérologie O1/O139 sont ce qui confirme <em>V. cholerae</em> épidémique.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Causes fréquentes d'échec</div></div>
+    <div class="step-content">
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Conseils pratiques de laboratoire</h4>
+        <p>Bonnes pratiques fondées sur l'expérience, et non une étape de protocole citée de l'OMS/CDC.</p>
+      </div>
+      <ul class="protocol-list">
+        <li><strong>Omettre l'enrichissement alcalin.</strong> En cas d'infections faibles ou d'échantillons de convalescence, ensemencer directement sur TCBS sans EPA peut manquer un faible nombre de micro-organismes.</li>
+        <li><strong>Repiquer à partir du mauvais endroit de l'EPA.</strong> <em>Vibrio</em> se concentre en voile de surface — prélevez la surface, et non la profondeur du bouillon.</li>
+        <li><strong>S'arrêter aux colonies jaunes.</strong> Une colonie jaune sur TCBS n'est que présomptive. D'autres <em>Vibrio</em> l'imitent ; la sérologie O1/O139 est requise avant de signaler un choléra.</li>
+        <li><strong>Signalement tardif.</strong> Le choléra est un pathogène épidémique — un résultat présomptif laissé dans une file d'attente de routine retarde la réponse de santé publique.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">5</span> Exercice — lire la boîte</div></div>
+    <div class="step-content">
+      <p>Touchez chaque boîte pour révéler ce qu'elle montre.</p>
+      <div class="practice-grid">
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#3f7d4f"/>
+              <circle cx="62" cy="62" r="8" fill="#f2d63f"/><circle cx="100" cy="58" r="7" fill="#f2d63f"/>
+              <circle cx="100" cy="100" r="8" fill="#f2d63f"/><circle cx="62" cy="100" r="7" fill="#f2d63f"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose TCBS — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong><em>V. cholerae</em> suspect.</strong> Colonies jaune vif = fermentation du saccharose. Confirmez par l'oxydase et la sérologie O1/O139 — seuls ces sérogroupes sont épidémiques.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#3f7d4f"/>
+              <circle cx="62" cy="62" r="8" fill="#2f6b58"/><circle cx="100" cy="58" r="7" fill="#2f6b58"/>
+              <circle cx="100" cy="100" r="8" fill="#2f6b58"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose TCBS — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Colonies vertes — pas <em>V. cholerae</em>.</strong> Vert = ne fermente pas le saccharose. D'autres espèces de <em>Vibrio</em> (par ex. <em>V. parahaemolyticus</em>) apparaissent ainsi. Pas un choléra épidémique.</div>
+        </div>
+        <div class="practice-card" onclick="flipCard(this)">
+          <div class="practice-art">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="80" cy="80" r="66" fill="#cfd8dc"/><circle cx="80" cy="80" r="60" fill="#3f7d4f"/>
+              <circle cx="62" cy="62" r="8" fill="#f2d63f"/><circle cx="104" cy="100" r="8" fill="#2f6b58"/>
+            </svg>
+          </div>
+          <div class="practice-q">Gélose TCBS — qu'est-ce que c'est ?</div>
+          <div class="practice-a"><strong>Croissance mixte jaune et verte.</strong> Prélevez la colonie jaune, oxydase-positive, et confirmez par la sérologie O1/O139. La couleur seule ne confirme jamais le choléra.</div>
+        </div>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Liste de contrôle — isolement de <em>Vibrio cholerae</em></h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Échantillon enrichi en eau peptonée alcaline</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Voile de surface repiqué sur gélose TCBS</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Colonies jaunes, oxydase-positives prélevées</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Sérologie O1 / O139 réalisée</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Résultat présomptif signalé rapidement</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODULE 8: MÉTHODES MOLÉCULAIRES -->
+<div class="module-content" id="m8">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-dna"></i> Méthodes moléculaires et caractérisation</div>
+    <div class="module-subtitle">Le rôle complémentaire des méthodes moléculaires dans un cours fondé sur la culture</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Pourquoi la culture en premier</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Les tests moléculaires — panels PCR, tests antigéniques — peuvent détecter l'acide nucléique ou l'antigène d'un pathogène directement dans les selles, souvent plus vite que la culture. Ils sont utiles. Mais ils présentent une limite décisive pour ce cours : <strong>ils ne fournissent aucun micro-organisme.</strong></p>
+      <div class="info-box">
+        <h4><i class="fas fa-flask"></i> Ce qu'une souche de culture apporte et qu'un résultat moléculaire ne peut donner</h4>
+        <p>Une souche viable est indispensable à l'antibiogramme, au sérotypage et au séquençage du génome entier lors des investigations d'épidémie. Un résultat moléculaire positif indique qu'un élément est présent ; il ne fournit pas le micro-organisme dont ces étapes suivantes ont besoin.</p>
+      </div>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Le principe de la mise en culture de confirmation</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Les recommandations des CDC sont constantes pour les pathogènes entériques : lorsqu'un test indépendant de la culture est positif, le prélèvement doit être <strong>mis en culture de confirmation</strong> pour récupérer une souche.</p>
+      <figure class="diagram-figure diagram-figure--wide">
+        <svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <rect x="20" y="48" width="170" height="54" rx="8" fill="#eef2f4" stroke="#9bb0bf" stroke-width="1.5"/>
+          <text x="105" y="70" font-family="Inter" font-size="12" font-weight="600" fill="#3a4660" text-anchor="middle">Test moléculaire +</text>
+          <text x="105" y="87" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">PCR / antigène sur selles</text>
+          <path d="M194 75 h44" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah8)"/>
+          <rect x="242" y="48" width="170" height="54" rx="8" fill="#fdf0ee" stroke="#e8a99e" stroke-width="1.5"/>
+          <text x="327" y="70" font-family="Inter" font-size="12" font-weight="600" fill="#9a3324" text-anchor="middle">Culture de confirmation</text>
+          <text x="327" y="87" font-family="Inter" font-size="10" fill="#b06b5e" text-anchor="middle">Récupérer une souche viable</text>
+          <path d="M416 75 h44" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ah8)"/>
+          <rect x="464" y="48" width="170" height="54" rx="8" fill="#eafaf1" stroke="#a9dfbf" stroke-width="1.5"/>
+          <text x="549" y="70" font-family="Inter" font-size="12" font-weight="600" fill="#1e6b3a" text-anchor="middle">Souche obtenue</text>
+          <text x="549" y="87" font-family="Inter" font-size="10" fill="#4a9168" text-anchor="middle">Sérotype, séquençage, ATB</text>
+          <text x="327" y="128" font-family="Inter" font-size="11" fill="#6b6560" text-anchor="middle">Un résultat moléculaire positif n'est pas une fin — la culture doit suivre</text>
+        </svg>
+        <figcaption><b>Principe de la culture de confirmation.</b> Le test moléculaire détecte ; la culture récupère la souche. <span style="font-style:normal">Source de la méthode : CDC</span></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> STEC — là où le test moléculaire est recommandé</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Les STEC constituent le cas le plus clair où les CDC recommandent une cible moléculaire en complément de la culture. Rechercher la shigatoxine ou les gènes <em>stx1</em> et <em>stx2</em> sur toutes les selles soumises à culture permet de capter les STEC non-O157 que la seule culture O157 manquerait.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg">
+          <line x1="24" y1="52" x2="196" y2="52" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="44" y="42" width="52" height="20" rx="3" fill="#d98c7d"/>
+          <text x="70" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#5c2018" text-anchor="middle">stx1</text>
+          <rect x="124" y="42" width="52" height="20" rx="3" fill="#c0556b"/>
+          <text x="150" y="56" font-family="Inter" font-size="11" font-style="italic" fill="#4b1528" text-anchor="middle">stx2</text>
+          <line x1="24" y1="104" x2="196" y2="104" stroke="#c9c3b8" stroke-width="2"/>
+          <rect x="84" y="94" width="52" height="20" rx="3" fill="#e8a23f"/>
+          <text x="110" y="108" font-family="Inter" font-size="11" font-style="italic" fill="#5a3a08" text-anchor="middle">eae</text>
+          <text x="110" y="146" font-family="Inter" font-size="11" fill="#6b6560" text-anchor="middle">stx1 / stx2 définissent les STEC ; eae est un marqueur</text>
+        </svg>
+        <figcaption><b>Cibles géniques des STEC.</b> Détection de <em>stx1</em> / <em>stx2</em> — puis mise en culture pour obtenir une souche.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">4</span> Caractérisation de la souche</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <p>Une fois la souche en main, les méthodes moléculaires révèlent toute leur valeur — non pour la détection, mais pour la <strong>caractérisation</strong> : le séquençage du génome entier pour le sérotypage et le sous-typage, qui sous-tend l'investigation des épidémies.</p>
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ahw2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#9bb0bf" stroke-width="1.8" stroke-linecap="round"/></marker></defs>
+          <ellipse cx="66" cy="58" rx="28" ry="18" fill="#eafaf1" stroke="#a9dfbf" stroke-width="2"/>
+          <text x="66" y="62" font-family="Inter" font-size="10" fill="#1e6b3a" text-anchor="middle">Souche</text>
+          <path d="M66 78 v18" stroke="#9bb0bf" stroke-width="2" marker-end="url(#ahw2)"/>
+          <g stroke="#3a8a6d" stroke-width="3" fill="none">
+            <path d="M44 106 q11 -8 22 0 t22 0"/>
+            <path d="M44 116 q11 8 22 0 t22 0"/>
+          </g>
+          <text x="118" y="112" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="start">Génome séquencé</text>
+          <rect x="46" y="134" width="11" height="24" fill="#d98c7d"/>
+          <rect x="61" y="140" width="11" height="18" fill="#c0556b"/>
+          <rect x="76" y="130" width="11" height="28" fill="#e8a23f"/>
+          <text x="124" y="148" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="start">Sérotype, sous-type</text>
+          <text x="110" y="184" font-family="Inter" font-size="10" fill="#6b6560" text-anchor="middle">Caractérisation, et non détection</text>
+        </svg>
+        <figcaption><b>Séquençage du génome entier.</b> Appliqué à une souche récupérée, pour le sous-typage et le travail sur les épidémies.</figcaption>
+      </figure>
+      <div class="success-box">
+        <h4><i class="fas fa-circle-check"></i> Le fil conducteur de ce cours</h4>
+        <p>Détecter avec les outils moléculaires lorsque c'est approprié ; <strong>récupérer le micro-organisme par la culture</strong> ; caractériser la souche. La culture est l'étape qui rend tout le reste possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 9: FOURNITURES -->
+<div class="module-content" id="m9">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-boxes-stacked"></i> Milieux, réactifs et fournitures</div>
+    <div class="module-subtitle">Ce que requiert chaque déroulement d'isolement</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Milieux et réactifs par pathogène</div></div>
+    <div class="step-content">
+      <table class="data-table">
+        <thead><tr><th>Pathogène</th><th>Enrichissement</th><th>Gélose sélective</th><th>Confirmation clé</th></tr></thead>
+        <tbody>
+          <tr><td><em>Salmonella</em></td><td>Bouillon sélénite ou tétrathionate</td><td>XLD, HE (ou CHROMagar, SS, XLT-4)</td><td>TSI, uréase</td></tr>
+          <tr><td><em>Shigella</em></td><td>Ensemencement direct (sans enrichissement)</td><td>XLD, HE, SS</td><td>TSI, mobilité, sérologie</td></tr>
+          <tr><td>STEC / EHEC</td><td>Ensemencement direct</td><td>SMAC</td><td>Antisérum O157 ; test shigatoxine / stx</td></tr>
+          <tr><td><em>Campylobacter</em></td><td>Ensemencement direct</td><td>Karmali ou Skirrow</td><td>Oxydase, microscopie</td></tr>
+          <tr><td><em>Vibrio cholerae</em></td><td>Eau peptonée alcaline</td><td>TCBS</td><td>Oxydase, sérologie O1/O139</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Équipement commun</div></div>
+    <div class="step-content">
+      <ul class="protocol-list">
+        <li><strong>Transport :</strong> tubes de milieu de Cary-Blair</li>
+        <li><strong>Atmosphère :</strong> jarre microaérophile et sachets générateurs de gaz (<em>Campylobacter</em>)</li>
+        <li><strong>Incubation :</strong> étuves capables d'atteindre 35-37&deg;C et 42&deg;C</li>
+        <li><strong>Identification :</strong> milieux biochimiques ou, lorsqu'ils sont disponibles, MALDI-TOF ou une galerie d'identification</li>
+        <li><strong>Biosécurité :</strong> installations et EPI de niveau NSB-2</li>
+        <li><strong>Contrôle qualité :</strong> souches témoins de référence pour le CQ des milieux</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-globe"></i> Approvisionnement en contexte à faibles ressources</h4>
+        <p>Les milieux peuvent être achetés prêts à l'emploi ou préparés sur place à partir de poudre déshydratée. Prévoyez un transport sous chaîne du froid lorsque nécessaire, et des délais pour les commandes internationales. Vérifiez que tout produit respecte les exigences réglementaires locales.</p>
+      </div>
+      <div class="warning-box">
+        <h4><i class="fas fa-screwdriver-wrench"></i> Conseils pratiques de laboratoire</h4>
+        <p>Effectuez toujours un contrôle qualité des milieux avec des souches témoins connues avant d'utiliser un nouveau lot — les milieux sélectifs périmés ou mal conservés perdent leur sélectivité et provoquent à la fois des faux négatifs et des erreurs d'identification. Suivez les numéros de lot et les dates de péremption.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 10: RÉFÉRENCES -->
+<div class="module-content" id="m10">
+  <div class="module-header">
+    <div class="module-title"><i class="fas fa-book-open"></i> Références et sources des méthodes</div>
+    <div class="module-subtitle">Les documents officiels sur lesquels ce cours est fondé</div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">1</span> Sources des CDC</div></div>
+    <div class="step-content">
+      <span class="source-tag">Source de la méthode : CDC</span>
+      <ul class="protocol-list">
+        <li><strong>Laboratory Methods for the Diagnosis of Epidemic Dysentery and Cholera</strong> — manuel des CDC pour les contextes à capacité de laboratoire minimale ; couvre l'isolement et l'identification de <em>Vibrio cholerae</em> et <em>Shigella</em>, le prélèvement, la biosécurité et le contrôle qualité. <a href="https://www.cdc.gov/cholera/php/laboratories/index.html" target="_blank" class="external-link">cdc.gov/cholera/php/laboratories</a></li>
+        <li><strong>CDC Yellow Book 2024 — Nontyphoidal Salmonellosis.</strong> Isolement clinique de <em>Salmonella</em> ; la culture comme méthode de confirmation. <a href="https://wwwnc.cdc.gov/travel/yellowbook/2024/infections-diseases/salmonellosis-nontyphoidal" target="_blank" class="external-link">wwwnc.cdc.gov/travel/yellowbook</a></li>
+        <li><strong>CDC Yellow Book 2024 — Campylobacteriosis.</strong> Isolement à partir de selles sur milieux sélectifs sous oxygène réduit à 42&deg;C. <a href="https://wwwnc.cdc.gov/travel/yellowbook/2024/infections-diseases/campylobacteriosis" target="_blank" class="external-link">wwwnc.cdc.gov/travel/yellowbook</a></li>
+        <li><strong>CDC Clinical Overview of Salmonellosis.</strong> La culture comme méthode de référence ; mise en culture de confirmation des échantillons positifs aux tests indépendants de la culture. <a href="https://www.cdc.gov/salmonella/hcp/clinical-overview/index.html" target="_blank" class="external-link">cdc.gov/salmonella/hcp</a></li>
+        <li><strong>Recommandations des CDC sur le test des STEC.</strong> Dépistage par culture de O157 et recherche de shigatoxine / <em>stx1</em> et <em>stx2</em> sur toutes les selles soumises à culture.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">2</span> Sources de l'OMS / GTFCC</div></div>
+    <div class="step-content">
+      <span class="source-tag who">Source de la méthode : OMS / GTFCC</span>
+      <ul class="protocol-list">
+        <li><strong>WHO Cholera Outbreak Toolbox.</strong> Héberge les aide-mémoires de laboratoire du Groupe spécial mondial de lutte contre le choléra, dont <em>Isolation and Presumptive Identification of Vibrio cholerae O1/O139 from fecal specimens</em>. <a href="https://www.who.int/emergencies/outbreak-toolkit/disease-outbreak-toolboxes/cholera-outbreak-toolbox" target="_blank" class="external-link">who.int — cholera outbreak toolbox</a></li>
+        <li><strong>Aide-mémoires du GTFCC sur le prélèvement et le transport.</strong> Prélever et transporter les échantillons de selles en Cary-Blair pour la confirmation du choléra au laboratoire.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="step-container">
+    <div class="step-header"><div class="step-title"><span class="step-number">3</span> Comment les sources sont utilisées dans ce cours</div></div>
+    <div class="step-content">
+      <ul class="protocol-list">
+        <li>Les <strong>étapes de méthode</strong> portent une étiquette intégrée — <span class="source-tag">Source de la méthode : CDC</span> ou <span class="source-tag who">Source de la méthode : OMS / GTFCC</span> — identifiant l'organisme à l'origine de la procédure.</li>
+        <li>Les encadrés de <strong>conseils pratiques de laboratoire</strong> (causes d'échec, conseils de CQ) relèvent des bonnes pratiques fondées sur l'expérience et sont étiquetés comme tels — ce ne sont pas des étapes de protocole citées d'un organisme officiel.</li>
+      </ul>
+      <div class="info-box">
+        <h4><i class="fas fa-circle-info"></i> Note sur le périmètre</h4>
+        <p>Ce cours couvre l'isolement clinique des bactéries entéropathogènes à partir de selles humaines. Ce n'est pas un cours de diagnostic, de traitement, ni d'analyse des aliments ou de l'eau. Confirmez toujours les exigences nationales et locales en vigueur, qui peuvent différer des méthodes générales décrites ici.</p>
+      </div>
+      <div class="interactive-checklist">
+        <h4>Achèvement du cours</h4>
+        <ul class="checklist">
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Prélèvement et transport des échantillons compris</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Déroulement de l'isolement réalisé pour les cinq pathogènes</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Principe de la culture de confirmation compris</span></li>
+          <li onclick="toggleCheckbox(this)"><input type="checkbox" readonly><span>Causes d'échec passées en revue pour chaque pathogène</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<script>
+const moduleOrder=['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10'];
+function showModule(id){
+  document.querySelectorAll('.module-content').forEach(function(m){m.classList.remove('active');});
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+  var el=document.getElementById(id); if(el){el.classList.add('active');}
+  if(window.event&&window.event.target){
+    var tab=window.event.target.closest('.nav-tab');
+    if(tab){tab.classList.add('active');}
+  }
+  var idx=moduleOrder.indexOf(id)+1;
+  document.getElementById('progressText').textContent=idx+'/10';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleCheckbox(li){
+  var cb=li.querySelector('input[type="checkbox"]');
+  cb.checked=!cb.checked;
+  if(cb.checked){
+    li.style.backgroundColor='var(--color-success)';
+    li.style.color='white';
+    setTimeout(function(){li.style.backgroundColor='';li.style.color='';},500);
+  }
+}
+function flipCard(card){card.classList.toggle('revealed');}
+document.getElementById('progressIndicator').addEventListener('click',function(){
+  var cur=document.querySelector('.module-content.active').id;
+  var idx=moduleOrder.indexOf(cur);
+  if(idx<moduleOrder.length-1){
+    var nextId=moduleOrder[idx+1];
+    document.querySelectorAll('.module-content').forEach(function(m){m.classList.remove('active');});
+    document.getElementById(nextId).classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.nav-tab')[idx+1].classList.add('active');
+    document.getElementById('progressText').textContent=(idx+2)+'/10';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+});
+</script>
+</body>
+</html>
